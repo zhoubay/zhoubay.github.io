@@ -7,7 +7,7 @@ excerpt: 'Training and deploying deep learning models pose challenges for users 
 date: 2024-05-24
 venue: 'biorxiv'
 # slidesurl: 'https://iclr.cc/media/PosterPDFs/ICLR%202024/19394.png'
-paperurl: 'https://www.biorxiv.org/content/10.1101/2024.05.24.595648.abstract'
+paperurl: 'https://www.biorxiv.org/content/10.1101/2024.05.24.595648'
 # citation: 'Your Name, You. (2009). &quot;Paper Title Number 1.&quot; <i>Journal 1</i>. 1(1).'
 ---
 
