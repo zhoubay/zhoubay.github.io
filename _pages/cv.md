@@ -11,11 +11,11 @@ redirect_from:
 
 Education
 ======
-* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
-* M.S. in Jekyll, GitHub University, 2014
-* B.S. in GitHub, GitHub University, 2012
+* Ph.D in Computer Science, Westlake University (joint program with Zhejiang University), 2022-2027 (expected)
+* B.S. in Data science and big data technology, Tongji University, 2018-2022
+* High school in Tianjin Nankai school, 2015-2018
 
-Work experience
+<!-- Work experience
 ======
 * Spring 2024: Academic Pages Collaborator
   * Github University
@@ -30,16 +30,20 @@ Work experience
 * Summer 2015: Research Assistant
   * Github University
   * Duties included: Tagging issues
-  * Supervisor: Professor Git
+  * Supervisor: Professor Git -->
   
 Skills
 ======
-* Skill 1
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
+* Water Sports: Previous president of Water Sports Club in Westlake University.
+  * Rowing: 3 years experience, caption of rowing team in Westlake University
+  * Stand up paddle: 2 years experience.
+  * Sailing, dragon boat, SUP polo, etc.
+* Languages:
+  * Mandarian: Native speaker, 普通话水平测试 一级乙等
+  * English: Proficient spearker
+  * Japanese: Japanese Language Proficiency Test (JLPT) N2
+  * Spanish: Learning
+  * Latin: Learning
 
 Publications
 ======
@@ -53,11 +57,11 @@ Talks
     {% include archive-single-talk-cv.html  %}
   {% endfor %}</ul>
   
-Teaching
+<!-- Teaching
 ======
   <ul>{% for post in site.teaching reversed %}
     {% include archive-single-cv.html %}
-  {% endfor %}</ul>
+  {% endfor %}</ul> -->
   
 Service and leadership
 ======
