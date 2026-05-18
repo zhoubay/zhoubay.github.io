@@ -1,0 +1,61 @@
+{% include base_path %}
+
+<div class="research-page">
+  <p class="research-page__lead">
+    My research builds <strong>protein foundation models</strong> and <strong>multimodal systems</strong> that connect amino-acid sequences, 3D structures, and human-readable functional language—from pretraining and platforms to search, dialogue, and design.
+  </p>
+
+  {% for section in site.data.research.sections %}
+  <section class="research-section" style="--accent: {{ section.accent }}; --accent-light: {{ section.accent_light }};">
+    <header class="research-section__header">
+      <span class="research-section__index">{{ forloop.index }}</span>
+      <div class="research-section__titles">
+        <h2 class="research-section__title">{{ section.title }}</h2>
+        <p class="research-section__subtitle">{{ section.subtitle }}</p>
+      </div>
+    </header>
+
+    <div class="research-grid">
+      {% for project in section.projects %}
+      <article class="research-card">
+        <div class="research-card__top">
+          <h3 class="research-card__name">
+            {% if project.publication %}
+            <a href="{{ project.publication | prepend: base_path }}">{{ project.name }}</a>
+            {% else %}
+            {{ project.name }}
+            {% endif %}
+          </h3>
+          <span class="research-card__badge">{{ project.badge }}</span>
+        </div>
+        <p class="research-card__summary">{{ project.summary }}</p>
+        {% if project.links %}
+        <div class="research-card__links">
+          {% for link in project.links %}
+          {% if link.url contains 'http' %}
+            {% assign link_url = link.url %}
+          {% else %}
+            {% assign link_url = link.url | prepend: base_path %}
+          {% endif %}
+          <a href="{{ link_url }}" class="research-card__link"{% if link.url contains 'http' %} target="_blank" rel="noopener noreferrer"{% endif %}>
+            {% case link.icon %}
+            {% when 'code' %}<i class="fas fa-code" aria-hidden="true"></i>
+            {% when 'link' %}<i class="fas fa-external-link-alt" aria-hidden="true"></i>
+            {% when 'image' %}<i class="fas fa-image" aria-hidden="true"></i>
+            {% else %}<i class="fas fa-file-alt" aria-hidden="true"></i>
+            {% endcase %}
+            {{ link.label }}
+          </a>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+  {% endfor %}
+
+  <p class="research-page__footer">
+    Full bibliography on the <a href="{{ base_path }}/publications/">Publications</a> page and <a href="https://scholar.google.com/citations?user=ey4rxTIAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar</a>.
+  </p>
+</div>

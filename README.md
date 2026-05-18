@@ -9,6 +9,8 @@ Ph.D. candidate in Computer Science at [Westlake University](https://www.westlak
 | Path | Content |
 |------|---------|
 | `_pages/main.md` | Homepage |
+| `_pages/research.md` | Research themes & projects |
+| `_data/research.yml` | Research page content |
 | `_pages/cv.md` | CV |
 | `_publications/` | Papers |
 | `_talks/` | Talks & seminars |

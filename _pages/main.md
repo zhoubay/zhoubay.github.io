@@ -9,7 +9,7 @@ redirect_from:
 
 I am a **Ph.D. candidate** in Computer Science at [Westlake University](https://www.westlake.edu.cn/) (joint program with Zhejiang University), based in Hangzhou. My research focuses on **AI for Science**, especially **protein language models (PLMs)** and their applications in protein engineering, search, and design.
 
-I develop large-scale models and open platforms that bridge protein **sequence**, **structure**, and **function**—including structure-aware pretraining ([SaProt](/publication/SaProt)), trimodal contrastive learning ([ProTrek](/publication/ProTrek)), and community tools for training and sharing models ([SaprotHub](/publication/SaprotHub)). See my full list on [Google Scholar](https://scholar.google.com/citations?user=ey4rxTIAAAAJ) or the [Publications](/publications/) page.
+I develop large-scale models and open platforms that bridge protein **sequence**, **structure**, and **function**—see [Research](/research/) for an overview, or [Publications](/publications/) / [Google Scholar](https://scholar.google.com/citations?user=ey4rxTIAAAAJ) for the full list.
 
 ## Research Interests
 

@@ -1,0 +1,71 @@
+# Research page content — edit summaries and links here
+
+sections:
+  - id: plm
+    title: "Protein Language Models"
+    subtitle: "Structure-aware pretraining, open platforms, and PLM-driven protein engineering"
+    accent: "#0d6e8f"
+    accent_light: "#e8f4f8"
+    projects:
+      - name: "SaProt"
+        badge: "ICLR 2024"
+        summary: "General-purpose PLM with a structure-aware vocabulary—residue tokens fused with Foldseek structure tokens—trained on ~40M sequence–structure pairs."
+        publication: "/publication/SaProt"
+        links:
+          - { label: "Paper", url: "https://openreview.net/forum?id=6MRq3l7iXr", icon: "file" }
+          - { label: "Code", url: "https://github.com/westlake-repl/SaProt", icon: "code" }
+
+      - name: "SaprotHub"
+        badge: "Nature Biotechnology 2025"
+        summary: "No-code platform on Google Colab for training, sharing, and collaborating on protein ML models—democratizing PLM access for biologists."
+        publication: "/publication/SaprotHub"
+        links:
+          - { label: "Paper", url: "https://doi.org/10.1038/s41587-025-02859-7", icon: "file" }
+          - { label: "Code", url: "https://github.com/westlake-repl/SaprotHub", icon: "code" }
+
+      - name: "eTDG"
+        badge: "Molecular Cell 2024"
+        summary: "PLM-guided optimization of uracil-N-glycosylase enables programmable T→G/C base editing with few-shot experimental validation."
+        publication: "/publication/eTDG"
+        links:
+          - { label: "Paper", url: "https://doi.org/10.1016/j.molcel.2024.01.021", icon: "file" }
+
+      - name: "ESM-Ezy"
+        badge: "Nature Communications 2025"
+        summary: "ESM-1b semantic mining discovers multicopper oxidases with superior catalytic and environmental-remediation properties from UniProt."
+        publication: "/publication/ESM-Ezy"
+        links:
+          - { label: "Paper", url: "https://doi.org/10.1038/s41467-025-58521-y", icon: "file" }
+          - { label: "Code", url: "https://github.com/westlake-repl/ESM-Ezy", icon: "code" }
+
+  - id: multimodal
+    title: "Protein–Text Multimodal Intelligence"
+    subtitle: "Aligning sequence, structure, and natural language for search, dialogue, and de novo design"
+    accent: "#5b4b9a"
+    accent_light: "#f0edf8"
+    projects:
+      - name: "ProTrek"
+        badge: "Nature Biotechnology 2025"
+        summary: "Trimodal contrastive model unifying sequence, structure, and function text—advanced cross-modal protein search at billion-protein scale."
+        publication: "/publication/ProTrek"
+        links:
+          - { label: "Paper", url: "https://doi.org/10.1038/s41587-025-02836-0", icon: "file" }
+          - { label: "Server", url: "https://www.search-protrek.com", icon: "link" }
+          - { label: "Code", url: "https://github.com/westlake-repl/ProTrek", icon: "code" }
+
+      - name: "Evolla"
+        badge: "bioRxiv · under review at Nature"
+        summary: "Interactive protein-language model that answers natural-language queries over sequence and structure—generative functional discovery beyond static annotation."
+        publication: "/publication/Evolla"
+        links:
+          - { label: "Preprint", url: "https://doi.org/10.1101/2025.01.05.630192", icon: "file" }
+          - { label: "Demo", url: "http://www.chat-protein.com/", icon: "link" }
+          - { label: "Poster", url: "/files/Evolla_poster_2025.pdf", icon: "image" }
+
+      - name: "Pinal"
+        badge: "bioRxiv · under review at Nature"
+        summary: "16B-parameter framework: natural-language instructions → structure generation → sequence design for de novo proteins beyond PDB."
+        publication: "/publication/Pinal"
+        links:
+          - { label: "Preprint", url: "https://doi.org/10.1101/2024.08.01.606258", icon: "file" }
+          - { label: "Demo", url: "http://www.denovo-pinal.com", icon: "link" }
