@@ -50,10 +50,15 @@ I develop large-scale models and open platforms that bridge protein **sequence**
    F Dai, S You, Y Zhu, Y Gao, L Fu, **X Zhou**, J Su, C Wang, Y Fan, et al. — *bioRxiv*, 2024; **under review at** *Nature*  
    [[Paper](https://doi.org/10.1101/2024.08.01.606258)] · [[Demo](http://www.denovo-pinal.com)]
 
+## Honors
+
+- **Oct 2025** — **Best Poster Award**, [*Nature Conference on AI Augmented Biology*](https://natureconferences.streamgo.live/ai-augmented-biology/register) (organised by [Nanjing University](https://www.nju.edu.cn/) with *Nature*, *Nature Biotechnology*, *Nature Methods*, and *Nature Communications*; 22–24 Oct 2025, Nanjing, China). Poster on [Evolla](/publication/Evolla): [[PDF](/files/Evolla_poster_2025.pdf)]
+
 ## News
 
 - **2026** — Evolla under review at *Nature* ([bioRxiv preprint](https://doi.org/10.1101/2025.01.05.630192))
 - **2025** — Pinal under review at *Nature* ([bioRxiv preprint](https://doi.org/10.1101/2024.08.01.606258))
+- **Oct 2025** — Best Poster at the [Nature Conference on AI Augmented Biology](https://natureconferences.streamgo.live/ai-augmented-biology/register) (Nanjing University) — [[poster](/files/Evolla_poster_2025.pdf)]
 - **Oct 2025** — ProTrek published in *Nature Biotechnology*
 - **Oct 2025** — SaprotHub published in *Nature Biotechnology*
 - **Apr 2025** — ESM-Ezy published in *Nature Communications*

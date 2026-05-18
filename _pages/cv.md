@@ -19,6 +19,10 @@ Education
 * B.S. in Data science and big data technology, Tongji University, 2018-2022
 * High school in Tianjin Nankai school, 2015-2018
 
+Awards & Honors
+======
+* **Oct 2025**, Best Poster Award, [*Nature Conference on AI Augmented Biology*](https://natureconferences.streamgo.live/ai-augmented-biology/register) (organised by Nanjing University with *Nature*, *Nature Biotechnology*, *Nature Methods*, and *Nature Communications*; 22–24 Oct 2025, Nanjing, China). Poster: [Evolla](/files/Evolla_poster_2025.pdf)
+
 <!-- Work experience
 ======
 * Spring 2024: Academic Pages Collaborator
