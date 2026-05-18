@@ -8,7 +8,7 @@
 
 # Basic Site Settings
 locale                   : "en-US"
-title                    : "Xibin Zhou@WestlakeUniversity"
+title                    : "Xibin Zhou - Westlake University"
 title_separator          : "-"
 name                     : &name "Xibin Zhou"
 description              : &description "PhD candidate at Westlake University. Research on protein language models, multimodal protein AI, and AI for Science."

@@ -1,18 +1,18 @@
-# Authors
+# Optional per-page authors (front matter: author: xibinzhou).
+# Sidebar and default metadata use author: in _config.yml when this key is not set.
 
-Name Name:
-  name        : "Name Name"
-  uri         : "http://name.com"
-  email       : "name@name.com"
-  bio         : "This is the first name."
-  avatar      : "bio-photo-2.jpg"
-  twitter     : "name"
-  google_plus : "Name"
-
-Name2 Name2:
-  name        : "Name2 Name2"
-  email       : "name2@name2.com"
-  bio         : "I ordered what?"
-  avatar      : "bio-photo.jpg"
-  twitter     : "name2"
-  google_plus : "Name"
+xibinzhou:
+  name        : "Xibin Zhou (周禧彬)"
+  uri         : "https://zhoubay.github.io"
+  email       : "zhouxibin@westlake.edu.cn"
+  bio         : "PhD candidate at Westlake University. Protein language models & AI for Science."
+  avatar      : "与施一公合影小.jpg"
+  location    : "Hangzhou, Zhejiang"
+  employer    : "Westlake University"
+  github      : "zhoubay"
+  googlescholar : "https://scholar.google.com/citations?user=ey4rxTIAAAAJ"
+  orcid       : "https://orcid.org/0009-0007-8879-4966"
+  researchgate : "https://www.researchgate.net/profile/Xibin-Zhou-2"
+  linkedin    : "xibinbayeszhou"
+  twitter     : "XibinBayesZhou"
+  zhihu       : "水中的没文化"
