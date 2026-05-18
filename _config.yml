@@ -11,7 +11,7 @@ locale                   : "en-US"
 title                    : "Xibin Zhou@WestlakeUniversity"
 title_separator          : "-"
 name                     : &name "Xibin Zhou"
-description              : &description "PhD candidate in Westlake University, working on AI for Science, specially proteins."
+description              : &description "PhD candidate at Westlake University. Research on protein language models, multimodal protein AI, and AI for Science."
 url                      : https://zhoubay.github.io # the base hostname & protocol for your site e.g. "https://[your GitHub username].github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "zhoubay/zhoubay.github.io"
@@ -24,10 +24,10 @@ author:
   avatar           : "与施一公合影小.jpg"
   name             : "Xibin Zhou (周禧彬)"
   pronouns         : # example: "she/her"  
-  bio              : "PhD candidate in Westlake University, working on AI for Science, specially proteins. Captain in Westlake Rowing team."
+  bio              : "PhD candidate at Westlake University. Protein language models & AI for Science. Captain, Westlake Rowing Team."
   location         : "Hangzhou, Zhejiang"
   employer         : "Westlake University"
-  uri              : # URL
+  uri              : https://zhoubay.github.io
   email            : "zhouxibin@westlake.edu.cn" 
 
   # Academic websites
@@ -44,7 +44,7 @@ author:
   bitbucket        : # Username - Update with your username on the site
   codepen          : # Username
   dribbble         : # Username
-  github           : # "academicpages"
+  github           : "zhoubay"
   kaggle           : # Username  
   stackoverflow    : # User number or user number and name (i.e., use "1" or "1/jeff-atwood")    
 
@@ -79,7 +79,7 @@ publication_category:
   # books:
   #   title: 'Books'
   manuscripts:
-    title: 'Preprint Articles'
+    title: 'Preprints & Under Review'
   journals:
     title: 'Journal Articles'    
   conferences:

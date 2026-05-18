@@ -9,6 +9,10 @@ redirect_from:
 
 {% include base_path %}
 
+Research Summary
+======
+Ph.D. candidate developing **protein language models** and AI systems for computational biology at Westlake University. Research spans structure-aware pretraining (SaProt, ICLR 2024), trimodal protein search (ProTrek, *Nature Biotechnology* 2025), democratized PLM platforms (SaprotHub, *Nature Biotechnology* 2025), PLM-assisted base editing (*Molecular Cell* 2024), and frontier generative models (Evolla and Pinal, both under review at *Nature*). [Google Scholar](https://scholar.google.com/citations?user=ey4rxTIAAAAJ)
+
 Education
 ======
 * Ph.D in Computer Science, Westlake University (joint program with Zhejiang University), 2022-2027 (expected)
@@ -35,12 +39,12 @@ Education
 Skills
 ======
 * Water Sports: Previous president of Water Sports Club in Westlake University.
-  * Rowing: 3 years experience, caption of rowing team in Westlake University
+  * Rowing: 3 years experience, captain of rowing team in Westlake University
   * Stand up paddle: 2 years experience.
   * Sailing, dragon boat, SUP polo, etc.
 * Languages:
-  * Mandarian: Native speaker, 普通话水平测试 一级乙等
-  * English: Proficient spearker
+  * Mandarin: Native speaker, 普通话水平测试 一级乙等
+  * English: Proficient speaker
   * Japanese: Japanese Language Proficiency Test (JLPT) N2
   * Spanish: Learning
   * Latin: Learning

@@ -1,14 +1,15 @@
 ---
-title: "SaprotHub: Making Protein Modeling Accessible to All Biologists"
+title: "Democratizing protein language model training, sharing and collaboration"
 collection: publications
-category: manuscripts
+category: journals
 permalink: /publication/SaprotHub
-excerpt: 'Training and deploying deep learning models pose challenges for users without machine learning (ML) expertise. SaprotHub offers a user-friendly platform that democratizes the process of training, utilizing, storing, and sharing protein ML models, fostering collaboration within the biology community—all achievable with just a few clicks, regardless of ML background. At its core, Saprot is an advanced, near-universal protein language model. Through its ColabSaprot framework, it supports potentially hundreds of protein training and prediction applications, enabling the co-construction and co-sharing of these trained models. This enhances user engagement and drives community-wide innovation.'
-date: 2024-05-24
-venue: 'biorxiv'
-# slidesurl: 'https://iclr.cc/media/PosterPDFs/ICLR%202024/19394.png'
-paperurl: 'https://www.biorxiv.org/content/10.1101/2024.05.24.595648'
-# citation: 'Your Name, You. (2009). &quot;Paper Title Number 1.&quot; <i>Journal 1</i>. 1(1).'
+excerpt: 'SaprotHub offers an intuitive platform that facilitates training, prediction, storage, and sharing of protein language models. Built on Google Colab, the ColabSaprot framework powers hundreds of protein applications, enabling researchers without deep ML expertise to collaboratively build and share customized models.'
+date: 2025-10-02
+venue: 'Nature Biotechnology'
+paperurl: 'https://doi.org/10.1038/s41587-025-02859-7'
+citation: 'J Su, Z Li, T Tao, C Han, Y He, F Dai, Q Yuan, Y Gao, T Si, X Zhang, X Zhou, et al. (2025). &quot;Democratizing protein language model training, sharing and collaboration.&quot; <i>Nature Biotechnology</i>.'
 ---
 
-Training and deploying deep learning models pose challenges for users without machine learning (ML) expertise. SaprotHub offers a user-friendly platform that democratizes the process of training, utilizing, storing, and sharing protein ML models, fostering collaboration within the biology community—all without requiring extensive machine learning expertise. At its core, Saprot is an advanced, foundational protein language model. Through its ColabSaprot framework, it supports potentially hundreds of protein training and prediction applications, enabling the co-construction and co-sharing of these trained models. This enhances user engagement and drives community-wide innovation.
+Training and deploying large-scale protein language models typically requires deep machine learning expertise—a barrier for researchers outside this field. SaprotHub overcomes this challenge by offering an intuitive platform that facilitates training and prediction as well as storage and sharing of models. The ColabSaprot framework built on Google Colab potentially powers hundreds of protein training and prediction applications, enabling researchers to collaboratively build and share customized models.
+
+- [Paper](https://doi.org/10.1038/s41587-025-02859-7) · [Code](https://github.com/westlake-repl/SaprotHub)
