@@ -1,0 +1,42 @@
+- title: "Contributor to Hugging Face Transformers"
+  description: "Evolla officially integrated into the Transformers library (EvollaProcessor, EvollaForProteinText2Text)."
+  badge: "Open Source"
+  links:
+    - { label: "Commit", url: "https://github.com/huggingface/transformers/commit/45c7bfb1571160d2c06b880073a5c73e6bfa3677", icon: "code" }
+
+- title: "Evolla reached 130K+ views on X"
+  description: "Promotional post for Evolla on X (Twitter)."
+  badge: "Evolla"
+  links:
+    - { label: "Post", url: "https://x.com/duguyuan/status/1876446845951492221", icon: "link" }
+
+- title: "Evolla — ~100K Hugging Face downloads per month"
+  description: "Evolla-10B-hf model page on Hugging Face."
+  badge: "Evolla"
+  links:
+    - { label: "Model", url: "https://huggingface.co/westlake-repl/Evolla-10B-hf", icon: "link" }
+
+- title: "Pinal featured in Nature News"
+  description: "Nature News article on AI protein design, citing Pinal (May 2025)."
+  badge: "Pinal"
+  links:
+    - { label: "Nature News", url: "https://www.nature.com/articles/d41586-025-01586-y", icon: "link" }
+
+- title: "SaProt ranked #1 on ProteinGym"
+  description: "Top overall on the ProteinGym DMS zero-shot substitution benchmark (Spearman) in the Oct 2024 leaderboard snapshot after SaProt's release."
+  badge: "SaProt"
+  links:
+    - { label: "Leaderboard (Oct 2024)", url: "https://github.com/OATML-Markslab/ProteinGym/blob/de1676481fdc6d4c3c8b23a880e44eeca71fb78e/benchmarks/DMS_zero_shot/substitutions/Spearman/Summary_performance_DMS_substitutions_Spearman.csv", icon: "link" }
+
+- title: "SaProt — 60K+ Hugging Face downloads per month"
+  description: "SaProt_650M_AF2 on Hugging Face."
+  badge: "SaProt"
+  links:
+    - { label: "Model", url: "https://huggingface.co/westlake-repl/SaProt_650M_AF2", icon: "link" }
+
+- title: "Featured in Westlake University press"
+  description: "Campus news coverage of protein search research (ProTrek / trimodal PLM)."
+  badge: "Press"
+  links:
+    - { label: "News article", url: "https://www.westlake.edu.cn/news_events/westlakenews/Research/202510/t20251030_60873.html", icon: "link" }
+    - { label: "Photo", url: "/files/evidence/westlake-press.jpg", icon: "image" }
