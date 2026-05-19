@@ -1,0 +1,59 @@
+{% include base_path %}
+
+<div class="page-shell">
+  <section id="about" class="home-section fade-in">
+    {% include section-header.html title="About" %}
+    <div class="about-block">
+      {{ site.data.about.text | markdownify }}
+    </div>
+  </section>
+
+  <section id="interests" class="home-section fade-in">
+    {% include section-header.html title="Research Interests" %}
+    <ul class="interests-list">
+      {% for item in site.data.interests %}
+      <li class="interests-list__item">
+        <strong>{{ item.title }}</strong>
+        <span>{{ item.description }}</span>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section id="publications" class="home-section fade-in">
+    {% include section-header.html title="Selected Publications" %}
+    <p class="about-block" style="margin-top: -1rem; margin-bottom: 1.5rem;"><em>* equal contribution</em></p>
+    <div class="pub-grid">
+      {% for entry in site.data.selected_publications %}
+      {% capture pub_url %}/publication/{{ entry.slug }}{% endcapture %}
+      {% include pub-card.html
+        title=entry.title
+        authors=entry.authors
+        venue=entry.venue
+        badge=entry.venue
+        year=entry.year
+        summary=entry.summary
+        publication=pub_url
+        paperurl=entry.paperurl
+        links=entry.links
+        journal_tag=entry.journal_tag
+      %}
+      {% endfor %}
+    </div>
+    <p class="about-block"><a href="{{ base_path }}/publications/">Full publication list &rarr;</a></p>
+  </section>
+
+  <section id="honors" class="home-section fade-in">
+    {% include section-header.html title="Honors & Awards" %}
+    <ul class="honors-list">
+      {% for item in site.data.honors %}
+      <li>{{ item.text | markdownify | remove: "<p>" | remove: "</p>" }}</li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section id="news" class="home-section fade-in">
+    {% include section-header.html title="News" %}
+    {% include news-list.html %}
+  </section>
+</div>

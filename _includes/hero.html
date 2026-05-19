@@ -1,0 +1,32 @@
+{% include base_path %}
+{% assign author = site.author %}
+
+<section class="site-hero">
+  <div class="site-hero__bg" style="background-image: linear-gradient(135deg, rgba(13, 110, 143, 0.78) 0%, rgba(91, 75, 154, 0.68) 100%), url('{{ base_path }}/images/与施一公合影-卡通.png');"></div>
+  <div class="site-hero__content">
+    {% if author.avatar %}
+    <img class="site-hero__avatar" src="{{ author.avatar | prepend: '/images/' | prepend: base_path }}" alt="{{ author.name }}">
+    {% endif %}
+    <p class="site-hero__name">{{ author.name }}</p>
+    <h1 class="site-hero__slogan">{{ site.data.hero.slogan | default: "Protein foundation models for search, dialogue, and design" }}</h1>
+    <p class="site-hero__lede">{{ site.data.hero.lede | default: author.bio }}</p>
+    <div class="site-hero__social">
+      {% if site.author.googlescholar %}
+      <a class="site-hero__social-link" href="{{ site.author.googlescholar }}" target="_blank" rel="noopener noreferrer"><i class="ai ai-google-scholar"></i> Scholar</a>
+      {% endif %}
+      {% if site.author.github %}
+      <a class="site-hero__social-link" href="https://github.com/{{ site.author.github }}" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
+      {% endif %}
+      {% if site.author.twitter %}
+      <a class="site-hero__social-link" href="https://twitter.com/{{ site.author.twitter }}" target="_blank" rel="noopener noreferrer"><i class="fab fa-x-twitter"></i> Twitter</a>
+      {% endif %}
+      {% if site.author.email %}
+      <a class="site-hero__social-link" href="mailto:{{ site.author.email }}"><i class="fas fa-envelope"></i> Email</a>
+      {% endif %}
+      {% if site.author.linkedin %}
+      <a class="site-hero__social-link" href="https://www.linkedin.com/in/{{ site.author.linkedin }}" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      {% endif %}
+    </div>
+    <a class="site-hero__cta" href="{{ base_path }}/research/">View Research <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+  </div>
+</section>

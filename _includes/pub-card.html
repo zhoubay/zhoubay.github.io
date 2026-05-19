@@ -1,0 +1,65 @@
+{% include base_path %}
+{% assign accent = include.accent | default: "var(--accent)" %}
+{% assign tag_class = include.journal_tag | default: "default" %}
+
+<article class="pub-card fade-in"{% if include.accent %} style="--card-accent: {{ include.accent }};"{% endif %}>
+  <div class="pub-card__header">
+    {% if include.badge or include.venue %}
+    <span class="journal-tag tag-{{ tag_class }}">{{ include.badge | default: include.venue }}</span>
+    {% endif %}
+    {% if include.year %}
+    <span class="pub-year-badge">{% if include.year contains "-" or include.year.size > 4 %}{{ include.year | date: "%Y" }}{% else %}{{ include.year }}{% endif %}</span>
+    {% endif %}
+  </div>
+
+  <h3 class="pub-card__title">
+    {% if include.url %}
+    <a href="{% if include.url contains 'http' %}{{ include.url }}{% else %}{{ include.url | prepend: base_path }}{% endif %}"{% if include.url contains 'http' %} target="_blank" rel="noopener noreferrer"{% endif %}>{{ include.title }}</a>
+    {% elsif include.publication %}
+    <a href="{{ include.publication | prepend: base_path }}">{{ include.title | default: include.name }}</a>
+    {% else %}
+    {{ include.title | default: include.name }}
+    {% endif %}
+  </h3>
+
+  {% if include.authors %}
+  <p class="pub-card__authors">{{ include.authors }}</p>
+  {% endif %}
+
+  {% if include.summary or include.excerpt %}
+  <p class="pub-card__summary">{{ include.summary | default: include.excerpt }}</p>
+  {% endif %}
+
+  {% if include.featured %}
+  <div class="pub-card__meta">
+    {% for item in include.featured %}
+    <span class="pub-card__featured">{{ item }}</span>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {% if include.links %}
+  <div class="pub-card__links">
+    {% for link in include.links %}
+    {% if link.url contains 'http' %}
+      {% assign link_url = link.url %}
+    {% else %}
+      {% assign link_url = link.url | prepend: base_path %}
+    {% endif %}
+    <a href="{{ link_url }}" class="pub-card__link"{% if link.url contains 'http' %} target="_blank" rel="noopener noreferrer"{% endif %}>
+      {% case link.icon %}
+      {% when 'code' %}<i class="fas fa-code" aria-hidden="true"></i>
+      {% when 'link' %}<i class="fas fa-external-link-alt" aria-hidden="true"></i>
+      {% when 'image' %}<i class="fas fa-image" aria-hidden="true"></i>
+      {% else %}<i class="fas fa-file-alt" aria-hidden="true"></i>
+      {% endcase %}
+      {{ link.label }}
+    </a>
+    {% endfor %}
+  </div>
+  {% elsif include.paperurl %}
+  <div class="pub-card__links">
+    <a href="{{ include.paperurl }}" class="pub-card__link" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-alt" aria-hidden="true"></i> Paper</a>
+  </div>
+  {% endif %}
+</article>

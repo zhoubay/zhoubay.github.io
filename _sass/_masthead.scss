@@ -4,7 +4,9 @@
 
 .masthead {
   position: fixed;
-  background: white;
+  background: rgba(243, 245, 248, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid $border-color;
   height: $masthead-height;
   top: 0;
@@ -51,8 +53,23 @@
   list-style-type: none;
   white-space: nowrap;
 
+  a {
+    font-weight: 500;
+    color: var(--text-muted, $text-color);
+    transition: color 0.15s ease;
+
+    &:hover {
+      color: var(--accent, $info-color);
+    }
+  }
+
   &--lg {
     padding-right: 2em;
     font-weight: 700;
+
+    a {
+      color: var(--text-primary, $text-color);
+      font-weight: 700;
+    }
   }
 }

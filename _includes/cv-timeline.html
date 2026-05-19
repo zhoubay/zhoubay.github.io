@@ -1,0 +1,43 @@
+{% if site.data.cv.education %}
+<section class="fade-in" style="margin-bottom: var(--section-gap);">
+  {% include section-header.html title="Education" %}
+  <ul class="cv-timeline">
+    {% for item in site.data.cv.education %}
+    <li class="cv-timeline__item">
+      <p class="cv-timeline__period">{{ item.period }}</p>
+      <h3 class="cv-timeline__title">{{ item.title }}</h3>
+      {% if item.detail %}<p class="cv-timeline__detail">{{ item.detail }}</p>{% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}
+
+{% if site.data.cv.experience %}
+<section class="fade-in" style="margin-bottom: var(--section-gap);">
+  {% include section-header.html title="Experience" %}
+  <ul class="cv-timeline">
+    {% for item in site.data.cv.experience %}
+    <li class="cv-timeline__item">
+      <p class="cv-timeline__period">{{ item.period }}</p>
+      <h3 class="cv-timeline__title">{{ item.title }}</h3>
+      {% if item.detail %}<p class="cv-timeline__detail">{{ item.detail }}</p>{% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}
+
+{% if site.data.cv.skills %}
+<section class="fade-in">
+  {% include section-header.html title="Skills" %}
+  <ul class="interests-list">
+    {% for item in site.data.cv.skills %}
+    <li class="interests-list__item">
+      <strong>{{ item.title }}</strong>
+      <span>{{ item.detail }}</span>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}

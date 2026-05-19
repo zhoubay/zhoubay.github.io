@@ -1,0 +1,17 @@
+{% include base_path %}
+
+<article class="talk-card fade-in">
+  <h3 class="talk-card__title">
+    <a href="{{ include.url | prepend: base_path }}">{{ include.title }}</a>
+  </h3>
+  {% if include.venue or include.date %}
+  <p class="talk-card__meta">
+    {% if include.type %}{{ include.type }}{% endif %}
+    {% if include.venue %}<em>{{ include.venue }}</em>{% endif %}
+    {% if include.date %}, {{ include.date | date: "%Y" }}{% endif %}
+  </p>
+  {% endif %}
+  {% if include.excerpt %}
+  <p class="talk-card__excerpt">{{ include.excerpt | strip_html | truncate: 200 }}</p>
+  {% endif %}
+</article>

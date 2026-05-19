@@ -1,3 +1,22 @@
 <!-- start custom footer snippets -->
-<a href="/sitemap/">Sitemap</a>
+<div class="site-footer-bar">
+  <ul class="site-footer-bar__links">
+    {% if site.author.email %}
+    <li><a href="mailto:{{ site.author.email }}"><i class="fas fa-envelope" aria-hidden="true"></i> {{ site.author.email }}</a></li>
+    {% endif %}
+    {% if site.author.googlescholar %}
+    <li><a href="{{ site.author.googlescholar }}" target="_blank" rel="noopener noreferrer"><i class="ai ai-google-scholar" aria-hidden="true"></i> Google Scholar</a></li>
+    {% endif %}
+    {% if site.author.github %}
+    <li><a href="https://github.com/{{ site.author.github }}" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a></li>
+    {% endif %}
+    {% if site.author.twitter %}
+    <li><a href="https://twitter.com/{{ site.author.twitter }}" target="_blank" rel="noopener noreferrer"><i class="fab fa-x-twitter" aria-hidden="true"></i> Twitter</a></li>
+    {% endif %}
+    {% if site.author.linkedin %}
+    <li><a href="https://www.linkedin.com/in/{{ site.author.linkedin }}" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
+    {% endif %}
+  </ul>
+  <p class="site-footer-bar__copy">&copy; {{ site.time | date: '%Y' }} {{ site.author.name | default: site.title }}. Site last updated {{ "now" | date: '%Y-%m-%d' }}.</p>
+</div>
 <!-- end custom footer snippets -->

@@ -1,0 +1,7 @@
+<ul class="news-list fade-in">
+  {% for item in site.data.news %}
+  <li class="news-list__item" data-date="{{ item.date }}">
+    <p class="news-list__text">{{ item.text | markdownify | remove: "<p>" | remove: "</p>" }}</p>
+  </li>
+  {% endfor %}
+</ul>

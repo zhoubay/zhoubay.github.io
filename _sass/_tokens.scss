@@ -1,0 +1,32 @@
+/* Site-wide design tokens (Wu-inspired) */
+
+:root {
+  --bg-main: #f3f5f8;
+  --bg-card: rgba(255, 255, 255, 0.82);
+  --text-primary: #0f172a;
+  --text-muted: #5b6675;
+  --text-light: #8b95a7;
+  --accent: #0d6e8f;
+  --accent-secondary: #5b4b9a;
+  --accent-hover: #0a5a75;
+  --border-subtle: rgba(15, 23, 42, 0.08);
+  --shadow-card: 0 12px 28px -24px rgba(15, 23, 42, 0.15);
+  --shadow-card-hover: 0 18px 36px -20px rgba(15, 23, 42, 0.2);
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --content-width: 56rem;
+  --section-gap: 3.5rem;
+  --meta-size: 0.72rem;
+  --meta-letter: 0.08em;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

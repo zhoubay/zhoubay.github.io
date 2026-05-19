@@ -1,8 +1,8 @@
 # Header menu (top navigation)
 
 main:
-  - title: "Home"
-    url: /
+  - title: "About"
+    url: /#about
 
   - title: "Research"
     url: /research/
@@ -10,8 +10,11 @@ main:
   - title: "Publications"
     url: /publications/
 
-  - title: "Talks"
-    url: /talks/
+  - title: "News"
+    url: /#news
 
   - title: "CV"
     url: /cv/
+
+  - title: "Talks"
+    url: /talks/

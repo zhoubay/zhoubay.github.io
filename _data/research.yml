@@ -9,6 +9,8 @@ sections:
     projects:
       - name: "SaProt"
         badge: "ICLR 2024"
+        journal_tag: "iclr"
+        journal_tag: "iclr"
         summary: "General-purpose PLM with a structure-aware vocabulary—residue tokens fused with Foldseek structure tokens—trained on ~40M sequence–structure pairs."
         publication: "/publication/SaProt"
         links:
@@ -17,6 +19,8 @@ sections:
 
       - name: "SaprotHub"
         badge: "Nature Biotechnology 2025"
+        journal_tag: "nature-biotech"
+        journal_tag: "nature-biotech"
         summary: "No-code platform on Google Colab for training, sharing, and collaborating on protein ML models—democratizing PLM access for biologists."
         publication: "/publication/SaprotHub"
         links:
@@ -25,6 +29,8 @@ sections:
 
       - name: "eTDG"
         badge: "Molecular Cell 2024"
+        journal_tag: "mol-cell"
+        journal_tag: "mol-cell"
         summary: "PLM-guided optimization of uracil-N-glycosylase enables programmable T→G/C base editing with few-shot experimental validation."
         publication: "/publication/eTDG"
         links:
@@ -32,6 +38,8 @@ sections:
 
       - name: "ESM-Ezy"
         badge: "Nature Communications 2025"
+        journal_tag: "nature-comms"
+        journal_tag: "nature-comms"
         summary: "ESM-1b semantic mining discovers multicopper oxidases with superior catalytic and environmental-remediation properties from UniProt."
         publication: "/publication/ESM-Ezy"
         links:
@@ -46,6 +54,8 @@ sections:
     projects:
       - name: "ProTrek"
         badge: "Nature Biotechnology 2025"
+        journal_tag: "nature-biotech"
+        journal_tag: "nature-biotech"
         summary: "Trimodal contrastive model unifying sequence, structure, and function text—advanced cross-modal protein search at billion-protein scale."
         publication: "/publication/ProTrek"
         links:
@@ -55,6 +65,7 @@ sections:
 
       - name: "Evolla"
         badge: "bioRxiv · under review at Nature"
+        journal_tag: "biorxiv"
         summary: "Interactive protein-language model that answers natural-language queries over sequence and structure—generative functional discovery beyond static annotation."
         publication: "/publication/Evolla"
         links:
@@ -64,6 +75,7 @@ sections:
 
       - name: "Pinal"
         badge: "bioRxiv · under review at Nature"
+        journal_tag: "biorxiv"
         summary: "16B-parameter framework: natural-language instructions → structure generation → sequence design for de novo proteins beyond PDB."
         publication: "/publication/Pinal"
         links:
