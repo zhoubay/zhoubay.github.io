@@ -3,6 +3,32 @@
    ========================================================================== */
 
 $(document).ready(function(){
+  // Homepage masthead: dark overlay on hero, light solid when scrolled
+  (function () {
+    var masthead = document.querySelector('.masthead');
+    if (!masthead || !document.body.classList.contains('layout--home')) {
+      return;
+    }
+
+    var threshold = 100;
+    var ticking = false;
+
+    function updateMasthead() {
+      masthead.classList.toggle('masthead--overlay', window.scrollY < threshold);
+      ticking = false;
+    }
+
+    function onScroll() {
+      if (!ticking) {
+        ticking = true;
+        window.requestAnimationFrame(updateMasthead);
+      }
+    }
+
+    updateMasthead();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  })();
+
   // These should be the same as the settings in _variables.scss
   scssLarge = 925; // pixels
 

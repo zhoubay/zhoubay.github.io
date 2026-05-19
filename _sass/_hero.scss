@@ -2,14 +2,20 @@
 
 .site-hero {
   position: relative;
-  min-height: 88vh;
+  min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: -#{$masthead-height} -1.25rem 0;
+  width: 100vw;
+  max-width: 100vw;
+  margin-top: -#{$masthead-height};
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
   padding: calc(#{$masthead-height} + 3rem) 1.5rem 4rem;
   overflow: hidden;
   text-align: center;
+  box-sizing: border-box;
 
   &__bg {
     position: absolute;
@@ -119,6 +125,10 @@
       color: var(--accent-hover) !important;
     }
   }
+}
+
+.layout--home .page-shell {
+  padding-top: 3.5rem;
 }
 
 .about-block {
