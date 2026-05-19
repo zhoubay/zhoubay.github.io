@@ -23,7 +23,7 @@
   </h3>
 
   {% if include.authors %}
-  <p class="pub-card__authors">{{ include.authors }}</p>
+  <p class="pub-card__authors">{% assign author_parts = include.authors | split: '**' %}{% for part in author_parts %}{% assign part_mod = forloop.index0 | modulo: 2 %}{% if part_mod == 1 %}<strong>{{ part }}</strong>{% else %}{{ part }}{% endif %}{% endfor %}</p>
   {% endif %}
 
   {% if include.summary or include.excerpt %}
