@@ -18,15 +18,4 @@ redirect_from:
   </div>
 
   {% include cv-timeline.html %}
-
-  {% if site.data.honors.size > 0 %}
-  <section style="margin-top: var(--section-gap);">
-    {% include section-header.html title="Honors & Awards" %}
-    <ul class="honors-list">
-      {% for item in site.data.honors %}
-      <li>{{ item.text | markdownify | remove: "<p>" | remove: "</p>" }}</li>
-      {% endfor %}
-    </ul>
-  </section>
-  {% endif %}
 </div>

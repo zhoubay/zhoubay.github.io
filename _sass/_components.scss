@@ -326,6 +326,10 @@
   padding: 0 1.25rem 3rem;
 }
 
+.cv-section {
+  margin-bottom: var(--section-gap);
+}
+
 .home-section {
   margin-bottom: var(--section-gap);
   scroll-margin-top: calc(#{$masthead-height} + 1rem);

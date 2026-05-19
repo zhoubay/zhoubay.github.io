@@ -20,6 +20,15 @@
     </ul>
   </section>
 
+  <section id="honors" class="home-section fade-in">
+    {% include section-header.html title="Honors & Awards" %}
+    <ul class="honors-list">
+      {% for item in site.data.honors %}
+      <li>{{ item.text | markdownify | remove: "<p>" | remove: "</p>" }}</li>
+      {% endfor %}
+    </ul>
+  </section>
+
   <section id="publications" class="home-section fade-in">
     {% include section-header.html title="Selected Publications" %}
     <p class="about-block" style="margin-top: -1rem; margin-bottom: 1.5rem;"><em>* equal contribution</em></p>
@@ -43,17 +52,22 @@
     <p class="about-block"><a href="{{ base_path }}/publications/">Full publication list &rarr;</a></p>
   </section>
 
-  <section id="honors" class="home-section fade-in">
-    {% include section-header.html title="Honors & Awards" %}
-    <ul class="honors-list">
-      {% for item in site.data.honors %}
-      <li>{{ item.text | markdownify | remove: "<p>" | remove: "</p>" }}</li>
-      {% endfor %}
-    </ul>
-  </section>
-
   <section id="news" class="home-section fade-in">
     {% include section-header.html title="News" %}
     {% include news-list.html %}
   </section>
+
+  <section id="languages" class="home-section fade-in">
+    {% include section-header.html title="Languages" %}
+    <ul class="interests-list">
+      {% for item in site.data.languages %}
+      <li class="interests-list__item">
+        <strong>{{ item.title }}</strong>
+        <span>{{ item.description }}</span>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  {% include water-sports-section.html id="water-sports" class="home-section fade-in" %}
 </div>

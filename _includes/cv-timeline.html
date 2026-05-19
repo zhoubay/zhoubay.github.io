@@ -1,5 +1,5 @@
 {% if site.data.cv.education %}
-<section class="fade-in" style="margin-bottom: var(--section-gap);">
+<section class="cv-section fade-in">
   {% include section-header.html title="Education" %}
   <ul class="cv-timeline">
     {% for item in site.data.cv.education %}
@@ -14,7 +14,7 @@
 {% endif %}
 
 {% if site.data.cv.experience %}
-<section class="fade-in" style="margin-bottom: var(--section-gap);">
+<section class="cv-section fade-in">
   {% include section-header.html title="Experience" %}
   <ul class="cv-timeline">
     {% for item in site.data.cv.experience %}
@@ -29,7 +29,7 @@
 {% endif %}
 
 {% if site.data.cv.skills %}
-<section class="fade-in">
+<section class="cv-section fade-in">
   {% include section-header.html title="Skills" %}
   <ul class="interests-list">
     {% for item in site.data.cv.skills %}
@@ -41,3 +41,30 @@
   </ul>
 </section>
 {% endif %}
+
+{% if site.data.honors.size > 0 %}
+<section class="cv-section fade-in">
+  {% include section-header.html title="Honors & Awards" %}
+  <ul class="honors-list">
+    {% for item in site.data.honors %}
+    <li>{{ item.text | markdownify | remove: "<p>" | remove: "</p>" }}</li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}
+
+{% if site.data.languages %}
+<section class="cv-section fade-in">
+  {% include section-header.html title="Languages" %}
+  <ul class="interests-list">
+    {% for item in site.data.languages %}
+    <li class="interests-list__item">
+      <strong>{{ item.title }}</strong>
+      <span>{{ item.description }}</span>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}
+
+{% include water-sports-section.html class="cv-section fade-in" %}
