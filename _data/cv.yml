@@ -12,10 +12,12 @@ education:
 
 experience:
   - period: "Present"
-    title: "Ph.D. Researcher, Westlake University"
+    title: "Ph.D. Candidate, Westlake University"
     detail: "Protein language models, multimodal protein AI, and AI for Science"
   - period: "2022 – present"
     title: "Captain, Westlake Rowing Team"
+  - period: "2023"
+    title: "Investment Intern, ZhenFund (真格基金)"
 
 skills:
   - title: "Research"

@@ -23,15 +23,19 @@
   {% endif %}
 
   {% assign jtag = post.journal_tag | default: "default" %}
+  {% assign card_summary = post.summary | default: post.excerpt %}
+  {% assign card_authors = post.authors %}
+  {% assign card_badge = post.badge | default: post.venue %}
   {% include pub-card.html
     title=post.title
-    authors=post.citation
+    authors=card_authors
     venue=post.venue
-    badge=post.venue
+    badge=card_badge
     year=post.date
-    summary=post.excerpt
+    summary=card_summary
     publication=post.url
     paperurl=post.paperurl
+    links=post.links
     journal_tag=jtag
   %}
 {% endfor %}

@@ -12,16 +12,23 @@
 
     <div class="pub-grid">
       {% for project in section.projects %}
+      {% include resolve-publication.html slug=project.slug %}
+      {% if resolved_found %}
+      {% assign pub = resolved_publication %}
+      {% assign card_title = project.name | default: pub.title %}
+      {% assign card_badge = project.badge | default: pub.badge | default: pub.venue %}
+      {% assign card_summary = project.summary | default: pub.summary | default: pub.excerpt %}
       {% include pub-card.html
-        name=project.name
-        title=project.name
-        badge=project.badge
-        summary=project.summary
-        publication=project.publication
-        links=project.links
-        journal_tag=project.journal_tag
+        name=card_title
+        title=card_title
+        badge=card_badge
+        summary=card_summary
+        publication=pub.url
+        links=pub.links
+        journal_tag=pub.journal_tag
         accent=section.accent
       %}
+      {% endif %}
       {% endfor %}
     </div>
   </section>

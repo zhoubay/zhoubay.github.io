@@ -1,0 +1,15 @@
+{% assign resolved_publication = nil %}
+{% assign resolved_found = false %}
+{% assign target_slug = include.slug %}
+{% for pub in site.publications %}
+  {% assign pub_slug = pub.slug %}
+  {% if pub_slug == nil or pub_slug == "" %}
+    {% assign permalink_parts = pub.permalink | split: "/" %}
+    {% assign pub_slug = permalink_parts | last %}
+  {% endif %}
+  {% if pub_slug == target_slug %}
+    {% assign resolved_publication = pub %}
+    {% assign resolved_found = true %}
+    {% break %}
+  {% endif %}
+{% endfor %}

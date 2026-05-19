@@ -1,83 +1,9 @@
-- slug: "Evolla"
-  title: "Decoding the molecular language of proteins with Evolla"
-  authors: "**X Zhou**, C Han, Y Zhang, H Du, J Tian, J Su, R Liu, K Zhuang, S Jiang, et al."
-  venue: "bioRxiv · Nature (under review)"
-  year: "2025"
-  journal_tag: "biorxiv"
-  summary: "Interactive protein-language model answering natural-language queries over sequence and structure."
-  paperurl: "https://doi.org/10.1101/2025.01.05.630192"
-  links:
-    - { label: "Preprint", url: "https://doi.org/10.1101/2025.01.05.630192", icon: "file" }
-    - { label: "Demo", url: "http://www.chat-protein.com/", icon: "link" }
-
-- slug: "Pinal"
-  title: "Toward De Novo Protein Design from Natural Language"
-  authors: "F Dai, S You, Y Zhu, Y Gao, L Fu, **X Zhou**, J Su, C Wang, Y Fan, et al."
-  venue: "bioRxiv · Nature (under review)"
-  year: "2024"
-  journal_tag: "biorxiv"
-  summary: "16B-parameter framework for instruction-driven structure generation and sequence design."
-  paperurl: "https://doi.org/10.1101/2024.08.01.606258"
-  links:
-    - { label: "Preprint", url: "https://doi.org/10.1101/2024.08.01.606258", icon: "file" }
-    - { label: "Demo", url: "http://www.denovo-pinal.com", icon: "link" }
-
-- slug: "PLM-guided eTDG"
-  title: "Protein language models-assisted optimization of a uracil-N-glycosylase variant enables programmable T-to-G and T-to-C base editing"
-  authors: "Y He*, **X Zhou***, C Chang, G Chen, W Liu, G Li, X Fan, M Sun, C Miao, et al."
-  venue: "Molecular Cell"
-  year: "2024"
-  journal_tag: "mol-cell"
-  summary: "PLM-guided optimization enables programmable T→G/C base editing with few-shot validation."
-  paperurl: "https://doi.org/10.1016/j.molcel.2024.01.021"
-  links:
-    - { label: "Paper", url: "https://doi.org/10.1016/j.molcel.2024.01.021", icon: "file" }
-
-- slug: "ESM-Ezy"
-  title: "ESM-Ezy: a deep learning strategy for the mining of novel multicopper oxidases with superior properties"
-  authors: "H Qian*, Y Wang*, **X Zhou***, T Gu, H Wang, H Lyu, Z Li, et al."
-  venue: "Nature Communications"
-  year: "2025"
-  journal_tag: "nature-comms"
-  summary: "ESM-1b semantic mining discovers multicopper oxidases with superior catalytic properties."
-  paperurl: "https://doi.org/10.1038/s41467-025-58521-y"
-  links:
-    - { label: "Paper", url: "https://doi.org/10.1038/s41467-025-58521-y", icon: "file" }
-    - { label: "Code", url: "https://github.com/westlake-repl/ESM-Ezy", icon: "code" }
-
-- slug: "ProTrek"
-  title: "A trimodal protein language model enables advanced protein searches"
-  authors: "J Su*, Y He*, S You*, S Jiang, **X Zhou**, X Zhang, Y Wang, et al."
-  venue: "Nature Biotechnology"
-  year: "2025"
-  journal_tag: "nature-biotech"
-  summary: "Trimodal contrastive model unifying sequence, structure, and function text for billion-scale protein search."
-  paperurl: "https://doi.org/10.1038/s41587-025-02836-0"
-  links:
-    - { label: "Paper", url: "https://doi.org/10.1038/s41587-025-02836-0", icon: "file" }
-    - { label: "Server", url: "https://www.search-protrek.com", icon: "link" }
-    - { label: "Code", url: "https://github.com/westlake-repl/ProTrek", icon: "code" }
-
-- slug: "SaprotHub"
-  title: "Democratizing protein language model training, sharing and collaboration"
-  authors: "J Su, Z Li, T Tao, C Han, Y He, F Dai, Q Yuan, Y Gao, T Si, X Zhang, **X Zhou**, et al."
-  venue: "Nature Biotechnology"
-  year: "2025"
-  journal_tag: "nature-biotech"
-  summary: "No-code Colab platform for training, sharing, and collaborating on protein ML models."
-  paperurl: "https://doi.org/10.1038/s41587-025-02859-7"
-  links:
-    - { label: "Paper", url: "https://doi.org/10.1038/s41587-025-02859-7", icon: "file" }
-    - { label: "Code", url: "https://github.com/westlake-repl/SaprotHub", icon: "code" }
-
-- slug: "SaProt"
-  title: "SaProt: Protein language modeling with structure-aware vocabulary"
-  authors: "J Su, C Han, Y Zhou, J Shan, **X Zhou**, F Yuan"
-  venue: "ICLR"
-  year: "2024"
-  journal_tag: "iclr"
-  summary: "General-purpose PLM with structure-aware vocabulary trained on ~40M sequence–structure pairs."
-  paperurl: "https://openreview.net/forum?id=6MRq3l7iXr"
-  links:
-    - { label: "Paper", url: "https://openreview.net/forum?id=6MRq3l7iXr", icon: "file" }
-    - { label: "Code", url: "https://github.com/westlake-repl/SaProt", icon: "code" }
+# Homepage featured papers — order matters. Metadata lives in _publications/*.md
+slugs:
+  - Evolla
+  - Pinal
+  - PLM-guided-eTDG
+  - ESM-Ezy
+  - ProTrek
+  - SaprotHub
+  - SaProt

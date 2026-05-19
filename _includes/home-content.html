@@ -33,20 +33,25 @@
     {% include section-header.html title="Selected Publications" %}
     <p class="about-block" style="margin-top: -1rem; margin-bottom: 1.5rem;"><em>* equal contribution</em></p>
     <div class="pub-grid">
-      {% for entry in site.data.selected_publications %}
-      {% capture pub_url %}/publication/{{ entry.slug }}{% endcapture %}
+      {% for slug in site.data.selected_publications.slugs %}
+      {% include resolve-publication.html slug=slug %}
+      {% if resolved_found %}
+      {% assign pub = resolved_publication %}
+      {% assign card_summary = pub.summary | default: pub.excerpt %}
+      {% assign card_badge = pub.badge | default: pub.venue %}
       {% include pub-card.html
-        title=entry.title
-        authors=entry.authors
-        venue=entry.venue
-        badge=entry.venue
-        year=entry.year
-        summary=entry.summary
-        publication=pub_url
-        paperurl=entry.paperurl
-        links=entry.links
-        journal_tag=entry.journal_tag
+        title=pub.title
+        authors=pub.authors
+        venue=pub.venue
+        badge=card_badge
+        year=pub.date
+        summary=card_summary
+        publication=pub.url
+        paperurl=pub.paperurl
+        links=pub.links
+        journal_tag=pub.journal_tag
       %}
+      {% endif %}
       {% endfor %}
     </div>
     <p class="about-block"><a href="{{ base_path }}/publications/">Full publication list &rarr;</a></p>

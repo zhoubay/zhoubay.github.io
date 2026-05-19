@@ -3,10 +3,17 @@ title: "Protocol to use protein language models predicting and following experim
 collection: publications
 category: journals
 permalink: /publication/STAR-protocol-TDG
+slug: STAR-protocol-TDG
 excerpt: 'A step-by-step protocol for optimizing thymine-DNA-glycosylase (TDG) using protein language models, including zero-shot enzyme optimization, plasmid construction, transfection, and high-throughput sequencing—streamlining engineering of gene editing tools.'
 date: 2024-07-15
 venue: 'STAR Protocols'
+badge: "STAR Protocols 2024"
+journal_tag: default
+summary: "Protocol for PLM-guided TDG optimization with zero-shot prediction and experimental validation."
+authors: "Y He, **X Zhou**, F Yuan, X Chang"
 paperurl: 'https://doi.org/10.1016/j.xpro.2024.103188'
+links:
+  - { label: "Paper", url: "https://doi.org/10.1016/j.xpro.2024.103188", icon: "file" }
 citation: 'Y He, X Zhou, F Yuan, X Chang. (2024). &quot;Protocol to use protein language models predicting and following experimental validation of function-enhancing variants of thymine-N-glycosylase.&quot; <i>STAR Protocols</i> 5(3), 103188.'
 ---
 
