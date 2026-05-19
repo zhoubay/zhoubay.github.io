@@ -18,5 +18,3 @@ citation: 'Y He, X Zhou, F Yuan, X Chang. (2024). &quot;Protocol to use protein 
 ---
 
 This protocol describes steps for optimizing thymine-DNA-glycosylase (TDG) using protein language models, including zero-shot enzyme optimization, construction of plasmids, double plasmid transfection, and high-throughput sequencing and data analysis. It holds promise for streamlining the engineering of gene editing tools while minimizing experimental workload. For complete details, see He et al., *Molecular Cell* 2024.
-
-- [Paper](https://doi.org/10.1016/j.xpro.2024.103188)

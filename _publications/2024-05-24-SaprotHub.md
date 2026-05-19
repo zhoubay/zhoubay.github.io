@@ -19,5 +19,3 @@ citation: 'J Su, Z Li, T Tao, C Han, Y He, F Dai, Q Yuan, Y Gao, T Si, X Zhang, 
 ---
 
 Training and deploying large-scale protein language models typically requires deep machine learning expertise—a barrier for researchers outside this field. SaprotHub overcomes this challenge by offering an intuitive platform that facilitates training and prediction as well as storage and sharing of models. The ColabSaprot framework built on Google Colab potentially powers hundreds of protein training and prediction applications, enabling researchers to collaboratively build and share customized models.
-
-- [Paper](https://doi.org/10.1038/s41587-025-02859-7) · [Code](https://github.com/westlake-repl/SaprotHub)

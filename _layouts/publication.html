@@ -1,0 +1,48 @@
+---
+layout: default
+---
+
+{% include base_path %}
+
+<div id="main" role="main">
+  <article class="publication-page page-shell" itemscope itemtype="http://schema.org/ScholarlyArticle">
+    {% if page.title %}<meta itemprop="headline" content="{{ page.title | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
+    {% if page.date %}<meta itemprop="datePublished" content="{{ page.date | date: '%Y-%m-%d' }}">{% endif %}
+
+    <p class="publication-back">
+      <a href="{{ base_path }}/publications/">&larr; All publications</a>
+    </p>
+
+    {% include publication-detail.html %}
+
+    {% if content != "" %}
+    <section class="publication-body page__content" itemprop="description">
+      {{ content }}
+    </section>
+    {% endif %}
+
+    {% if page.citation %}
+    <section class="publication-citation" aria-label="Recommended citation">
+      <h2 class="publication-citation__title">Citation</h2>
+      <div class="publication-citation__text">{{ page.citation }}</div>
+    </section>
+    {% endif %}
+
+    {% if page.previous or page.next %}
+    <nav class="publication-nav" aria-label="Publication navigation">
+      {% if page.previous %}
+      <a href="{{ base_path }}{{ page.previous.url }}" class="publication-nav__item publication-nav__item--prev">
+        <span class="publication-nav__label">&larr; Previous</span>
+        <span class="publication-nav__title">{{ page.previous.title | markdownify | strip_html }}</span>
+      </a>
+      {% endif %}
+      {% if page.next %}
+      <a href="{{ base_path }}{{ page.next.url }}" class="publication-nav__item publication-nav__item--next">
+        <span class="publication-nav__label">Next &rarr;</span>
+        <span class="publication-nav__title">{{ page.next.title | markdownify | strip_html }}</span>
+      </a>
+      {% endif %}
+    </nav>
+    {% endif %}
+  </article>
+</div>
