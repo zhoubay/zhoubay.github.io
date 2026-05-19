@@ -27,7 +27,7 @@ sections:
           - { label: "Paper", url: "https://doi.org/10.1038/s41587-025-02859-7", icon: "file" }
           - { label: "Code", url: "https://github.com/westlake-repl/SaprotHub", icon: "code" }
 
-      - name: "eTDG"
+      - name: "PLM-guided eTDG"
         badge: "Molecular Cell 2024"
         journal_tag: "mol-cell"
         journal_tag: "mol-cell"
