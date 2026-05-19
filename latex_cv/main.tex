@@ -1,0 +1,196 @@
+\documentclass[10pt]{article}
+\usepackage[a4paper, margin=1.2in]{geometry}
+\usepackage{fontspec}
+\usepackage{ctex}
+\usepackage{hyperref}
+\usepackage{setspace}
+\usepackage{enumitem}
+\usepackage{titlesec}
+
+\renewcommand{\baselinestretch}{1.0}
+% Times New Roman on Windows/macOS; TeX Gyre Termes on Linux (TeX Live)
+\IfFontExistsTF{Times New Roman}{%
+  \setmainfont{Times New Roman}%
+}{%
+  \setmainfont{TeX Gyre Termes}%
+}
+\renewcommand{\refname}{References} % For article class
+% Define a custom environment for large text
+\newenvironment{largefont}{\large}{\normalsize}
+
+% Adjust section spacing
+\titlespacing*{\section}{0pt}{*0.5}{*0.5}
+
+% Adjust list spacing
+\setlist[itemize]{noitemsep, topsep=0pt, leftmargin=*}
+
+% --- legacy bibliography (commented out, not deleted) ---
+\iffalse
+\usepackage{filecontents}
+
+% Define the bibliography entries inline
+\begin{filecontents}{references.bib}
+@article{char2024protnote,
+  title={ProtNote: a multimodal method for protein-function annotation},
+  author={Char, Samir and Corley, Nathaniel and Alamdari, Sarah and Yang, Kevin K and Amini, Ava P},
+  journal={bioRxiv},
+  pages={2024--10},
+  year={2024},
+  publisher={Cold Spring Harbor Laboratory}
+}
+@article{rafailov2024direct,
+  title={Direct preference optimization: Your language model is secretly a reward model},
+  author={Rafailov, Rafael and Sharma, Archit and Mitchell, Eric and Manning, Christopher D and Ermon, Stefano and Finn, Chelsea},
+  journal={Advances in Neural Information Processing Systems},
+  volume={36},
+  year={2024}
+}
+
+@misc{openai2024o1,
+  author       = {OpenAI},
+  title        = {Introducing OpenAI o1},
+  year         = {2024},
+  url          = {https://openai.com/index/introducing-openai-o1-preview/},
+}
+@misc{pmc,
+  author       = {National Center for Biotechnology Information (NCBI)},
+  title        = {PubMed Central (PMC)},
+  year         = {2024},
+  url          = {https://www.ncbi.nlm.nih.gov/pmc/},
+}
+
+\end{filecontents}
+\fi
+
+
+\begin{document}
+
+\begin{center}
+{\Large \textbf{Xibin Bayes Zhou (周禧彬)}}\\[0.15cm]
+\textit{Protein foundation models for search, dialogue, and design}\\[0.1cm]
+\textit{Ph.D. Candidate in Computer Science, Westlake University \& Zhejiang University, Hangzhou}\\[0.1cm]
+\href{https://zhoubay.github.io}{zhoubay.github.io} \textbar\
+\href{mailto:zhouxibin@westlake.edu.cn}{zhouxibin@westlake.edu.cn} \textbar\
+\href{https://scholar.google.com/citations?user=ey4rxTIAAAAJ}{Google Scholar} \textbar\
+\href{https://orcid.org/0009-0007-8879-4966}{ORCID} \textbar\
+\href{https://github.com/zhoubay}{GitHub} \textbar\
+\href{https://www.linkedin.com/in/xibinbayeszhou/}{LinkedIn}
+% --- legacy header (commented out) ---
+% \textit{Ph.D. Candidate in Computer Science}\\
+% Joint Program of Westlake University and Zhejiang University, Hangzhou, China\\
+% Email: \href{mailto:zhouxibin@westlake.edu.cn}{zhouxibin@westlake.edu.cn}\\
+% Google Scholar: \href{https://scholar.google.com/citations?user=ey4rxTIAAAAJ&hl=en}{scholar.google.com/citations?user=ey4rxTIAAAAJ\&hl=en}\\
+% LinkedIn: \href{https://www.linkedin.com/in/xibinbayeszhou/}{linkedin.com/in/xibinbayeszhou/}
+\end{center}
+
+\section*{Education}
+\begin{itemize}
+    \item Ph.D. in Computer Science, Joint Program of Westlake University and Zhejiang University, Hangzhou, China (2022--2027, expected)
+    \item B.S. in Data Science and Big Data Technology, Tongji University, Shanghai, China (2018--2022)
+\end{itemize}
+
+\section*{Research Interests}
+\begin{itemize}
+    \item \textbf{Structure-aware protein language modeling} --- Integrating 3D structural tokens with sequence for general-purpose PLMs
+    \item \textbf{Multimodal protein understanding} --- Aligning sequence, structure, and natural-language function for search and annotation
+    \item \textbf{AI-driven protein engineering} --- Enzyme optimization, base editing, de novo design, and autonomous computational workflows
+    \item \textbf{Democratizing PLM research} --- No-code training platforms and open collaboration for biologists
+\end{itemize}
+% --- legacy research interests (commented out) ---
+% \section*{Research Interests: AI for Science (Biology)}
+% 对于如何实现AI for Science的快速干湿结合非常感兴趣，同时对于如何将人类当前的知识库和蛋白质连接起来非常感兴趣，尤其是以文本表示的人类知识库。意识到强化学习以及inference thinking是一条比SFT更适合于让LLM学到知识的方式，对这些技术非常感兴趣。
+% \textbf{AI for Science, particularly Biology.}
+% I am highly interested in exploring how to achieve the rapid integration of \textbf{dry-lab} and \textbf{wet-lab} approaches in \textbf{AI for Science}, and I have experience using protein language models (pLMs) to perform wet-lab protein mutation tasks. Another area of my research interest lies in exploring how to deeply connect the current human knowledge base with protein science, particularly in establishing associations between \textbf{text-based human knowledge} and \textbf{the functions and properties of proteins}. Moreover, I recognize that \textbf{reinforcement learning (RL)} and \textbf{post-training thinking} offer greater potential than \textbf{supervised fine-tuning (SFT)} in enabling large language models (LLMs) to learn and master scientific knowledge. Therefore, I am deeply intrigued by these technologies and their potential applications in scientific research.
+% \begin{itemize}
+%     \item \textbf{Dry/Wet-Lab Integration:} Applying protein language models (pLMs) to guide and optimize wet-lab protein mutation tasks.
+%     \item \textbf{Knowledge-Protein Mapping:} Establishing deep connections between \textbf{text-based human knowledge} and \textbf{protein functions/properties}.
+%     \item \textbf{LLMs for Science:} Leveraging \textbf{Reinforcement Learning (RL)} and \textbf{post-training reasoning} (rather than standard SFT) to enhance LLMs' mastery of scientific knowledge.
+% \end{itemize}
+
+\section*{Honors \& Awards}
+\begin{itemize}
+    \item \textbf{Oct 2025} --- Best Poster Award, \textit{Nature Conference on AI Augmented Biology} (Nanjing; poster on Evolla)
+\end{itemize}
+
+\section*{Selected Publications}
+{\small * equal contribution}
+\begin{itemize}
+    \item \textbf{Xibin Zhou}, \textit{et al.} \textbf{Decoding the molecular language of proteins with Evolla}. \textit{bioRxiv} (under review at \textit{Nature}), 2025.
+    \item F. Dai, \textit{et al.}, \textbf{X. Zhou}. \textbf{Toward de novo protein design from natural language}. \textit{bioRxiv} (under review at \textit{Nature}), 2024.
+    \item Y. He*, \textbf{X. Zhou*}, \textit{et al.} \textbf{PLM-assisted optimization of uracil-N-glycosylase enables programmable T-to-G/C base editing}. \textit{Molecular Cell} 84(7), 1257--1270, 2024.
+    \item H. Qian*, Y. Wang*, \textbf{X. Zhou*}, \textit{et al.} \textbf{ESM-Ezy: deep learning strategy for mining novel multicopper oxidases}. \textit{Nature Communications} 16, 3274, 2025.
+    \item J. Su*, Y. He*, S. You*, \textit{et al.}, \textbf{X. Zhou}. \textbf{A trimodal protein language model enables advanced protein searches}. \textit{Nature Biotechnology}, 2025.
+    \item J. Su, \textit{et al.}, \textbf{X. Zhou}. \textbf{Democratizing protein language model training, sharing and collaboration}. \textit{Nature Biotechnology}, 2025.
+    \item J. Su, \textit{et al.}, \textbf{X. Zhou}. \textbf{SaProt: protein language modeling with structure-aware vocabulary}. \textit{ICLR}, 2024.
+\end{itemize}
+% --- legacy publications (commented out) ---
+% \section*{Publications (* indicates co-first authorship)}
+% \begin{itemize}
+%     \item \textbf{Xibin Zhou}, \textit{et al.} (2026). \textbf{Decoding the molecular language of proteins with Evolla}. Under review at \textit{Nature}.
+%     \item Hui Qian*, Yuxuan Wang*, \textbf{Xibin Zhou*}, \textit{et al.} (2024). \textbf{ESM-Ezy: A Deep Learning Strategy for Mining Novel Multicopper Oxidases with Superior Properties}. \textit{Nature Communications}, 2025, 16(1): 3274.
+%     \item Yan He*, \textbf{Xibin Zhou*}, \textit{et al.} (2024). \textbf{Protein Language Models-Assisted Optimization of a Uracil-N-Glycosylase Variant Enables Programmable T-to-G and T-to-C Base Editing}. \textit{Molecular Cell}, 2024, 84(7): 1257-1270. e6.
+%     \item Jin Su, Chenchen Han, Yuyang Zhou, Junjie Shan, \textbf{Xibin Zhou}, \textit{et al.} (2023). \textbf{Saprot: Protein Language Modeling with Structure-Aware Vocabulary}. Accepted at \textit{International Conference on Learning Representations (ICLR)} as a \textbf{Spotlight Poster}. DOI: \href{https://doi.org/10.1101/2023.10.01.560349}{10.1101/2023.10.01.560349}
+%     \item Jin Su, \textbf{Xibin Zhou}, \textit{et al.} (2023). \textbf{A trimodal protein language model enables advanced protein searches}. \textit{Nature Biotechnology}, 2025: 1-7.
+%     \item Fengyuan Dai, Yuliang Fan, Jin Su, Chentong Wang, Chenchen Han, \textbf{Xibin Zhou}, \textit{et al.} (2025). \textbf{Toward De Novo Protein Design from Natural Language}. Under review at \textit{Nature}.
+%     \item Jin Su, Zhikai Li, Chenchen Han, Yuyang Zhou, Yan He, Junjie Shan, \textbf{Xibin Zhou}, \textit{et al.} (2024). \textbf{Democratizing protein language model training, sharing and collaboration}. \textit{Nature Biotechnology}, 2025: 1-7.
+% \end{itemize}
+
+\section*{Experience}
+\begin{itemize}
+    \item \textbf{Investment Intern}, ZhenFund \hfill Jul--Sep 2023 (remote)
+\end{itemize}
+% --- legacy internship section (commented out) ---
+% \section*{Internship}
+% \begin{itemize}
+%     \item \textbf{Investment Intern}, ZhenFund \hfill Jul 2023 -- Sep 2023 (Remote)
+% \end{itemize}
+
+\section*{Extracurriculars}
+\begin{itemize}
+    \item Former \textbf{President}, Westlake Water Sports Club; \textbf{Rowing} (4 yrs, team captain); \textbf{SUP} (3 yrs); sailing, dragon boat, SUP polo
+\end{itemize}
+% --- legacy skills \& extracurriculars (commented out) ---
+% \section*{Skills}
+% \begin{itemize}
+%     \item Water Sports: Former chair of Watersports Club at Westlake University.
+%     \item Rowing: 5 years of experience, participated in lots of competitions. Captain of rowing team in Westlake University.
+%     \item Dragon Boat \& Sailing: New to the fields, enjoys team competitions.
+%     \item Stand Up Paddle: Organized over 20 events at Westlake University.
+% \end{itemize}
+% \section*{Skills \& Extracurriculars}
+% \textbf{Water Sports \& Leadership:} Rowing (5 yrs, Team Captain), Stand Up Paddle (Organized 20+ events), Watersports Club Chair, Dragon Boat, Sailing, Team Competitions.
+% \begin{itemize}
+%     \item \textbf{AI \& Foundation Models:} LLM Pre-training (10B, 80B parameters), Post-training \& Alignment (DPO), Large-scale Dataset Curation (546M+).
+%     \item \textbf{Leadership \& Extracurriculars:} Watersports Club Chair, Rowing (5 yrs, Team Captain), Stand Up Paddle (Organized 20+ events), Dragon Boat, Sailing.
+% \end{itemize}
+
+\section*{Languages}
+\begin{itemize}
+    \item Mandarin (native; 普通话水平测试一级乙等), English (proficient), Japanese (JLPT N2)
+    \item Spanish, Latin (learning)
+\end{itemize}
+% --- legacy languages (commented out) ---
+% \begin{itemize}
+%     \item Mandarin: Native speaker, Level 1 Grade B in Mandarin Proficiency Test.
+%     \item English: Proficient speaker.
+%     \item Japanese: Passed Japanese Language Proficiency Test N2.
+% \end{itemize}
+% \newpage
+
+% \section*{Research statement}
+
+% \begin{largefont}
+    
+% \textbf{Research interests}: My ongoing research focuses on bridging proteins and natural language, similar to the capabilities of ProtNote\cite{char2024protnote}, but with more detailed information and more complex sentence structures. It's fascinating to explore how large language models (LLMs) can comprehend protein data and translate it into language that is accessible to humans. However, most existing approaches rely heavily on supervised fine-tuning (SFT) for alignment, which is often inefficient. While SFT facilitates learning the answer style, the more critical challenge lies in accurately capturing key information. We have found that Direct Preference Optimization (DPO)\cite{rafailov2024direct} significantly improves the performance of Protein Large Language Models (PLLMs) with limited data, making it far more efficient than SFT. This demonstrates that reinforcement learning (RL), following an initial phase of SFT, is a superior strategy for refining the understanding of PLLMs. The recent OpenAI o1-preview\cite{openai2024o1} has shown remarkable potential. Its ability to incorporate post-training reasoning makes its responses reliable, an essential feature for PLLMs, especially when the goal is to help researchers decipher the "language" of proteins and uncover knowledge not yet recorded in any papers or textbooks.
+
+% \textbf{Research aims}: Although I am intrigued by the o1 paradigm, my current research commitments have limited my ability to delve deeply into related papers and systematically think about how to integrate these ideas into my project. I expect to complete this research by the end of the year, at which point I anticipate the release of many open-source o1 projects. These will provide valuable resources to help me understand the concept and implement the techniques. My focus will be on adapting these general methods to specific biological tasks, particularly leveraging the wealth of biological databases and scientific literature\cite{pmc}, where the logic chain of biology lies. My ultimate goal is to demonstrate to biologists that PLLMs are not just intriguing tools, but indispensable assistants in exploring newly discovered proteins. It would be an incredible opportunity to work alongside some of the most brilliant minds at Microsoft Research and learn cutting-edge technologies.
+
+% \end{largefont}
+
+
+
+% \bibliographystyle{plain} % Choose a style (e.g., plain, unsrt, etc.)
+% \bibliography{references} % Points to the inline-generated references.bib
+
+
+\end{document}
