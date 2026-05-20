@@ -1,0 +1,39 @@
+{% if site.url %}
+  {% assign schema_url = site.url | append: site.baseurl %}
+{% endif %}
+{% assign schema_url = schema_url | default: site.github.url %}
+{% assign pub_description = page.summary | default: page.excerpt | markdownify | strip_html | strip_newlines %}
+{% assign pub_url = page.url | replace: "index.html", "" | prepend: schema_url %}
+{% assign pub_doi = nil %}
+{% if page.paperurl contains "doi.org/" %}
+  {% assign pub_doi = page.paperurl | split: "doi.org/" | last %}
+{% elsif page.paperurl contains "10." %}
+  {% assign pub_doi = page.paperurl | split: "/" | last %}
+{% endif %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "headline": {{ page.title | markdownify | strip_html | strip_newlines | jsonify }},
+  "description": {{ pub_description | jsonify }},
+  "url": {{ pub_url | jsonify }},
+  "datePublished": {{ page.date | date: "%Y-%m-%d" | jsonify }},
+  "author": {
+    "@type": "Person",
+    "name": "Xibin Zhou",
+    "url": {{ schema_url | jsonify }},
+    "sameAs": "https://orcid.org/0009-0007-8879-4966"
+  }{% if page.venue %},
+  "isPartOf": {
+    "@type": "PublicationIssue",
+    "name": {{ page.venue | jsonify }}
+  }{% endif %}{% if pub_doi %},
+  "identifier": {
+    "@type": "PropertyValue",
+    "propertyID": "DOI",
+    "value": {{ pub_doi | jsonify }}
+  },
+  "sameAs": {{ page.paperurl | jsonify }}{% elsif page.paperurl %},
+  "sameAs": {{ page.paperurl | jsonify }}{% endif %}
+}
+</script>

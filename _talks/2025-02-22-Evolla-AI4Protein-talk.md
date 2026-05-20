@@ -8,6 +8,7 @@ venue: "AI4Protein Community Seminar, online"
 date: 2025-02-22
 location: "Online"
 link: "https://www.bilibili.com/video/BV1NAPueqEJr"
+excerpt: "Invited talk for the AI4Protein community on Evolla, a protein-to-text multimodal LLM trained on 546M protein Q&A pairs. AI4Protein 社区邀请报告：Evolla 蛋白质多模态大语言模型与功能推理。"
 ---
 
 Invited by the [AI4Protein](https://mp.weixin.qq.com/s/PgbhpmrcL3cwSElslDSymA) community.

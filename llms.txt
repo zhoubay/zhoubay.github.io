@@ -1,0 +1,42 @@
+# Xibin Zhou (周禧彬)
+
+> Ph.D. candidate in Computer Science at Westlake University (joint with Zhejiang University), Hangzhou, China. Research on protein language models, multimodal protein AI, and AI for Science.
+> 西湖大学计算机科学博士生（与浙江大学联合培养），研究方向为蛋白质语言模型、多模态蛋白质智能与 AI for Science。
+
+## Identity
+
+- Name: Xibin Zhou / 周禧彬
+- Affiliation: Westlake University, Hangzhou, Zhejiang, China
+- Email: zhouxibin@westlake.edu.cn
+- ORCID: https://orcid.org/0009-0007-8879-4966
+- Google Scholar: https://scholar.google.com/citations?user=ey4rxTIAAAAJ
+- GitHub: https://github.com/zhoubay
+
+## Key pages
+
+- Home: https://zhoubay.github.io/
+- Research: https://zhoubay.github.io/research/
+- Publications: https://zhoubay.github.io/publications/
+- CV: https://zhoubay.github.io/cv/
+- Talks: https://zhoubay.github.io/talks/
+
+## About (English)
+
+I develop large-scale protein language models and open platforms that bridge protein sequence, structure, and function. My work spans structure-aware pretraining, trimodal protein search, democratized PLM tooling, PLM-assisted base editing, and frontier generative models for protein understanding and design.
+
+## 简介（中文）
+
+周禧彬，西湖大学计算机科学博士生，专注于蛋白质语言模型与 AI for Science。研究涵盖结构感知预训练、三模态蛋白质检索、开源 PLM 平台、基于 PLM 的基因编辑优化，以及面向蛋白质功能理解与设计的生成式模型。
+
+## Representative publications
+
+- SaProt — structure-aware protein language model (ICLR 2024): https://zhoubay.github.io/publication/SaProt
+- ProTrek — trimodal protein sequence/structure/function model (*Nature Biotechnology*, 2025): https://zhoubay.github.io/publication/ProTrek
+- SaprotHub — democratized protein LM platform (*Nature Biotechnology*, 2025): https://zhoubay.github.io/publication/SaprotHub
+- Evolla — interactive protein-language generative model (bioRxiv; under review at *Nature*): https://doi.org/10.1101/2025.01.05.630192 — https://zhoubay.github.io/publication/Evolla
+- Pinal — text-guided de novo protein design (under review at *Nature*): https://zhoubay.github.io/publication/Pinal
+
+## Optional
+
+- Full publication list: https://zhoubay.github.io/publications/
+- Sitemap: https://zhoubay.github.io/sitemap.xml

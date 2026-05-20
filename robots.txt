@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://zhoubay.github.io/sitemap.xml
+
+# Allow AI crawlers for generative engine optimization (GEO)
+User-agent: GPTBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /

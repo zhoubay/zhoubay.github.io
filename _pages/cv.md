@@ -1,6 +1,8 @@
 ---
 layout: single
 title: "CV"
+description: "Curriculum vitae of Xibin Zhou: education at Westlake University and Tongji University, research on protein language models, awards, and community impact."
+description_zh: "周禧彬简历：西湖大学与同济大学教育背景、蛋白质语言模型研究、荣誉与社会影响。"
 permalink: /cv/
 author_profile: false
 classes:

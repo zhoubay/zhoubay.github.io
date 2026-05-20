@@ -7,6 +7,9 @@
     {% if site.author.googlescholar %}
     <li><a href="{{ site.author.googlescholar }}" target="_blank" rel="noopener noreferrer"><i class="ai ai-google-scholar" aria-hidden="true"></i> Google Scholar</a></li>
     {% endif %}
+    {% if site.author.orcid %}
+    <li><a href="{{ site.author.orcid }}" target="_blank" rel="noopener noreferrer"><i class="ai ai-orcid" aria-hidden="true"></i> ORCID</a></li>
+    {% endif %}
     {% if site.author.github %}
     <li><a href="https://github.com/{{ site.author.github }}" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a></li>
     {% endif %}

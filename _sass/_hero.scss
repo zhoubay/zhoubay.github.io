@@ -71,6 +71,16 @@
     line-height: 1.65;
     opacity: 0.92;
     font-weight: 400;
+
+    &:not(.site-hero__lede-zh) + .site-hero__lede-zh {
+      margin-top: -1.25em;
+    }
+  }
+
+  &__lede-zh {
+    margin-bottom: 1.75em;
+    opacity: 0.88;
+    font-size: clamp(0.95rem, 1.8vw, 1.05rem);
   }
 
   &__social {

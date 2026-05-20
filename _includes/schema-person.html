@@ -1,0 +1,37 @@
+{% if site.url %}
+  {% assign schema_url = site.url | append: site.baseurl %}
+{% endif %}
+{% assign schema_url = schema_url | default: site.github.url %}
+{% if schema_url and site.social.links %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": {{ schema_url | append: "/#person" | jsonify }},
+  "name": {{ site.social.name | default: site.author.name | jsonify }},
+  "alternateName": ["周禧彬", "Xibin Zhou"],
+  "url": {{ schema_url | jsonify }},
+  "email": {{ site.author.email | jsonify }},
+  "jobTitle": "Ph.D. Candidate in Computer Science",
+  "description": {{ site.description | jsonify }},
+  "image": {{ site.og_image | prepend: "/images/" | prepend: schema_url | jsonify }},
+  "affiliation": {
+    "@type": "Organization",
+    "name": "Westlake University",
+    "url": "https://www.westlake.edu.cn/"
+  },
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Westlake University"
+  },
+  "knowsAbout": [
+    "Protein language models",
+    "AI for Science",
+    "Multimodal protein AI",
+    "Computational biology",
+    "Protein engineering"
+  ],
+  "sameAs": {{ site.social.links | jsonify }}
+}
+</script>
+{% endif %}
