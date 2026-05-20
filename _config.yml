@@ -153,13 +153,10 @@ social:
 
 
 # Analytics
-# To enable GA4 after obtaining a Measurement ID from Google Analytics:
-#   analytics.provider: google-analytics-4
-#   analytics.google.tracking_id: G-XXXXXXXXXX
 analytics:
-  provider               :  "false" # false (default), "google", "google-universal", "google-analytics-4", "custom"
+  provider               : google-analytics-4 # false (default), "google", "google-universal", "google-analytics-4", "custom"
   google:
-    tracking_id          :
+    tracking_id          : G-HQ0RZENN0C
 
 
 # Reading Files
