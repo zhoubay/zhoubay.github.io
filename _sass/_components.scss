@@ -338,6 +338,11 @@
     color: var(--text-muted);
   }
 
+  &__lang {
+    margin-left: 0.35rem;
+    vertical-align: middle;
+  }
+
   &__excerpt {
     margin: 0;
     font-size: 0.88rem;

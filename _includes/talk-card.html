@@ -9,6 +9,12 @@
     {% if include.type %}{{ include.type }}{% endif %}
     {% if include.venue %}<em>{{ include.venue }}</em>{% endif %}
     {% if include.date %}, {{ include.date | date: "%Y" }}{% endif %}
+    {% if include.language %}
+      {% assign lang_label = site.data.talk_languages[include.language] %}
+      {% if lang_label %}
+        <span class="journal-tag tag-default talk-card__lang">{{ lang_label }}</span>
+      {% endif %}
+    {% endif %}
   </p>
   {% endif %}
   {% if include.excerpt %}

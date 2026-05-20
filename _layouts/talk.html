@@ -35,6 +35,12 @@ layout: default
         {% elsif page.date %}
           <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i>Date:</strong> <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time></p>
         {% endif %}
+        {% if page.language %}
+          {% assign lang_label = site.data.talk_languages[page.language] %}
+          {% if lang_label %}
+            <p class="page__meta"><strong>Language:</strong> {{ lang_label }}</p>
+          {% endif %}
+        {% endif %}
         {% if page.talk_type %}<p>{{page.talk_type}} at {{ page.venue }},  {{page.location}} {% endif %}
 
         </header>
