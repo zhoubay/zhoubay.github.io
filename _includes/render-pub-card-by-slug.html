@@ -1,0 +1,13 @@
+{% include resolve-publication.html slug=include.slug %}
+{% if resolved_found %}
+{% include render-pub-card.html
+  doc=resolved_publication
+  title=include.title
+  name=include.name
+  badge=include.badge
+  summary=include.summary
+  accent=include.accent
+  hide_authors=include.hide_authors
+  hide_year=include.hide_year
+%}
+{% endif %}

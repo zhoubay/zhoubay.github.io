@@ -18,43 +18,14 @@
   {% endif %}
 
   {% if page.authors %}
-  <p class="publication-hero__authors" itemprop="author">
-    {% assign author_parts = page.authors | split: '**' %}
-    {% for part in author_parts %}
-      {% assign part_mod = forloop.index0 | modulo: 2 %}
-      {% if part_mod == 1 %}<strong>{{ part }}</strong>{% else %}{{ part }}{% endif %}
-    {% endfor %}
-  </p>
+  <p class="publication-hero__authors" itemprop="author">{% include format-authors.html authors=page.authors %}</p>
   {% endif %}
 
   {% if page.venue and page.date %}
   <p class="publication-hero__venue">Published in <em>{{ page.venue }}</em>, {{ page.date | date: "%Y" }}</p>
   {% endif %}
 
-  {% if page.links %}
-  <div class="pub-card__links publication-hero__links">
-    {% for link in page.links %}
-      {% if link.url contains 'http' %}
-        {% assign link_url = link.url %}
-      {% else %}
-        {% assign link_url = link.url | prepend: base_path %}
-      {% endif %}
-      <a href="{{ link_url }}" class="pub-card__link"{% if link.url contains 'http' %} target="_blank" rel="noopener noreferrer"{% endif %}>
-        {% case link.icon %}
-        {% when 'code' %}<i class="fas fa-code" aria-hidden="true"></i>
-        {% when 'link' %}<i class="fas fa-external-link-alt" aria-hidden="true"></i>
-        {% when 'image' %}<i class="fas fa-image" aria-hidden="true"></i>
-        {% else %}<i class="fas fa-file-alt" aria-hidden="true"></i>
-        {% endcase %}
-        {{ link.label }}
-      </a>
-    {% endfor %}
-  </div>
-  {% elsif page.paperurl %}
-  <div class="pub-card__links publication-hero__links">
-    <a href="{{ page.paperurl }}" class="pub-card__link" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-alt" aria-hidden="true"></i> Paper</a>
-  </div>
-  {% endif %}
+  {% include link-buttons.html links=page.links paperurl=page.paperurl wrapper_class="pub-links publication-hero__links" %}
 
   {% if lead_text %}
   <p class="publication-lead">{{ lead_text }}</p>

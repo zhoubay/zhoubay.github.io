@@ -10,26 +10,7 @@
       {% endif %}
       <strong>{{ item.title }}</strong>
       {% if item.description %}<span>{{ item.description }}</span>{% endif %}
-      {% if item.links %}
-      <div class="impact-card__links">
-        {% for link in item.links %}
-        {% if link.url contains 'http' %}
-          {% assign link_url = link.url %}
-        {% else %}
-          {% assign link_url = link.url | prepend: base_path %}
-        {% endif %}
-        <a href="{{ link_url }}" class="pub-card__link"{% if link.url contains 'http' %} target="_blank" rel="noopener noreferrer"{% endif %}>
-          {% case link.icon %}
-          {% when 'code' %}<i class="fas fa-code" aria-hidden="true"></i>
-          {% when 'link' %}<i class="fas fa-external-link-alt" aria-hidden="true"></i>
-          {% when 'image' %}<i class="fas fa-image" aria-hidden="true"></i>
-          {% else %}<i class="fas fa-file-alt" aria-hidden="true"></i>
-          {% endcase %}
-          {{ link.label }}
-        </a>
-        {% endfor %}
-      </div>
-      {% endif %}
+      {% include link-buttons.html links=item.links wrapper_class="pub-links impact-card__links" %}
     </li>
     {% endfor %}
   </ul>

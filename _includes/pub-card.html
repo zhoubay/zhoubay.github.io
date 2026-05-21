@@ -31,7 +31,7 @@
   </h3>
 
   {% if include.authors %}
-  <p class="pub-card__authors">{% assign author_parts = include.authors | split: '**' %}{% for part in author_parts %}{% assign part_mod = forloop.index0 | modulo: 2 %}{% if part_mod == 1 %}<strong>{{ part }}</strong>{% else %}{{ part }}{% endif %}{% endfor %}</p>
+  <p class="pub-card__authors">{% include format-authors.html authors=include.authors %}</p>
   {% endif %}
 
   {% if include.summary or include.excerpt %}
@@ -46,28 +46,5 @@
   </div>
   {% endif %}
 
-  {% if include.links %}
-  <div class="pub-card__links">
-    {% for link in include.links %}
-    {% if link.url contains 'http' %}
-      {% assign link_url = link.url %}
-    {% else %}
-      {% assign link_url = link.url | prepend: base_path %}
-    {% endif %}
-    <a href="{{ link_url }}" class="pub-card__link"{% if link.url contains 'http' %} target="_blank" rel="noopener noreferrer"{% endif %}>
-      {% case link.icon %}
-      {% when 'code' %}<i class="fas fa-code" aria-hidden="true"></i>
-      {% when 'link' %}<i class="fas fa-external-link-alt" aria-hidden="true"></i>
-      {% when 'image' %}<i class="fas fa-image" aria-hidden="true"></i>
-      {% else %}<i class="fas fa-file-alt" aria-hidden="true"></i>
-      {% endcase %}
-      {{ link.label }}
-    </a>
-    {% endfor %}
-  </div>
-  {% elsif include.paperurl %}
-  <div class="pub-card__links">
-    <a href="{{ include.paperurl }}" class="pub-card__link" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-alt" aria-hidden="true"></i> Paper</a>
-  </div>
-  {% endif %}
+  {% include link-buttons.html links=include.links paperurl=include.paperurl wrapper_class="pub-links" %}
 </article>

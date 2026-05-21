@@ -22,25 +22,7 @@
     {% assign current_year = pub_year %}
   {% endif %}
 
-  {% assign jtag = post.journal_tag | default: "default" %}
-  {% assign card_summary = post.summary | default: post.excerpt %}
-  {% assign card_authors = post.authors %}
-  {% assign card_badge = post.badge | default: post.venue %}
-  {% include pub-card.html
-    title=post.title
-    authors=card_authors
-    venue=post.venue
-    badge=card_badge
-    year=post.date
-    summary=card_summary
-    publication=post.url
-    paperurl=post.paperurl
-    links=post.links
-    journal_tag=jtag
-    cartoon_webp=post.cartoon_webp
-    cartoon_fallback=post.cartoon_fallback
-    cartoon_alt=post.cartoon_alt
-  %}
+  {% include render-pub-card.html doc=post %}
 {% endfor %}
 
 {% if sorted_pubs.size > 0 %}

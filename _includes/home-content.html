@@ -4,7 +4,13 @@
   <section id="about" class="home-section fade-in">
     {% include section-header.html title="About" %}
     <div class="about-block">
-      {{ site.data.about.text | markdownify }}
+      {% if site.author.googlescholar %}
+        {% capture scholar_link %}<a href="{{ site.author.googlescholar }}" target="_blank" rel="noopener noreferrer">Google Scholar</a>{% endcapture %}
+        {% assign about_text = site.data.about.text | replace: '%%GOOGLE_SCHOLAR%%', scholar_link | replace: '%%GOOGLE_SCHOLAR_ZH%%', scholar_link %}
+      {% else %}
+        {% assign about_text = site.data.about.text | replace: '%%GOOGLE_SCHOLAR%%', 'Google Scholar' | replace: '%%GOOGLE_SCHOLAR_ZH%%', 'Google Scholar' %}
+      {% endif %}
+      {{ about_text | markdownify }}
     </div>
   </section>
 
@@ -34,27 +40,7 @@
     <p class="about-block" style="margin-top: -1rem; margin-bottom: 1.5rem;"><em>* equal contribution</em></p>
     <div class="pub-grid">
       {% for slug in site.data.selected_publications.slugs %}
-      {% include resolve-publication.html slug=slug %}
-      {% if resolved_found %}
-      {% assign pub = resolved_publication %}
-      {% assign card_summary = pub.summary | default: pub.excerpt %}
-      {% assign card_badge = pub.badge | default: pub.venue %}
-      {% include pub-card.html
-        title=pub.title
-        authors=pub.authors
-        venue=pub.venue
-        badge=card_badge
-        year=pub.date
-        summary=card_summary
-        publication=pub.url
-        paperurl=pub.paperurl
-        links=pub.links
-        journal_tag=pub.journal_tag
-        cartoon_webp=pub.cartoon_webp
-        cartoon_fallback=pub.cartoon_fallback
-        cartoon_alt=pub.cartoon_alt
-      %}
-      {% endif %}
+      {% include render-pub-card-by-slug.html slug=slug %}
       {% endfor %}
     </div>
     <p class="about-block"><a href="{{ base_path }}/publications/">Full publication list &rarr;</a></p>

@@ -1,0 +1,26 @@
+{% include base_path %}
+{% assign wrapper_class = include.wrapper_class | default: "pub-links" %}
+{% if include.links %}
+<div class="{{ wrapper_class }}">
+  {% for link in include.links %}
+  {% if link.url contains 'http' %}
+    {% assign link_url = link.url %}
+  {% else %}
+    {% assign link_url = link.url | prepend: base_path %}
+  {% endif %}
+  <a href="{{ link_url }}" class="pub-link"{% if link.url contains 'http' %} target="_blank" rel="noopener noreferrer"{% endif %}>
+    {% case link.icon %}
+    {% when 'code' %}<i class="fas fa-code" aria-hidden="true"></i>
+    {% when 'link' %}<i class="fas fa-external-link-alt" aria-hidden="true"></i>
+    {% when 'image' %}<i class="fas fa-image" aria-hidden="true"></i>
+    {% else %}<i class="fas fa-file-alt" aria-hidden="true"></i>
+    {% endcase %}
+    {{ link.label }}
+  </a>
+  {% endfor %}
+</div>
+{% elsif include.paperurl %}
+<div class="{{ wrapper_class }}">
+  <a href="{{ include.paperurl }}" class="pub-link" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-alt" aria-hidden="true"></i> Paper</a>
+</div>
+{% endif %}

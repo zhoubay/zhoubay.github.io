@@ -1,0 +1,4 @@
+{% if site.url %}
+  {% assign site_url = site.url | append: site.baseurl %}
+{% endif %}
+{% assign site_url = site_url | default: site.github.url %}

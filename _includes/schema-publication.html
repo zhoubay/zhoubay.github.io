@@ -1,7 +1,6 @@
-{% if site.url %}
-  {% assign schema_url = site.url | append: site.baseurl %}
-{% endif %}
-{% assign schema_url = schema_url | default: site.github.url %}
+{% include site-url.html %}
+{% assign schema_url = site_url %}
+{% assign schema_author_name = site.author.name | default: "Xibin Zhou" %}
 {% assign pub_description = page.summary | default: page.excerpt | markdownify | strip_html | strip_newlines %}
 {% assign pub_url = page.url | replace: "index.html", "" | prepend: schema_url %}
 {% assign pub_doi = nil %}
@@ -20,9 +19,9 @@
   "datePublished": {{ page.date | date: "%Y-%m-%d" | jsonify }},
   "author": {
     "@type": "Person",
-    "name": "Xibin Zhou",
-    "url": {{ schema_url | jsonify }},
-    "sameAs": "https://orcid.org/0009-0007-8879-4966"
+    "name": {{ schema_author_name | jsonify }},
+    "url": {{ schema_url | jsonify }}{% if site.author.orcid %},
+    "sameAs": {{ site.author.orcid | jsonify }}{% endif %}
   }{% if page.venue %},
   "isPartOf": {
     "@type": "PublicationIssue",

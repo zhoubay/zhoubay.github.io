@@ -1,0 +1,33 @@
+{% assign doc = include.doc %}
+{% assign card_title = include.title | default: include.name | default: doc.title %}
+{% assign card_badge = include.badge | default: doc.badge | default: doc.venue %}
+{% assign card_summary = include.summary | default: doc.summary | default: doc.excerpt %}
+{% assign card_authors = include.authors %}
+{% if card_authors == nil %}
+  {% unless include.hide_authors %}
+    {% assign card_authors = doc.authors %}
+  {% endunless %}
+{% endif %}
+{% assign card_year = include.year %}
+{% if card_year == nil %}
+  {% unless include.hide_year %}
+    {% assign card_year = doc.date %}
+  {% endunless %}
+{% endif %}
+{% include pub-card.html
+  title=card_title
+  name=card_title
+  authors=card_authors
+  venue=doc.venue
+  badge=card_badge
+  year=card_year
+  summary=card_summary
+  publication=doc.url
+  paperurl=doc.paperurl
+  links=doc.links
+  journal_tag=doc.journal_tag
+  accent=include.accent
+  cartoon_webp=doc.cartoon_webp
+  cartoon_fallback=doc.cartoon_fallback
+  cartoon_alt=doc.cartoon_alt
+%}

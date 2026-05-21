@@ -12,32 +12,21 @@
 
     <div class="pub-grid">
       {% for project in section.projects %}
-      {% include resolve-publication.html slug=project.slug %}
-      {% if resolved_found %}
-      {% assign pub = resolved_publication %}
-      {% assign card_title = project.name | default: pub.title %}
-      {% assign card_badge = project.badge | default: pub.badge | default: pub.venue %}
-      {% assign card_summary = project.summary | default: pub.summary | default: pub.excerpt %}
-      {% include pub-card.html
-        name=card_title
-        title=card_title
-        badge=card_badge
-        summary=card_summary
-        publication=pub.url
-        links=pub.links
-        journal_tag=pub.journal_tag
+      {% include render-pub-card-by-slug.html
+        slug=project.slug
+        name=project.name
+        badge=project.badge
+        summary=project.summary
         accent=section.accent
-        cartoon_webp=pub.cartoon_webp
-        cartoon_fallback=pub.cartoon_fallback
-        cartoon_alt=pub.cartoon_alt
+        hide_authors=true
+        hide_year=true
       %}
-      {% endif %}
       {% endfor %}
     </div>
   </section>
   {% endfor %}
 
   <p class="research-page__footer fade-in">
-    Full bibliography on the <a href="{{ base_path }}/publications/">Publications</a> page and <a href="https://scholar.google.com/citations?user=ey4rxTIAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar</a>.
+    Full bibliography on the <a href="{{ base_path }}/publications/">Publications</a> page{% if site.author.googlescholar %} and <a href="{{ site.author.googlescholar }}" target="_blank" rel="noopener noreferrer">Google Scholar</a>{% endif %}.
   </p>
 </div>

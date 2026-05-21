@@ -20,6 +20,11 @@ Ph.D. candidate in Computer Science at [Westlake University](https://www.westlak
 | `_data/cv.yml` | Education, experience, skills |
 | `_pages/talks.html` | Talks |
 | `_includes/pub-card.html` | Shared publication card component |
+| `_includes/render-pub-card.html` | Maps a `_publications` doc to `pub-card` (optional field overrides) |
+| `_includes/render-pub-card-by-slug.html` | Resolves slug via `resolve-publication` then renders a card |
+| `_includes/link-buttons.html` | Shared external link buttons (cards, detail hero, impact) |
+| `_includes/format-authors.html` | Renders `**name**` author bold markup |
+| `_includes/resolve-publication.html` | Looks up `site.publications` by `slug` (sets `resolved_publication`, `resolved_found`) |
 | `assets/js/site-reveal.js` | Scroll reveal animations |
 | `_config.yml` | Site-wide settings |
 
@@ -34,6 +39,10 @@ Ph.D. candidate in Computer Science at [Westlake University](https://www.westlak
 - **Privacy policy**: edit [`_pages/terms.md`](_pages/terms.md) (published at `/terms/`; `/privacy/` redirects there). Footer links to this page; GA4 disclosure is described there.
 - **Homepage featured papers**: add the `slug` to `_data/selected_publications.yml` (`slugs` list; order = display order).
 - **Research page projects**: add `slug` under the right section in `_data/research.yml` (`name` / `summary` / `badge` optional overrides).
+
+### Publication slug resolution
+
+`resolve-publication.html` sets global Liquid variables `resolved_publication` and `resolved_found`. Prefer `render-pub-card-by-slug.html` (resolve + render in one include) over calling `resolve-publication` and `pub-card` separately. Do not nest other includes between resolve and render on the same slug.
 
 ## Local preview
 
