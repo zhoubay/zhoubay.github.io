@@ -22,12 +22,7 @@ layout: default
     </section>
     {% endif %}
 
-    {% if page.citation %}
-    <section class="publication-citation" aria-label="Recommended citation">
-      <h2 class="publication-citation__title">Citation</h2>
-      <div class="publication-citation__text">{{ page.citation }}</div>
-    </section>
-    {% endif %}
+    {% include publication-citation-block.html %}
 
     {% if page.previous or page.next %}
     <nav class="publication-nav" aria-label="Publication navigation">
@@ -47,3 +42,7 @@ layout: default
     {% endif %}
   </article>
 </div>
+
+{% if page.citation %}
+<script src="{{ base_path }}/assets/js/citation-copy.js" defer></script>
+{% endif %}

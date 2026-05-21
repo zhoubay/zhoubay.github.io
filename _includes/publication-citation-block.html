@@ -1,0 +1,25 @@
+{% if page.citation %}
+{% assign citation_plain = page.citation
+  | replace: '&quot;', '"'
+  | replace: '&#39;', "'"
+  | replace: '&amp;', '&'
+  | strip_html
+  | strip %}
+<section class="publication-citation" aria-label="Recommended citation">
+  <div class="publication-citation__header">
+    <h2 class="publication-citation__title">Citation</h2>
+    <div class="publication-citation__actions">
+      <button type="button" class="publication-citation__btn" data-copy="citation">Copy citation</button>
+      {% if page.bibtex %}
+      <button type="button" class="publication-citation__btn" data-copy="bibtex">Copy BibTeX</button>
+      {% endif %}
+    </div>
+  </div>
+  <div class="publication-citation__text">{{ page.citation }}</div>
+  <textarea class="publication-citation__source" id="citation-copy-source" hidden readonly>{{ citation_plain }}</textarea>
+  {% if page.bibtex %}
+  <textarea class="publication-citation__source" id="bibtex-copy-source" hidden readonly>{{ page.bibtex }}</textarea>
+  {% endif %}
+  <p class="publication-citation__feedback" role="status" aria-live="polite" hidden></p>
+</section>
+{% endif %}

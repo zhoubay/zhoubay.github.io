@@ -15,6 +15,16 @@ paperurl: 'https://doi.org/10.1016/j.xpro.2024.103188'
 links:
   - { label: "Paper", url: "https://doi.org/10.1016/j.xpro.2024.103188", icon: "file" }
 citation: 'Y He, X Zhou, F Yuan, X Chang. (2024). &quot;Protocol to use protein language models predicting and following experimental validation of function-enhancing variants of thymine-N-glycosylase.&quot; <i>STAR Protocols</i> 5(3), 103188.'
+bibtex: |
+  @article{he2024protocol,
+    title={Protocol to use protein language models predicting and following experimental validation of function-enhancing variants of thymine-N-glycosylase},
+    author={He, Yan and Zhou, Xibin and Yuan, Fajie and Chang, Xing},
+    journal={STAR protocols},
+    volume={5},
+    number={3},
+    year={2024},
+    publisher={Elsevier}
+  }'
 ---
 
 This protocol describes steps for optimizing thymine-DNA-glycosylase (TDG) using protein language models, including zero-shot enzyme optimization, construction of plasmids, double plasmid transfection, and high-throughput sequencing and data analysis. It holds promise for streamlining the engineering of gene editing tools while minimizing experimental workload. For complete details, see He et al., *Molecular Cell* 2024.
