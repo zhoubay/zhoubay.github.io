@@ -60,3 +60,12 @@
   <p class="publication-lead">{{ lead_text }}</p>
   {% endif %}
 </header>
+
+{% if page.cartoon_webp %}
+{% include publication-cartoon.html
+  cartoon_webp=page.cartoon_webp
+  cartoon_fallback=page.cartoon_fallback
+  alt=page.cartoon_alt
+  class="publication-figure"
+%}
+{% endif %}

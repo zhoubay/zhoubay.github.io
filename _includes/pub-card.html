@@ -3,6 +3,14 @@
 {% assign tag_class = include.journal_tag | default: "default" %}
 
 <article class="pub-card fade-in"{% if include.accent %} style="--card-accent: {{ include.accent }};"{% endif %}>
+  {% if include.cartoon_webp %}
+  {% include publication-cartoon.html
+    cartoon_webp=include.cartoon_webp
+    cartoon_fallback=include.cartoon_fallback
+    alt=include.cartoon_alt
+    class="pub-card__figure"
+  %}
+  {% endif %}
   <div class="pub-card__header">
     {% if include.badge or include.venue %}
     <span class="journal-tag tag-{{ tag_class }}">{{ include.badge | default: include.venue }}</span>

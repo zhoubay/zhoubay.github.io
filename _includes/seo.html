@@ -57,6 +57,10 @@
   {% else %}
     {% assign seo_og_image = page.header.overlay_image | prepend: "/images/" | prepend: base_path %}
   {% endif %}
+{% elsif page.cartoon_fallback %}
+  {% assign seo_og_image = page.cartoon_fallback | prepend: "/images/" | prepend: base_path %}
+{% elsif page.cartoon_webp %}
+  {% assign seo_og_image = page.cartoon_webp | prepend: "/images/" | prepend: base_path %}
 {% elsif site.og_image %}
   {% if site.og_image contains "://" %}
     {% assign seo_og_image = site.og_image %}

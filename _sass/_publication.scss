@@ -83,6 +83,22 @@
   color: var(--text-muted);
 }
 
+.publication-figure {
+  @include glass-card;
+  margin: 0 0 2rem;
+  padding: 0;
+  overflow: hidden;
+  line-height: 0;
+
+  picture,
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-md);
+  }
+}
+
 .publication-body {
   margin-bottom: 2rem;
   font-size: 0.95rem;
