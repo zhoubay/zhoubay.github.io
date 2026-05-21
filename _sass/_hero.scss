@@ -206,6 +206,23 @@
     }
   }
 
+  &__privacy {
+    margin: 0 0 0.5rem;
+    font-size: 0.75rem;
+    color: var(--text-light);
+    line-height: 1.5;
+
+    a {
+      color: var(--text-muted);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+
+      &:hover {
+        color: var(--accent);
+      }
+    }
+  }
+
   &__copy {
     margin: 0;
     font-size: 0.82rem;

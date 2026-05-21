@@ -1,39 +1,75 @@
 ---
+layout: single
+title: "Privacy Policy"
 permalink: /terms/
-title: "Terms and Privacy Policy"
-modified: 2016-06-06
+description: "Privacy policy for zhoubay.github.io — analytics, cookies, and third-party services."
+last_updated: 2026-05-21
+author_profile: false
+classes:
+  - wide
+share: false
+comments: false
+redirect_from:
+  - /privacy/
 ---
 
 {% include base_path %}
-{% include toc %}
 
-## Privacy Policy
+<div class="page-shell fade-in" markdown="1">
 
-The privacy of my visitors is extremely important. This Privacy Policy outlines the types of personal information that is received and collected and how it is used.
+This Privacy Policy describes how [zhoubay.github.io](https://zhoubay.github.io) (the personal academic homepage of Xibin Zhou) handles information when you visit the site.
 
-First and foremost, I will never share your email address or any other personal information to anyone without your direct consent.
+## Introduction
 
-### Log Files
+This is a static academic website. I do not offer user accounts, comment forms, or newsletters on this site. If you have questions about this policy, contact me at [{{ site.author.email }}](mailto:{{ site.author.email }}).
 
-Like many other websites, this site uses log files to help learn about when, from where, and how often traffic flows to this site. The information in these log files include:
+## What we collect
 
-* Internet Protocol addresses (IP)
-* Types of browser
-* Internet Service Provider (ISP)
-* Date and time stamp
-* Referring and exit pages
-* Number of clicks
+When you browse this site, **Google Analytics 4** may collect aggregated usage data, such as:
 
-All of this information is not linked to anything that is personally identifiable.
+- Pages viewed and approximate time on site
+- General geographic region (derived from IP)
+- Browser, device type, and operating system
+- Referring website or search source
 
-### Cookies and Web Beacons
+I do not intentionally collect names, email addresses, or other directly identifying information through this website. Server and hosting logs maintained by GitHub Pages may also record IP addresses and request metadata as part of normal operation.
 
-When you visit this site "convenience" cookies are stored on your computer when you submit a comment to help you log in faster to [Disqus](http://disqus.com) the next time you leave a comment.
+## Google Analytics 4
 
-Third-party advertisers may also place and read cookies on your browser and/or use web beacons to collect information. This site has no access or control over these cookies. You should review the respective privacy policies on any and all third-party ad servers for more information regarding their practices and how to opt-out.
+This site uses [Google Analytics 4](https://support.google.com/analytics/) (measurement ID: **G-HQ0RZENN0C**) to understand how visitors use the site and to improve its content. Google may use cookies or similar technologies and process data according to its own policies.
 
-If you wish to disable cookies, you may do so through your web browser options. Instructions for doing so can be found on the specific web browsers' websites.
+- [Google Privacy Policy](https://policies.google.com/privacy)
+- [Google Analytics data privacy](https://support.google.com/analytics/answer/6004245)
+- [Browser add-on to opt out of Google Analytics](https://tools.google.com/dlpage/gaoptout)
 
-#### Google Analytics
+Analytics runs by default when you load pages on this site. I do not sell visitor data.
 
-Google Analytics is a web analytics tool I use to help understand how visitors engage with this website. It reports website trends using cookies and web beacons without identifying individual visitors. You can read [Google Analytics Privacy Policy](http://www.google.com/analytics/learn/privacy.html).
+## Other third-party services
+
+**Google Fonts** — The site loads fonts from Google (`fonts.googleapis.com` / `fonts.gstatic.com`). Google may receive your IP address when fonts are requested. See [Google's Privacy Policy](https://policies.google.com/privacy).
+
+**GitHub Pages** — The site is hosted on [GitHub Pages](https://pages.github.com/). GitHub may process technical log data as described in [GitHub's Privacy Statement](https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement).
+
+This site does not embed Disqus, advertising networks, or social login widgets.
+
+## Cookies
+
+Cookies and similar storage are used mainly for analytics (Google Analytics). You can block or delete cookies in your browser settings. Blocking cookies may affect analytics but should not prevent you from reading public pages.
+
+## Your choices
+
+You can:
+
+- Use browser settings to block or clear cookies
+- Install the [Google Analytics opt-out browser add-on](https://tools.google.com/dlpage/gaoptout)
+- Stop visiting this site if you prefer not to have analytics data collected
+
+## Changes to this policy
+
+Last updated: **{{ page.last_updated | default: "now" | date: "%Y-%m-%d" }}**. I may revise this page from time to time; the updated version will be posted at this URL.
+
+## Contact
+
+Xibin Zhou — [{{ site.author.email }}](mailto:{{ site.author.email }})
+
+</div>

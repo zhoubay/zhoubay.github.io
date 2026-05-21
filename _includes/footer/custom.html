@@ -19,7 +19,9 @@
     {% if site.author.linkedin %}
     <li><a href="https://www.linkedin.com/in/{{ site.author.linkedin }}" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
     {% endif %}
+    <li><a href="{{ base_path }}/terms/">Privacy</a></li>
   </ul>
+  <p class="site-footer-bar__privacy">This site uses Google Analytics to understand traffic. See our <a href="{{ base_path }}/terms/">Privacy Policy</a>.</p>
   <p class="site-footer-bar__copy">&copy; {{ site.time | date: '%Y' }} {{ site.author.name | default: site.title }}. Site last updated {{ "now" | date: '%Y-%m-%d' }}.</p>
 </div>
 <!-- end custom footer snippets -->
