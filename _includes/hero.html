@@ -2,10 +2,26 @@
 {% assign author = site.author %}
 
 <section class="site-hero">
-  <div class="site-hero__bg" style="background-image: linear-gradient(135deg, rgba(13, 110, 143, 0.78) 0%, rgba(91, 75, 154, 0.68) 100%), url('{{ base_path }}/images/与施一公合影-卡通.png');"></div>
+  <div class="site-hero__bg" aria-hidden="true">
+    <picture>
+      <source srcset="{{ base_path }}/images/{{ site.hero.image_webp }}" type="image/webp">
+      <img src="{{ base_path }}/images/{{ site.hero.image_fallback }}"
+           alt=""
+           width="1152"
+           height="928"
+           fetchpriority="high"
+           decoding="async">
+    </picture>
+  </div>
   <div class="site-hero__content">
     {% if author.avatar %}
-    <img class="site-hero__avatar" src="{{ author.avatar | prepend: '/images/' | prepend: base_path }}" alt="{{ author.name }}">
+    <img class="site-hero__avatar"
+         src="{{ author.avatar | prepend: '/images/' | prepend: base_path }}"
+         alt="{{ author.name }}"
+         width="120"
+         height="120"
+         fetchpriority="high"
+         decoding="async">
     {% endif %}
     <p class="site-hero__name">{{ author.name }}</p>
     <h1 class="site-hero__slogan">{{ site.data.hero.slogan | default: "Protein foundation models for search, dialogue, and design" }}</h1>

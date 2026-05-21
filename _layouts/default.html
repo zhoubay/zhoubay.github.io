@@ -9,6 +9,9 @@ layout: compress
   <head>
     {% include head.html %}
     {% include head/custom.html %}
+    {% if page.math %}
+      {% include mathjax.html %}
+    {% endif %}
   </head>
 
   <body class="{% if page.layout %}layout--{{ page.layout }}{% endif %}{% if page.classes %}{% for c in page.classes %} layout--{{ c }}{% endfor %}{% endif %}">

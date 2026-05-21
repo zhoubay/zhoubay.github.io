@@ -20,15 +20,31 @@
   &__bg {
     position: absolute;
     inset: 0;
-    background-size: cover;
-    background-position: center;
     z-index: 0;
+
+    picture,
+    img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(13, 110, 143, 0.78) 0%, rgba(91, 75, 154, 0.68) 100%);
+      z-index: 1;
+    }
 
     &::after {
       content: "";
       position: absolute;
       inset: 0;
       background: rgba(15, 23, 42, 0.2);
+      z-index: 2;
     }
   }
 

@@ -4,6 +4,10 @@
 
 <link rel="alternate" type="text/plain" href="{{ base_path }}/llms.txt" title="LLM site summary">
 
+{% if page.layout == 'home' and site.hero.image_webp %}
+<link rel="preload" as="image" href="{{ base_path }}/images/{{ site.hero.image_webp }}" type="image/webp">
+{% endif %}
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -30,9 +34,5 @@
 <meta name="theme-color" content="#ffffff">
 <link rel="stylesheet" href="{{ base_path }}/assets/css/academicons.css"/>
 
-
-<!-- Support for MatJax -->
-<script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
 <!-- end custom head snippets -->

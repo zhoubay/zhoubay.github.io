@@ -21,7 +21,7 @@ repository               : "zhoubay/zhoubay.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "与施一公合影小.jpg"
+  avatar           : "avatar.jpg"
   name             : "Xibin Zhou (周禧彬)"
   pronouns         : # example: "she/her"  
   bio              : "PhD candidate at Westlake University. Protein language models & AI for Science. Captain, Westlake Rowing Team."
@@ -137,7 +137,12 @@ facebook:
   username               :
   app_id                 :
   publisher              :
-og_image                 : "与施一公合影小.jpg" # Open Graph/Twitter default site image (in /images/)
+og_image                 : "avatar.jpg" # Open Graph/Twitter default site image (in /images/)
+
+# Homepage hero background (optimized; originals kept as 与施一公合影-卡通.png)
+hero:
+  image_webp: "hero-cartoon.webp"
+  image_fallback: "hero-cartoon.jpg"
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:
