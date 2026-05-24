@@ -1,0 +1,16 @@
+{% include base_path %}
+
+<article class="blog-card fade-in">
+  <h3 class="blog-card__title">
+    <a href="{{ include.url | prepend: base_path }}">{{ include.title }}</a>
+  </h3>
+  {% if include.series or include.date %}
+  <p class="blog-card__meta">
+    {% if include.series %}<span class="blog-card__series">{{ include.series }}{% if include.series_part %} · Part {{ include.series_part }}{% endif %}</span>{% endif %}
+    {% if include.date %}<time datetime="{{ include.date | date_to_xmlschema }}">{{ include.date | date: "%Y-%m-%d" }}</time>{% endif %}
+  </p>
+  {% endif %}
+  {% if include.excerpt %}
+  <p class="blog-card__excerpt">{{ include.excerpt | strip_html | truncate: 280 }}</p>
+  {% endif %}
+</article>

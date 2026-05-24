@@ -27,6 +27,16 @@ layout: default
       {% unless page.header.overlay_color or page.header.overlay_image %}
         <header>
           {% if page.title %}<h1 class="page__title" itemprop="headline">{{ page.title | markdownify | remove: "<p>" | remove: "</p>" }}</h1>{% endif %}
+          {% if page.subtitle_zh or page.subtitle_en %}
+          <p class="page__subtitle">
+            {% if page.subtitle_zh %}<span lang="zh">{{ page.subtitle_zh }}</span>{% endif %}
+            {% if page.subtitle_zh and page.subtitle_en %}<span class="page__subtitle-sep" aria-hidden="true"> · </span>{% endif %}
+            {% if page.subtitle_en %}<span lang="en">{{ page.subtitle_en }}</span>{% endif %}
+          </p>
+          {% endif %}
+          {% if page.series %}
+          <p class="page__series">{{ page.series }}{% if page.series_part %} · Part {{ page.series_part }}{% endif %}</p>
+          {% endif %}
           {% if page.read_time %}
             <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> {% include read-time.html %}</p>
           {% endif %}
@@ -45,7 +55,12 @@ layout: default
       {% endunless %}
 
       <section class="page__content" itemprop="text">
+        {% if page.toc %}
+          {% include blog-toc.html %}
+        {% endif %}
+        <div class="page__content-body">
         {{ content }}
+        </div>
 
         {% if page.citation and page.paperurl and page.slidesurl %}
           <p style="font-size: smaller">Recommended citation: {{ page.citation }}<br /><a href="{{ page.paperurl }}">Download Paper</a> | <a href="{{ page.slidesurl }}">Download Slides</a></p>

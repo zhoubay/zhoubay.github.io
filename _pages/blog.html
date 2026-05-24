@@ -1,0 +1,24 @@
+---
+layout: archive
+title: "Blog"
+description: "Notes on protein function hypotheses, claims, and bridging computational predictions to experimental validation."
+permalink: /blog/
+author_profile: false
+classes:
+  - wide
+---
+
+{% include base_path %}
+
+<div class="page-shell">
+  {% for post in site.posts %}
+  {% include blog-card.html
+    title=post.title
+    url=post.url
+    date=post.date
+    series=post.series
+    series_part=post.series_part
+    excerpt=post.excerpt
+  %}
+  {% endfor %}
+</div>

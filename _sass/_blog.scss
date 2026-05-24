@@ -1,0 +1,115 @@
+/* ==========================================================================
+   Blog posts and listing
+   ========================================================================== */
+
+.page__subtitle {
+  margin: 0.35rem 0 0;
+  font-size: $type-size-5;
+  font-weight: 500;
+  color: var(--text-secondary, $gray);
+  line-height: 1.45;
+
+  [lang="en"] {
+    font-style: italic;
+  }
+}
+
+.page__subtitle-sep {
+  opacity: 0.55;
+}
+
+.page__series {
+  margin: 0.5rem 0 0;
+  font-size: $type-size-6;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--text-muted, mix(#000, $gray, 40%));
+  text-transform: none;
+}
+
+.layout--wide {
+  .page__subtitle,
+  .page__series {
+    text-align: center;
+  }
+}
+
+.page__content-body {
+  @include clearfix;
+}
+
+.page__content .sidebar__right + .page__content-body {
+  @include breakpoint($large) {
+    float: left;
+    width: calc(100% - #{$right-sidebar-width-narrow} - 1rem);
+  }
+
+  @include breakpoint($x-large) {
+    width: calc(100% - #{$right-sidebar-width} - 1rem);
+  }
+}
+
+.page__content-body {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+
+  table {
+    display: block;
+    width: max-content;
+    max-width: 100%;
+    overflow-x: auto;
+    margin-bottom: 1em;
+  }
+}
+
+.toc__menu .toc__h3 a {
+  padding-left: 1.5rem;
+  font-weight: normal;
+}
+
+.blog-card {
+  padding: 1.25rem 0;
+  border-bottom: 1px solid $border-color;
+
+  &:last-child {
+    border-bottom: 0;
+  }
+
+  &__title {
+    margin: 0 0 0.35rem;
+    font-size: $type-size-4;
+    font-weight: 700;
+    line-height: 1.25;
+
+    a {
+      color: var(--text-primary, $dark-gray);
+      text-decoration: none;
+
+      &:hover {
+        color: $link-color-hover;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__meta {
+    margin: 0 0 0.5rem;
+    font-size: $type-size-6;
+    color: var(--text-muted, $gray);
+
+    time {
+      margin-left: 0.35rem;
+    }
+  }
+
+  &__series {
+    font-weight: 600;
+  }
+
+  &__excerpt {
+    margin: 0;
+    font-size: $type-size-6;
+    line-height: 1.55;
+    color: var(--text-secondary, mix(#000, $gray, 25%));
+  }
+}

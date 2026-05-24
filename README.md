@@ -19,6 +19,8 @@ Ph.D. candidate in Computer Science at [Westlake University](https://www.westlak
 | `_pages/cv.md` | CV |
 | `_data/cv.yml` | Education, experience, skills |
 | `_pages/talks.html` | Talks |
+| `_pages/blog.html` | Blog post list |
+| `_posts/` | Blog posts (`YYYY-MM-DD-slug.md`; `categories: [blog]`) |
 | `_includes/pub-card.html` | Shared publication card component |
 | `_includes/render-pub-card.html` | Maps a `_publications` doc to `pub-card` (optional field overrides) |
 | `_includes/render-pub-card-by-slug.html` | Resolves slug via `resolve-publication` then renders a card |
@@ -34,6 +36,7 @@ Ph.D. candidate in Computer Science at [Westlake University](https://www.westlak
 - **News**: add entries to `_data/news.yml` (`date`, `text` in Markdown).
 - **Honors**: `_data/honors.yml`.
 - **Community Impact**: `_data/community_impact.yml` (title, description, badge, links with `label` / `url` / `icon`). Screenshots in `files/evidence/`. Rendered on homepage and `/cv/` via `_includes/community-impact-section.html`.
+- **New blog post**: add `_posts/YYYY-MM-DD-slug.md` with `title`, `subtitle_zh` / `subtitle_en`, `date`, `categories: [blog]`, optional `series`, `math: true`, `toc: true`. Listed at `/blog/`; add `slug` to nav via `_data/navigation.yml` (Blog entry).
 - **New paper**: add `_publications/YYYY-MM-DD-slug.md` with `slug`, `venue`, `badge`, `journal_tag`, `summary`, `authors`, `links`, `paperurl`, `citation`, etc. Optional `bibtex: |` block enables **Copy BibTeX** on the publication page; **Copy citation** is always available when `citation` is set.
 - **Cartoon illustration** (optional): `cartoon_webp`, `cartoon_fallback` (JPEG), and `cartoon_alt` in front matter show on homepage/research cards and the publication detail page; use optimized WebP/JPEG in `images/` and keep original PNGs as source files.
 - **Privacy policy**: edit [`_pages/terms.md`](_pages/terms.md) (published at `/terms/`; `/privacy/` redirects there). Footer links to this page; GA4 disclosure is described there.
