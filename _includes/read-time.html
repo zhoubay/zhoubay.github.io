@@ -1,17 +1,39 @@
-{% if post.read_time %}
-  {% assign words = post.content | strip_html | number_of_words %}
-{% elsif page.read_time %}
-  {% assign words = page.content | strip_html | number_of_words %}
+{% assign ui_locale = include.locale | default: page.locale | default: site.locale %}
+{% assign ui = site.data.ui-text[ui_locale] | default: site.data.ui-text[site.locale] %}
+{% assign cpm = site.characters_per_minute | default: 750 %}
+
+{% if include.content %}
+  {% assign source = include.content %}
+{% elsif post.content %}
+  {% assign source = post.content %}
+{% elsif page.content %}
+  {% assign source = page.content %}
 {% endif %}
 
-{% if site.words_per_minute %}
-  {% if words < 180 %}
-	  {{ site.data.ui-text[site.locale].less_than | default: "less than" }} 1 {{ site.data.ui-text[site.locale].minute_read | default: "minute read" }}
-	{% elsif words < 360 %}
-	  1 {{ site.data.ui-text[site.locale].minute_read | default: "minute read" }}
-	{% else %}
-	  {{ words | divided_by:site.words_per_minute }} {{ site.data.ui-text[site.locale].minute_read | default: "minute read" }}
-	{% endif %}
+{% assign code_segments = source | split: '<div class="language-' %}
+{% assign prose = code_segments | first %}
+{% for seg in code_segments offset:1 %}
+  {% assign remainder = seg | split: '</code></pre></div></div>' | last %}
+  {% assign prose = prose | append: remainder %}
+{% endfor %}
+
+{% assign table_segments = prose | split: '<table' %}
+{% assign prose = table_segments | first %}
+{% for seg in table_segments offset:1 %}
+  {% assign remainder = seg | split: '</table>' | last %}
+  {% assign prose = prose | append: remainder %}
+{% endfor %}
+
+{% assign text = prose | strip_html %}
+{% assign chars = text | replace: ' ', '' | replace: '
+', '' | replace: '	', '' | size %}
+{% if chars == 0 %}
+  {% assign minutes = 1 %}
 {% else %}
-  {{ site.data.ui-text[site.locale].undefined_wpm | "Undefined parameter words_per_minute at _config.yml" }}
+  {% assign minutes = chars | minus: 1 | plus: cpm | divided_by: cpm %}
 {% endif %}
+{% if minutes < 1 %}
+  {% assign minutes = 1 %}
+{% endif %}
+
+{{ minutes }} {{ ui.minute_read | default: "minute read" }}

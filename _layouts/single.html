@@ -37,20 +37,25 @@ layout: default
           {% if page.series %}
           <p class="page__series">{{ page.series }}{% if page.series_part %} · Part {{ page.series_part }}{% endif %}</p>
           {% endif %}
-          {% if page.read_time %}
-            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> {% include read-time.html %}</p>
-          {% endif %}
         {% if page.modified %}
           <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "Published:" }}</strong> <time datetime="{{ page.modified | date: "%Y-%m-%d" }}">{{ page.modified | date: "%B %d, %Y" }}</time></p>
         {% endif %}
-        
+
         {% if page.collection == 'teaching' %}
           <p> {{ page.type }}, <i>{{ page.venue }}</i>, {{ page.date | default: "1900-01-01" | date: "%Y" }} </p>
         {% elsif page.venue and page.date %}
           <p>Published in <i>{{ page.venue }}</i>, {{ page.date | default: "1900-01-01" | date: "%Y" }} </p>
-        {% elsif page.date %}
-          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "Published:" }}</strong> <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | default: "1900-01-01" | date: "%B %d, %Y" }}</time></p>
-        {% endif %}    
+        {% elsif page.date or page.read_time %}
+          <p class="page__byline">
+            {% if page.date %}
+              <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | default: "1900-01-01" | date: "%Y-%m-%d" }}</time>
+            {% endif %}
+            {% if page.date and page.read_time %}<span class="page__byline-sep" aria-hidden="true"> · </span>{% endif %}
+            {% if page.read_time %}
+              <span class="page__read-time"><i class="fa fa-clock-o" aria-hidden="true"></i> {% include read-time.html locale=page.locale %}</span>
+            {% endif %}
+          </p>
+        {% endif %}
         </header>
       {% endunless %}
 

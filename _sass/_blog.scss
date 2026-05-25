@@ -27,9 +27,34 @@
   text-transform: none;
 }
 
+.page__byline {
+  margin: 0.65rem 0 0;
+  font-family: $sans-serif;
+  font-size: $type-size-6;
+  color: var(--text-muted, mix(#000, $gray, 40%));
+  line-height: 1.5;
+
+  time {
+    font-weight: 500;
+  }
+}
+
+.page__byline-sep {
+  opacity: 0.55;
+}
+
+.page__read-time {
+  white-space: nowrap;
+
+  .fa-clock-o {
+    margin-right: 0.2em;
+  }
+}
+
 .layout--wide {
   .page__subtitle,
-  .page__series {
+  .page__series,
+  .page__byline {
     text-align: center;
   }
 }
@@ -99,6 +124,15 @@
 
     time {
       margin-left: 0.35rem;
+    }
+  }
+
+  &__read-time {
+    margin-left: 0.35rem;
+    white-space: nowrap;
+
+    .fa-clock-o {
+      margin-right: 0.2em;
     }
   }
 
