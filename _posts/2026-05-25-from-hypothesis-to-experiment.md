@@ -49,6 +49,7 @@ comments: false
   - devices / human operators
 
 接下来，我们分层进行阐述。
+
 ## 中间层
 
 中间层是连接概念层和物理层的层次。
@@ -98,6 +99,11 @@ Sub-claim 和 Assay 是一体两面的关系。
 5. **Validate**：检查 assay 的 readouts 是否真的能够支持或拒绝对应的 sub-claim。
 
 最后，在中间层结束之前，需要安排一次内容检查。因为中间层的输出会直接影响物理层的实验执行，所以必须确保这里的逻辑拆解、assay 选择和判定标准都是一致的。否则，上游 claim 的表达错误、sub-claim 的拆解错误，或者 assay 与 sub-claim 的错配，都会污染最后的实验结果。
+
+<figure>
+  <img src="/images/2026-05-25-from-hypothesis-to-experiment-dissect.png" alt="从科学命题到实验：Claim、Sub-claim、Assay、Protocol 四层拆解框架，含各层职责边界与不可跳过 Sub-claim 的警示">
+  <figcaption>从科学命题到实验（From Scientific Statement to Experiment）：Claim → Sub-claim → Assay → Protocol 四步拆解；右侧为各层主要职责与应避免的越界行为。不可从 Claim 直接跳到 Assay，否则易导致 assay 与命题错配。</figcaption>
+</figure>
 
 ---
 
@@ -199,6 +205,11 @@ inconclusive(C0) = NOT support(C0) AND NOT refute(C0)
 | inconclusive    | refuted         | inconclusive C0 |
 | refuted         | inconclusive    | inconclusive C0 |
 | inconclusive    | inconclusive    | inconclusive C0 |
+
+<figure>
+  <img src="/images/2026-05-25-from-hypothesis-to-experiment-fit-claim.png" alt="Sub-claim 状态如何组合为 Claim 状态（弱版本）：C0 在 S1 或 S2 为 supported 时支持，仅在二者均为 refuted 时拒绝，其余为 inconclusive">
+  <figcaption>Sub-claim 状态如何组合为 Claim 状态（How Sub-claim Statuses Combine into Claim Status，弱版本）：以 C0 与 S1、S2 为例，展示决策树、真值表热力图与三条组合规则（support = OR，refute = AND，其余为 inconclusive）。强调 inconclusive 是一等状态；实验失败（assay failed）不等于 claim 被 refuted。</figcaption>
+</figure>
 
 但是，如果我们采用一个更强的定义：
 
@@ -378,6 +389,11 @@ sub-claim
   -> adapt selected assay and record parent assay id
   -> define readouts, criteria and metadata
 ```
+
+<figure>
+  <img src="/images/2026-05-25-from-hypothesis-to-experiment-to-assay.png" alt="从 Sub-claim 到 Assay 的九步生成流程：基于 Assay Knowledge Base 检索、排序与模板适配，强调 source-first、避免 LLM 凭空编造 assay">
+  <figcaption>从 Sub-claim 到 Assay 的生成流程（Assay Generation Workflow）：生成 operational statement → 匹配高层次 assay 类型 → 检索并排序候选 → 直接选用模板或改编父 assay（经专家审核）→ 定义 readouts/controls/criteria → 对齐验证 → 输出 Assay Specification。左侧知识库涵盖文献、protocol database、内部 SOP 与专家审核模板；核心原则是 retrieval-grounded、template-adapted，每个 assay 须可追溯到来源或模板。</figcaption>
+</figure>
 
 具体来说：
 

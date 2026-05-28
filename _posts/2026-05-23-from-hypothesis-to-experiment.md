@@ -46,6 +46,11 @@ comments: false
   - protocols
   - devices / human operators
 
+<figure>
+  <img src="/images/2026-05-23-from-hypothesis-to-experiment-overview.png" alt="从 hypothesis 到实验验证的分层框架概览">
+  <figcaption>从 hypothesis 到实验验证的分层框架：概念层（hypothesis、claims）、中间层（sub-claims、assays）与物理层（protocols、devices / human operators）。</figcaption>
+</figure>
+
 接下来，我们分层进行阐述。
 
 ## 概念层
