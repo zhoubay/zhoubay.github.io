@@ -61,29 +61,52 @@
 
 .page__content-body {
   @include clearfix;
-}
 
-.page__content .sidebar__right + .page__content-body {
-  @include breakpoint($large) {
-    float: left;
-    width: calc(100% - #{$right-sidebar-width-narrow} - 1rem);
+  .table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    margin-bottom: 1em;
   }
-
-  @include breakpoint($x-large) {
-    width: calc(100% - #{$right-sidebar-width} - 1rem);
-  }
-}
-
-.page__content-body {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
 
   table {
-    display: block;
+    display: table;
     width: max-content;
-    max-width: 100%;
-    overflow-x: auto;
+    min-width: 100%;
     margin-bottom: 1em;
+  }
+
+  .table-wrap table {
+    margin-bottom: 0;
+  }
+}
+
+/* Blog posts with TOC: single full-width content column; TOC fixed in right margin. */
+.layout--wide .page__content:has(.sidebar__right) {
+  @include breakpoint($large) {
+    display: block;
+    position: relative;
+  }
+}
+
+.layout--wide .page__content:has(.sidebar__right) .page__content-body {
+  @include breakpoint($large) {
+    > * {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    > figure:not(.highlight):not(.figure--inline) {
+      width: 100%;
+    }
+  }
+}
+
+.layout--wide .page__content .sidebar__right {
+  @include breakpoint($large) {
+    float: none;
+    width: auto;
+    margin-left: 0;
   }
 }
 
@@ -92,14 +115,38 @@
   font-weight: normal;
 }
 
-.page__content .sidebar__right.sticky {
+.layout--wide .page__content .sidebar__right.sticky {
   @include breakpoint($large) {
-    position: -webkit-sticky;
-    position: sticky;
+    position: fixed;
+    right: #{'max(1.5rem, calc((100vw - var(--content-width)) / 2 - #{$right-sidebar-width-narrow} - 1rem))'};
+    width: $right-sidebar-width-narrow;
     top: calc(#{$masthead-height} + 1em);
-    align-self: flex-start;
     max-height: calc(100vh - #{$masthead-height} - 2em);
     overflow-y: auto;
+    z-index: 10;
+  }
+
+  @include breakpoint($x-large) {
+    right: #{'max(1.5rem, calc((100vw - var(--content-width)) / 2 - #{$right-sidebar-width} - 1rem))'};
+    width: $right-sidebar-width;
+  }
+}
+
+.blog-diagram {
+  margin: 2em 0;
+  width: 100%;
+
+  &__canvas {
+    width: 100%;
+    padding: 1rem;
+    overflow-x: auto;
+    background: var(--bg-card, #fff);
+    border: 1px solid var(--border-subtle, $border-color);
+    border-radius: $border-radius;
+  }
+
+  .mermaid {
+    width: 100%;
   }
 }
 

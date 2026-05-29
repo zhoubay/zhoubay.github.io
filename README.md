@@ -32,7 +32,7 @@ Ph.D. candidate in Computer Science at [Westlake University](https://www.westlak
 
 ## Editing content
 
-- **Math formulas**: add `math: true` to a page's front matter to load MathJax on that page only.
+- **Math formulas**: add `math: true` to a page's front matter to load MathJax on that page only. Use Kramdown inline math with `$$...$$` (e.g. `$$K_{cat}$$`); do not use `\(...\)` — Kramdown treats `\(` as an escaped parenthesis.
 - **News**: add entries to `_data/news.yml` (`date`, `text` in Markdown).
 - **Honors**: `_data/honors.yml`.
 - **Community Impact**: `_data/community_impact.yml` (title, description, badge, links with `label` / `url` / `icon`). Screenshots in `files/evidence/`. Rendered on homepage and `/cv/` via `_includes/community-impact-section.html`.

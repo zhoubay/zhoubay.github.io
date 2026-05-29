@@ -2,4 +2,8 @@
 <script src="{{ base_path }}/assets/js/site-reveal.js" defer></script>
 {% if page.toc %}
 <script src="{{ base_path }}/assets/js/blog-toc.js" defer></script>
+<script src="{{ base_path }}/assets/js/blog-tables.js" defer></script>
+{% endif %}
+{% if page.mermaid %}
+{% include mermaid.html %}
 {% endif %}

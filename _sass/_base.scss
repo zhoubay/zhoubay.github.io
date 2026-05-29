@@ -230,6 +230,11 @@ figure {
       width: 100%;
     }
   }
+
+  /* Blog opt-out: add class figure--inline to keep figure at text-column width. */
+  &.figure--inline {
+    width: 100%;
+  }
 }
 
 /* Figure captions */
