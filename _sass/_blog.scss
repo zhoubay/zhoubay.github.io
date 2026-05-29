@@ -132,6 +132,12 @@
   }
 }
 
+.page__content figure > a.image-popup,
+.publication-body figure > a.image-popup {
+  cursor: zoom-in;
+  display: block;
+}
+
 .blog-diagram {
   margin: 2em 0;
   width: 100%;

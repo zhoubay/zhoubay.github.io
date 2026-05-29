@@ -69,8 +69,24 @@ $(document).ready(function(){
   // init smooth scroll, this needs to be slightly more than then fixed masthead height
   $("a").smoothScroll({offset: -65});
 
+  // wrap bare content images so Magnific Popup can open them
+  var zoomableSelector = [
+    '.page__content img',
+    '.publication-body img'
+  ].join(', ');
+
+  var excludeParents = '.blog-diagram, .mermaid, .author__avatar, .site-hero__avatar, .page__hero-image, .comment__avatar, .archive__item-teaser';
+
+  $(zoomableSelector).each(function () {
+    var $img = $(this);
+    if ($img.parent('a').length || $img.closest(excludeParents).length) return;
+    var src = $img.attr('src');
+    if (!src || /\.svg$/i.test(src)) return;
+    $img.wrap('<a href="' + src + '" class="image-popup"></a>');
+  });
+
   // add lightbox class to all image links
-  $("a[href$='.jpg'],a[href$='.jpeg'],a[href$='.JPG'],a[href$='.png'],a[href$='.gif']").addClass("image-popup");
+  $("a[href$='.jpg'],a[href$='.jpeg'],a[href$='.JPG'],a[href$='.png'],a[href$='.gif'],a[href$='.webp'],a[href$='.WEBP']").addClass("image-popup");
 
   // Magnific-Popup options
   $(".image-popup").magnificPopup({
