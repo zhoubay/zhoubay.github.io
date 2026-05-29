@@ -1,8 +1,9 @@
 <!-- Mermaid (opt-in via page.mermaid: true) -->
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script src="{{ base_path }}/assets/js/blog-diagram-zoom.js"></script>
 <script>
   mermaid.initialize({
-    startOnLoad: true,
+    startOnLoad: false,
     theme: "base",
     themeVariables: {
       primaryColor: "#e8f4fd",
@@ -31,5 +32,11 @@
       mirrorActors: true,
       useMaxWidth: true
     }
+  });
+
+  document.addEventListener('DOMContentLoaded', function () {
+    mermaid.run({ querySelector: '.mermaid' }).then(function () {
+      if (typeof initBlogDiagramZoom === 'function') initBlogDiagramZoom();
+    });
   });
 </script>

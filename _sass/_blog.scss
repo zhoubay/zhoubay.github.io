@@ -149,10 +149,31 @@
     background: var(--bg-card, #fff);
     border: 1px solid var(--border-subtle, $border-color);
     border-radius: $border-radius;
+    cursor: zoom-in;
   }
 
   .mermaid {
     width: 100%;
+  }
+}
+
+.mfp-diagram.mfp-inline-holder .mfp-content {
+  width: auto;
+  max-width: 95vw;
+}
+
+.mfp-diagram-zoom {
+  max-width: 95vw;
+  max-height: 90vh;
+  overflow: auto;
+  padding: 1rem;
+  background: var(--bg-card, #fff);
+
+  svg {
+    display: block;
+    height: auto;
+    max-width: none;
+    margin: 0 auto;
   }
 }
 
