@@ -92,6 +92,17 @@
   font-weight: normal;
 }
 
+.page__content .sidebar__right.sticky {
+  @include breakpoint($large) {
+    position: -webkit-sticky;
+    position: sticky;
+    top: calc(#{$masthead-height} + 1em);
+    align-self: flex-start;
+    max-height: calc(100vh - #{$masthead-height} - 2em);
+    overflow-y: auto;
+  }
+}
+
 .blog-card {
   padding: 1.25rem 0;
   border-bottom: 1px solid $border-color;
