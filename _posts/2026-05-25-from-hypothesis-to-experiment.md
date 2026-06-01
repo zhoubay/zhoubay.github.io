@@ -2,7 +2,7 @@
 title: "From hypothesis to experiment"
 subtitle_zh: "中间层：Sub-claims 与 Assay"
 subtitle_en: "The middle layer: from claims to sub-claims and assays"
-series: "Function to Protocol schema"
+series: "Function to Procedure schema"
 series_part: 2
 date: 2026-05-25
 last_modified_at: 2026-05-25
@@ -15,7 +15,7 @@ tags:
   - assay
   - protein-function
   - ai4science
-  - protocol
+  - procedure
 locale: zh
 lang: zh-CN
 excerpt: "在概念层的 hypothesis 与 claims 之后，中间层负责把 claim 拆解为可实验判定的 sub-claims，并为每个 sub-claim 匹配能够产生证据的 assay。本文系统梳理中间层的设计原则、对象定义与输出结构。"
@@ -46,8 +46,8 @@ comments: false
   - sub-claims
   - assays
 - **物理层**
-  - protocols
-  - devices / human operators
+  - procedures / transport
+  - resources
 
 接下来，我们分层进行阐述。
 
@@ -55,7 +55,7 @@ comments: false
 
 中间层是连接概念层和物理层的层次。
 
-概念层处理的是 hypothesis、claim 这类自然语言或半结构化的科学命题；物理层处理的是 protocol、instrument、sample、operator、device 这类可以被实验室系统执行的对象。中间层的作用，就是把一个上游 claim 转换成物理层能够理解、执行和回填结果的形式。
+概念层处理的是 hypothesis、claim 这类自然语言或半结构化的科学命题；物理层处理的是 procedure、instrument、sample、operator、device 这类可以被实验室系统执行的对象。中间层的作用，就是把一个上游 claim 转换成物理层能够理解、执行和回填结果的形式。
 
 换句话说，中间层回答的问题不是：
 
@@ -87,13 +87,13 @@ Sub-claim 和 Assay 是一体两面的关系。
 | Claim     | 我们想判断的科学命题是什么？            | 一个相对完整的 statement                    |
 | Sub-claim | 为了判断这个 claim，需要拆成哪些更小的命题？ | 可实验判定的局部 statement                   |
 | Assay     | 用什么实验计划产生证据？              | readouts、controls、criteria、resources |
-| Protocol  | 实验具体怎么做？                  | 可执行步骤、仪器参数、操作流程                      |
+| Procedure  | 实验具体怎么做？                  | 可执行步骤、仪器参数、操作流程                      |
 
 需要注意的是，**凭空生成 assay 是不可靠的**。一个 sub-claim 是否可以被某类 assay 支持，应该尽量依赖已有的人类知识库、标准实验范式、文献、数据库或实验室内部 SOP，而不是只由语言模型直接想象出来。
 
 因此，从 sub-claim 到 assay 的过程更合理的方式是：
 
-1. **Retrieve**：从已有知识库、文献、protocol database 或实验室 SOP 中检索相关 assay。
+1. **Retrieve**：从已有知识库、文献、procedure database 或实验室 SOP 中检索相关 assay。
 2. **Rank**：根据 sub-claim 的对象、关系、条件、readout 需求，对候选 assay 进行排序。
 3. **Adapt**：如果已有 assay 不能完全匹配当前 sub-claim，则以已有 assay 作为模板进行微调。
 4. **Justify**：记录为什么选择这个 assay，它对应哪个 sub-claim，哪些地方是从已有模板修改而来。
@@ -102,8 +102,8 @@ Sub-claim 和 Assay 是一体两面的关系。
 最后，在中间层结束之前，需要安排一次内容检查。因为中间层的输出会直接影响物理层的实验执行，所以必须确保这里的逻辑拆解、assay 选择和判定标准都是一致的。否则，上游 claim 的表达错误、sub-claim 的拆解错误，或者 assay 与 sub-claim 的错配，都会污染最后的实验结果。
 
 <figure>
-  <img src="/images/2026-05-25-from-hypothesis-to-experiment-dissect.png" alt="从科学命题到实验：Claim、Sub-claim、Assay、Protocol 四层拆解框架，含各层职责边界与不可跳过 Sub-claim 的警示">
-  <figcaption>从科学命题到实验（From Scientific Statement to Experiment）：Claim → Sub-claim → Assay → Protocol 四步拆解；右侧为各层主要职责与应避免的越界行为。不可从 Claim 直接跳到 Assay，否则易导致 assay 与命题错配。</figcaption>
+  <img src="/images/2026-05-25-from-hypothesis-to-experiment-dissect.png" alt="从科学命题到实验：Claim、Sub-claim、Assay、Procedure 四层拆解框架，含各层职责边界与不可跳过 Sub-claim 的警示">
+  <figcaption>从科学命题到实验（From Scientific Statement to Experiment）：Claim → Sub-claim → Assay → Procedure 四步拆解；右侧为各层主要职责与应避免的越界行为。不可从 Claim 直接跳到 Assay，否则易导致 assay 与命题错配。</figcaption>
 </figure>
 
 ---
@@ -335,7 +335,7 @@ assay criteria = 绑定具体 readout 后的操作性判定标准（定量，带
 | 字段 | 含义 |
 |---|---|
 | `assay_type` | assay 的大类类型，例如 ligand binding assay、cell-based activation assay、localization assay 等。 |
-| `assay_template_id` | 引用 assay database 中的唯一 ID。每一个 assay template 本质上是一个 DAG（有向无环图），其中 node 为 protocol，edge 为物料运输手段。具体详情见 Assay Database 章节。 |
+| `assay_template_id` | 引用 assay database 中的唯一 ID。每一个 assay template 本质上是一个 DAG（有向无环图），其中 node 为 procedure，edge 为物料运输手段。具体详情见 Assay Database 章节。 |
 | `assay_reviewed` | 标志位，标记该 assay 是否已被人类专家审核。 |
 
 **2. Input（被评估的物质实体）**
@@ -377,22 +377,22 @@ assay criteria = 绑定具体 readout 后的操作性判定标准（定量，带
 
 ---
 
-### Assay 与 Protocol 的关系
+### Assay 与 Procedure 的关系
 
-Assay 不是 protocol。二者的区别在于粒度和设计理念。
+Assay 不是 procedure。二者的区别在于粒度和设计理念。
 
-Protocol 是一个符合工程设计理念的"高内聚、低耦合"的最小实验执行单元。一般情况下，一种 instrument 对应一种 protocol：一个 protocol 规定在某台仪器上从头到尾怎么操作——加什么、加多少、孵育多久、用什么参数上机、如何导出数据。它是自包含的，不依赖其他 protocol 的内部状态。
+Procedure 是一个符合工程设计理念的"高内聚、低耦合"的最小实验执行单元。一般情况下，一种 instrument 对应一种 procedure：一个 procedure 规定在某台仪器上从头到尾怎么操作——加什么、加多少、孵育多久、用什么参数上机、如何导出数据。它是自包含的，不依赖其他 procedure 的内部状态。
 
-Assay 的 process 设计理念则类似于搭积木：将若干无法再细分的 protocol 作为最小构件，按照逻辑依赖关系组合成一个有向无环图（DAG）。在这个 DAG 中，node 是 protocol，edge 是物料或信息在 protocol 之间的传递路径。整个 DAG 加上上述六类 metadata，就构成了一个完整的 assay。
+Assay 的 process 设计理念则类似于搭积木：将若干无法再细分的 procedure 作为最小构件，按照逻辑依赖关系组合成一个有向无环图（DAG）。在这个 DAG 中，node 是 procedure，edge 是物料或信息在 procedure 之间的传递路径。整个 DAG 加上上述六类 metadata，就构成了一个完整的 assay。
 
 更准确地说，assay 是一个 **execution-ready test specification**：
 
 - 它绑定了 evaluant、consumables、instrument class、readout 类型和 criteria；
-- 它通过引用 assay template 确定了 protocol 的组合方式和执行顺序；
+- 它通过引用 assay template 确定了 procedure 的组合方式和执行顺序；
 - 它说明什么样的仪器输出会被解释为 support、refutation 或 inconclusive；
 - 但它不规定每一步操作的体积、时间、温度、plate layout、仪器 method file 和 operator action sequence。
 
-这些逐步执行细节属于 protocol 层，由 DAG 中的各个 node 分别承载。
+这些逐步执行细节属于 procedure 层，由 DAG 中的各个 node 分别承载。
 
 ---
 
@@ -430,7 +430,7 @@ sequenceDiagram
         S ->>+ A: 怎么用？
         A ->> A: retrieval / think → 没有现成 assay
         Note over A: 追问 → rank assays
-        Note over A: 接热水<br/>摩卡壶萃取咖啡（包含磨咖啡豆的protocol）<br/>化学实验重力过滤（包含使用滤纸的protocol）<br/>...
+        Note over A: 接热水<br/>摩卡壶萃取咖啡（包含磨咖啡豆的procedure）<br/>化学实验重力过滤（包含使用滤纸的procedure）<br/>...
         Note over A: think<br/>通过组合形成新的 assay
         Note over A: 👤 请求人类反馈
         A -->> A: 人类确认 → 通过 ✅
@@ -563,7 +563,7 @@ sub-claim
 - Assay T-089：radioligand binding assay on membrane fractions（检测 IGF-1 binding，但用膜组分不是完整细胞）
 - Assay T-112：fluorescence-based ligand binding on live cells（检测 insulin binding on adipocytes）
 
-这些 assay 都不完全匹配当前需求，但它们各自贡献了可复用的组件：某个提供了 cell-surface binding 的实验逻辑，某个提供了 IGF-1 相关的 control 设计，某个提供了 live cell fluorescence readout 的 protocol。
+这些 assay 都不完全匹配当前需求，但它们各自贡献了可复用的组件：某个提供了 cell-surface binding 的实验逻辑，某个提供了 IGF-1 相关的 control 设计，某个提供了 live cell fluorescence readout 的 procedure。
 
 **4.2 Rank**
 
@@ -579,15 +579,15 @@ sub-claim
 
 **4.3 组合或改写，形成新 assay**
 
-回顾前面对 assay 的定义：assay 的 process 是一个 DAG，其中 node 为 protocol，edge 为物料运输。既然 assay 本身就是由 protocol 搭建而成的，那么当没有现成 assay 时，可以从排序靠前的候选 assay 中抽取可复用的 protocol nodes，重新组合成一个新的 DAG。
+回顾前面对 assay 的定义：assay 的 process 是一个 DAG，其中 node 为 procedure，edge 为物料运输。既然 assay 本身就是由 procedure 搭建而成的，那么当没有现成 assay 时，可以从排序靠前的候选 assay 中抽取可复用的 procedure nodes，重新组合成一个新的 DAG。
 
 这个过程类似搭积木：
 
-- 从 Assay T-041 中取出"flow cytometry staining and acquisition" protocol
-- 从 Assay T-112 中取出"fluorescence-labeled ligand preparation" protocol
+- 从 Assay T-041 中取出"flow cytometry staining and acquisition" procedure
+- 从 Assay T-112 中取出"fluorescence-labeled ligand preparation" procedure
 - 将 ligand 替换为 IGF-1，将 cell type 替换为表达候选蛋白的细胞
-- 补充 competition control protocol（加入 unlabeled IGF-1 竞争）
-- 将这些 protocol 按逻辑依赖关系连成 DAG，形成新的 assay
+- 补充 competition control procedure（加入 unlabeled IGF-1 竞争）
+- 将这些 procedure 按逻辑依赖关系连成 DAG，形成新的 assay
 
 新生成的 assay 必须记录其来源：
 
@@ -602,7 +602,7 @@ adaptation_summary:
   - replaced ligand from EGF to fluorescence-labeled IGF-1
   - replaced target cells to candidate-protein-expressing cells
   - added competition control with unlabeled IGF-1
-  - retained flow cytometry acquisition and gating protocol from T-041
+  - retained flow cytometry acquisition and gating procedure from T-041
 ```
 
 **4.4 请求人类确认**
@@ -611,7 +611,7 @@ adaptation_summary:
 
 人类专家需要确认的内容包括：
 
-- 新 assay 的 DAG 结构是否合理（protocol 之间的依赖是否正确）
+- 新 assay 的 DAG 结构是否合理（procedure 之间的依赖是否正确）
 - evaluant、ligand、controls 的选择是否合适
 - readout 是否足以支持或拒绝 sub-claim
 - criteria 定义是否清晰、可执行
@@ -686,7 +686,7 @@ safety_notes: handle fluorescent dyes according to MSDS; standard BSL-1 cell cul
 
 比较维度可以包括：成本、时间、证据强度、风险、是否需要额外采购、是否互补等。
 
-最终由人类专家综合判断选择执行哪些路径（可以选多条互补路径），确认后下发至物理层生成 protocol 并执行。
+最终由人类专家综合判断选择执行哪些路径（可以选多条互补路径），确认后下发至物理层生成 procedure 并执行。
 
 ---
 
@@ -698,7 +698,7 @@ safety_notes: handle fluorescent dyes according to MSDS; standard BSL-1 cell cul
 
 第二，允许多条路径并行展开。一个 sub-claim 可能有多种验证方式，它们不是互斥的。系统应该把所有可行路径都展开，最后由人类根据成本、时间、证据强度等因素选择。
 
-第三，assay 的生成是"基于已有模板的受控组合"，而不是凭空创造。当没有现成 assay 时，系统从 assay database 中检索相关 templates，抽取可复用的 protocol nodes，重新组装成新的 DAG。这保证了新 assay 的每个组成部分都有据可循。
+第三，assay 的生成是"基于已有模板的受控组合"，而不是凭空创造。当没有现成 assay 时，系统从 assay database 中检索相关 templates，抽取可复用的 procedure nodes，重新组装成新的 DAG。这保证了新 assay 的每个组成部分都有据可循。
 
 第四，人类确认嵌入在流程中间，而不是只在最后。特别是对于组合生成的新 assay，必须在绑定之前就经过人类审核，而不是等到所有 assay 都定完之后再统一审批。
 
@@ -774,7 +774,7 @@ support(C0_strong) = (supported(S1) OR supported(S2)) AND supported(S3)
 
 ### 3. Assay 可执行性检查
 
-Assay 需要足够具体，才能交给物理层继续转换为 protocol。
+Assay 需要足够具体，才能交给物理层继续转换为 procedure。
 
 需要检查的问题包括：
 
@@ -906,4 +906,4 @@ Claim
 
 > 将概念层中的 claim 转换成一组可实验判定的 sub-claims，并为每个 sub-claim 匹配能够产生证据的 assay，同时定义清楚从 assay result 到 sub-claim status，再到 final claim status 的判断规则。
 
-只有完成这一步之后，物理层才能真正开始生成 protocol、分配仪器、安排实验人员或调用自动化设备。
+只有完成这一步之后，物理层才能真正开始生成 procedure、分配仪器、安排实验人员或调用自动化设备。

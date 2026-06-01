@@ -2,7 +2,7 @@
 title: "From hypothesis to experiment"
 subtitle_zh: "从假设到实验"
 subtitle_en: "A layered schema from computational hypotheses to experimental validation"
-series: "Function to Protocol schema"
+series: "Function to Procedure schema"
 series_part: 1
 date: 2026-05-23
 last_modified_at: 2026-05-23
@@ -13,7 +13,7 @@ tags:
   - claims
   - protein-function
   - ai4science
-  - protocol
+  - procedure
 locale: zh
 lang: zh-CN
 excerpt: "随着越来越多的蛋白质被计算方法自动标注，社区仍存在明显 gap：功能假设生成很快，验证很慢。本文从概念层的 hypothesis 与 claims 开始，梳理从假设到实验验证的分层框架。"
@@ -43,12 +43,12 @@ comments: false
   - sub-claims
   - assays
 - **物理层**
-  - protocols
-  - devices / human operators
+  - procedures / transport
+  - resources
 
 <figure>
   <img src="/images/2026-05-23-from-hypothesis-to-experiment-overview.png" alt="从 hypothesis 到实验验证的分层框架概览">
-  <figcaption>从 hypothesis 到实验验证的分层框架：概念层（hypothesis、claims）、中间层（sub-claims、assays）与物理层（protocols、devices / human operators）。</figcaption>
+  <figcaption>从 hypothesis 到实验验证的分层框架：概念层（hypothesis、claims）、中间层（sub-claims、assays）与物理层（procedures、devices / human operators）。</figcaption>
 </figure>
 
 接下来，我们分层进行阐述。
@@ -94,7 +94,7 @@ comments: false
 
 换句话说，**claim 是 hypothesis 中可以被进一步讨论、判断或验证的最小语义单元之一**。
 
-这里需要特别强调一点：在 claim 这一层，我们并不关心“应该用什么实验去验证它”。也就是说，我们不会在这一步把 claim 绑定到具体 assay、protocol 或 device 上。claim 层仍然是一个纯概念层，它的目标是把自然语言中的功能描述整理成结构化、可比较、可推理的科学命题。
+这里需要特别强调一点：在 claim 这一层，我们并不关心“应该用什么实验去验证它”。也就是说，我们不会在这一步把 claim 绑定到具体 assay、procedure 或 device 上。claim 层仍然是一个纯概念层，它的目标是把自然语言中的功能描述整理成结构化、可比较、可推理的科学命题。
 
 一般来说，一个好的 claim 至少应该包含以下几个方面的信息：
 
@@ -193,7 +193,7 @@ In summary, this protein acts as a critical component in the IGF signaling pathw
    claim 不应该只是一个名词短语，而应该是一个完整的科学命题。
 
 3. **避免在 claim 层绑定实验方法**  
-   在这一层，我们只判断 statement 是否清楚、是否有可验证性，而不决定具体用什么 assay 或 protocol。
+   在这一层，我们只判断 statement 是否清楚、是否有可验证性，而不决定具体用什么 assay 或 procedure。
 
 4. **区分不同 testability 类型**  
    有些 statement 已经可以直接作为 claim；有些需要拆分；有些需要补充条件；有些只是总结性语言，应当过滤掉。
