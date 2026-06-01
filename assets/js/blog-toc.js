@@ -3,7 +3,8 @@
   var list = document.getElementById("blog-toc-list");
   if (!body || !list) return;
 
-  var headings = body.querySelectorAll("h2, h3");
+  var levelClass = { H3: "toc__h3", H4: "toc__h4" };
+  var headings = body.querySelectorAll("h2, h3, h4");
   headings.forEach(function (heading) {
     if (!heading.id) {
       heading.id = heading.textContent
@@ -14,8 +15,8 @@
     }
 
     var item = document.createElement("li");
-    if (heading.tagName === "H3") {
-      item.className = "toc__h3";
+    if (levelClass[heading.tagName]) {
+      item.className = levelClass[heading.tagName];
     }
 
     var link = document.createElement("a");

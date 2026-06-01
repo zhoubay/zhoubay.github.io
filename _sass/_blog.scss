@@ -115,6 +115,11 @@
   font-weight: normal;
 }
 
+.toc__menu .toc__h4 a {
+  padding-left: 2.5rem;
+  font-weight: normal;
+}
+
 .layout--wide .page__content .sidebar__right.sticky {
   @include breakpoint($large) {
     position: fixed;
