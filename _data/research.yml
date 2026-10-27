@@ -40,5 +40,5 @@ sections:
 
       - slug: Pinal
         name: Pinal
-        badge: "bioRxiv · under review at Nature"
-        summary: "16B-parameter framework: natural-language instructions → structure generation → sequence design for de novo proteins beyond PDB."
+        badge: "Nature 2026"
+        summary: "16B-parameter model that translates functional descriptions into protein designs, with experimental validation across four tasks including fluorescence, enzyme catalysis, and a metabolic H-protein."

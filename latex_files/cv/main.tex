@@ -1,17 +1,33 @@
 \documentclass[10pt]{article}
 % \usepackage[a4paper, margin=1.2in]{geometry}
 % \usepackage[a4paper, top=0.65in, bottom=0.65in]{geometry}
-\usepackage[a4paper, top=0.5in, bottom=0.7in, left=0.65in, right=0.65in]{geometry}
+\usepackage[a4paper, top=0.5in, bottom=0.5in, left=0.65in, right=0.65in]{geometry}
 % \usepackage[a4paper, top=1in, bottom=1in, left=0.75in, right=0.75in]{geometry}
 % \usepackage[a4paper, left=0.75in, right=0.75in]{geometry}
 \usepackage{fontspec}
-\usepackage{ctex}
+\usepackage[fontset=none]{ctex}
+\setCJKmainfont{Noto Serif CJK SC}[BoldFont={Noto Serif CJK SC Bold}]
+\usepackage{xcolor}
 \usepackage{hyperref}
 \usepackage{enumitem}
 \usepackage{titlesec}
 \usepackage{microtype}
 
-\hypersetup{hidelinks}
+\definecolor{linkblue}{HTML}{145A8D}
+\hypersetup{
+  colorlinks=true,
+  urlcolor=linkblue,
+  linkcolor=linkblue,
+  citecolor=linkblue,
+  breaklinks=true,
+  unicode=true,
+  pdftitle={Xibin Zhou - Curriculum Vitae},
+  pdfauthor={Xibin Zhou}
+}
+\urlstyle{same}
+\pagestyle{empty}
+% Override ctex's expanded leading while keeping the body at 10 pt.
+\linespread{1.05}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0pt}
 % Times New Roman on Windows/macOS; TeX Gyre Termes on Linux (TeX Live)
@@ -27,12 +43,12 @@
 % Section headings: compact but readable
 % \titleformat{\section}{\normalsize\bfseries}{}{0em}{}[\vspace{-0.25em}]
 % \titlespacing*{\section}{0pt}{0.35em}{0.15em}
-\titlespacing*{\section}{0pt}{*0.5}{*0.5}
+\titleformat{\section}{\large\bfseries}{}{0pt}{}
+\titlespacing*{\section}{0pt}{7pt}{3pt}
 
 % List spacing
 \setlist[itemize]{
-  noitemsep,
-  topsep=0pt,
+  nosep,
   % parsep=0pt,
   % partopsep=0pt,
   leftmargin=*,
@@ -101,7 +117,7 @@
 \section*{Education}
 \begin{itemize}
     \item Ph.D. in Computer Science, Joint Program of Westlake University and Zhejiang University, Hangzhou, China (2022--2027, expected)
-    \item B.S. in Data Science and Big Data Technology, Tongji University, Shanghai, China (2018--2022)
+    \item B.Eng. in Data Science and Big Data Technology, Tongji University, Shanghai, China (2018--2022)
     \item High School, Tianjin Nankai School, Tianjin, China (2015--2018)
 \end{itemize}
 
@@ -140,13 +156,13 @@
 \section*{Selected Publications}
 {\footnotesize * equal contribution}
 \begin{itemize}[itemsep=0pt]
-    \item \textbf{Xibin Zhou}, \textit{et al.} \textbf{Decoding the molecular language of proteins with Evolla}. \textit{bioRxiv} (under review at \textit{Nature}), 2025.
-    \item F. Dai, \textit{et al.}, \textbf{X. Zhou}. \textbf{Toward de novo protein design from natural language}. \textit{bioRxiv} (under review at \textit{Nature}), 2024.
-    \item Y. He*, \textbf{X. Zhou*}, \textit{et al.} \textbf{PLM-assisted optimization of uracil-N-glycosylase enables programmable T-to-G/C base editing}. \textit{Molecular Cell} 84(7), 1257--1270, 2024.
-    \item H. Qian*, Y. Wang*, \textbf{X. Zhou*}, \textit{et al.} \textbf{ESM-Ezy: deep learning strategy for mining novel multicopper oxidases}. \textit{Nature Communications} 16, 3274, 2025.
-    \item J. Su*, Y. He*, S. You*, \textit{et al.}, \textbf{X. Zhou}. \textbf{A trimodal protein language model enables advanced protein searches}. \textit{Nature Biotechnology}, 2025.
-    \item J. Su, \textit{et al.}, \textbf{X. Zhou}. \textbf{Democratizing protein language model training, sharing and collaboration}. \textit{Nature Biotechnology}, 2025.
-    \item J. Su, \textit{et al.}, \textbf{X. Zhou}. \textbf{SaProt: protein language modeling with structure-aware vocabulary}. \textit{ICLR}, 2024.
+    \item \textbf{Xibin Zhou}, \textit{et al.} \href{https://doi.org/10.1101/2025.01.05.630192}{\textbf{Decoding the molecular language of proteins with Evolla}}. \textit{bioRxiv} (under review at \textit{Nature}), 2025.
+    \item F. Dai, \textit{et al.}, \textbf{X. Zhou}. \href{https://doi.org/10.1038/s41586-026-11205-z}{\textbf{Programmable design of functional proteins from natural language}}. \textit{Nature}, 2026. DOI: \href{https://doi.org/10.1038/s41586-026-11205-z}{10.1038/s41586-026-11205-z}
+    \item Y. He*, \textbf{X. Zhou*}, \textit{et al.} \href{https://doi.org/10.1016/j.molcel.2024.01.021}{\textbf{PLM-assisted optimization of uracil-N-glycosylase enables programmable T-to-G/C base editing}}. \textit{Molecular Cell} 84(7), 1257--1270, 2024.
+    \item H. Qian*, Y. Wang*, \textbf{X. Zhou*}, \textit{et al.} \href{https://doi.org/10.1038/s41467-025-58521-y}{\textbf{ESM-Ezy: deep learning strategy for mining novel multicopper oxidases}}. \textit{Nature Communications} 16, 3274, 2025.
+    \item J. Su*, Y. He*, S. You*, \textit{et al.}, \textbf{X. Zhou}. \href{https://doi.org/10.1038/s41587-025-02836-0}{\textbf{A trimodal protein language model enables advanced protein searches}}. \textit{Nature Biotechnology}, 2025.
+    \item J. Su, \textit{et al.}, \textbf{X. Zhou}. \href{https://doi.org/10.1038/s41587-025-02859-7}{\textbf{Democratizing protein language model training, sharing and collaboration}}. \textit{Nature Biotechnology}, 2025.
+    \item J. Su, \textit{et al.}, \textbf{X. Zhou}. \href{https://openreview.net/forum?id=6MRm3G4NiU}{\textbf{SaProt: protein language modeling with structure-aware vocabulary}}. \textit{ICLR}, 2024.
 \end{itemize}
 % --- legacy publications (commented out) ---
 % \section*{Publications (* indicates co-first authorship)}
@@ -156,7 +172,6 @@
 %     \item Yan He*, \textbf{Xibin Zhou*}, \textit{et al.} (2024). \textbf{Protein Language Models-Assisted Optimization of a Uracil-N-Glycosylase Variant Enables Programmable T-to-G and T-to-C Base Editing}. \textit{Molecular Cell}, 2024, 84(7): 1257-1270. e6.
 %     \item Jin Su, Chenchen Han, Yuyang Zhou, Junjie Shan, \textbf{Xibin Zhou}, \textit{et al.} (2023). \textbf{Saprot: Protein Language Modeling with Structure-Aware Vocabulary}. Accepted at \textit{International Conference on Learning Representations (ICLR)} as a \textbf{Spotlight Poster}. DOI: \href{https://doi.org/10.1101/2023.10.01.560349}{10.1101/2023.10.01.560349}
 %     \item Jin Su, \textbf{Xibin Zhou}, \textit{et al.} (2023). \textbf{A trimodal protein language model enables advanced protein searches}. \textit{Nature Biotechnology}, 2025: 1-7.
-%     \item Fengyuan Dai, Yuliang Fan, Jin Su, Chentong Wang, Chenchen Han, \textbf{Xibin Zhou}, \textit{et al.} (2025). \textbf{Toward De Novo Protein Design from Natural Language}. Under review at \textit{Nature}.
 %     \item Jin Su, Zhikai Li, Chenchen Han, Yuyang Zhou, Yan He, Junjie Shan, \textbf{Xibin Zhou}, \textit{et al.} (2024). \textbf{Democratizing protein language model training, sharing and collaboration}. \textit{Nature Biotechnology}, 2025: 1-7.
 % \end{itemize}
 

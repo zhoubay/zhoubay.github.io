@@ -34,7 +34,7 @@ I develop large-scale protein language models and open platforms that bridge pro
 - ProTrek — trimodal protein sequence/structure/function model (*Nature Biotechnology*, 2025): https://zhoubay.github.io/publication/ProTrek
 - SaprotHub — democratized protein LM platform (*Nature Biotechnology*, 2025): https://zhoubay.github.io/publication/SaprotHub
 - Evolla — interactive protein-language generative model (bioRxiv; under review at *Nature*): https://doi.org/10.1101/2025.01.05.630192 — https://zhoubay.github.io/publication/Evolla
-- Pinal — text-guided de novo protein design (under review at *Nature*): https://zhoubay.github.io/publication/Pinal
+- Pinal — programmable design of functional proteins from natural language (*Nature*, 2026): https://doi.org/10.1038/s41586-026-11205-z — https://zhoubay.github.io/publication/Pinal
 
 ## Optional
 

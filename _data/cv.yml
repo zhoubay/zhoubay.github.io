@@ -1,14 +1,14 @@
 pdf: /latex_files/cv/main.pdf
 
 summary: |
-  Ph.D. candidate developing **protein language models** and AI systems for computational biology at Westlake University. Research spans structure-aware pretraining (SaProt, ICLR 2024), trimodal protein search (ProTrek, *Nature Biotechnology* 2025), democratized PLM platforms (SaprotHub, *Nature Biotechnology* 2025), PLM-assisted base editing (*Molecular Cell* 2024), and frontier generative models (Evolla and Pinal, both under review at *Nature*).
+  Ph.D. candidate developing **protein language models** and AI systems for computational biology at Westlake University. Research spans structure-aware pretraining (SaProt, ICLR 2024), trimodal protein search (ProTrek, *Nature Biotechnology* 2025), democratized PLM platforms (SaprotHub, *Nature Biotechnology* 2025), PLM-assisted base editing (*Molecular Cell* 2024), and frontier generative models (Pinal, *Nature* 2026; Evolla, under review at *Nature*).
 
 education:
   - period: "2022 – 2027 (expected)"
     title: "Ph.D. in Computer Science, Westlake University"
     detail: "Joint program with Zhejiang University · Hangzhou"
   - period: "2018 – 2022"
-    title: "B.S. in Data Science and Big Data Technology, Tongji University"
+    title: "B.Eng. in Data Science and Big Data Technology, Tongji University"
   - period: "2015 – 2018"
     title: "High School, Tianjin Nankai School"
 

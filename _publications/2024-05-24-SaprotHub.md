@@ -5,7 +5,7 @@ category: journals
 permalink: /publication/SaprotHub
 slug: SaprotHub
 excerpt: 'SaprotHub offers an intuitive platform that facilitates training, prediction, storage, and sharing of protein language models. Built on Google Colab, the ColabSaprot framework powers hundreds of protein applications, enabling researchers without deep ML expertise to collaboratively build and share customized models.'
-date: 2025-10-02
+date: 2025-10-24
 venue: 'Nature Biotechnology'
 badge: "Nature Biotechnology 2025"
 journal_tag: nature-biotech

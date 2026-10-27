@@ -213,7 +213,7 @@
 
   &__item {
     position: relative;
-    padding: 0.85rem 0 0.85rem 5.5rem;
+    padding: 0.85rem 0 0.85rem 6.75rem;
     border-bottom: 1px solid var(--border-subtle);
 
     &:last-child {
@@ -225,11 +225,23 @@
       position: absolute;
       left: 0;
       top: 0.85rem;
-      width: 5rem;
+      width: 6rem;
+      white-space: nowrap;
       font-size: 0.8rem;
       font-weight: 600;
       color: var(--accent);
       font-family: $monospace;
+    }
+
+    @media (max-width: 480px) {
+      padding-left: 0;
+
+      &::before {
+        position: static;
+        display: block;
+        width: auto;
+        margin-bottom: 0.25rem;
+      }
     }
   }
 
