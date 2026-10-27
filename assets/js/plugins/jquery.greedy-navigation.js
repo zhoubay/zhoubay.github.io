@@ -16,8 +16,8 @@ function updateNav() {
 
   var availableSpace = $btn.hasClass('hidden') ? $nav.width() : $nav.width() - $btn.width() - 30;
 
-  // The visible list is overflowing the nav
-  if($vlinks.width() > availableSpace) {
+  // Only shrink an overflowing list when another link can be moved
+  if($vlinks.width() > availableSpace && $vlinks.children('*:not(.masthead__menu-item--lg)').length) {
 
     // Record the width of the list
     breaks.push($vlinks.width());
@@ -51,8 +51,8 @@ function updateNav() {
   // Keep counter updated
   $btn.attr("count", breaks.length);
 
-  // Recur if the visible list is still overflowing the nav
-  if($vlinks.width() > availableSpace) {
+  // Recur only while another link can be moved to reduce the overflow
+  if($vlinks.width() > availableSpace && $vlinks.children('*:not(.masthead__menu-item--lg)').length) {
     updateNav();
   }
 

@@ -1,0 +1,42 @@
+# Exact date confirmed by the user; team is documented in the award certificate.
+- id: sup-polo-shanghai-2026
+  sport: SUP Polo
+  award: National Third Place
+  division: National Collegiate Division
+  event: 2026 SUP Polo Open Tournament Shanghai
+  event_zh: 2026年中国桨板球公开赛上海站
+  date: "2026-10-18"
+  date_label: "Oct 18, 2026"
+  location: Shanghai, China
+  summary: Competed as a starting player for the Westlake University Water Sports
+    Club.
+  cover:
+    image: /images/sports-awards/sup-polo/cover.jpg
+    preview: /images/sports-awards/sup-polo/web/cover-960.webp
+    large: /images/sports-awards/sup-polo/web/cover-1600.webp
+    width: 960
+    height: 640
+    caption: Team celebration at the 2026 SUP Polo Open Tournament Shanghai
+    alt: Team members posing with a trophy and award certificates at the 2026 SUP
+      Polo tournament in Shanghai.
+  photos:
+  - image: /images/sports-awards/sup-polo/match-01.jpg
+    preview: /images/sports-awards/sup-polo/web/match-01-320.webp
+    width: 320
+    height: 480
+    caption: On the water
+    alt: A SUP Polo player standing on a paddleboard and holding a paddle during the
+      tournament.
+  - image: /images/sports-awards/sup-polo/trophy.jpg
+    preview: /images/sports-awards/sup-polo/web/trophy-360.webp
+    width: 360
+    height: 480
+    caption: Third-place trophy
+    alt: The third-place trophy held beside the water after the SUP Polo tournament.
+  - image: /images/sports-awards/sup-polo/certificate.jpg
+    preview: /images/sports-awards/sup-polo/web/certificate-640.webp
+    width: 640
+    height: 453
+    caption: Award certificate
+    alt: Certificate awarding third place in the collegiate division to the Westlake
+      University team.

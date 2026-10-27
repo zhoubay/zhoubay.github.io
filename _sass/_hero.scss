@@ -153,8 +153,21 @@
   }
 }
 
+/* The measured footer height already reserves space below the homepage. */
+body.layout--home {
+  padding-bottom: 0;
+}
+
 .layout--home .page-shell {
   padding-top: 3.5rem;
+
+  > .home-section:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.layout--home .page__footer {
+  margin-top: 0;
 }
 
 .about-block {

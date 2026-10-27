@@ -1,0 +1,43 @@
+{% if site.data.sports_awards.size > 0 %}
+<section id="sports-awards" class="home-section fade-in" aria-labelledby="sports-awards-heading">
+  <div class="section-header">
+    <h2 id="sports-awards-heading" class="section-header__title">Sports Awards</h2>
+    <span class="section-header__line" aria-hidden="true"></span>
+  </div>
+  <div class="sports-awards">
+    {% for item in site.data.sports_awards %}
+    <article class="sports-award" aria-labelledby="{{ item.id }}-title">
+      <div class="sports-award__overview">
+        <a class="sports-award__cover image-popup" href="{{ item.cover.image | relative_url }}" title="{{ item.cover.caption | escape }}" aria-label="View team photo full size: {{ item.event | escape }}">
+          <img src="{{ item.cover.preview | relative_url }}"
+               srcset="{{ item.cover.preview | relative_url }} 960w, {{ item.cover.large | relative_url }} 1600w"
+               sizes="(min-width: 1008px) 490px, (min-width: 768px) 48vw, 100vw"
+               width="{{ item.cover.width }}" height="{{ item.cover.height }}"
+               alt="{{ item.cover.alt | escape }}" loading="lazy" decoding="async">
+        </a>
+        <div class="sports-award__content">
+          <span class="sports-award__sport">{{ item.sport }}</span>
+          <h3 id="{{ item.id }}-title" class="sports-award__title"><i class="fas fa-medal" aria-hidden="true"></i> {{ item.award }}</h3>
+          <p class="sports-award__division">{{ item.division }}</p>
+          <p class="sports-award__event">{{ item.event }}</p>
+          <p class="sports-award__meta"><time datetime="{{ item.date }}">{{ item.date_label }}</time><span>{{ item.location }}</span></p>
+          <p class="sports-award__summary">{{ item.summary }}</p>
+        </div>
+      </div>
+      {% if item.photos.size > 0 %}
+      <div class="sports-award__gallery" role="group" aria-label="Photos from {{ item.event | escape }}">
+        {% for photo in item.photos %}
+        <figure class="sports-award__photo">
+          <a class="sports-award__thumbnail image-popup" href="{{ photo.image | relative_url }}" title="{{ photo.caption | escape }}" aria-label="View {{ photo.caption | downcase | escape }} full size">
+            <img src="{{ photo.preview | relative_url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt | escape }}" loading="lazy" decoding="async">
+          </a>
+          <figcaption>{{ photo.caption }}</figcaption>
+        </figure>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </article>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}

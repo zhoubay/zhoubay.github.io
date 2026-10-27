@@ -89,7 +89,7 @@ $(document).ready(function(){
   $("a[href$='.jpg'],a[href$='.jpeg'],a[href$='.JPG'],a[href$='.png'],a[href$='.gif'],a[href$='.webp'],a[href$='.WEBP']").addClass("image-popup");
 
   // Magnific-Popup options
-  $(".image-popup").magnificPopup({
+  var imagePopupOptions = {
     type: 'image',
     tLoading: 'Loading image #%curr%...',
     gallery: {
@@ -112,6 +112,13 @@ $(document).ready(function(){
     },
     closeOnContentClick: true,
     midClick: true // allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source.
+  };
+
+  $(".image-popup").not(".sports-award .image-popup").magnificPopup(imagePopupOptions);
+
+  // Keep each award's photos together when navigating its gallery.
+  $(".sports-award").each(function () {
+    $(this).find(".image-popup").magnificPopup($.extend(true, {}, imagePopupOptions));
   });
 
 });

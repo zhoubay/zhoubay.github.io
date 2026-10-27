@@ -9,6 +9,9 @@
     <li class="interests-list__item">
       <strong>{{ item.title }}</strong>
       <span>{{ item.description }}</span>
+      {% if item.url %}
+      <a class="interests-list__link" href="{{ item.url | relative_url }}">{{ item.link_label }}</a>
+      {% endif %}
     </li>
     {% endfor %}
   </ul>
