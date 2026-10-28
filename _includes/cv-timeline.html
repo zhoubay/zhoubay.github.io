@@ -53,6 +53,23 @@
 </section>
 {% endif %}
 
+{% if site.data.sports_awards.size > 0 %}
+<section id="sports-awards" class="cv-section fade-in">
+  {% include section-header.html title="Sports Awards" %}
+  <ul class="cv-timeline">
+    {% assign sports_awards = site.data.sports_awards | sort: 'date' | reverse %}
+    {% for item in sports_awards %}
+    <li class="cv-timeline__item">
+      <p class="cv-timeline__period"><time datetime="{{ item.date }}">{{ item.date_label }}</time> · {{ item.location }}</p>
+      <h3 class="cv-timeline__title">{{ item.award }} — {{ item.sport }}</h3>
+      <p class="cv-timeline__detail">{{ item.event }} · {{ item.division }}</p>
+      <p class="cv-timeline__detail">{{ item.summary }}</p>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}
+
 {% include community-impact-section.html class="cv-section fade-in" %}
 
 {% if site.data.languages %}

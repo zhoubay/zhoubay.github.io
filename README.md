@@ -35,6 +35,7 @@ Ph.D. candidate in Computer Science at [Westlake University](https://www.westlak
 - **Math formulas**: add `math: true` to a page's front matter to load MathJax on that page only. Use Kramdown inline math with `$$...$$` (e.g. `$$K_{cat}$$`); do not use `\(...\)` — Kramdown treats `\(` as an escaped parenthesis.
 - **News**: add entries to `_data/news.yml` (`date`, `text` in Markdown).
 - **Honors**: `_data/honors.yml`.
+- **Sports Awards**: `_data/sports_awards.yml` supplies the homepage gallery and the CV's Sports Awards section. Keep the downloadable CV in `latex_files/cv/main.tex` in sync and recompile `main.pdf` when adding awards.
 - **Community Impact**: `_data/community_impact.yml` (title, description, badge, links with `label` / `url` / `icon`). Screenshots in `files/evidence/`. Rendered on homepage and `/cv/` via `_includes/community-impact-section.html`.
 - **New blog post**: add `_posts/YYYY-MM-DD-slug.md` with `title`, `subtitle_zh` / `subtitle_en`, `date`, `categories: [blog]`, optional `series`, `math: true`, `toc: true`. Listed at `/blog/`; add `slug` to nav via `_data/navigation.yml` (Blog entry).
 - **New paper**: add `_publications/YYYY-MM-DD-slug.md` with `slug`, `venue`, `badge`, `journal_tag`, `summary`, `authors`, `links`, `paperurl`, `citation`, etc. Optional `bibtex: |` block enables **Copy BibTeX** on the publication page; **Copy citation** is always available when `citation` is set.
