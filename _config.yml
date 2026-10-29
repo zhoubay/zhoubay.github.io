@@ -181,6 +181,8 @@ exclude:
   - local
   - log
   - node_modules
+  - scripts
+  - tests
   - package.json*
   - Rakefile
   - README

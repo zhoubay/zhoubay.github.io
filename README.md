@@ -11,6 +11,7 @@ Ph.D. candidate in Computer Science at [Westlake University](https://www.westlak
 | `_pages/main.md` | Homepage (layout: `home`) |
 | `_layouts/home.html` | Full-width hero + section includes |
 | `_data/hero.yml`, `about.yml`, `interests.yml`, `news.yml`, `honors.yml`, `community_impact.yml` | Homepage content |
+| `_data/scholar.json` | Homepage citation count, h-index, and last verified UTC date |
 | `_data/selected_publications.yml` | Homepage featured paper slugs (references `_publications/`) |
 | `_pages/research.md` | Research themes |
 | `_data/research.yml` | Research sections and project slug references |
@@ -44,6 +45,22 @@ Ph.D. candidate in Computer Science at [Westlake University](https://www.westlak
 - **Homepage featured papers**: add the `slug` to `_data/selected_publications.yml` (`slugs` list; order = display order).
 - **Research page projects**: add `slug` under the right section in `_data/research.yml` (`name` / `summary` / `badge` optional overrides).
 
+### Google Scholar metrics
+
+The homepage renders `Total citations` and `h-index` from `_data/scholar.json` at build time. The initial snapshot (909 citations, h-index 7, checked 2026-10-29) was supplied by the site owner. The source link uses `author.googlescholar` in `_config.yml`. Visitors make no requests to Scholar, and the metrics remain visible without JavaScript.
+
+For manual updates, edit `citations`, `h_index`, and `updated_at` (the date the values were verified, `YYYY-MM-DD` in UTC). Use the **All** column on the Scholar profile. Missing data hides the metrics block rather than showing a false zero.
+
+To check the automatic updater locally:
+
+```bash
+python3 -m pip install -r scripts/requirements-scholar.txt
+python3 -m unittest discover -s tests -p 'test_update_scholar.py'
+python3 scripts/update_scholar.py --output /tmp/scholar-preview.json
+```
+
+Omit `--output` to update the tracked snapshot. The updater makes one direct profile request with a 20-second timeout, no retries, and no proxies. It reads the English **All** column and replaces the snapshot only after both values validate. Legitimate zeroes and decreases are accepted. HTTP errors, challenges, timeouts, malformed data, and write failures leave the previous values and verification date unchanged. Free profile fetching can remain blocked by Scholar; a completed workflow setup alone does not prove live updates work.
+
 ### Publication slug resolution
 
 `resolve-publication.html` sets global Liquid variables `resolved_publication` and `resolved_found`. Prefer `render-pub-card-by-slug.html` (resolve + render in one include) over calling `resolve-publication` and `pub-card` separately. Do not nest other includes between resolve and render on the same slug.
@@ -59,7 +76,14 @@ Open [http://localhost:4000](http://localhost:4000). Restart after editing `_con
 
 ## Deploy
 
-Push to `master` on GitHub; [GitHub Pages](https://pages.github.com/) builds the site.
+The `Pages` workflow in `.github/workflows/pages.yml` builds and publishes the site. During rollout, set **Settings → Pages → Build and deployment → Source → GitHub Actions**. The repository must allow the workflow to write contents and deploy to the `github-pages` environment from `master`.
+
+- A push to `master` builds the existing snapshot without contacting Scholar. This also publishes the first, manually verified version of the metrics.
+- A scheduled run at **02:17 UTC daily** or a manual run from the Actions tab fetches Scholar first. A failed fetch stops the run; the current live site stays available with its original verification date.
+- After tests and a successful build, an update run commits only `_data/scholar.json` and deploys the built artifact in the same run. Values that remain unchanged still get a new verification date after a successful check. A `GITHUB_TOKEN` commit does not trigger another Pages build, so the explicit deployment is required.
+- Publishing runs share one concurrency group. If `master` moves during the build, the workflow stops instead of force-pushing or knowingly publishing an obsolete checkout.
+
+After enabling Actions publishing, first verify a normal push deployment, then manually run `Pages` to verify the full Scholar-fetch-to-live-page path. Check the Actions logs after failures; a 403 or challenge means Scholar rejected the request, not that citations became zero. To return to manual data maintenance, remove the workflow's `schedule` trigger and keep push deployment enabled. Public-repository schedules can be disabled after 60 days without repository activity; re-enable them in Actions when needed.
 
 ## Acknowledgement
 
