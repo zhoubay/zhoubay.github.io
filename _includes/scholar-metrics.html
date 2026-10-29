@@ -1,0 +1,20 @@
+{% assign scholar = site.data.scholar %}
+{% if scholar.citations != nil and scholar.h_index != nil and scholar.updated_at and site.author.googlescholar %}
+<div class="site-hero__metrics" role="group" aria-label="Google Scholar citation metrics">
+  <dl class="site-hero__metrics-list">
+    <div class="site-hero__metric">
+      <dt>Total citations</dt>
+      <dd>{{ scholar.citations }}</dd>
+    </div>
+    <div class="site-hero__metric">
+      <dt>h-index</dt>
+      <dd>{{ scholar.h_index }}</dd>
+    </div>
+  </dl>
+  <p class="site-hero__metrics-source">
+    <a href="{{ site.author.googlescholar }}" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+    <span aria-hidden="true"> · </span>
+    <span>Updated <time datetime="{{ scholar.updated_at | escape }}">{{ scholar.updated_at | date: "%b %-d, %Y" }}</time></span>
+  </p>
+</div>
+{% endif %}

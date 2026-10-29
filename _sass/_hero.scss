@@ -99,6 +99,70 @@
     font-size: clamp(0.95rem, 1.8vw, 1.05rem);
   }
 
+  &__metrics {
+    width: 100%;
+    max-width: 23rem;
+    box-sizing: border-box;
+    margin: 0 auto 1.5rem;
+    padding: 0.85rem 1rem 0.7rem;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 1rem;
+    backdrop-filter: blur(8px);
+  }
+
+  &__metrics-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin: 0;
+  }
+
+  &__metric {
+    display: flex;
+    flex-direction: column;
+    padding: 0 0.65rem;
+
+    + .site-hero__metric {
+      border-left: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    dt {
+      order: 1;
+      margin: 0;
+      font-size: 0.8rem;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    dd {
+      margin: 0 0 0.15rem;
+      font-size: clamp(1.65rem, 3vw, 2.1rem);
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+      line-height: 1.2;
+      overflow-wrap: anywhere;
+    }
+  }
+
+  &__metrics-source {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0 0.3em;
+    margin: 0.65rem 0 0;
+    font-size: 0.65rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.92);
+
+    a {
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 0.15em;
+
+      &:hover { color: #fff; }
+    }
+  }
+
   &__social {
     display: flex;
     flex-wrap: wrap;

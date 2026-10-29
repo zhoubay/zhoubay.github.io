@@ -29,6 +29,7 @@
     {% if site.data.hero.lede_zh %}
     <p class="site-hero__lede site-hero__lede-zh" lang="zh">{{ site.data.hero.lede_zh }}</p>
     {% endif %}
+    {% include scholar-metrics.html %}
     <div class="site-hero__social">
       {% if site.author.googlescholar %}
       <a class="site-hero__social-link" href="{{ site.author.googlescholar }}" target="_blank" rel="noopener noreferrer"><i class="ai ai-google-scholar"></i> Scholar</a>
