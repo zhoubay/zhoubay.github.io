@@ -4,10 +4,8 @@ on:
   push:
     branches: [master]
   schedule:
-    # Primary: 10:17 Beijing time (UTC+8).
+    # Check daily at 10:17 Beijing time; refresh only after three UTC calendar days.
     - cron: "17 2 * * *"
-    # Afternoon backup: 16:43 Beijing time (UTC+8).
-    - cron: "43 8 * * *"
   workflow_dispatch:
 
 permissions:
@@ -21,8 +19,49 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build:
+  check_schedule:
     if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    outputs:
+      should_run: ${{ steps.interval.outputs.should_run }}
+    steps:
+      - name: Check out latest master
+        uses: actions/checkout@v6
+        with:
+          ref: master
+
+      - name: Check three-day refresh interval
+        id: interval
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          python3 - <<'PYTHON'
+          from datetime import date, datetime, timezone
+          import json
+          import os
+          from pathlib import Path
+
+          should_run = True
+          if os.environ["EVENT_NAME"] == "schedule":
+              try:
+                  snapshot = json.loads(Path("_data/scholar.json").read_text())
+                  checked = date.fromisoformat(snapshot["updated_at"])
+                  age = (datetime.now(timezone.utc).date() - checked).days
+                  if age < 0:
+                      print("::warning::Scholar snapshot has a future date; requesting a fresh update.")
+                  else:
+                      should_run = age >= 3
+                      print(f"Scholar snapshot is {age} UTC calendar day(s) old; refresh due: {should_run}.")
+              except (OSError, ValueError, KeyError, TypeError):
+                  print("::warning::Scholar snapshot date is missing or invalid; requesting a fresh update.")
+
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as output:
+              output.write(f"should_run={str(should_run).lower()}\n")
+          PYTHON
+
+  build:
+    needs: check_schedule
+    if: github.ref == 'refs/heads/master' && needs.check_schedule.outputs.should_run == 'true'
     runs-on: ubuntu-latest
     outputs:
       source_sha: ${{ steps.source.outputs.sha }}
