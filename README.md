@@ -85,7 +85,7 @@ Open [http://localhost:4000](http://localhost:4000). Restart after editing `_con
 The `Pages` workflow in `.github/workflows/pages.yml` builds and publishes the site. During rollout, set **Settings → Pages → Build and deployment → Source → GitHub Actions**. The repository must allow the workflow to write contents and deploy to the `github-pages` environment from `master`.
 
 - A push to `master` builds the existing snapshot without contacting Scholar. This also publishes the first, manually verified version of the metrics.
-- A scheduled run at **02:17 UTC daily** or a manual run from the Actions tab fetches Scholar first. A failed fetch stops the run; the current live site stays available with its original verification date.
+- Scheduled runs at **02:17 UTC** (10:17 Beijing time) and **08:43 UTC** (16:43 Beijing time, afternoon backup), or a manual run from the Actions tab, fetch Scholar first. Both schedules run independently; the afternoon run still runs if the morning run succeeds. A failed fetch stops the run; the current live site stays available with its original verification date. GitHub schedules can be delayed or dropped, so the second time reduces the risk of missing a day but does not guarantee an on-time run.
 - After tests and a successful build, an update run commits only `_data/scholar.json` and deploys the built artifact in the same run. Values that remain unchanged still get a new verification date after a successful check. A `GITHUB_TOKEN` commit does not trigger another Pages build, so the explicit deployment is required.
 - Publishing runs share one concurrency group. If `master` moves during the build, the workflow stops instead of force-pushing or knowingly publishing an obsolete checkout.
 
