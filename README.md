@@ -65,7 +65,15 @@ Omit `--output` to update the tracked snapshot. The updater makes one direct pro
 
 The homepage's bilingual **Off the clock / 下班了** button opens a small lake with paper boats named after the featured publications. Move or tap on the water for ripples, click a boat to nudge it, and use **Back to shore / 回岸上** or **Esc** to return to the same scroll position. It runs entirely in the browser without services or extra dependencies, and never opens automatically. On entry, a note from the boss (老板 / PI) asks for one more experiment, then the rising water carries it away. Reduced-motion preferences skip this animation and show the still lake with its departure message; without JavaScript the button stays hidden.
 
-Markup lives in `_includes/after-hours.html`, styling in `_sass/_after-hours.scss`, and the animation in `assets/js/after-hours.js`. Boat names come from the publication slugs already used on the homepage. The scene, controls, boss dialogue, and boat-click messages show English with Chinese alongside; rotating messages are paired in the script.
+In the lake, **Lake toys / 湖边玩具** opens three diversions:
+
+- **Boss nearby / 老板来了** (or **B**) switches to a lab notebook and pauses the lake. Press **B** or **Esc**, or click **They’re gone / 走了走了**, to resume.
+- **Lab vending / 实验室售货机** dispenses a bilingual surprise. A rowing voucher can be redeemed to call the crew.
+- **Call the rowing crew / 赛艇队来了** sends four rowers across the lake, sweeping away the paper boats. **Fish them back / 捞回论文** restores them. Reduced-motion visitors get the cleared lake immediately.
+
+**Esc** closes the current panel or menu first, then exits the lake. Leaving the lake resets these interactions; publication content is unchanged.
+
+Markup lives in `_includes/after-hours.html` and its `after-hours-toys.html` / `after-hours-rowing-crew.html` includes. Styling is in `_sass/_after-hours*.scss`. `assets/js/after-hours.js` manages the lake; `assets/js/rowing-crew.js` draws the articulated athletes and alternating sweep oars on the same animation clock. The crew uses a longer racing shell, fixed foot stretchers, sliding seats, and connected hand/oar geometry, with a quick drive and slower feathered recovery. Technique references: [British Rowing](https://www.britishrowing.org/knowledge/rower-development/british-rowing-technique/water-rowing-technique/) and [Concept2 sweep rigging](https://www.concept2.com/oars/sweeps/length-and-rigging). Boat names come from the publication slugs already used on the homepage. The scene, controls, boss dialogue, and boat-click messages show English with Chinese alongside; rotating messages are paired in the script.
 
 ### Publication slug resolution
 

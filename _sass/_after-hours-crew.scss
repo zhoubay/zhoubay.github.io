@@ -1,0 +1,18 @@
+/* The shell and articulated crew share the lake's animation clock. */
+.after-hours__crew {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  width: 700px;
+  pointer-events: none;
+  will-change: transform;
+  filter: drop-shadow(0 2px 1px rgba(20, 51, 66, 0.1));
+
+  > svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+}

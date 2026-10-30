@@ -9,5 +9,6 @@
 {% endif %}
 
 {% if page.layout == "home" %}
+<script src="{{ base_path }}/assets/js/rowing-crew.js?v={{ site.time | date: '%s' }}" defer></script>
 <script src="{{ base_path }}/assets/js/after-hours.js?v={{ site.time | date: '%s' }}" defer></script>
 {% endif %}

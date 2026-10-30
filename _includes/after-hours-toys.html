@@ -1,0 +1,81 @@
+<div class="after-hours__tools">
+  <div class="after-hours__toy-menu" id="lake-toy-menu" hidden>
+    <button type="button" data-lake-boss>
+      <span class="after-hours__toy-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2 12h3m14 0h3M10 12h4M4 11l1-5m15 5-1-5"/><circle cx="7" cy="13" r="4"/><circle cx="17" cy="13" r="4"/></svg></span>
+      <span class="after-hours__toy-label"><span lang="en">Boss nearby</span><span lang="zh-CN">老板来了</span></span>
+      <kbd lang="en">B</kbd>
+    </button>
+    <button type="button" data-lake-vending>
+      <span class="after-hours__toy-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 8h11v8a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5V8Zm11 1h2a3 3 0 0 1 0 6h-2M8 3v2m5-2v2M3 22h16"/></svg></span>
+      <span class="after-hours__toy-label"><span lang="en">Lab vending</span><span lang="zh-CN">实验室售货机</span></span>
+    </button>
+    <button type="button" data-lake-crew>
+      <span class="after-hours__toy-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m3 16 4 4h12l3-4H3Zm8-8 4 3-3 4m3-4 4 3M7 8l12 13M2 23c3-2 5 2 8 0s5 2 8 0"/><circle cx="12" cy="5" r="2"/></svg></span>
+      <span class="after-hours__toy-label"><span lang="en">Call the rowing crew</span><span lang="zh-CN">赛艇队来了</span></span>
+    </button>
+  </div>
+  <button class="after-hours__toy-trigger" type="button" data-lake-menu aria-expanded="false" aria-controls="lake-toy-menu">
+    <svg viewBox="0 0 24 24" width="21" height="21" fill="none" aria-hidden="true"><path d="M5 10V6h14v4M4 10h16v10H4zM9 6V4h6v2M9 10v4h6v-4" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M9 17h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    <span class="after-hours__toy-label"><span lang="en">Lake toys</span><span lang="zh-CN">湖边玩具</span></span>
+  </button>
+</div>
+
+<section class="after-hours__vending" aria-labelledby="lake-vending-title" hidden>
+  <div class="after-hours__vending-card">
+    <button class="after-hours__panel-close" type="button" data-vending-close aria-label="Close vending machine / 关闭售货机"><span aria-hidden="true">×</span></button>
+    <div class="after-hours__vending-heading">
+      <span class="after-hours__toy-eyebrow"><span lang="en">A LITTLE PICK-ME-UP</span><span lang="zh-CN">给今天加一点甜</span></span>
+      <h2 id="lake-vending-title"><span lang="en">Lab vending</span><span lang="zh-CN">实验室售货机</span></h2>
+      <p><span lang="en">No coins. Just curiosity.</span><span lang="zh-CN">不投币，投一点好奇心。</span></p>
+    </div>
+    <div class="after-hours__vending-machine" aria-hidden="true">
+      <div class="after-hours__vending-glass">
+        <div class="after-hours__vending-shelf"><span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 8h11v8a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5V8Zm11 1h2a3 3 0 0 1 0 6h-2M8 3v2m5-2v2M3 22h16"/></svg></span><span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 6h18v4a2 2 0 0 0 0 4v4H3v-4a2 2 0 0 0 0-4V6Zm13 0v2m0 3v2m0 3v2M7 9h5m-5 5h5"/></svg></span><span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M17 3a9 9 0 1 0 4 14A10 10 0 0 1 17 3Z"/></svg></span></div>
+        <div class="after-hours__vending-shelf"><span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 3h8m-6 0v7l-6 9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2l-6-9V3M8 15h8m-5 3h1"/></svg></span><span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m3 16 4 4h12l3-4H3Zm8-8 4 3-3 4m3-4 4 3M7 8l12 13M2 23c3-2 5 2 8 0s5 2 8 0"/><circle cx="12" cy="5" r="2"/></svg></span><span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m12 2 3 7 7 3-7 3-3 7-3-7-7-3 7-3 3-7Z"/></svg></span></div>
+      </div>
+      <div class="after-hours__vending-controls"><i></i><i></i><i></i><span></span></div>
+      <div class="after-hours__vending-slot"></div>
+    </div>
+    <div class="after-hours__vending-result" role="status" aria-live="polite" aria-atomic="true">
+      <span class="after-hours__prize-icon" data-prize-icon aria-hidden="true">
+        <span data-prize-placeholder>?</span>
+        <svg data-prize-art="coffee" viewBox="0 0 24 24" fill="none" hidden><path d="M5 8h11v8a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5V8Zm11 1h2a3 3 0 0 1 0 6h-2M8 3v2m5-2v2M3 22h16"/></svg>
+        <svg data-prize-art="gpu" viewBox="0 0 24 24" fill="none" hidden><rect x="5" y="5" width="14" height="14" rx="2"/><rect x="9" y="9" width="6" height="6" rx="1"/><path d="M9 2v3m6-3v3M9 19v3m6-3v3M2 9h3m-3 6h3m14-6h3m-3 6h3"/></svg>
+        <svg data-prize-art="ticket" viewBox="0 0 24 24" fill="none" hidden><path d="M3 6h18v4a2 2 0 0 0 0 4v4H3v-4a2 2 0 0 0 0-4V6Zm13 0v2m0 3v2m0 3v2M7 9h5m-5 5h5"/></svg>
+        <svg data-prize-art="note" viewBox="0 0 24 24" fill="none" hidden><path d="M14 3H5v18h14V8l-5-5Zm0 0v5h5M8 12h8m-8 4h5"/></svg>
+        <svg data-prize-art="crew" viewBox="0 0 24 24" fill="none" hidden><path d="m3 16 4 4h12l3-4H3Zm8-8 4 3-3 4m3-4 4 3M7 8l12 13M2 23c3-2 5 2 8 0s5 2 8 0"/><circle cx="12" cy="5" r="2"/></svg>
+      </span>
+      <p class="after-hours__prize-name"><span data-prize-en lang="en">Your lucky break</span><span data-prize-zh lang="zh-CN">抽个下班好彩头</span></p>
+      <p class="after-hours__prize-detail"><span data-prize-detail-en lang="en">Something small. Entirely unscientific.</span><span data-prize-detail-zh lang="zh-CN">一点小惊喜，不需要科学依据。</span></p>
+    </div>
+    <div class="after-hours__vending-actions">
+      <button class="after-hours__toy-action" type="button" data-vend><span lang="en">Try your luck</span><span lang="zh-CN">抽一个</span></button>
+      <button class="after-hours__toy-action after-hours__toy-action--secondary" type="button" data-vending-crew hidden><span lang="en">Redeem: call the crew</span><span lang="zh-CN">兑换：叫赛艇队</span></button>
+    </div>
+  </div>
+</section>
+
+<section class="after-hours__workscreen" aria-labelledby="lake-work-title" hidden>
+  <div class="after-hours__work-top"><span class="after-hours__work-mark" aria-hidden="true">N</span><span lang="en">LAB NOTEBOOK</span><span lang="zh-CN">实验记录</span><span class="after-hours__work-dot" aria-hidden="true"></span></div>
+  <div class="after-hours__work-sheet">
+    <div class="after-hours__work-document" aria-hidden="true">
+      <svg viewBox="0 0 180 100" fill="none"><path d="m24 50 25-15 25 15v29L49 94 24 79V50Zm50 0 25-15 25 15v29L99 94 74 79m50-29 25-15 19 11M49 35V13m50 22V13m25 66 23 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="49" cy="10" r="4" fill="currentColor"/><circle cx="99" cy="10" r="4" fill="currentColor"/><circle cx="171" cy="48" r="4" fill="currentColor"/></svg>
+      <i></i><i></i><i></i>
+    </div>
+    <span class="after-hours__toy-eyebrow"><span lang="en">RESEARCH IN PROGRESS</span><span lang="zh-CN">科研进行中</span></span>
+    <h2 id="lake-work-title"><span lang="en">Thinking very seriously.</span><span lang="zh-CN">正在认真思考。</span></h2>
+    <dl class="after-hours__work-tasks">
+      <div><dt><span lang="en">Current task</span><span lang="zh-CN">当前任务</span></dt><dd><span lang="en">Reviewing the literature</span><span lang="zh-CN">正在阅读文献</span></dd></div>
+      <div><dt><span lang="en">Next step</span><span lang="zh-CN">下一步</span></dt><dd><span lang="en">A very important cup of coffee</span><span lang="zh-CN">一杯非常重要的咖啡</span></dd></div>
+    </dl>
+  </div>
+  <div class="after-hours__work-footer">
+    <button class="after-hours__toy-action" type="button" data-lake-resume><span lang="en">They're gone</span><span lang="zh-CN">走了走了</span></button>
+    <p><span lang="en"><kbd>B</kbd> or <kbd>Esc</kbd> to return to the lake</span><span lang="zh-CN">按 B 或 Esc，继续下班</span></p>
+  </div>
+</section>
+
+<button class="after-hours__rescue" type="button" data-lake-restore hidden>
+  <svg viewBox="0 0 24 24" width="23" height="23" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5"/><path d="m5 5 3.5 3.5m7 7L19 19M19 5l-3.5 3.5m-7 7L5 19" stroke="currentColor" stroke-width="4"/></svg>
+  <span class="after-hours__toy-label"><span lang="en">Fish them back</span><span lang="zh-CN">捞回论文</span></span>
+</button>
