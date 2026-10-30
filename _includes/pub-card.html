@@ -2,7 +2,7 @@
 {% assign accent = include.accent | default: "var(--accent)" %}
 {% assign tag_class = include.journal_tag | default: "default" %}
 
-<article class="pub-card fade-in"{% if include.accent %} style="--card-accent: {{ include.accent }};"{% endif %}>
+<article class="pub-card fade-in"{% if include.boat_name %} data-paper-boat-name="{{ include.boat_name | escape }}"{% endif %}{% if include.accent %} style="--card-accent: {{ include.accent }};"{% endif %}>
   {% if include.cartoon_webp %}
   {% include publication-cartoon.html
     cartoon_webp=include.cartoon_webp

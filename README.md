@@ -61,6 +61,12 @@ python3 scripts/update_scholar.py --output /tmp/scholar-preview.json
 
 Omit `--output` to update the tracked snapshot. The updater makes one direct profile request with a 20-second timeout, no retries, and no proxies. It reads the English **All** column and replaces the snapshot only after both values validate. Legitimate zeroes and decreases are accepted. HTTP errors, challenges, timeouts, malformed data, and write failures leave the previous values and verification date unchanged. Free profile fetching can remain blocked by Scholar; a completed workflow setup alone does not prove live updates work.
 
+### Homepage after-hours easter egg
+
+The homepage's bilingual **Off the clock / 下班了** button opens a small lake with paper boats named after the featured publications. Move or tap on the water for ripples, click a boat to nudge it, and use **Back to shore / 回岸上** or **Esc** to return to the same scroll position. It runs entirely in the browser without services or extra dependencies, and never opens automatically. On entry, a note from the boss (老板 / PI) asks for one more experiment, then the rising water carries it away. Reduced-motion preferences skip this animation and show the still lake with its departure message; without JavaScript the button stays hidden.
+
+Markup lives in `_includes/after-hours.html`, styling in `_sass/_after-hours.scss`, and the animation in `assets/js/after-hours.js`. Boat names come from the publication slugs already used on the homepage. The scene, controls, boss dialogue, and boat-click messages show English with Chinese alongside; rotating messages are paired in the script.
+
 ### Publication slug resolution
 
 `resolve-publication.html` sets global Liquid variables `resolved_publication` and `resolved_found`. Prefer `render-pub-card-by-slug.html` (resolve + render in one include) over calling `resolve-publication` and `pub-card` separately. Do not nest other includes between resolve and render on the same slug.

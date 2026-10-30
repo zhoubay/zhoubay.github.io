@@ -14,6 +14,11 @@
     </div>
   </section>
 
+  <section id="news" class="home-section fade-in">
+    {% include section-header.html title="News" %}
+    {% include news-list.html %}
+  </section>
+
   <section id="interests" class="home-section fade-in">
     {% include section-header.html title="Research Interests" %}
     <ul class="interests-list">
@@ -47,11 +52,6 @@
   </section>
 
   {% include community-impact-section.html id="impact" class="home-section fade-in" %}
-
-  <section id="news" class="home-section fade-in">
-    {% include section-header.html title="News" %}
-    {% include news-list.html %}
-  </section>
 
   <section id="languages" class="home-section fade-in">
     {% include section-header.html title="Languages" %}
