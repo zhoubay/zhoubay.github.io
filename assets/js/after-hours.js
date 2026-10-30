@@ -696,14 +696,18 @@
     makeRipple(event.clientX, event.clientY, 0.65);
     lastPointer = { x: event.clientX, y: event.clientY, time: now };
   }, { passive: true });
-  root.addEventListener('keydown', function (event) {
-    if (!active && !closing) return;
-    if (active && event.key.toLowerCase() === 'b' && !event.repeat && !event.ctrlKey && !event.metaKey && !event.altKey && !event.target.closest('input, textarea, [contenteditable="true"]')) {
+  // Blank-area clicks can move focus to body, outside the lake's DOM subtree.
+  // Listen at document level while the lake is open so its shortcuts still work.
+  document.addEventListener('keydown', function (event) {
+    if ((!active && !closing) || event.isComposing) return;
+    var target = event.target;
+    var isEditing = target instanceof Element && (target.isContentEditable || target.closest('input, textarea, select'));
+    if (active && event.key.toLowerCase() === 'b' && !event.repeat && !event.ctrlKey && !event.metaKey && !event.altKey && !isEditing) {
       event.preventDefault();
       setWorkMode(!workMode, true);
       return;
     }
-    if (event.key === 'Escape') {
+    if (event.key === 'Escape' && !event.repeat) {
       event.preventDefault();
       if (workMode) setWorkMode(false, true);
       else if (!vending.hidden) closeVending(true);
@@ -720,7 +724,7 @@
       if (event.shiftKey && index <= 0) {
         event.preventDefault();
         buttons[buttons.length - 1].focus();
-      } else if (!event.shiftKey && index === buttons.length - 1) {
+      } else if (!event.shiftKey && (index < 0 || index === buttons.length - 1)) {
         event.preventDefault();
         buttons[0].focus();
       }
