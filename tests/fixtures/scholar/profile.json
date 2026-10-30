@@ -1,0 +1,25 @@
+{
+  "search_metadata": {
+    "id": "synthetic-profile-response",
+    "status": "Success",
+    "created_at": "2026-10-29T00:01:00Z"
+  },
+  "search_parameters": {
+    "engine": "google_scholar_author",
+    "author_id": "exampleID",
+    "hl": "en"
+  },
+  "author": {
+    "name": "Example Author"
+  },
+  "cited_by": {
+    "table": {
+      "headers": ["", "All", "Since 2021"],
+      "rows": [
+        ["Citations", "1,234", "876"],
+        ["h-index", "9", "6"],
+        ["i10-index", "12", "8"]
+      ]
+    }
+  }
+}

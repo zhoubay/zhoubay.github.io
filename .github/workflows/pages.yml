@@ -45,8 +45,10 @@ jobs:
       - name: Test Scholar updater without network requests
         run: python -m unittest discover -s tests -p 'test_update_scholar.py'
 
-      - name: Refresh Scholar snapshot
+      - name: Refresh Scholar snapshot via SearchApi
         if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        env:
+          SEARCHAPI_API_KEY: ${{ secrets.SEARCHAPI_API_KEY }}
         run: python scripts/update_scholar.py --config _config.yml --output _data/scholar.json
 
       - name: Set up Ruby

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Refresh the site's Google Scholar snapshot with one direct profile request."""
+"""Refresh the site's Google Scholar snapshot with one SearchApi author request."""
 
 from __future__ import annotations
 
@@ -15,7 +15,6 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import parse_qs, urlencode, urlsplit
 from urllib.request import HTTPRedirectHandler, ProxyHandler, Request, build_opener
 
-from bs4 import BeautifulSoup
 import yaml
 
 
@@ -24,7 +23,7 @@ class ScholarUpdateError(Exception):
 
 
 class NoRedirect(HTTPRedirectHandler):
-    """Do not turn one profile GET into additional requests or a challenge visit."""
+    """Keep the API key on the intended host and perform only one request."""
 
     def redirect_request(self, request, fp, code, msg, headers, newurl):
         return None
@@ -52,77 +51,99 @@ def read_profile_url(config_path: Path) -> str:
     return "https://scholar.google.com/citations?" + urlencode({"user": ids[0], "hl": "en"})
 
 
-def fetch_profile(url: str) -> str:
-    """Perform exactly one GET, with no proxy, redirects, or retries."""
+def fetch_profile(url: str) -> dict:
+    """Fetch the configured author through SearchApi, without retries or redirects."""
+    api_key = os.environ.get("SEARCHAPI_API_KEY", "").strip()
+    if not api_key:
+        raise ScholarUpdateError("SEARCHAPI_API_KEY is missing; configure the GitHub Actions repository secret")
+    if not re.fullmatch(r"[!-~]+", api_key):
+        raise ScholarUpdateError("SEARCHAPI_API_KEY has an invalid format")
+    author_id = parse_qs(urlsplit(url).query)["user"][0]
+    api_url = "https://www.searchapi.io/api/v1/search?" + urlencode({
+        "engine": "google_scholar_author", "author_id": author_id, "hl": "en",
+    })
+    request = Request(api_url, headers={
+        "Accept": "application/json", "Authorization": f"Bearer {api_key}",
+    }, method="GET")
     opener = build_opener(ProxyHandler({}), NoRedirect())
-    request = Request(url, headers={"Accept": "text/html", "Accept-Language": "en"}, method="GET")
     try:
-        with opener.open(request, timeout=20) as response:
+        with opener.open(request, timeout=110) as response:
             if response.status != 200:
-                raise ScholarUpdateError(f"Google Scholar returned HTTP {response.status}")
-            encoding = response.headers.get_content_charset() or "utf-8"
-            return response.read().decode(encoding)
+                raise ScholarUpdateError(f"SearchApi returned HTTP {response.status}; no update saved")
+            return json.loads(response.read())
     except HTTPError as exc:
-        raise ScholarUpdateError(f"Google Scholar returned HTTP {exc.code}; no update saved") from exc
-    except (URLError, OSError, UnicodeError, LookupError) as exc:
-        raise ScholarUpdateError(f"Cannot fetch Google Scholar profile: {exc}") from exc
+        hints = {
+            401: "check SEARCHAPI_API_KEY", 403: "check account access",
+            429: "check the request quota or rate limit",
+            500: "provider error", 503: "provider timeout",
+        }
+        hint = hints.get(exc.code, "request rejected")
+        raise ScholarUpdateError(f"SearchApi returned HTTP {exc.code} ({hint}); no update saved") from exc
+    except (URLError, OSError):
+        # Provider/network error text may contain credentials; never include it in logs.
+        raise ScholarUpdateError("Cannot reach SearchApi or the request timed out; no update saved") from None
+    except (ValueError, UnicodeError):
+        raise ScholarUpdateError("SearchApi returned invalid JSON; no update saved") from None
 
 
-def normalized_text(node) -> str:
-    return " ".join(node.get_text(" ", strip=True).split()).casefold()
-
-
-def parse_metrics(html: str) -> dict[str, int]:
-    """Read named rows from the explicit All column, never the recent column."""
-    soup = BeautifulSoup(html, "html.parser")
-    page_text = normalized_text(soup)
-    challenge_phrases = (
-        "unusual traffic",
-        "verify you are human",
-        "verify that you are human",
-        "not a robot",
-        "complete the captcha",
-        "access denied",
-        "enable javascript and cookies to continue",
-    )
-    if any(phrase in page_text for phrase in challenge_phrases) or soup.select_one(
-        "[id*='captcha'], [class*='captcha'], input[name='captcha'], "
-        "iframe[src*='/recaptcha/'], form[action*='/sorry/']"
+def parse_metrics(payload: dict, expected_author_id: str) -> dict[str, int]:
+    """Validate the author response and read named rows from its explicit All column."""
+    if not isinstance(payload, dict) or payload.get("error") or payload.get("errors"):
+        raise ScholarUpdateError("SearchApi returned an error or invalid response")
+    metadata = payload.get("search_metadata")
+    if not isinstance(metadata, dict) or metadata.get("status") != "Success":
+        raise ScholarUpdateError("SearchApi did not report a successful search")
+    parameters = payload.get("search_parameters")
+    if (
+        not isinstance(parameters, dict)
+        or parameters.get("engine") != "google_scholar_author"
+        or parameters.get("author_id") != expected_author_id
     ):
-        raise ScholarUpdateError("Google Scholar returned a CAPTCHA or access challenge")
-
-    tables = soup.select("table#gsc_rsb_st")
-    if len(tables) != 1:
-        raise ScholarUpdateError("Expected one Google Scholar citation statistics table")
-    table = tables[0]
-    header_rows = [row for row in table.find_all("tr") if row.find("th", recursive=False)]
-    if len(header_rows) != 1:
-        raise ScholarUpdateError("Expected one citation statistics header row")
-    headers = header_rows[0].find_all(["th", "td"], recursive=False)
-    all_columns = [index for index, cell in enumerate(headers) if normalized_text(cell) == "all"]
+        raise ScholarUpdateError("SearchApi returned a different author or search engine")
+    cited_by = payload.get("cited_by")
+    table = cited_by.get("table") if isinstance(cited_by, dict) else None
+    if not isinstance(table, dict):
+        raise ScholarUpdateError("SearchApi response has no citation statistics table")
+    headers, rows = table.get("headers"), table.get("rows")
+    if not isinstance(headers, list) or not isinstance(rows, list):
+        raise ScholarUpdateError("Invalid citation statistics table")
+    all_columns = [
+        index for index, value in enumerate(headers)
+        if isinstance(value, str) and value.strip().casefold() == "all"
+    ]
     if len(all_columns) != 1 or all_columns[0] == 0:
         raise ScholarUpdateError("Citation statistics must have one explicit All column")
-    all_column = all_columns[0]
-
     row_names = {"citations": "citations", "h-index": "h_index"}
     metrics = {}
-    for row in table.find_all("tr"):
-        cells = row.find_all("td", recursive=False)
-        if not cells:
-            continue
-        key = row_names.get(normalized_text(cells[0]))
+    for row in rows:
+        if not isinstance(row, list) or not row or not isinstance(row[0], str):
+            raise ScholarUpdateError("Invalid citation statistics row")
+        key = row_names.get(row[0].strip().casefold())
         if key is None:
             continue
-        if key in metrics or len(cells) != len(headers):
+        if key in metrics or len(row) != len(headers):
             raise ScholarUpdateError(f"Missing or ambiguous statistics cells for {key}")
-        raw_value = " ".join(cells[all_column].get_text(" ", strip=True).split())
+        raw_value = str(row[all_columns[0]]).strip()
         if not re.fullmatch(r"(?:[0-9]+|[0-9]{1,3}(?:,[0-9]{3})+)", raw_value):
-            raise ScholarUpdateError(f"Invalid nonnegative integer for {key}: {raw_value!r}")
+            raise ScholarUpdateError(f"Invalid nonnegative integer for {key}")
         metrics[key] = int(raw_value.replace(",", ""))
-
     if metrics.keys() != {"citations", "h_index"}:
         raise ScholarUpdateError("Google Scholar statistics are missing Citations or h-index")
     return metrics
+
+
+def response_date(payload: dict) -> str:
+    """Use the provider's response date, so cached data is not relabeled as fresh."""
+    timestamp = payload.get("search_metadata", {}).get("created_at")
+    try:
+        if not isinstance(timestamp, str):
+            raise ValueError("missing timestamp")
+        checked_at = datetime.fromisoformat(timestamp.replace("Z", "+00:00"))
+        if checked_at.tzinfo is None:
+            raise ValueError("timestamp must include a timezone")
+    except ValueError:
+        raise ScholarUpdateError("SearchApi response has no valid timezone-aware creation time") from None
+    return checked_at.astimezone(timezone.utc).date().isoformat()
 
 
 def write_snapshot(output_path: Path, snapshot: dict) -> None:
@@ -150,11 +171,13 @@ def write_snapshot(output_path: Path, snapshot: dict) -> None:
 
 def update_scholar(config_path: Path, output_path: Path) -> dict:
     profile_url = read_profile_url(config_path)
-    metrics = parse_metrics(fetch_profile(profile_url))
+    payload = fetch_profile(profile_url)
+    author_id = parse_qs(urlsplit(profile_url).query)["user"][0]
+    metrics = parse_metrics(payload, author_id)
     snapshot = {
         "citations": metrics["citations"],
         "h_index": metrics["h_index"],
-        "updated_at": datetime.now(timezone.utc).date().isoformat(),
+        "updated_at": response_date(payload),
     }
     write_snapshot(output_path, snapshot)
     return snapshot

@@ -51,15 +51,22 @@ The homepage renders `Total citations` and `h-index` from `_data/scholar.json` a
 
 For manual updates, edit `citations`, `h_index`, and `updated_at` (the date the values were verified, `YYYY-MM-DD` in UTC). Use the **All** column on the Scholar profile. Missing data hides the metrics block rather than showing a false zero.
 
+Automatic updates use the [SearchApi Google Scholar Author API](https://www.searchapi.io/docs/google-scholar-author). In **Settings → Secrets and variables → Actions → New repository secret**, save the SearchApi key as `SEARCHAPI_API_KEY`. The key is injected only into the refresh step; do not add it to source files or `_config.yml`.
+
 To check the automatic updater locally:
 
 ```bash
 python3 -m pip install -r scripts/requirements-scholar.txt
 python3 -m unittest discover -s tests -p 'test_update_scholar.py'
+read -rsp 'SearchApi API Key: ' SEARCHAPI_API_KEY; printf '\n'
+export SEARCHAPI_API_KEY
 python3 scripts/update_scholar.py --output /tmp/scholar-preview.json
+unset SEARCHAPI_API_KEY
 ```
 
-Omit `--output` to update the tracked snapshot. The updater makes one direct profile request with a 20-second timeout, no retries, and no proxies. It reads the English **All** column and replaces the snapshot only after both values validate. Legitimate zeroes and decreases are accepted. HTTP errors, challenges, timeouts, malformed data, and write failures leave the previous values and verification date unchanged. Free profile fetching can remain blocked by Scholar; a completed workflow setup alone does not prove live updates work.
+Omit `--output` to update the tracked snapshot. The updater makes one SearchApi request with a 110-second timeout, no retries, redirects, or proxies. Authentication uses a Bearer header. It verifies the returned author ID and success status, then reads the English **All** column and replaces the snapshot only after both values validate. Legitimate zeroes and decreases are accepted. The verification date comes from the response creation time, converted to UTC, so a cached response is not relabeled with today’s date. Missing keys, HTTP errors, exhausted quotas, timeouts, malformed data, and write failures leave the previous values and date unchanged. There is no fallback to direct Scholar scraping or another citation database.
+
+Each scheduled or manual refresh makes one API request; the two daily schedules use at most 62 requests per month before manual runs. SearchApi’s signup trial is a finite allowance, not a guaranteed monthly free plan. Monitor the quota in its dashboard; a 429 response requires checking the quota or rate limit.
 
 ### Homepage after-hours easter egg
 
@@ -92,12 +99,12 @@ Open [http://localhost:4000](http://localhost:4000). Restart after editing `_con
 
 The `Pages` workflow in `.github/workflows/pages.yml` builds and publishes the site. During rollout, set **Settings → Pages → Build and deployment → Source → GitHub Actions**. The repository must allow the workflow to write contents and deploy to the `github-pages` environment from `master`.
 
-- A push to `master` builds the existing snapshot without contacting Scholar. This also publishes the first, manually verified version of the metrics.
-- Scheduled runs at **02:17 UTC** (10:17 Beijing time) and **08:43 UTC** (16:43 Beijing time, afternoon backup), or a manual run from the Actions tab, fetch Scholar first. Both schedules run independently; the afternoon run still runs if the morning run succeeds. A failed fetch stops the run; the current live site stays available with its original verification date. GitHub schedules can be delayed or dropped, so the second time reduces the risk of missing a day but does not guarantee an on-time run.
-- After tests and a successful build, an update run commits only `_data/scholar.json` and deploys the built artifact in the same run. Values that remain unchanged still get a new verification date after a successful check. A `GITHUB_TOKEN` commit does not trigger another Pages build, so the explicit deployment is required.
+- A push to `master` builds the existing snapshot without calling SearchApi. This also publishes the first, manually verified version of the metrics.
+- Scheduled runs at **02:17 UTC** (10:17 Beijing time) and **08:43 UTC** (16:43 Beijing time, afternoon backup), or a manual run from the Actions tab, fetch Scholar metrics through SearchApi first. Both schedules run independently; the afternoon run still runs if the morning run succeeds. A failed fetch stops the run; the current live site stays available with its original verification date. GitHub schedules can be delayed or dropped, so the second time reduces the risk of missing a day but does not guarantee an on-time run.
+- After tests and a successful build, an update run commits only `_data/scholar.json` and deploys the built artifact in the same run. Values that remain unchanged still get a new verification date when the successful SearchApi response has a newer creation date. A `GITHUB_TOKEN` commit does not trigger another Pages build, so the explicit deployment is required.
 - Publishing runs share one concurrency group. If `master` moves during the build, the workflow stops instead of force-pushing or knowingly publishing an obsolete checkout.
 
-After enabling Actions publishing, first verify a normal push deployment, then manually run `Pages` to verify the full Scholar-fetch-to-live-page path. Check the Actions logs after failures; a 403 or challenge means Scholar rejected the request, not that citations became zero. To return to manual data maintenance, remove the workflow's `schedule` trigger and keep push deployment enabled. Public-repository schedules can be disabled after 60 days without repository activity; re-enable them in Actions when needed.
+After enabling Actions publishing, first verify a normal push deployment, then manually run `Pages` to verify the full Scholar-fetch-to-live-page path. Check the Actions logs after failures; a 401 usually indicates a key problem, while a 429 indicates a quota or rate limit; neither means citations became zero. To return to manual data maintenance, remove the workflow's `schedule` trigger and keep push deployment enabled. Public-repository schedules can be disabled after 60 days without repository activity; re-enable them in Actions when needed.
 
 ## Acknowledgement
 
