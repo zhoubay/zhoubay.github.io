@@ -25,6 +25,12 @@
   var vending = root.querySelector('.after-hours__vending');
   var vendButton = root.querySelector('[data-vend]');
   var vendingCrew = root.querySelector('[data-vending-crew]');
+  var vendingUse = root.querySelector('[data-vending-use]');
+  var prizeArt = root.querySelector('[data-prize-new]');
+  var stock = root.querySelector('[data-vending-stock]');
+  var selectedPrize = null;
+  var prizeUsed = false;
+  var remainingPrizes = [];
   var workScreen = root.querySelector('.after-hours__workscreen');
   var workMode = false;
   var overlayBackground = [];
@@ -38,6 +44,8 @@
   var crewState = 'idle';
   var crewClock = 0;
   var crewWidth = 700;
+  var daylightWater = ['rgba(127, 184, 181, .88)', 'rgba(62, 139, 154, .95)', '#174f67'];
+  var waterColors = daylightWater.slice();
   var prizes = [
     { icon: 'coffee', en: 'A coffee, on the lab.', zh: '实验室请你喝咖啡。', detailEn: 'Best enjoyed with your tabs closed.', detailZh: '建议关掉论文标签页后饮用。' },
     { icon: 'gpu', en: 'One free GPU.', zh: '一张空闲 GPU 券。', detailEn: 'Valid in your imagination. No queue required.', detailZh: '仅限想象中使用，无需排队。' },
@@ -45,6 +53,11 @@
     { icon: 'note', en: '“Just one tiny revision.”', zh: '老板的“就改一点点”。', detailEn: 'The machine apologizes.', detailZh: '售货机对此表示抱歉。' },
     { icon: 'crew', en: 'A rowing break.', zh: '赛艇队体验券。', detailEn: 'Redeem it on the lake. Expect a splash.', detailZh: '去湖上兑现，小心浪花。', crew: true }
   ];
+  // One active catalog drives draws, effects and the temporary direct controls.
+  var interactivePrizes = (window.LakePrizes || []).filter(function (prize) { return prize.enabled !== false; });
+  prizes = prizes.concat(interactivePrizes);
+  remainingPrizes = prizes.map(function (_, index) { return index; });
+  updateStock();
   var boss = root.querySelector('.after-hours__boss');
   var bossQuote = root.querySelector('.after-hours__boss-quote');
   var bossTranslation = root.querySelector('.after-hours__boss-translation');
@@ -134,6 +147,114 @@
     });
   });
 
+  var effects = new window.LakePrizeEffects({
+    root: root,
+    stage: stage,
+    prizes: interactivePrizes,
+    boats: boats,
+    crew: crewPosition,
+    paused: function () { return !active || workMode || !vending.hidden || document.hidden; },
+    reduced: function () { return motionQuery.matches; },
+    focus: function () { menuButton.focus({ preventScroll: true }); },
+    changed: function () { if (active) draw(); },
+    sunset: updateSunset,
+    rescue: function () { rescue.hidden = false; },
+    prepare: function () {
+      if (crewState !== 'idle') restoreBoats();
+      finishBoss();
+      paperFoldPending = false;
+      clearPapers();
+      progress = 1;
+      measure();
+    },
+    returnPrize: function () {
+      // The returned key becomes available next round, preserving no-repeat draws.
+      selectedPrize = null;
+      prizeUsed = false;
+      prizeArt.hidden = true;
+      root.querySelector('[data-prize-icon]').classList.remove('after-hours__prize-icon--new');
+      root.querySelector('[data-prize-placeholder]').hidden = false;
+      Array.prototype.forEach.call(root.querySelectorAll('[data-prize-art]'), function (art) { art.setAttribute('hidden', ''); });
+      root.querySelector('[data-prize-en]').textContent = 'Nothing happened.';
+      root.querySelector('[data-prize-zh]').textContent = '刚才什么都没发生。';
+      root.querySelector('[data-prize-detail-en]').textContent = 'The prize is back inside. The machine looks innocent.';
+      root.querySelector('[data-prize-detail-zh]').textContent = '物件回到了机器里。售货机一脸无辜。';
+      vendingUse.hidden = true;
+      vendingCrew.hidden = true;
+      updateStock();
+      openVending();
+    }
+  });
+
+  function updateStock() {
+    stock.querySelector('[lang="en"]').textContent = prizes.length + ' surprises · ' + remainingPrizes.length + ' left in this round';
+    stock.querySelector('[lang="zh-CN"]').textContent = prizes.length + ' 种惊喜 · 本轮还剩 ' + remainingPrizes.length + ' 种';
+  }
+
+  function usePrize() {
+    if (!active || vending.hidden || !selectedPrize || !selectedPrize.id || prizeUsed) return;
+    prizeUsed = true;
+    vendingUse.disabled = true;
+    vendingUse.querySelector('[lang="en"]').textContent = 'Unpacked at the lake';
+    vendingUse.querySelector('[lang="zh-CN"]').textContent = '已经带到湖边了';
+    closeVending(false);
+    effects.start(selectedPrize);
+  }
+
+  // Temporary direct controls for trying each effect; remove data-prize-shortcuts
+  // from the menu markup to return to the compact menu without changing the catalog.
+  if (toyMenu.hasAttribute('data-prize-shortcuts')) {
+    var shortcutHeading = document.createElement('p');
+    shortcutHeading.className = 'after-hours__toy-menu-heading';
+    shortcutHeading.innerHTML = '<span lang="en">Try each prize</span><span lang="zh-CN">逐个试用奖品</span>';
+    toyMenu.appendChild(shortcutHeading);
+    var resetButton = document.createElement('button');
+    resetButton.type = 'button';
+    resetButton.dataset.lakeReset = '';
+    resetButton.innerHTML = '<span class="after-hours__toy-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 10a8 8 0 1 1 0 5M4 4v6h6"/></svg></span>' +
+      '<span class="after-hours__toy-label"><span lang="en">Reset the lake</span><span lang="zh-CN">重置湖面</span></span>';
+    resetButton.addEventListener('click', function () {
+      if (!active || workMode || !vending.hidden) return;
+      resetToys();
+      finishBoss();
+      paperFoldPending = false;
+      clearPapers();
+      ripples = [];
+      progress = 1;
+      restoreBoats();
+      setNote({ en: 'Lake reset. Ready for the next toy.', zh: '湖面已复原，试试下一个玩具吧。' });
+      menuButton.focus({ preventScroll: true });
+    });
+    toyMenu.appendChild(resetButton);
+    interactivePrizes.forEach(function (prize) {
+      var shortcut = document.createElement('button');
+      shortcut.type = 'button';
+      shortcut.dataset.lakePrize = prize.id;
+      var icon = document.createElement('span');
+      icon.className = 'after-hours__toy-prize-icon';
+      icon.setAttribute('aria-hidden', 'true');
+      icon.innerHTML = prize.art; // Repository-owned illustrations, just like the vending card.
+      var label = document.createElement('span');
+      label.className = 'after-hours__toy-label';
+      var en = document.createElement('span');
+      en.lang = 'en';
+      en.textContent = prize.en;
+      var zh = document.createElement('span');
+      zh.lang = 'zh-CN';
+      zh.textContent = prize.zh;
+      label.appendChild(en);
+      label.appendChild(zh);
+      shortcut.appendChild(icon);
+      shortcut.appendChild(label);
+      shortcut.addEventListener('click', function () {
+        if (!active || workMode || !vending.hidden) return;
+        toggleToyMenu(false);
+        effects.start(prize);
+      });
+      toyMenu.appendChild(shortcut);
+    });
+  }
+
   function setNote(copy) {
     currentNote = copy;
     noteEnglish.textContent = copy.en;
@@ -144,7 +265,10 @@
     var hadFocus = toyMenu.contains(document.activeElement);
     toyMenu.hidden = !open;
     menuButton.setAttribute('aria-expanded', String(open));
-    if (open) toyMenu.querySelector('button').focus();
+    if (open) {
+      effects.dismiss(false);
+      toyMenu.querySelector('button').focus();
+    }
     else if (hadFocus) menuButton.focus();
   }
 
@@ -170,6 +294,7 @@
     vending.classList.remove('is-dispensing');
     vendButton.removeAttribute('aria-disabled');
     vending.hidden = true;
+    effects.sync();
     toggle.hidden = false;
     unlockLake();
     if (focus && active) menuButton.focus();
@@ -178,7 +303,9 @@
   function openVending() {
     if (!active || workMode) return;
     toggleToyMenu(false);
+    effects.dismiss(false);
     vending.hidden = false;
+    effects.sync();
     lockLakeFor(vending);
     toggle.hidden = true;
     vendButton.focus();
@@ -186,10 +313,24 @@
 
   function dispensePrize() {
     if (!active || vending.hidden || vendButton.getAttribute('aria-disabled') === 'true') return;
-    var index = Math.floor(Math.random() * prizes.length);
-    if (index === lastPrize) index = (index + 1) % prizes.length;
+    if (!remainingPrizes.length) remainingPrizes = prizes.map(function (_, index) { return index; });
+    var slot = Math.floor(Math.random() * remainingPrizes.length);
+    if (remainingPrizes.length === prizes.length && remainingPrizes[slot] === lastPrize) slot = (slot + 1) % remainingPrizes.length;
+    var index = remainingPrizes.splice(slot, 1)[0];
     lastPrize = index;
     var prize = prizes[index];
+    selectedPrize = prize;
+    prizeUsed = false;
+    prizeArt.hidden = !prize.art;
+    prizeArt.innerHTML = prize.art || '';
+    root.querySelector('[data-prize-icon]').classList.toggle('after-hours__prize-icon--new', !!prize.art);
+    vendingUse.hidden = !prize.id;
+    vendingUse.disabled = false;
+    if (prize.id) {
+      vendingUse.querySelector('[lang="en"]').textContent = prize.actionEn;
+      vendingUse.querySelector('[lang="zh-CN"]').textContent = prize.actionZh;
+    }
+    updateStock();
     vending.querySelector('[data-prize-placeholder]').hidden = true;
     Array.prototype.forEach.call(vending.querySelectorAll('[data-prize-art]'), function (art) {
       // SVG has no HTMLElement.hidden property; use the actual attribute.
@@ -242,9 +383,11 @@
         if (focus) menuButton.focus();
       }
     }
+    effects.sync();
   }
 
   function finishCrew() {
+    effects.sweep();
     crewState = 'cleared';
     vendingCrew.disabled = false;
     crew.hidden = true;
@@ -254,6 +397,7 @@
   }
 
   function restoreBoats() {
+    effects.restoreBoats();
     var hadFocus = document.activeElement === rescue;
     crewState = 'idle';
     crewClock = 0;
@@ -269,6 +413,8 @@
   function startCrew() {
     if (!active || workMode || crewState === 'rowing') return;
     closeVending(false);
+    effects.dismiss(false);
+    effects.restoreBoats();
     toggleToyMenu(false);
     if (crewState === 'cleared') restoreBoats();
     finishBoss();
@@ -283,15 +429,27 @@
     boats.forEach(function (boat) { boat.sweptAt = -1; });
     setNote({ en: 'Rowing crew incoming. Hold on to your papers!', zh: '赛艇队来了，抓紧论文！' });
     menuButton.focus();
+    effects.crewStarted();
     if (motionQuery.matches) finishCrew();
     draw();
     startFrames();
   }
 
+  function crewPosition() {
+    var x = -crewWidth + (width + crewWidth + 60) * Math.min(1, crewClock / crewTravel);
+    return {
+      state: crewState, x: x, width: crewWidth,
+      bow: x + crewWidth * 0.98, stern: x + crewWidth * 0.02,
+      waterline: surface + crewWidth * 65 / 1024,
+      speed: (width + crewWidth + 60) / crewTravel
+    };
+  }
+
   function updateCrew(delta) {
-    if (crewState !== 'rowing') return;
+    // The crew and its duck encounter pause together behind the vending machine.
+    if (crewState !== 'rowing' || !vending.hidden) return;
     crewClock += delta;
-    var bow = -crewWidth + (width + crewWidth + 60) * Math.min(1, crewClock / crewTravel) + crewWidth * 0.98;
+    var bow = crewPosition().bow;
     boats.forEach(function (boat) {
       if (boat.sweptAt < 0 && bow >= boat.x + boat.size / 2) boat.sweptAt = crewClock;
     });
@@ -300,8 +458,9 @@
 
   function drawCrew() {
     if (crewState !== 'rowing') return;
-    var x = -crewWidth + (width + crewWidth + 60) * Math.min(1, crewClock / crewTravel);
-    var crewWaterline = surface + crewWidth * 65 / 1024;
+    var position = crewPosition();
+    var x = position.x;
+    var crewWaterline = position.waterline;
     var y = crewWaterline - crewWidth * 180 / 1024 + Math.sin(crewClock * Math.PI * 2 / 1.8) * 0.7;
     crew.style.transform = 'translate3d(' + x.toFixed(2) + 'px,' + y.toFixed(2) + 'px,0)';
     crewRenderer.draw(crewClock);
@@ -336,6 +495,13 @@
   }
 
   function resetToys() {
+    effects.reset();
+    prizeUsed = false;
+    vendingUse.disabled = false;
+    if (selectedPrize && selectedPrize.id) {
+      vendingUse.querySelector('[lang="en"]').textContent = selectedPrize.actionEn;
+      vendingUse.querySelector('[lang="zh-CN"]').textContent = selectedPrize.actionZh;
+    }
     closeVending(false);
     setWorkMode(false, false);
     toggleToyMenu(false);
@@ -441,11 +607,44 @@
     });
   }
 
+  function mixColor(day, dusk, amount) {
+    return 'rgba(' + day.map(function (channel, index) {
+      var value = channel + (dusk[index] - channel) * amount;
+      return index === 3 ? value.toFixed(3) : Math.round(value);
+    }).join(',') + ')';
+  }
+
+  // One clock warms the sky, the same soft sun, and its lake reflection together.
+  // Interpolate gradient stops directly so the final Friday colors stay unchanged.
+  function updateSunset(amount) {
+    if (!amount) {
+      ['--lake-sky', '--lake-sun', '--lake-sun-glow'].forEach(function (name) { root.style.removeProperty(name); });
+      waterColors = daylightWater.slice();
+      return;
+    }
+    root.style.setProperty('--lake-sky', 'linear-gradient(180deg, ' +
+      mixColor([255, 246, 229, 0.94], [255, 221, 178, 0.97], amount) + ' 0%, ' +
+      mixColor([249, 237, 216, 0.86], [247, 202, 167, 0.92], amount) + ' ' + (34 - amount * 2).toFixed(2) + '%, ' +
+      mixColor([235, 242, 230, 0.65], [235, 210, 180, 0.8], amount) + ' ' + (66 - amount * 4).toFixed(2) + '%, ' +
+      mixColor([216, 237, 233, 0.72], [197, 221, 205, 0.82], amount) + ' 100%)');
+    root.style.setProperty('--lake-sun', 'radial-gradient(circle, ' +
+      mixColor([255, 233, 166, 0.98], [255, 243, 186, 1], amount) + ' 0%, ' +
+      mixColor([250, 213, 139, 0.82], [255, 214, 139, 0.85], amount) + ' ' + (51 - amount * 2).toFixed(2) + '%, ' +
+      mixColor([250, 213, 139, 0], [255, 188, 121, 0], amount) + ' ' + (73 + amount).toFixed(2) + '%)');
+    root.style.setProperty('--lake-sun-glow', '0 0 90px 35px ' +
+      mixColor([255, 220, 153, 0.18], [255, 193, 123, 0.3], amount));
+    waterColors = [
+      mixColor([127, 184, 181, 0.88], [214, 178, 134, 1], amount),
+      mixColor([62, 139, 154, 0.95], [168, 131, 124, 1], amount),
+      mixColor([23, 79, 103, 1], [86, 79, 101, 1], amount)
+    ];
+  }
+
   function drawWater(waterline) {
     var gradient = context.createLinearGradient(0, waterline, 0, height);
-    gradient.addColorStop(0, 'rgba(127, 184, 181, .88)');
-    gradient.addColorStop(0.3, 'rgba(62, 139, 154, .95)');
-    gradient.addColorStop(1, '#174f67');
+    gradient.addColorStop(0, waterColors[0]);
+    gradient.addColorStop(0.3, waterColors[1]);
+    gradient.addColorStop(1, waterColors[2]);
     context.beginPath();
     context.moveTo(0, height);
     for (var x = 0; x <= width + 16; x += 16) context.lineTo(x, waterline + wave(x, 0));
@@ -500,13 +699,15 @@
       var swept = boat.sweptAt < 0 ? 0 : Math.min(1, (crewClock - boat.sweptAt) / 1.1);
       x += (width + boat.size - x) * Math.pow(swept, 1.4);
       var y = boat.y + rise + bob - Math.sin(swept * Math.PI) * 24;
-      boat.element.style.transform = 'translate3d(' + x.toFixed(2) + 'px,' + y.toFixed(2) + 'px,0) rotate(' + (roll + swept * 65).toFixed(2) + 'deg) scale(' + (1 - swept * 0.45).toFixed(3) + ')';
+      var absorbed = boat.absorbed || 0;
+      boat.element.style.transform = 'translate3d(' + x.toFixed(2) + 'px,' + y.toFixed(2) + 'px,0) rotate(' + (roll + swept * 65 + absorbed * 270).toFixed(2) + 'deg) scale(' + ((1 - swept * 0.45) * (1 - absorbed)).toFixed(3) + ')';
       var visibility = Math.max(0, Math.min(1, (progress - 0.3 - boat.index * 0.035) / 0.45));
-      visibility *= crewState === 'cleared' ? 0 : 1 - swept;
+      visibility *= (crewState === 'cleared' ? 0 : 1 - swept) * (1 - absorbed);
       boat.element.style.opacity = visibility;
       boat.element.disabled = !active || visibility < 0.5 || crewState !== 'idle';
     });
     drawBoss(surface + rise);
+    effects.render({ width: width, height: height, surface: surface + rise, captionTop: caption.offsetTop });
   }
 
   function tick(now) {
@@ -521,7 +722,7 @@
     var delta = lastTime ? Math.min((now - lastTime) / 1000, 0.05) : 0.033;
     lastTime = now;
     time += delta;
-    if (active) updateCrew(delta);
+    if (active) { updateCrew(delta); effects.tick(); }
     if (active && !bossDone) bossClock += delta;
     if (active && paperFoldPending && bossClock >= bossHold) {
       paperFoldPending = false;
@@ -679,6 +880,7 @@
   root.querySelector('[data-lake-vending]').addEventListener('click', openVending);
   root.querySelector('[data-vending-close]').addEventListener('click', function () { closeVending(true); });
   vendButton.addEventListener('click', dispensePrize);
+  vendingUse.addEventListener('click', usePrize);
   vendingCrew.addEventListener('click', startCrew);
   crewButton.addEventListener('click', startCrew);
   rescue.addEventListener('click', restoreBoats);
@@ -712,6 +914,7 @@
       if (workMode) setWorkMode(false, true);
       else if (!vending.hidden) closeVending(true);
       else if (!toyMenu.hidden) toggleToyMenu(false);
+      else if (effects.isOpen()) effects.dismiss(true);
       else closeLake();
       return;
     }
@@ -734,6 +937,7 @@
     if (active || closing) { measure(); draw(); }
   });
   document.addEventListener('visibilitychange', function () {
+    effects.sync();
     if (document.hidden) {
       window.cancelAnimationFrame(frame);
       frame = 0;
@@ -741,6 +945,7 @@
   });
   function updateMotion() {
     if (!active && !closing) return;
+    effects.sync();
     if (motionQuery.matches) {
       window.cancelAnimationFrame(frame);
       frame = 0;

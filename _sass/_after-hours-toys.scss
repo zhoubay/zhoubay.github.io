@@ -32,6 +32,7 @@
   }
 
   &__toy-label {
+    min-width: 0;
     display: grid;
     gap: 2px;
     text-align: left;
@@ -41,14 +42,18 @@
   }
 
   &__toy-menu {
+    box-sizing: border-box;
     position: absolute;
     bottom: calc(100% + 12px);
     left: 0;
     width: 256px;
     max-width: calc(100vw - 32px);
+    max-height: calc(100vh - 114px);
     max-height: calc(100dvh - 114px);
     padding: 7px;
+    overflow-x: hidden;
     overflow-y: auto;
+    overscroll-behavior: contain;
     border: 1px solid #e3e5d9;
     border-radius: 19px;
     background: #fffdf5;
@@ -75,6 +80,32 @@
       &:disabled { opacity: 0.5; cursor: default; }
       > kbd { margin-left: auto; }
     }
+  }
+
+  &__toy-menu-heading {
+    display: grid;
+    gap: 2px;
+    margin: 6px 8px 2px;
+    padding: 12px 2px 6px;
+    border-top: 1px solid #e3e5d9;
+    color: #61746f;
+    font-size: 11px;
+    line-height: 1.4;
+
+    > [lang="en"] { font-weight: 600; }
+    > [lang="zh-CN"] { font-size: 10px; }
+  }
+
+  &__toy-prize-icon {
+    display: grid;
+    flex: 0 0 36px;
+    width: 36px;
+    height: 32px;
+    place-items: center;
+    border-radius: 9px;
+    background: #f3efdf;
+
+    > svg { display: block; width: 36px; height: 27px; }
   }
 
   &__toy-icon {

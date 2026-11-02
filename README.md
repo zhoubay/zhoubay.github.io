@@ -75,12 +75,16 @@ The homepage's bilingual **Off the clock / 下班了** button opens a small lake
 In the lake, **Lake toys / 湖边玩具** opens three diversions:
 
 - **Boss nearby / 老板来了** (or **B**) switches to a lab notebook and pauses the lake. Press **B** or **Esc**, or click **They’re gone / 走了走了**, to resume.
-- **Lab vending / 实验室售货机** dispenses a bilingual surprise. A rowing voucher can be redeemed to call the crew.
+- **Lab vending / 实验室售货机** has 10 bilingual surprises, drawn without repeats each round. Five illustrated prizes can be unpacked at the lake: patrolling ducks, a paper-swallowing black hole, bottled sunsets, and more. A rowing voucher can still call the crew. [Prize checklist and effects](docs/lake-vending-prizes.md).
 - **Call the rowing crew / 赛艇队来了** sends four rowers across the lake, sweeping away the paper boats. **Fish them back / 捞回论文** restores them. Reduced-motion visitors get the cleared lake immediately.
+
+If a duck is already on the lake, the approaching crew makes it flash “!”, move aside, and rock twice in the wake before complaining, “Racing to a Nature deadline? / 赶着去投 Nature 啊？” It then eases back to its patrol. When there is room, a 15% chance adds a short chase and “带我一个，我负责通讯。” Reduced motion keeps a still duck with a bilingual quip.
+
+Interactive prizes are available only through **Lab vending**. The temporary prize trial and lake reset shortcuts are hidden, leaving just the three menu items above.
 
 **Esc** closes the current panel or menu first, then exits the lake. Leaving the lake resets these interactions; publication content is unchanged.
 
-Markup lives in `_includes/after-hours.html` and its `after-hours-toys.html` / `after-hours-rowing-crew.html` includes. Styling is in `_sass/_after-hours*.scss`. `assets/js/after-hours.js` manages the lake; `assets/js/rowing-crew.js` draws the articulated athletes and alternating sweep oars on the same animation clock. The crew uses a longer racing shell, fixed foot stretchers, sliding seats, and connected hand/oar geometry, with a quick drive and slower feathered recovery. Technique references: [British Rowing](https://www.britishrowing.org/knowledge/rower-development/british-rowing-technique/water-rowing-technique/) and [Concept2 sweep rigging](https://www.concept2.com/oars/sweeps/length-and-rigging). Boat names come from the publication slugs already used on the homepage. The scene, controls, boss dialogue, and boat-click messages show English with Chinese alongside; rotating messages are paired in the script.
+Markup lives in `_includes/after-hours.html` and its `after-hours-toys.html` / `after-hours-rowing-crew.html` includes. Styling is in `_sass/_after-hours*.scss`. `assets/js/after-hours.js` manages the lake; `assets/js/lake-prizes.js` holds the new prize catalog and SVG artwork, and `assets/js/lake-prize-effects.js` manages temporary effects and their reset/pause behavior; `assets/js/rowing-crew.js` draws the articulated athletes and alternating sweep oars on the same animation clock. The crew uses a longer racing shell, fixed foot stretchers, sliding seats, and connected hand/oar geometry, with a quick drive and slower feathered recovery. Technique references: [British Rowing](https://www.britishrowing.org/knowledge/rower-development/british-rowing-technique/water-rowing-technique/) and [Concept2 sweep rigging](https://www.concept2.com/oars/sweeps/length-and-rigging). Boat names come from the publication slugs already used on the homepage. The scene, controls, boss dialogue, and boat-click messages show English with Chinese alongside; rotating messages are paired in the script.
 
 ### Publication slug resolution
 

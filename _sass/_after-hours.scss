@@ -84,7 +84,7 @@
     isolation: isolate;
     pointer-events: auto;
     opacity: 0;
-    background: linear-gradient(180deg, rgba(255, 246, 229, 0.94) 0%, rgba(249, 237, 216, 0.86) 34%, rgba(235, 242, 230, 0.65) 66%, rgba(216, 237, 233, 0.72) 100%);
+    background: var(--lake-sky, linear-gradient(180deg, rgba(255, 246, 229, 0.94) 0%, rgba(249, 237, 216, 0.86) 34%, rgba(235, 242, 230, 0.65) 66%, rgba(216, 237, 233, 0.72) 100%));
     backdrop-filter: blur(3px) saturate(0.8);
     transition: opacity 600ms ease;
     touch-action: manipulation;
@@ -98,8 +98,8 @@
       width: clamp(80px, 13vw, 180px);
       aspect-ratio: 1;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(255, 243, 198, 0.95) 0%, rgba(255, 234, 184, 0.65) 51%, rgba(255, 234, 184, 0) 73%);
-      box-shadow: 0 0 90px 35px rgba(255, 230, 180, 0.14);
+      background: var(--lake-sun, radial-gradient(circle, rgba(255, 233, 166, 0.98) 0%, rgba(250, 213, 139, 0.82) 51%, rgba(250, 213, 139, 0) 73%));
+      box-shadow: var(--lake-sun-glow, 0 0 90px 35px rgba(255, 220, 153, 0.18));
       pointer-events: none;
     }
   }

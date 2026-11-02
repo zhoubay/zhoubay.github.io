@@ -39,6 +39,7 @@
     <div class="after-hours__vending-result" role="status" aria-live="polite" aria-atomic="true">
       <span class="after-hours__prize-icon" data-prize-icon aria-hidden="true">
         <span data-prize-placeholder>?</span>
+        <span data-prize-new hidden></span>
         <svg data-prize-art="coffee" viewBox="0 0 24 24" fill="none" hidden><path d="M5 8h11v8a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5V8Zm11 1h2a3 3 0 0 1 0 6h-2M8 3v2m5-2v2M3 22h16"/></svg>
         <svg data-prize-art="gpu" viewBox="0 0 24 24" fill="none" hidden><rect x="5" y="5" width="14" height="14" rx="2"/><rect x="9" y="9" width="6" height="6" rx="1"/><path d="M9 2v3m6-3v3M9 19v3m6-3v3M2 9h3m-3 6h3m14-6h3m-3 6h3"/></svg>
         <svg data-prize-art="ticket" viewBox="0 0 24 24" fill="none" hidden><path d="M3 6h18v4a2 2 0 0 0 0 4v4H3v-4a2 2 0 0 0 0-4V6Zm13 0v2m0 3v2m0 3v2M7 9h5m-5 5h5"/></svg>
@@ -48,8 +49,10 @@
       <p class="after-hours__prize-name"><span data-prize-en lang="en">Your lucky break</span><span data-prize-zh lang="zh-CN">抽个下班好彩头</span></p>
       <p class="after-hours__prize-detail"><span data-prize-detail-en lang="en">Something small. Entirely unscientific.</span><span data-prize-detail-zh lang="zh-CN">一点小惊喜，不需要科学依据。</span></p>
     </div>
+    <p class="after-hours__vending-stock" data-vending-stock><span lang="en">No repeats until the shelf runs out.</span><span lang="zh-CN">本轮抽完之前不重复。</span></p>
     <div class="after-hours__vending-actions">
       <button class="after-hours__toy-action" type="button" data-vend><span lang="en">Try your luck</span><span lang="zh-CN">抽一个</span></button>
+      <button class="after-hours__toy-action after-hours__toy-action--secondary after-hours__prize-use" type="button" data-vending-use hidden><span lang="en">Unpack at the lake</span><span lang="zh-CN">带到湖边拆开</span></button>
       <button class="after-hours__toy-action after-hours__toy-action--secondary" type="button" data-vending-crew hidden><span lang="en">Redeem: call the crew</span><span lang="zh-CN">兑换：叫赛艇队</span></button>
     </div>
   </div>
