@@ -3,14 +3,22 @@
 <div class="page-shell">
   <section id="about" class="home-section fade-in">
     {% include section-header.html title="About" %}
-    <div class="about-block">
-      {% if site.author.googlescholar %}
-        {% capture scholar_link %}<a href="{{ site.author.googlescholar }}" target="_blank" rel="noopener noreferrer">Google Scholar</a>{% endcapture %}
-        {% assign about_text = site.data.about.text | replace: '%%GOOGLE_SCHOLAR%%', scholar_link | replace: '%%GOOGLE_SCHOLAR_ZH%%', scholar_link %}
-      {% else %}
-        {% assign about_text = site.data.about.text | replace: '%%GOOGLE_SCHOLAR%%', 'Google Scholar' | replace: '%%GOOGLE_SCHOLAR_ZH%%', 'Google Scholar' %}
+    <div class="about-profile{% if site.data.about.photo %} about-profile--with-photo{% endif %}">
+      {% if site.data.about.photo %}
+      <img class="about-profile__photo"
+           src="{{ site.data.about.photo | relative_url | escape }}"
+           alt="{{ site.data.about.photo_alt | escape }}"
+           width="1122" height="1402" loading="lazy" decoding="async">
       {% endif %}
-      {{ about_text | markdownify }}
+      <div class="about-block">
+        {% if site.author.googlescholar %}
+          {% capture scholar_link %}<a href="{{ site.author.googlescholar }}" target="_blank" rel="noopener noreferrer">Google Scholar</a>{% endcapture %}
+          {% assign about_text = site.data.about.text | replace: '%%GOOGLE_SCHOLAR%%', scholar_link | replace: '%%GOOGLE_SCHOLAR_ZH%%', scholar_link %}
+        {% else %}
+          {% assign about_text = site.data.about.text | replace: '%%GOOGLE_SCHOLAR%%', 'Google Scholar' | replace: '%%GOOGLE_SCHOLAR_ZH%%', 'Google Scholar' %}
+        {% endif %}
+        {{ about_text | markdownify }}
+      </div>
     </div>
   </section>
 

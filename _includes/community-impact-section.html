@@ -10,6 +10,27 @@
       {% endif %}
       <strong>{{ item.title }}</strong>
       {% if item.description %}<span>{{ item.description }}</span>{% endif %}
+      {% if item.huggingface_repo %}
+      {% assign huggingface_model = site.data.huggingface.models[item.huggingface_repo] %}
+      {% if huggingface_model.downloads_all_time != nil %}
+      <div class="impact-card__metrics" role="group" aria-label="{{ item.badge | escape }} Hugging Face download statistics">
+        <dl>
+          <dt>Total Hugging Face downloads</dt>
+          <dd>
+            {%- assign download_digits = huggingface_model.downloads_all_time | append: '' | split: '' -%}
+            {%- for digit in download_digits -%}
+              {{- digit -}}
+              {%- assign group_remainder = forloop.rindex0 | modulo: 3 -%}
+              {%- if group_remainder == 0 and forloop.last == false -%},{%- endif -%}
+            {%- endfor -%}
+          </dd>
+        </dl>
+        {% if site.data.huggingface.updated_at %}
+        <p class="impact-card__metrics-source">Checked <time datetime="{{ site.data.huggingface.updated_at | escape }}">{{ site.data.huggingface.updated_at | date: "%b %-d, %Y" }}</time></p>
+        {% endif %}
+      </div>
+      {% endif %}
+      {% endif %}
       {% include link-buttons.html links=item.links wrapper_class="pub-links impact-card__links" %}
     </li>
     {% endfor %}

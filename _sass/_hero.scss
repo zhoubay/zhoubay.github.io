@@ -233,6 +233,42 @@ body.layout--home {
   margin-top: 0;
 }
 
+// The homepage portrait shares a row with the biography on larger screens.
+.about-profile {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+  gap: 1.5rem;
+
+  &__photo {
+    display: block;
+    width: 100%;
+    max-width: 220px;
+    height: auto;
+    margin: 0;
+    justify-self: center;
+    border-radius: 12px;
+  }
+
+  > .about-block {
+    min-width: 0;
+
+    > p:last-child { margin-bottom: 0; }
+  }
+
+  @media (min-width: 48em) {
+    &--with-photo {
+      grid-template-columns: clamp(180px, 22vw, 240px) minmax(0, 1fr);
+      gap: clamp(1.5rem, 3vw, 2.5rem);
+    }
+
+    &__photo {
+      max-width: none;
+      justify-self: stretch;
+    }
+  }
+}
+
 .about-block {
   font-size: 1.02rem;
   line-height: 1.7;

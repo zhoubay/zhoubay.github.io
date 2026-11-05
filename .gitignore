@@ -14,3 +14,6 @@ package-lock.json
 
 # Python updater/test bytecode
 __pycache__/
+
+# Ignore LaTeX files
+latex_files/proposal/

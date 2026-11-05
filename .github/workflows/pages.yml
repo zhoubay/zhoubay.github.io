@@ -24,40 +24,19 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       should_run: ${{ steps.interval.outputs.should_run }}
+      refresh_scholar: ${{ steps.interval.outputs.refresh_scholar }}
+      refresh_huggingface: ${{ steps.interval.outputs.refresh_huggingface }}
     steps:
       - name: Check out latest master
         uses: actions/checkout@v6
         with:
           ref: master
 
-      - name: Check three-day refresh interval
+      - name: Check each metric's three-day refresh interval
         id: interval
         env:
           EVENT_NAME: ${{ github.event_name }}
-        run: |
-          python3 - <<'PYTHON'
-          from datetime import date, datetime, timezone
-          import json
-          import os
-          from pathlib import Path
-
-          should_run = True
-          if os.environ["EVENT_NAME"] == "schedule":
-              try:
-                  snapshot = json.loads(Path("_data/scholar.json").read_text())
-                  checked = date.fromisoformat(snapshot["updated_at"])
-                  age = (datetime.now(timezone.utc).date() - checked).days
-                  if age < 0:
-                      print("::warning::Scholar snapshot has a future date; requesting a fresh update.")
-                  else:
-                      should_run = age >= 3
-                      print(f"Scholar snapshot is {age} UTC calendar day(s) old; refresh due: {should_run}.")
-              except (OSError, ValueError, KeyError, TypeError):
-                  print("::warning::Scholar snapshot date is missing or invalid; requesting a fresh update.")
-
-          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as output:
-              output.write(f"should_run={str(should_run).lower()}\n")
-          PYTHON
+        run: python3 scripts/check_metric_schedule.py --event "$EVENT_NAME"
 
   build:
     needs: check_schedule
@@ -65,6 +44,8 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       source_sha: ${{ steps.source.outputs.sha }}
+      scholar_result: ${{ steps.scholar.outcome }}
+      huggingface_result: ${{ steps.huggingface.outcome }}
     steps:
       - name: Check out latest master
         uses: actions/checkout@v6
@@ -81,14 +62,40 @@ jobs:
       - name: Install Scholar updater dependencies
         run: python -m pip install -r scripts/requirements-scholar.txt
 
-      - name: Test Scholar updater without network requests
-        run: python -m unittest discover -s tests -p 'test_update_scholar.py'
+      - name: Test metric updaters and refresh schedule without network requests
+        run: python -m unittest discover -s tests -p 'test_*.py'
 
       - name: Refresh Scholar snapshot via SearchApi
-        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        id: scholar
+        if: needs.check_schedule.outputs.refresh_scholar == 'true'
+        continue-on-error: true
         env:
           SEARCHAPI_API_KEY: ${{ secrets.SEARCHAPI_API_KEY }}
         run: python scripts/update_scholar.py --config _config.yml --output _data/scholar.json
+
+      - name: Refresh Hugging Face lifetime download snapshot
+        id: huggingface
+        if: needs.check_schedule.outputs.refresh_huggingface == 'true'
+        continue-on-error: true
+        run: python scripts/update_huggingface.py --output _data/huggingface.json
+
+      - name: Summarize metric refreshes
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        env:
+          SCHOLAR_RESULT: ${{ steps.scholar.outcome }}
+          HUGGINGFACE_RESULT: ${{ steps.huggingface.outcome }}
+        run: |
+          {
+            echo "| Source | Refresh result |"
+            echo "| --- | --- |"
+            echo "| Google Scholar | $SCHOLAR_RESULT |"
+            echo "| Hugging Face | $HUGGINGFACE_RESULT |"
+            echo
+            echo "Failed refreshes keep the previous snapshot; other successful updates can still be published."
+          } >> "$GITHUB_STEP_SUMMARY"
+          if [ "$SCHOLAR_RESULT" = failure ] || [ "$HUGGINGFACE_RESULT" = failure ]; then
+            echo "::warning::A metric refresh failed. Continuing with its previous snapshot; failure will be reported after the deployment attempt."
+          fi
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
@@ -113,14 +120,28 @@ jobs:
             exit 1
           fi
 
-      - name: Save successfully built Scholar snapshot
+      - name: Save successfully built metric snapshots
         if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        env:
+          SCHOLAR_RESULT: ${{ steps.scholar.outcome }}
+          HUGGINGFACE_RESULT: ${{ steps.huggingface.outcome }}
         run: |
-          git add -- _data/scholar.json
-          if ! git diff --cached --quiet -- _data/scholar.json; then
+          snapshot_paths=()
+          if [ "$SCHOLAR_RESULT" = success ] && [ -f _data/scholar.json ]; then
+            snapshot_paths+=(_data/scholar.json)
+          fi
+          if [ "$HUGGINGFACE_RESULT" = success ] && [ -f _data/huggingface.json ]; then
+            snapshot_paths+=(_data/huggingface.json)
+          fi
+          if [ "${#snapshot_paths[@]}" -eq 0 ]; then
+            echo "No successfully refreshed snapshots to save."
+            exit 0
+          fi
+          git add -- "${snapshot_paths[@]}"
+          if ! git diff --cached --quiet -- "${snapshot_paths[@]}"; then
             git -c user.name='github-actions[bot]' \
               -c user.email='41898282+github-actions[bot]@users.noreply.github.com' \
-              commit -m "Update Google Scholar metrics" -- _data/scholar.json
+              commit -m "Update Scholar and Hugging Face metrics" -- "${snapshot_paths[@]}"
             git push origin HEAD:master
           fi
 
@@ -155,3 +176,24 @@ jobs:
       - name: Deploy Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  report_refresh_failures:
+    # Report a failed source after allowing the other source's data to deploy.
+    needs: [build, deploy]
+    if: >-
+      always() &&
+      (needs.build.outputs.scholar_result == 'failure' || needs.build.outputs.huggingface_result == 'failure')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Report failed metric refreshes
+        env:
+          SCHOLAR_RESULT: ${{ needs.build.outputs.scholar_result }}
+          HUGGINGFACE_RESULT: ${{ needs.build.outputs.huggingface_result }}
+        run: |
+          if [ "$SCHOLAR_RESULT" = failure ]; then
+            echo "::error::Google Scholar refresh failed; its previous snapshot was retained. See the build job for the cause."
+          fi
+          if [ "$HUGGINGFACE_RESULT" = failure ]; then
+            echo "::error::Hugging Face refresh failed; its previous snapshot was retained. See the build job for the cause."
+          fi
+          exit 1

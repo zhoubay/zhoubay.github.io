@@ -439,6 +439,7 @@
     }
 
     &.impact-card {
+      min-width: 0;
       display: flex;
       flex-direction: column;
     }
@@ -446,6 +447,47 @@
 }
 
 .impact-card {
+  &__metrics {
+    margin: 1rem 0;
+    padding: 0.95rem 1rem 0.75rem;
+    text-align: center;
+    background: rgba(13, 110, 143, 0.05);
+    border: 1px solid rgba(13, 110, 143, 0.15);
+    border-radius: 1rem;
+
+    dl {
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+    }
+
+    dt {
+      order: 1;
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    dd {
+      margin: 0 0 0.15rem;
+      color: var(--accent);
+      font-size: clamp(1.65rem, 3vw, 2.1rem);
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+      line-height: 1.2;
+      overflow-wrap: anywhere;
+    }
+
+    .impact-card__metrics-source {
+      margin: 0.65rem 0 0;
+      color: var(--text-muted);
+      font-size: 0.65rem;
+      line-height: 1.6;
+    }
+  }
+
   &__badge {
     display: inline-block;
     font-size: 0.72rem;

@@ -10,11 +10,19 @@
   links:
     - { label: "Post", url: "https://x.com/duguyuan/status/1876446845951492221", icon: "link" }
 
-- title: "Evolla — ~100K Hugging Face downloads per month"
-  description: "Evolla-10B-hf model page on Hugging Face."
+- title: "Evolla — over 1M total Hugging Face downloads"
+  huggingface_repo: "westlake-repl/Evolla-10B-hf"
   badge: "Evolla"
   links:
     - { label: "Model", url: "https://huggingface.co/westlake-repl/Evolla-10B-hf", icon: "link" }
+    - { label: "Verify (API)", url: "https://huggingface.co/api/models/westlake-repl/Evolla-10B-hf?expand%5B%5D=downloadsAllTime", icon: "code" }
+
+- title: "SaProt — over 1.4M total Hugging Face downloads"
+  huggingface_repo: "westlake-repl/SaProt_650M_AF2"
+  badge: "SaProt"
+  links:
+    - { label: "Model", url: "https://huggingface.co/westlake-repl/SaProt_650M_AF2", icon: "link" }
+    - { label: "Verify (API)", url: "https://huggingface.co/api/models/westlake-repl/SaProt_650M_AF2?expand%5B%5D=downloadsAllTime", icon: "code" }
 
 - title: "Pinal featured in Nature News"
   description: "Nature News article on AI protein design, citing Pinal (May 2025)."
@@ -28,11 +36,12 @@
   links:
     - { label: "Leaderboard (Oct 2024)", url: "https://github.com/OATML-Markslab/ProteinGym/blob/de1676481fdc6d4c3c8b23a880e44eeca71fb78e/benchmarks/DMS_zero_shot/substitutions/Spearman/Summary_performance_DMS_substitutions_Spearman.csv", icon: "link" }
 
-- title: "SaProt — 60K+ Hugging Face downloads per month"
-  description: "SaProt_650M_AF2 on Hugging Face."
-  badge: "SaProt"
+- title: "Pinal featured in Westlake University news"
+  description: "Westlake University highlights Pinal's design of functional proteins from natural language (Oct 2026)."
+  badge: "Press"
   links:
-    - { label: "Model", url: "https://huggingface.co/westlake-repl/SaProt_650M_AF2", icon: "link" }
+    - { label: "News article", url: "https://www.westlake.edu.cn/news_events/westlakenews/Research/202610/t20261022_70597.html", icon: "link" }
+    - { label: "Photo", url: "/files/evidence/westlake-press-pinal.png", icon: "image" }
 
 - title: "Featured in Westlake University press"
   description: "Campus news coverage of protein search research (ProTrek / trimodal PLM)."
