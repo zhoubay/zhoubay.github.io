@@ -18,10 +18,16 @@ redirect_from:
     {{ site.data.cv.summary | markdownify }}
     <p>
       {% if site.data.cv.pdf %}
-      <a href="{{ base_path }}{{ site.data.cv.pdf }}" target="_blank" rel="noopener noreferrer">Download CV (PDF)</a>
-      &nbsp;·&nbsp;
+      <a href="{{ base_path }}{{ site.data.cv.pdf }}" target="_blank" rel="noopener noreferrer">Download English CV (PDF)</a>
       {% endif %}
-      {% if site.author.googlescholar %}<a href="{{ site.author.googlescholar }}" target="_blank" rel="noopener noreferrer">Google Scholar</a>{% endif %}
+      {% if site.data.cv.pdf_zh %}
+      {% if site.data.cv.pdf %}&nbsp;·&nbsp;{% endif %}
+      <a href="{{ base_path }}{{ site.data.cv.pdf_zh }}" target="_blank" rel="noopener noreferrer" lang="zh-CN">下载中文简历（PDF）</a>
+      {% endif %}
+      {% if site.author.googlescholar %}
+      {% if site.data.cv.pdf or site.data.cv.pdf_zh %}&nbsp;·&nbsp;{% endif %}
+      <a href="{{ site.author.googlescholar }}" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+      {% endif %}
     </p>
   </div>
 

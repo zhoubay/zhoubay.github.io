@@ -36,7 +36,7 @@ Ph.D. candidate in Computer Science at [Westlake University](https://www.westlak
 - **Math formulas**: add `math: true` to a page's front matter to load MathJax on that page only. Use Kramdown inline math with `$$...$$` (e.g. `$$K_{cat}$$`); do not use `\(...\)` — Kramdown treats `\(` as an escaped parenthesis.
 - **News**: add entries to `_data/news.yml` (`date`, `text` in Markdown).
 - **Honors**: `_data/honors.yml`.
-- **Sports Awards**: `_data/sports_awards.yml` supplies the homepage gallery and the CV's Sports Awards section. Keep the downloadable CV in `latex_files/cv/main.tex` in sync and recompile `main.pdf` when adding awards.
+- **Sports Awards**: `_data/sports_awards.yml` supplies the homepage gallery and the CV's Sports Awards section. Keep both downloadable CVs in `latex_files/cv/main.tex` and `latex_files/cv-zh/main.tex` in sync and recompile their `main.pdf` files when adding awards.
 - **Community Impact**: `_data/community_impact.yml` (title, description, badge, links with `label` / `url` / `icon`). Screenshots in `files/evidence/`. Rendered on homepage and `/cv/` via `_includes/community-impact-section.html`.
 - **New blog post**: add `_posts/YYYY-MM-DD-slug.md` with `title`, `subtitle_zh` / `subtitle_en`, `date`, `categories: [blog]`, optional `series`, `math: true`, `toc: true`. Listed at `/blog/`; add `slug` to nav via `_data/navigation.yml` (Blog entry).
 - **New paper**: add `_publications/YYYY-MM-DD-slug.md` with `slug`, `venue`, `badge`, `journal_tag`, `summary`, `authors`, `links`, `paperurl`, `citation`, etc. Optional `bibtex: |` block enables **Copy BibTeX** on the publication page; **Copy citation** is always available when `citation` is set.
@@ -44,6 +44,12 @@ Ph.D. candidate in Computer Science at [Westlake University](https://www.westlak
 - **Privacy policy**: edit [`_pages/terms.md`](_pages/terms.md) (published at `/terms/`; `/privacy/` redirects there). Footer links to this page; GA4 disclosure is described there.
 - **Homepage featured papers**: add the `slug` to `_data/selected_publications.yml` (`slugs` list; order = display order).
 - **Research page projects**: add `slug` under the right section in `_data/research.yml` (`name` / `summary` / `badge` optional overrides).
+
+### Downloadable CVs
+
+The CV page offers English and Chinese PDF downloads, configured by `pdf` and `pdf_zh` in `_data/cv.yml`. Edit `latex_files/cv/main.tex` (English) and `latex_files/cv-zh/main.tex` (Chinese), keeping dates, publication status, and links in sync. The Chinese version retains English publication titles and uses the same portrait as the English version.
+
+Compile with `bash latex_files/compile.sh cv` and `bash latex_files/compile.sh cv-zh` (XeLaTeX with Noto Serif CJK SC required). Check the compile logs for errors and use `pdfinfo` to confirm each generated `main.pdf` is exactly one A4 page before publishing. Commit both the source and rebuilt PDF for each changed version.
 
 ### Google Scholar metrics
 

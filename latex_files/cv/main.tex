@@ -8,6 +8,7 @@
 \usepackage[fontset=none]{ctex}
 \setCJKmainfont{Noto Serif CJK SC}[BoldFont={Noto Serif CJK SC Bold}]
 \usepackage{xcolor}
+\usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{enumitem}
 \usepackage{titlesec}
@@ -96,7 +97,13 @@
 
 \begin{document}
 
-\begin{center}
+% Share the header height with a portrait; keep the body full-width and at 10 pt.
+\noindent
+\begin{minipage}[c]{24mm}
+  \includegraphics[width=\linewidth]{../../images/周禧彬-银框眼镜男士肖像-小.jpg}
+\end{minipage}\hspace{6mm}%
+\begin{minipage}[c]{\dimexpr\linewidth-30mm\relax}
+\raggedright
 {\Large \textbf{Xibin Bayes Zhou (周禧彬)}}\\[0.08cm]
 \textit{Protein foundation models for search, dialogue, and design}\\[0.04cm]
 \textit{Ph.D. Candidate in Computer Science, Westlake University \& Zhejiang University, Hangzhou}\\[0.04cm]
@@ -112,7 +119,8 @@
 % Email: \href{mailto:zhouxibin@westlake.edu.cn}{zhouxibin@westlake.edu.cn}\\
 % Google Scholar: \href{https://scholar.google.com/citations?user=ey4rxTIAAAAJ&hl=en}{scholar.google.com/citations?user=ey4rxTIAAAAJ\&hl=en}\\
 % LinkedIn: \href{https://www.linkedin.com/in/xibinbayeszhou/}{linkedin.com/in/xibinbayeszhou/}
-\end{center}
+\end{minipage}\par
+\vspace{4pt}
 
 \section*{Education}
 \begin{itemize}
