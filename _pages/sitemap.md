@@ -1,37 +1,31 @@
 ---
 layout: archive
 title: "Sitemap"
+description: "Explore the pages, posts, and research collections on this site."
 permalink: /sitemap/
-author_profile: true
+author_profile: false
+classes:
+  - wide
 ---
 
 {% include base_path %}
 
-A list of all the posts and pages found on the site. For you robots out there, there is an [XML version]({{ base_path }}/sitemap.xml) available for digesting as well.
+<div class="page-shell directory-page">
+  <p class="directory-intro">Explore the pages, posts, and research collections on this site. <a href="{{ base_path }}/sitemap.xml">XML sitemap</a></p>
 
-<h2>Pages</h2>
-{% for post in site.pages %}
-  {% include archive-single.html %}
-{% endfor %}
+  <section class="directory-section" aria-labelledby="sitemap-pages">
+    <h2 id="sitemap-pages" class="directory-section__title">Pages</h2>
+    {% include directory-pages.html %}
+  </section>
 
-<h2>Posts</h2>
-{% for post in site.posts %}
-  {% include archive-single.html %}
-{% endfor %}
-
-{% capture written_label %}'None'{% endcapture %}
-
-{% for collection in site.collections %}
-{% unless collection.output == false or collection.label == "posts" %}
-  {% capture label %}{{ collection.label }}{% endcapture %}
-  {% if label != written_label %}
-  <h2>{{ label }}</h2>
-  {% capture written_label %}{{ label }}{% endcapture %}
+  {% if site.posts.size > 0 %}
+  <section class="directory-section" aria-labelledby="sitemap-posts">
+    <h2 id="sitemap-posts" class="directory-section__title">Posts</h2>
+    {% for post in site.posts %}
+      {% include archive-entry.html %}
+    {% endfor %}
+  </section>
   {% endif %}
-{% endunless %}
-{% for post in collection.docs %}
-  {% unless collection.output == false or collection.label == "posts" %}
-  {% include archive-single.html %}
-  {% endunless %}
-{% endfor %}
-{% endfor %}
+
+  {% include directory-collections.html %}
+</div>

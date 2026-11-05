@@ -121,7 +121,11 @@
 }
 
 .layout--wide .page__content .sidebar__right.sticky {
-  @include breakpoint($large) {
+  // Keep the TOC in flow until the side margin can fit it beside the 56rem body.
+  position: static;
+  top: auto;
+
+  @include breakpoint(1500px) {
     position: fixed;
     right: #{'max(1.5rem, calc((100vw - var(--content-width)) / 2 - #{$right-sidebar-width-narrow} - 1rem))'};
     width: $right-sidebar-width-narrow;
@@ -131,7 +135,7 @@
     z-index: 10;
   }
 
-  @include breakpoint($x-large) {
+  @include breakpoint(1700px) {
     right: #{'max(1.5rem, calc((100vw - var(--content-width)) / 2 - #{$right-sidebar-width} - 1rem))'};
     width: $right-sidebar-width;
   }

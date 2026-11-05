@@ -1,14 +1,22 @@
 ---
 layout: archive
 title: "Portfolio"
+description: "Project portfolio."
 permalink: /portfolio/
-author_profile: true
+author_profile: false
+classes:
+  - wide
 ---
 
 {% include base_path %}
 
-
-{% for post in site.portfolio %}
-  {% include archive-single.html %}
-{% endfor %}
-
+<div class="page-shell directory-page">
+  {% for post in site.portfolio reversed %}
+    {% include archive-entry.html %}
+  {% else %}
+    <div class="directory-empty">
+      <p>Explore current projects and research directions.</p>
+      <a class="pub-link" href="{{ base_path }}/research/">Explore research</a>
+    </div>
+  {% endfor %}
+</div>

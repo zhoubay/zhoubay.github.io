@@ -1,12 +1,22 @@
 ---
 layout: archive
 title: "Teaching"
+description: "Teaching activities."
 permalink: /teaching/
-author_profile: true
+author_profile: false
+classes:
+  - wide
 ---
 
 {% include base_path %}
 
-{% for post in site.teaching reversed %}
-  {% include archive-single.html %}
-{% endfor %}
+<div class="page-shell directory-page">
+  {% for post in site.teaching reversed %}
+    {% include archive-entry.html %}
+  {% else %}
+    <div class="directory-empty">
+      <p>No teaching entries are listed yet.</p>
+      <a class="pub-link" href="{{ base_path }}/cv/">View CV</a>
+    </div>
+  {% endfor %}
+</div>

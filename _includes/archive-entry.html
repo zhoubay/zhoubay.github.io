@@ -1,0 +1,20 @@
+{% include base_path %}
+
+{% if post.collection == "posts" %}
+  {% include blog-card.html title=post.title url=post.url date=post.date series=post.series series_part=post.series_part excerpt=post.excerpt content=post.content locale=post.locale %}
+{% elsif post.collection == "publications" %}
+  {% include render-pub-card.html doc=post %}
+{% elsif post.collection == "talks" %}
+  {% include talk-card.html title=post.title url=post.url venue=post.venue type=post.type date=post.date language=post.language excerpt=post.excerpt %}
+{% else %}
+  <article class="directory-card">
+    <h3 class="directory-card__title"><a href="{{ post.url | prepend: base_path }}">{{ post.title }}</a></h3>
+    {% if post.venue %}
+    <p class="directory-card__meta">{% if post.type %}{{ post.type }} · {% endif %}{{ post.venue }}{% if post.date %} · {{ post.date | date: "%Y" }}{% endif %}</p>
+    {% endif %}
+    {% assign entry_description = post.description | default: post.excerpt %}
+    {% if entry_description %}
+    <p class="directory-card__description">{{ entry_description | strip_html | truncate: 200 }}</p>
+    {% endif %}
+  </article>
+{% endif %}

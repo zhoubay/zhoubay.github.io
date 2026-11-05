@@ -1,9 +1,32 @@
 ---
 layout: archive
-title: "Talk map"
+title: "Talk locations"
+description: "Venues and locations of academic talks and online seminars by Xibin Zhou."
 permalink: /talkmap.html
-author_profile: true
+author_profile: false
+classes:
+  - wide
 ---
 
-<p>This map is generated from a Jupyter Notebook file in <a href="https://github.com/academicpages/academicpages.github.io/blob/master/_talks/talkmap.ipynb">/_talks/talkmap.ipynb</a>, which mines the location fields in the .md files in _talks/.</p>
-<iframe src="/talkmap/map.html" height="700" width="850" style="border:none;"></iframe>
+{% include base_path %}
+
+<div class="page-shell directory-page">
+  <p class="directory-intro">Talks hosted by universities and research communities, including online seminars. <a href="{{ base_path }}/talks/">All talks</a></p>
+
+  {% assign location_talks = site.talks | sort: "date" | reverse %}
+  {% for talk in location_talks %}
+  <article class="directory-card">
+    <div class="directory-card__facts">
+      {% if talk.location %}<span class="journal-tag tag-default">{{ talk.location }}</span>{% endif %}
+      {% if talk.date %}<time datetime="{{ talk.date | date_to_xmlschema }}">{{ talk.date | date: "%b %-d, %Y" }}</time>{% endif %}
+    </div>
+    <h2 class="directory-card__title"><a href="{{ talk.url | prepend: base_path }}">{{ talk.title }}</a></h2>
+    {% if talk.venue %}<p class="directory-card__description">{{ talk.venue }}</p>{% endif %}
+  </article>
+  {% else %}
+  <div class="directory-empty">
+    <p>No talks are listed yet.</p>
+    <a class="pub-link" href="{{ base_path }}/research/">Explore research</a>
+  </div>
+  {% endfor %}
+</div>

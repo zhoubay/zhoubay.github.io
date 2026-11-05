@@ -1,17 +1,29 @@
 ---
 layout: archive
-permalink: /categories/
 title: "Posts by Category"
-author_profile: true
+description: "Browse blog posts by category."
+permalink: /categories/
+author_profile: false
+classes:
+  - wide
 ---
 
 {% include base_path %}
 {% include group-by-array collection=site.posts field="categories" %}
 
-{% for category in group_names %}
-  {% assign posts = group_items[forloop.index0] %}
-  <h2 id="{{ category | slugify }}" class="archive__subtitle">{{ category }}</h2>
-  {% for post in posts %}
-    {% include archive-single.html %}
+<div class="page-shell directory-page">
+  {% for group in group_names %}
+    {% assign posts = group_items[forloop.index0] %}
+    <section class="directory-section" aria-labelledby="{{ group | slugify }}">
+      <h2 id="{{ group | slugify }}" class="directory-section__title">{{ group }}</h2>
+      {% for post in posts %}
+        {% include archive-entry.html %}
+      {% endfor %}
+    </section>
+  {% else %}
+    <div class="directory-empty">
+      <p>No categories are listed yet.</p>
+      <a class="pub-link" href="{{ base_path }}/blog/">Browse the blog</a>
+    </div>
   {% endfor %}
-{% endfor %}
+</div>

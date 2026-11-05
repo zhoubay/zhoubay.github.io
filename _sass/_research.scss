@@ -30,6 +30,8 @@
   }
 
   .section-header__title {
+    min-width: 0;
+    white-space: normal;
     color: var(--accent, var(--text-primary));
   }
 
@@ -78,11 +80,6 @@
   }
 
   .page__meta {
-    display: none;
-  }
-
-  .page__footer-follow,
-  .page__footer-copyright {
     display: none;
   }
 }

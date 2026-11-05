@@ -1,0 +1,98 @@
+/* Secondary directories share the site's wide layout and card vocabulary. */
+.directory-page {
+  min-width: 0;
+}
+
+.directory-intro {
+  margin: 0 0 2rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.directory-section {
+  margin-bottom: var(--section-gap);
+  min-width: 0;
+
+  &__title {
+    margin: 0 0 1rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--border-subtle);
+    color: var(--accent);
+    font-size: 1.25rem;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+    scroll-margin-top: calc(#{$masthead-height} + 1rem);
+  }
+}
+
+.directory-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+
+  @include breakpoint($medium) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .directory-card {
+    margin-bottom: 0;
+  }
+}
+
+.directory-card,
+.directory-empty {
+  @include glass-card;
+  min-width: 0;
+  padding: 1.25rem 1.4rem;
+  margin-bottom: 1.25rem;
+}
+
+.directory-card {
+  &__facts {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 0.75rem;
+    margin-bottom: 0.8rem;
+    color: var(--text-muted);
+    font-size: 0.78rem;
+  }
+  &__title {
+    margin: 0 0 0.45rem;
+    font-size: 1.1rem;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+
+    a {
+      color: var(--text-primary);
+      text-decoration: none;
+
+      &:hover {
+        color: var(--accent);
+      }
+    }
+  }
+
+  &__meta,
+  &__description {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+
+  &__meta + &__description {
+    margin-top: 0.4rem;
+  }
+}
+
+.directory-empty {
+  text-align: center;
+  padding: 2rem 1.4rem;
+
+  p {
+    margin: 0 0 1rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+}

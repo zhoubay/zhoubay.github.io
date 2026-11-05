@@ -1,0 +1,8 @@
+{% assign directory_pages = site.pages | sort: "title" %}
+<div class="directory-grid">
+  {% for post in directory_pages %}
+    {% if post.title and post.title != empty and post.sitemap != false and post.redirect_to == nil and post.url != "/404.html" %}
+      {% include archive-entry.html %}
+    {% endif %}
+  {% endfor %}
+</div>

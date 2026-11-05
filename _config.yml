@@ -253,14 +253,18 @@ defaults:
       type: pages
     values:
       layout: single
-      author_profile: true
+      author_profile: false
+      classes:
+        - wide
   # _teaching
   - scope:
       path: ""
       type: teaching
     values:
       layout: single
-      author_profile: true
+      author_profile: false
+      classes:
+        - wide
       share: true
       comments: true
   # _publications
@@ -280,7 +284,9 @@ defaults:
       type: portfolio
     values:
       layout: single
-      author_profile: true
+      author_profile: false
+      classes:
+        - wide
       share: true
       comment: true
   # _talks
@@ -289,7 +295,9 @@ defaults:
       type: talks
     values:
       layout: talk
-      author_profile: true
+      author_profile: false
+      classes:
+        - wide
       share: true
 
 

@@ -19,6 +19,9 @@
     {% if site.author.linkedin %}
     <li><a href="https://www.linkedin.com/in/{{ site.author.linkedin }}" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
     {% endif %}
+    {% if site.atom_feed.hide != true %}
+    <li><a href="{% if site.atom_feed.path %}{{ site.atom_feed.path | relative_url }}{% else %}{{ '/feed.xml' | relative_url }}{% endif %}"><i class="fas fa-rss" aria-hidden="true"></i> RSS</a></li>
+    {% endif %}
     <li><a href="{{ base_path }}/terms/">Privacy</a></li>
   </ul>
   <p class="site-footer-bar__privacy">This site uses Google Analytics to understand traffic. See our <a href="{{ base_path }}/terms/">Privacy Policy</a>.</p>

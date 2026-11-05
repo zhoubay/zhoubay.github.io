@@ -1,0 +1,11 @@
+{% for collection in site.collections %}
+  {% if collection.output != false and collection.label != "posts" and collection.docs.size > 0 %}
+    <section class="directory-section" aria-labelledby="{{ collection.label | slugify }}">
+      <h2 id="{{ collection.label | slugify }}" class="directory-section__title">{{ collection.label | capitalize }}</h2>
+      {% assign collection_docs = collection.docs | sort: "date" | reverse %}
+      {% for post in collection_docs %}
+        {% include archive-entry.html %}
+      {% endfor %}
+    </section>
+  {% endif %}
+{% endfor %}
