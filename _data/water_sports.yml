@@ -1,7 +1,9 @@
 intro: "Previous president of Water Sports Club in Westlake University"
 items:
   - title: "Rowing"
-    description: "4 years experience, captain of rowing team in Westlake University"
+    description: "Four years of experience; captain of the Westlake University rowing team. Fourth place in mixed double sculls at the 2026 Yangtze River Delta Intercollegiate Rowing Invitational."
+    url: "/#rowing-songjiang-2026-title"
+    link_label: "Award & photos"
   - title: "Stand up paddle"
     description: "3 years experience"
   - title: "SUP Polo"

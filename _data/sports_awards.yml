@@ -1,3 +1,76 @@
+# Rowing result and competition context confirmed by the user.
+- id: rowing-songjiang-2026
+  sport: Rowing
+  award: Fourth Place
+  division: Mixed Double Sculls
+  event: 2026 Yangtze River Delta Intercollegiate Rowing Invitational & 4th Songjiang University Town Open Regatta
+  event_zh: 2026长三角高校赛艇邀请赛暨松江大学城第四届赛艇公开赛
+  date: "2026-11-14"
+  date_label: "Nov 14, 2026"
+  location: Shanghai, China
+  summary: >-
+    Finished fourth in mixed double sculls representing Westlake University at a
+    regatta featuring 21 universities from across China. The top three crews
+    consisted of high-performance athletes admitted to university through dedicated
+    sports recruitment programs.
+  cover:
+    image: /images/sports-awards/rowing/20261114/mixed-double-sculls-race.jpg
+    preview: /images/sports-awards/rowing/20261114/web/mixed-double-sculls-race-960.webp
+    large: /images/sports-awards/rowing/20261114/web/mixed-double-sculls-race-1600.webp
+    width: 960
+    height: 640
+    caption: Racing for Westlake University in mixed double sculls
+    alt: Two Westlake University rowers racing in a double scull, each using two oars.
+  photos:
+    - image: /images/sports-awards/rowing/20261114/fourth-place-certificates.jpg
+      preview: /images/sports-awards/rowing/20261114/web/fourth-place-certificates-640.webp
+      width: 640
+      height: 480
+      caption: Fourth-place certificates
+      alt: Two certificates recognizing Westlake University's fourth-place finish in mixed double sculls.
+    - image: /images/sports-awards/rowing/20261114/crew-with-certificates.jpg
+      preview: /images/sports-awards/rowing/20261114/web/crew-with-certificates-640.webp
+      width: 360
+      height: 640
+      caption: Our crew with the award certificates
+      alt: Two rowers holding their award certificates in front of the regatta backdrop.
+    - image: /images/sports-awards/rowing/20261114/team-at-results-board.jpg
+      preview: /images/sports-awards/rowing/20261114/web/team-at-results-board-640.webp
+      width: 640
+      height: 480
+      caption: With the team at the results board
+      alt: Four team members posing in front of the regatta results board.
+    - image: /images/sports-awards/rowing/20261114/tongji-westlake-group.jpg
+      preview: /images/sports-awards/rowing/20261114/web/tongji-westlake-group-640.webp
+      width: 640
+      height: 480
+      caption: With rowers from Tongji University, my alma mater
+      alt: Rowers posing together with Tongji University and Westlake University flags.
+    - image: /images/sports-awards/rowing/20261114/with-tongji-rowing-team.jpg
+      preview: /images/sports-awards/rowing/20261114/web/with-tongji-rowing-team-640.webp
+      width: 640
+      height: 427
+      caption: Reuniting with the Tongji rowing team
+      alt: Rowers posing together behind a Tongji University flag at the regatta.
+    - image: /images/sports-awards/rowing/20261114/interuniversity-group-01.jpg
+      preview: /images/sports-awards/rowing/20261114/web/interuniversity-group-01-640.webp
+      width: 640
+      height: 427
+      caption: With fellow university rowers
+      alt: Rowers from several universities holding their team flags in front of the regatta backdrop.
+    - image: /images/sports-awards/rowing/20261114/interuniversity-group-02.jpg
+      preview: /images/sports-awards/rowing/20261114/web/interuniversity-group-02-640.webp
+      width: 640
+      height: 427
+      caption: Sharing the day with fellow university crews
+      alt: Two university crews posing together with purple and orange team flags.
+    - image: /images/sports-awards/rowing/20261114/interuniversity-group-03.jpg
+      preview: /images/sports-awards/rowing/20261114/web/interuniversity-group-03-640.webp
+      width: 640
+      height: 427
+      caption: A group photo with fellow competitors
+      alt: University rowers posing together on the stage with blue and orange team flags.
+
 # Exact date confirmed by the user; team is documented in the award certificate.
 - id: sup-polo-shanghai-2026
   sport: SUP Polo
