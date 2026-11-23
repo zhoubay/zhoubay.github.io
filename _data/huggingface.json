@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-11-20",
+  "updated_at": "2026-11-23",
   "models": {
     "westlake-repl/Evolla-10B-hf": {
-      "downloads_all_time": 1085167
+      "downloads_all_time": 1085192
     },
     "westlake-repl/SaProt_650M_AF2": {
-      "downloads_all_time": 1457749
+      "downloads_all_time": 1458844
     }
   }
 }
