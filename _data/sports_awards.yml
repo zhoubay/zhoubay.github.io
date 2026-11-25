@@ -1,5 +1,14 @@
 # Rowing result and competition context confirmed by the user.
 - id: rowing-songjiang-2026
+  i18n:
+    zh:
+      sport: 赛艇
+      award: 第四名
+      division: 混合双人双桨
+      event: 2026长三角高校赛艇邀请赛暨松江大学城第四届赛艇公开赛
+      date_label: 2026年11月14日
+      location: 中国上海
+      summary: 代表西湖大学参加汇聚全国 21 所高校的赛艇比赛，获得混合双人双桨第四名。前三名队伍均由通过专门体育招生项目进入高校的高水平运动员组成。
   sport: Rowing
   award: Fourth Place
   division: Mixed Double Sculls
@@ -15,6 +24,10 @@
     sports recruitment programs.
   cover:
     image: /images/sports-awards/rowing/20261114/mixed-double-sculls-race.jpg
+    i18n:
+      zh:
+        caption: 代表西湖大学参加混合双人双桨比赛
+        alt: 两名西湖大学赛艇队员参加双人双桨比赛，每人各持两支桨。
     preview: /images/sports-awards/rowing/20261114/web/mixed-double-sculls-race-960.webp
     large: /images/sports-awards/rowing/20261114/web/mixed-double-sculls-race-1600.webp
     width: 960
@@ -23,48 +36,80 @@
     alt: Two Westlake University rowers racing in a double scull, each using two oars.
   photos:
     - image: /images/sports-awards/rowing/20261114/fourth-place-certificates.jpg
+      i18n:
+        zh:
+          caption: 第四名获奖证书
+          alt: 两张证书，记录西湖大学在混合双人双桨项目中获得第四名。
       preview: /images/sports-awards/rowing/20261114/web/fourth-place-certificates-640.webp
       width: 640
       height: 480
       caption: Fourth-place certificates
       alt: Two certificates recognizing Westlake University's fourth-place finish in mixed double sculls.
     - image: /images/sports-awards/rowing/20261114/crew-with-certificates.jpg
+      i18n:
+        zh:
+          caption: 我们与获奖证书合影
+          alt: 两名赛艇队员手持获奖证书，在赛事背景板前合影。
       preview: /images/sports-awards/rowing/20261114/web/crew-with-certificates-640.webp
       width: 360
       height: 640
       caption: Our crew with the award certificates
       alt: Two rowers holding their award certificates in front of the regatta backdrop.
     - image: /images/sports-awards/rowing/20261114/team-at-results-board.jpg
+      i18n:
+        zh:
+          caption: 与队友在成绩公告板前合影
+          alt: 四名队员在赛艇比赛成绩公告板前合影。
       preview: /images/sports-awards/rowing/20261114/web/team-at-results-board-640.webp
       width: 640
       height: 480
       caption: With the team at the results board
       alt: Four team members posing in front of the regatta results board.
     - image: /images/sports-awards/rowing/20261114/tongji-westlake-group.jpg
+      i18n:
+        zh:
+          caption: 与母校同济大学的赛艇队员合影
+          alt: 赛艇队员们手持同济大学和西湖大学旗帜合影。
       preview: /images/sports-awards/rowing/20261114/web/tongji-westlake-group-640.webp
       width: 640
       height: 480
       caption: With rowers from Tongji University, my alma mater
       alt: Rowers posing together with Tongji University and Westlake University flags.
     - image: /images/sports-awards/rowing/20261114/with-tongji-rowing-team.jpg
+      i18n:
+        zh:
+          caption: 与同济大学赛艇队重聚
+          alt: 赛艇队员们在赛场上展开同济大学旗帜合影。
       preview: /images/sports-awards/rowing/20261114/web/with-tongji-rowing-team-640.webp
       width: 640
       height: 427
       caption: Reuniting with the Tongji rowing team
       alt: Rowers posing together behind a Tongji University flag at the regatta.
     - image: /images/sports-awards/rowing/20261114/interuniversity-group-01.jpg
+      i18n:
+        zh:
+          caption: 与其他高校赛艇队员合影
+          alt: 多所高校的赛艇队员手持各自队旗，在赛事背景板前合影。
       preview: /images/sports-awards/rowing/20261114/web/interuniversity-group-01-640.webp
       width: 640
       height: 427
       caption: With fellow university rowers
       alt: Rowers from several universities holding their team flags in front of the regatta backdrop.
     - image: /images/sports-awards/rowing/20261114/interuniversity-group-02.jpg
+      i18n:
+        zh:
+          caption: 与其他高校队伍共度比赛日
+          alt: 两支高校赛艇队手持紫色和橙色队旗合影。
       preview: /images/sports-awards/rowing/20261114/web/interuniversity-group-02-640.webp
       width: 640
       height: 427
       caption: Sharing the day with fellow university crews
       alt: Two university crews posing together with purple and orange team flags.
     - image: /images/sports-awards/rowing/20261114/interuniversity-group-03.jpg
+      i18n:
+        zh:
+          caption: 与参赛队员们合影
+          alt: 高校赛艇队员们在舞台上手持蓝色和橙色队旗合影。
       preview: /images/sports-awards/rowing/20261114/web/interuniversity-group-03-640.webp
       width: 640
       height: 427
@@ -73,6 +118,15 @@
 
 # Exact date confirmed by the user; team is documented in the award certificate.
 - id: sup-polo-shanghai-2026
+  i18n:
+    zh:
+      sport: 桨板球
+      award: 全国季军
+      division: 全国高校组
+      event: 2026年中国桨板球公开赛上海站
+      date_label: 2026年10月18日
+      location: 中国上海
+      summary: 作为西湖大学水上运动俱乐部首发队员参赛。
   sport: SUP Polo
   award: National Third Place
   division: National Collegiate Division
@@ -85,6 +139,10 @@
     Club.
   cover:
     image: /images/sports-awards/sup-polo/cover.jpg
+    i18n:
+      zh:
+        caption: 在 2026 年中国桨板球公开赛上海站庆祝获奖
+        alt: 队员们在 2026 年中国桨板球公开赛上海站手持奖杯与获奖证书合影。
     preview: /images/sports-awards/sup-polo/web/cover-960.webp
     large: /images/sports-awards/sup-polo/web/cover-1600.webp
     width: 960
@@ -94,6 +152,10 @@
       Polo tournament in Shanghai.
   photos:
   - image: /images/sports-awards/sup-polo/match-01.jpg
+    i18n:
+      zh:
+        caption: 水上比赛
+        alt: 一名桨板球运动员在比赛中站立于桨板上，手持船桨。
     preview: /images/sports-awards/sup-polo/web/match-01-320.webp
     width: 320
     height: 480
@@ -101,12 +163,20 @@
     alt: A SUP Polo player standing on a paddleboard and holding a paddle during the
       tournament.
   - image: /images/sports-awards/sup-polo/trophy.jpg
+    i18n:
+      zh:
+        caption: 季军奖杯
+        alt: 桨板球比赛结束后，在水边举起季军奖杯。
     preview: /images/sports-awards/sup-polo/web/trophy-360.webp
     width: 360
     height: 480
     caption: Third-place trophy
     alt: The third-place trophy held beside the water after the SUP Polo tournament.
   - image: /images/sports-awards/sup-polo/certificate.jpg
+    i18n:
+      zh:
+        caption: 获奖证书
+        alt: 授予西湖大学队高校组季军的获奖证书。
     preview: /images/sports-awards/sup-polo/web/certificate-640.webp
     width: 640
     height: 453

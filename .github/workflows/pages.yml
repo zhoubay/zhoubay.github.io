@@ -65,6 +65,9 @@ jobs:
       - name: Test metric updaters and refresh schedule without network requests
         run: python -m unittest discover -s tests -p 'test_*.py'
 
+      - name: Validate maintained Chinese translations
+        run: python scripts/check_localization.py
+
       - name: Refresh Scholar snapshot via SearchApi
         id: scholar
         if: needs.check_schedule.outputs.refresh_scholar == 'true'
@@ -111,6 +114,9 @@ jobs:
         env:
           JEKYLL_ENV: production
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
+
+      - name: Validate bilingual pages and internal links
+        run: python scripts/check_localization.py --site _site
 
       - name: Ensure master did not change during the build
         run: |

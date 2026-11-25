@@ -2,17 +2,18 @@
 
 <article class="blog-card fade-in">
   <h3 class="blog-card__title">
-    <a href="{{ include.url | prepend: base_path }}">{{ include.title }}</a>
+    <a href="{{ include.url | locale_url: page.lang | prepend: base_path }}">{{ include.title | t: page.lang }}</a>
   </h3>
   {% if include.series or include.date or include.content %}
   <p class="blog-card__meta">
-    {% if include.series %}<span class="blog-card__series">{{ include.series }}{% if include.series_part %} · Part {{ include.series_part }}{% endif %}</span>{% endif %}
+    {% if include.series %}<span class="blog-card__series">{{ include.series }}{% if include.series_part %} · {{ 'Part' | t: page.lang }} {{ include.series_part }}{% endif %}</span>{% endif %}
     {% if include.date %}<time datetime="{{ include.date | date_to_xmlschema }}">{{ include.date | date: "%Y-%m-%d" }}</time>{% endif %}
     {% if include.content %}
       <span class="blog-card__read-time"><i class="fa fa-clock-o" aria-hidden="true"></i> {% include read-time.html content=include.content locale=include.locale %}</span>
     {% endif %}
   </p>
   {% endif %}
+  {% if page.lang != 'zh-CN' %}<p class="article-language-notice">{{ 'Chinese only' | t: page.lang }}</p>{% endif %}
   {% if include.excerpt %}
   <p class="blog-card__excerpt">{{ include.excerpt | strip_html | truncate: 280 }}</p>
   {% endif %}

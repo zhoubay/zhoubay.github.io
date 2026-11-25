@@ -13,6 +13,7 @@
 {
   "@context": "https://schema.org",
   "@type": "ScholarlyArticle",
+  "inLanguage": {{ page.content_lang | jsonify }},
   "headline": {{ page.title | markdownify | strip_html | strip_newlines | jsonify }},
   "description": {{ pub_description | jsonify }},
   "url": {{ pub_url | jsonify }},

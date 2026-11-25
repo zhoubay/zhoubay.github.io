@@ -1,3 +1,8 @@
 en: English
 zh: Chinese
 en-zh: Bilingual
+i18n:
+  zh:
+    en: 英语
+    zh: 中文
+    en-zh: 中英双语

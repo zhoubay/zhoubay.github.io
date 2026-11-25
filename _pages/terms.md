@@ -1,9 +1,11 @@
 ---
+lang: en
+translation_key: page.terms
 layout: single
 title: "Privacy Policy"
 permalink: /terms/
 description: "Privacy policy for zhoubay.github.io — analytics, cookies, and third-party services."
-last_updated: 2026-05-21
+last_updated: 2026-11-15
 author_profile: false
 classes:
   - wide
@@ -25,7 +27,7 @@ This is a static academic website. I do not offer user accounts, comment forms, 
 
 ## What we collect
 
-When you browse this site, **Google Analytics 4** may collect aggregated usage data, such as:
+When you browse this site, the analytics services described below may collect usage data, such as:
 
 - Pages viewed and approximate time on site
 - General geographic region (derived from IP)
@@ -44,6 +46,13 @@ This site uses [Google Analytics 4](https://support.google.com/analytics/) (meas
 
 Analytics runs by default when you load pages on this site. I do not sell visitor data.
 
+{% assign baidu_tracking_id = site.analytics.baidu.tracking_id | default: "" | strip %}
+{% if site.analytics.provider and baidu_tracking_id != "" %}
+## Baidu Tongji
+
+This site also uses [Baidu Tongji](https://tongji.baidu.com/) to measure visits, referring websites, and general geographic regions. Baidu may process your IP address, browser and device information, pages visited, and referral information, and may use cookies or similar technologies. See the [Baidu Tongji Privacy Policy](https://tongji.baidu.com/web/help/article?id=330&type=0) for details about its data practices.
+
+{% endif %}
 ## Other third-party services
 
 **Google Fonts** — The site loads fonts from Google (`fonts.googleapis.com` / `fonts.gstatic.com`). Google may receive your IP address when fonts are requested. See [Google's Privacy Policy](https://policies.google.com/privacy).
@@ -54,7 +63,7 @@ This site does not embed Disqus, advertising networks, or social login widgets.
 
 ## Cookies
 
-Cookies and similar storage are used mainly for analytics (Google Analytics). You can block or delete cookies in your browser settings. Blocking cookies may affect analytics but should not prevent you from reading public pages.
+Cookies and similar storage are used mainly for the analytics services described above. You can block or delete cookies in your browser settings. Blocking cookies may affect analytics but should not prevent you from reading public pages.
 
 ## Your choices
 

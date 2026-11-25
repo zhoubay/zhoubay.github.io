@@ -1,33 +1,76 @@
 - date: "Nov 14, 2026"
+  i18n:
+    zh:
+      date: 2026年11月14日
+      text: 代表西湖大学参加在上海举行的 [2026 长三角高校赛艇邀请赛](/zh/#rowing-songjiang-2026-title)，获得**混合双人双桨第四名**。本次赛事汇聚了全国 21 所高校的队伍。
   emoji: "🚣"
   text: "Representing Westlake University, our crew placed **fourth in mixed double sculls** at the [2026 Yangtze River Delta Intercollegiate Rowing Invitational](/#rowing-songjiang-2026-title) in Shanghai, a regatta featuring 21 universities from across China."
 - date: "Oct 22, 2026"
+  i18n:
+    zh:
+      date: 2026年10月22日
+      text: Pinal 通过自然语言设计蛋白质的研究获[西湖大学新闻报道](https://www.westlake.edu.cn/news_events/westlakenews/Research/202610/t20261022_70597.html)（[报道截图](/files/evidence/westlake-press-pinal.png)）
   emoji: "📰"
   text: "Pinal's protein design from natural language featured in [Westlake University news](https://www.westlake.edu.cn/news_events/westlakenews/Research/202610/t20261022_70597.html) ([photo](/files/evidence/westlake-press-pinal.png))"
 - date: "Oct 21, 2026"
+  i18n:
+    zh:
+      date: 2026年10月21日
+      text: Pinal 发表于 *Nature*（[论文](https://doi.org/10.1038/s41586-026-11205-z)）
   emoji: "🎉"
   text: "Pinal published in *Nature* ([paper](https://doi.org/10.1038/s41586-026-11205-z))"
 - date: "Oct 18, 2026"
+  i18n:
+    zh:
+      date: 2026年10月18日
+      text: 在[中国桨板球公开赛上海站](/zh/#sports-awards)获得**全国高校组季军**
   emoji: "🥉"
   text: "**National 3rd place** in collegiate SUP Polo at the [Shanghai Open](/#sports-awards)"
 - date: "2026"
+  i18n:
+    zh:
+      text: Evolla 正在 *Nature* 审稿中（[bioRxiv 预印本](https://doi.org/10.1101/2025.01.05.630192)）
   emoji: "🔬"
   text: "Evolla under review at *Nature* ([bioRxiv preprint](https://doi.org/10.1101/2025.01.05.630192))"
 - date: "Oct 30, 2025"
+  i18n:
+    zh:
+      date: 2025年10月30日
+      text: ProTrek 三模态蛋白质检索研究获[西湖大学新闻报道](https://www.westlake.edu.cn/news_events/westlakenews/Research/202510/t20251030_60873.html)（[报道截图](/files/evidence/westlake-press.jpg)）
   emoji: "📰"
   text: "ProTrek's trimodal protein search featured in [Westlake University news](https://www.westlake.edu.cn/news_events/westlakenews/Research/202510/t20251030_60873.html) ([photo](/files/evidence/westlake-press.jpg))"
 - date: "Oct 24, 2025"
+  i18n:
+    zh:
+      date: 2025年10月24日
+      text: 获 [Nature 人工智能增强生物学会议](https://natureconferences.streamgo.live/ai-augmented-biology/register)最佳海报奖（[海报](/files/Evolla_poster_2025.pdf)）
   emoji: "🏆"
   text: "Best Poster at [Nature Conference on AI Augmented Biology](https://natureconferences.streamgo.live/ai-augmented-biology/register) ([poster](/files/Evolla_poster_2025.pdf))"
 - date: "Oct 24, 2025"
+  i18n:
+    zh:
+      date: 2025年10月24日
+      text: SaprotHub 在线发表于 *Nature Biotechnology*（[论文](https://doi.org/10.1038/s41587-025-02859-7)）
   emoji: "🎉"
   text: "SaprotHub published online in *Nature Biotechnology* ([paper](https://doi.org/10.1038/s41587-025-02859-7))"
 - date: "Oct 2, 2025"
+  i18n:
+    zh:
+      date: 2025年10月2日
+      text: ProTrek 在线发表于 *Nature Biotechnology*（[论文](https://doi.org/10.1038/s41587-025-02836-0)）
   emoji: "🎉"
   text: "ProTrek published online in *Nature Biotechnology* ([paper](https://doi.org/10.1038/s41587-025-02836-0))"
 - date: "Apr 6, 2025"
+  i18n:
+    zh:
+      date: 2025年4月6日
+      text: ESM-Ezy 发表于 *Nature Communications*（[论文](https://doi.org/10.1038/s41467-025-58521-y)）
   emoji: "🎉"
   text: "ESM-Ezy published in *Nature Communications* ([paper](https://doi.org/10.1038/s41467-025-58521-y))"
 - date: "Jan 17, 2024"
+  i18n:
+    zh:
+      date: 2024年1月17日
+      text: SaProt 被 *ICLR 2024* 接收（[公告](https://github.com/westlake-repl/SaProt#news)）
   emoji: "🎉"
   text: "SaProt accepted at *ICLR 2024* ([announcement](https://github.com/westlake-repl/SaProt#news))"

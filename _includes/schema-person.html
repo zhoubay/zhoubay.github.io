@@ -12,24 +12,24 @@
   "alternateName": ["周禧彬", "Xibin Zhou"],
   "url": {{ schema_url | jsonify }},
   "email": {{ site.author.email | jsonify }},
-  "jobTitle": "Ph.D. Candidate in Computer Science",
-  "description": {{ site.description | jsonify }},
+  "jobTitle": {{ "Ph.D. Candidate in Computer Science" | t: page.lang | jsonify }},
+  "description": {{ site.description | t: page.lang | jsonify }},
   "image": {{ site.og_image | prepend: "/images/" | prepend: schema_url | jsonify }},
   "affiliation": {
     "@type": "Organization",
-    "name": "Westlake University",
+    "name": {{ "Westlake University" | t: page.lang | jsonify }},
     "url": "https://www.westlake.edu.cn/"
   },
   "worksFor": {
     "@type": "Organization",
-    "name": "Westlake University"
+    "name": {{ "Westlake University" | t: page.lang | jsonify }}
   },
   "knowsAbout": [
-    "Protein language models",
-    "AI for Science",
-    "Multimodal protein AI",
-    "Computational biology",
-    "Protein engineering"
+    {{ "Protein language models" | t: page.lang | jsonify }},
+    {{ "AI for Science" | t: page.lang | jsonify }},
+    {{ "Multimodal protein AI" | t: page.lang | jsonify }},
+    {{ "Computational biology" | t: page.lang | jsonify }},
+    {{ "Protein engineering" | t: page.lang | jsonify }}
   ],
   "sameAs": {{ site.social.links | jsonify }}
 }

@@ -11,7 +11,7 @@ function initBlogDiagramZoom() {
 
   $canvases.css('cursor', 'zoom-in').on('click', function (e) {
     e.preventDefault();
-    $.magnificPopup.open({
+    $.magnificPopup.open($.extend(true, {}, window.SiteI18n.popup, {
       items: items,
       gallery: { enabled: items.length > 1 },
       type: 'inline',
@@ -19,6 +19,6 @@ function initBlogDiagramZoom() {
       mainClass: 'mfp-zoom-in mfp-diagram',
       closeOnContentClick: false,
       midClick: true
-    }, $canvases.index(this));
+    }), $canvases.index(this));
   });
 }

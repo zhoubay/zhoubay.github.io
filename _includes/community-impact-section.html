@@ -1,9 +1,9 @@
 {% include base_path %}
-{% if site.data.community_impact.size > 0 %}
+{% if content_data.community_impact.size > 0 %}
 <section{% if include.id %} id="{{ include.id }}"{% endif %} class="{{ include.class | default: 'fade-in' }}"{% if include.style %} style="{{ include.style }}"{% endif %}>
   {% include section-header.html title="Community Impact" %}
   <ul class="interests-list">
-    {% for item in site.data.community_impact %}
+    {% for item in content_data.community_impact %}
     <li class="interests-list__item impact-card">
       {% if item.badge %}
       <span class="journal-tag tag-default impact-card__badge">{{ item.badge }}</span>
@@ -13,9 +13,9 @@
       {% if item.huggingface_repo %}
       {% assign huggingface_model = site.data.huggingface.models[item.huggingface_repo] %}
       {% if huggingface_model.downloads_all_time != nil %}
-      <div class="impact-card__metrics" role="group" aria-label="{{ item.badge | escape }} Hugging Face download statistics">
+      <div class="impact-card__metrics" role="group" aria-label="{{ item.badge | escape }} {{ 'Hugging Face download statistics' | t: page.lang }}">
         <dl>
-          <dt>Total Hugging Face downloads</dt>
+          <dt>{{ 'Total Hugging Face downloads' | t: page.lang }}</dt>
           <dd>
             {%- assign download_digits = huggingface_model.downloads_all_time | append: '' | split: '' -%}
             {%- for digit in download_digits -%}
@@ -26,7 +26,7 @@
           </dd>
         </dl>
         {% if site.data.huggingface.updated_at %}
-        <p class="impact-card__metrics-source">Checked <time datetime="{{ site.data.huggingface.updated_at | escape }}">{{ site.data.huggingface.updated_at | date: "%b %-d, %Y" }}</time></p>
+        <p class="impact-card__metrics-source">{{ 'Checked' | t: page.lang }} <time datetime="{{ site.data.huggingface.updated_at | escape }}">{{ site.data.huggingface.updated_at | localized_date: page.lang, "%b %-d, %Y" }}</time></p>
         {% endif %}
       </div>
       {% endif %}

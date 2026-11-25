@@ -2,9 +2,11 @@
 layout: default
 ---
 
+{% assign previous_item = page.previous_item | localize_doc: page.lang %}
+{% assign next_item = page.next_item | localize_doc: page.lang %}
 {% include base_path %}
 {% assign talk_type = page.type | default: page.talk_type %}
-{% assign talk_language = site.data.talk_languages[page.language] | default: page.language %}
+{% assign talk_language = content_data.talk_languages[page.language] | default: page.language %}
 
 <div id="main" role="main">
   <article class="talk-page publication-page page-shell" itemscope itemtype="http://schema.org/CreativeWork">
@@ -14,30 +16,30 @@ layout: default
     {% if page.modified %}<meta itemprop="dateModified" content="{{ page.modified | date: '%Y-%m-%d' }}">{% endif %}
 
     <p class="publication-back">
-      <a href="{{ base_path }}/talks/">&larr; All talks</a>
+      <a href="{{ locale_path }}/talks/">{{ '&larr; All talks' | t: page.lang }}</a>
     </p>
 
     <header class="publication-hero talk-hero">
       <div class="publication-hero__header">
-        {% if talk_type %}<span class="journal-tag tag-default">{{ talk_type }}</span>{% endif %}
+        {% if talk_type %}<span class="journal-tag tag-default">{{ talk_type | t: page.lang }}</span>{% endif %}
         {% if page.date %}
-        <time class="pub-year-badge" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
+        <time class="pub-year-badge" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | localized_date: page.lang }}</time>
         {% endif %}
       </div>
       {% if page.title %}
       <h1 class="publication-hero__title" itemprop="name">{{ page.title | markdownify | remove: "<p>" | remove: "</p>" }}</h1>
       {% endif %}
-      {% if page.venue %}<p class="talk-hero__venue">{{ page.venue }}</p>{% endif %}
+      {% if page.venue %}<p class="talk-hero__venue">{{ page.venue | t: page.lang }}</p>{% endif %}
       {% if page.location or talk_language or page.read_time %}
       <p class="talk-hero__details">
         {% if page.location %}<span><i class="fas fa-map-marker-alt" aria-hidden="true"></i> {{ page.location }}</span>{% endif %}
-        {% if talk_language %}<span><i class="fas fa-language" aria-hidden="true"></i> {{ talk_language }}</span>{% endif %}
+        {% if talk_language %}<span><i class="fas fa-language" aria-hidden="true"></i> {{ talk_language | t: page.lang }}</span>{% endif %}
         {% if page.read_time %}<span><i class="fas fa-clock" aria-hidden="true"></i> {% include read-time.html %}</span>{% endif %}
       </p>
       {% endif %}
       {% if page.link %}
       <div class="pub-links publication-hero__links">
-        <a class="pub-link" href="{{ page.link }}" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a>
+        <a class="pub-link" href="{{ page.link }}" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" aria-hidden="true"></i> {{ site.data.ui-text[page.locale].ext_link_label | default: "Direct Link" }}</a>
       </div>
       {% endif %}
     </header>
@@ -51,18 +53,18 @@ layout: default
     {% endif %}
     {% if page.share %}{% include social-share.html %}{% endif %}
 
-    {% if page.previous or page.next %}
-    <nav class="publication-nav" aria-label="Talk navigation">
-      {% if page.previous %}
-      <a href="{{ base_path }}{{ page.previous.url }}" class="publication-nav__item publication-nav__item--prev">
-        <span class="publication-nav__label">&larr; Previous</span>
-        <span class="publication-nav__title">{{ page.previous.title | markdownify | strip_html }}</span>
+    {% if previous_item or next_item %}
+    <nav class="publication-nav" aria-label="{{ 'Talk navigation' | t: page.lang }}">
+      {% if previous_item %}
+      <a href="{{ base_path }}{{ previous_item.url }}" class="publication-nav__item publication-nav__item--prev">
+        <span class="publication-nav__label">{{ '&larr; Previous' | t: page.lang }}</span>
+        <span class="publication-nav__title">{{ previous_item.title | markdownify | strip_html }}</span>
       </a>
       {% endif %}
-      {% if page.next %}
-      <a href="{{ base_path }}{{ page.next.url }}" class="publication-nav__item publication-nav__item--next">
-        <span class="publication-nav__label">Next &rarr;</span>
-        <span class="publication-nav__title">{{ page.next.title | markdownify | strip_html }}</span>
+      {% if next_item %}
+      <a href="{{ base_path }}{{ next_item.url }}" class="publication-nav__item publication-nav__item--next">
+        <span class="publication-nav__label">{{ 'Next &rarr;' | t: page.lang }}</span>
+        <span class="publication-nav__title">{{ next_item.title | markdownify | strip_html }}</span>
       </a>
       {% endif %}
     </nav>

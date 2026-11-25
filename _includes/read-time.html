@@ -1,5 +1,5 @@
 {% assign ui_locale = include.locale | default: page.locale | default: site.locale %}
-{% assign ui = site.data.ui-text[ui_locale] | default: site.data.ui-text[site.locale] %}
+{% assign ui = site.data.ui-text[ui_locale] | default: site.data.ui-text[page.locale] %}
 {% assign cpm = site.characters_per_minute | default: 750 %}
 
 {% if include.content %}

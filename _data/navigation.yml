@@ -1,26 +1,41 @@
-# Header menu (top navigation)
-
 main:
-  - title: "About"
-    url: /#about
-
-  - title: "Research"
-    url: /research/
-
-  - title: "Publications"
-    url: /publications/
-
-  - title: "News"
-    url: /#news
-
-  - title: "Impact"
-    url: /#impact
-
-  - title: "CV"
-    url: /cv/
-
-  - title: "Talks"
-    url: /talks/
-
-  - title: "Blog"
-    url: /blog/
+- title: About
+  url: /#about
+  i18n:
+    zh:
+      title: 关于我
+- title: Research
+  url: /research/
+  i18n:
+    zh:
+      title: 研究
+- title: Publications
+  url: /publications/
+  i18n:
+    zh:
+      title: 论文
+- title: News
+  url: /#news
+  i18n:
+    zh:
+      title: 动态
+- title: Impact
+  url: /#impact
+  i18n:
+    zh:
+      title: 影响
+- title: CV
+  url: /cv/
+  i18n:
+    zh:
+      title: 简历
+- title: Talks
+  url: /talks/
+  i18n:
+    zh:
+      title: 报告
+- title: Blog
+  url: /blog/
+  i18n:
+    zh:
+      title: 博客

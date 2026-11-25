@@ -152,6 +152,8 @@ analytics:
   provider               : google-analytics-4 # false (default), "google", "google-universal", "google-analytics-4", "custom"
   google:
     tracking_id          : G-HQ0RZENN0C
+  baidu:
+    tracking_id          : "" # Public ID after hm.js? in Baidu's tracking code; empty disables Baidu.
 
 
 # Reading Files

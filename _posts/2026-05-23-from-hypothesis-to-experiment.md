@@ -1,4 +1,8 @@
 ---
+lang: en
+locale: en-US
+content_lang: zh-CN
+translation_key: post.hypothesis-1
 title: "From hypothesis to experiment"
 subtitle_zh: "从假设到实验"
 subtitle_en: "A layered schema from computational hypotheses to experimental validation"
@@ -14,8 +18,6 @@ tags:
   - protein-function
   - ai4science
   - procedure
-locale: zh
-lang: zh-CN
 excerpt: "随着越来越多的蛋白质被计算方法自动标注，社区仍存在明显 gap：功能假设生成很快，验证很慢。本文从概念层的 hypothesis 与 claims 开始，梳理从假设到实验验证的分层框架。"
 author_profile: false
 classes:
@@ -48,7 +50,11 @@ comments: false
 
 <figure>
   <img src="/images/2026-05-23-from-hypothesis-to-experiment-overview.png" alt="从 hypothesis 到实验验证的分层框架概览">
-  <figcaption>从 hypothesis 到实验验证的分层框架：概念层（hypothesis、claims）、中间层（sub-claims、assays）与物理层（procedures、devices / human operators）。</figcaption>
+  <figcaption>
+    <p>从蛋白质功能假设到实验验证的分层框架。概念层（Conceptual Layer）负责语义组织与科学命题：Hypothesis 是描述蛋白质功能、性质或机制的自由文本“假设”；Claims 是从假设中抽取的结构化“科学命题”。</p>
+    <p>中间层（Intermediate Layer），也称证据规划层（Evidence Planning Layer），在执行前明确需要什么证据：Sub-claims 是拆解后可检验的“子命题”，具有明确的支持与拒绝规则；Assays 是能够为各子命题产生证据的“检测实验方案”。这一层组织可拆解的证据逻辑并定义检测规范。</p>
+    <p>物理层（Physical Layer）负责实际执行：Protocols 指包含具体实验步骤与参数的“实验规程”；Devices / Human Operators 指执行实验的“设备／人工操作者”，包括仪器、自动化系统与实验人员。底部箭头依次表示：假设 → 科学命题 → 子命题 → 检测实验方案 → 实验规程 → 设备／人工操作者。</p>
+  </figcaption>
 </figure>
 
 接下来，我们分层进行阐述。

@@ -3,6 +3,12 @@
 
 xibinzhou:
   name        : "Xibin Zhou (周禧彬)"
+  i18n:
+    zh:
+      name: 周禧彬（Xibin Zhou）
+      bio: 西湖大学博士生，研究蛋白质语言模型与科学智能。
+      location: 浙江杭州
+      employer: 西湖大学
   uri         : "https://zhoubay.github.io"
   email       : "zhouxibin@westlake.edu.cn"
   bio         : "PhD candidate at Westlake University. Protein language models & AI for Science."

@@ -1,4 +1,8 @@
 ---
+lang: en
+locale: en-US
+content_lang: zh-CN
+translation_key: post.hypothesis-2
 title: "From hypothesis to experiment"
 subtitle_zh: "中间层：Sub-claims 与 Assay"
 subtitle_en: "The middle layer: from claims to sub-claims and assays"
@@ -16,8 +20,6 @@ tags:
   - protein-function
   - ai4science
   - procedure
-locale: zh
-lang: zh-CN
 excerpt: "在概念层的 hypothesis 与 claims 之后，中间层负责把 claim 拆解为可实验判定的 sub-claims，并为每个 sub-claim 匹配能够产生证据的 assay。本文系统梳理中间层的设计原则、对象定义与输出结构。"
 author_profile: false
 classes:
@@ -103,7 +105,11 @@ Sub-claim 和 Assay 是一体两面的关系。
 
 <figure>
   <img src="/images/2026-05-25-from-hypothesis-to-experiment-dissect.png" alt="从科学命题到实验：Claim、Sub-claim、Assay、Procedure 四层拆解框架，含各层职责边界与不可跳过 Sub-claim 的警示">
-  <figcaption>从科学命题到实验（From Scientific Statement to Experiment）：Claim → Sub-claim → Assay → Procedure 四步拆解；右侧为各层主要职责与应避免的越界行为。不可从 Claim 直接跳到 Assay，否则易导致 assay 与命题错配。</figcaption>
+  <figcaption>
+    <p>从科学命题到实验（From Scientific Statement to Experiment）：Claim（科学命题）→ Sub-claim（子命题）→ Assay（检测实验方案）→ Protocol（可逐步执行的实验规程）。右侧两列分别为主要职责（Primary Responsibility）与此层不应处理的事项（Should Not Do Here）。不可跳过子命题、从 Claim 直接进入 Assay，否则容易造成检测方案与命题错配。</p>
+    <p>科学命题层整理整体陈述并界定判断范围，不选择实验技术、读出指标或仪器。子命题层拆解可检验的局部命题，并在概念上定义支持、拒绝与证据不足的标准，不绑定具体检测方案或仪器，也不过早固定实验体系与规程。检测方案层明确证据生成方式、读出指标、对照、判定标准、资源需求与限制，不编写逐步操作，也不指定体积、时间等详细参数。实验规程层确定准确的步骤、参数与执行顺序，使仪器或人员能够完成检测，不改变科学问题或重新定义判定标准与结果。</p>
+    <p>底部流程为：提出问题（Question，概念层）→ 拆解命题（Decompose，概念层）→ 设计检测（Design Test，证据规范）→ 执行（Execute，操作层）→ 获得结果（Result，数据）→ 作出判断（Judgment：支持／拒绝／证据不足）。遵守各层边界，有助于保证结论可靠、可追溯且科学严谨。</p>
+  </figcaption>
 </figure>
 
 ---
@@ -209,7 +215,11 @@ inconclusive(C0) = NOT support(C0) AND NOT refute(C0)
 
 <figure>
   <img src="/images/2026-05-25-from-hypothesis-to-experiment-fit-claim.png" alt="Sub-claim 状态如何组合为 Claim 状态（弱版本）：C0 在 S1 或 S2 为 supported 时支持，仅在二者均为 refuted 时拒绝，其余为 inconclusive">
-  <figcaption>Sub-claim 状态如何组合为 Claim 状态（How Sub-claim Statuses Combine into Claim Status，弱版本）：以 C0 与 S1、S2 为例，展示决策树、真值表热力图与三条组合规则（support = OR，refute = AND，其余为 inconclusive）。强调 inconclusive 是一等状态；实验失败（assay failed）不等于 claim 被 refuted。</figcaption>
+  <figcaption>
+    <p>子命题状态如何组合为科学命题状态（How Sub-claim Statuses Combine into Claim Status，弱版本 C0）。三值逻辑（Three-valued logic）包括 supported（得到支持，绿色）、refuted（被拒绝，红色）和 inconclusive（证据不足、无法判定，灰色）。Decision Tree 为“决策树”，Truth Table Heatmap 为“真值表热力图”，Status 为“状态”，Legend 为“图例”；S1 与 S2 表示两个子命题。</p>
+    <p>判定规则（Decision Rules）：S1 或 S2 任意一个得到支持，C0 就得到支持（OR，即“或”）；只有 S1 与 S2 都被拒绝，C0 才被拒绝（AND，即“且”）；其余情况为证据不足（NOT 即“非”）。决策树中的 Yes / No 分别表示“是／否”。</p>
+    <p>实验失败（Assay failed）不等于命题被拒绝（Claim refuted）：技术问题、数据不足或情境不匹配，都可能使结果只能判定为证据不足。“证据不足”是一种独立且同等重要的状态，不能当作失败的阴性结果。</p>
+  </figcaption>
 </figure>
 
 但是，如果我们采用一个更强的定义：
@@ -459,7 +469,7 @@ sequenceDiagram
     end
     </pre>
   </div>
-  <figcaption>Sub-claim × Resource × Assay × Device 四方交互序列图（喝咖啡示例）</figcaption>
+  <figcaption>子命题（Sub-claim）、资源（Resource）、检测实验方案（Assay）与设备（Device）之间的交互序列图，以喝咖啡为例；图中 Physical Layer 表示负责执行的“物理层”。术语对照：think 为“思考／推理”，retrieve / retrieval 为“检索”，drop 为“放弃”，rank assays 为“对候选检测方案排序”，bind metadata 为“绑定元数据”，bind assay 为“绑定检测方案”，procedure 为“执行步骤”。</figcaption>
 </figure>
 
 从这个例子中可以提炼出一般性的匹配流程：

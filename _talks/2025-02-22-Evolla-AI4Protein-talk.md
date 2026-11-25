@@ -1,4 +1,6 @@
 ---
+lang: en
+translation_key: talk.evolla
 title: "Evolla: Decoding Protein Molecular Language"
 collection: talks
 type: "Talk"

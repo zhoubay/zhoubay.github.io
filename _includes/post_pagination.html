@@ -1,16 +1,18 @@
+{% assign previous_item = page.previous_item | localize_doc: page.lang %}
+{% assign next_item = page.next_item | localize_doc: page.lang %}
 {% include base_path %}
 
-{% if page.previous or page.next %}
+{% if previous_item or next_item %}
   <nav class="pagination">
-    {% if page.previous %}
-      <a href="{{ base_path }}{{ page.previous.url }}" class="pagination--pager" title="{{ page.previous.title | markdownify | strip_html }}">{{ site.data.ui-text[site.locale].pagination_previous | default: "Previous" }}</a>
+    {% if previous_item %}
+      <a href="{{ base_path }}{{ previous_item.url }}" class="pagination--pager" title="{{ previous_item.title | markdownify | strip_html }}">{{ site.data.ui-text[page.locale].pagination_previous | default: "Previous" }}</a>
     {% else %}
-      <a href="#" class="pagination--pager disabled">{{ site.data.ui-text[site.locale].pagination_previous | default: "Previous" }}</a>
+      <a href="#" class="pagination--pager disabled">{{ site.data.ui-text[page.locale].pagination_previous | default: "Previous" }}</a>
     {% endif %}
-    {% if page.next %}
-      <a href="{{ base_path }}{{ page.next.url }}" class="pagination--pager" title="{{ page.next.title | markdownify | strip_html }}">{{ site.data.ui-text[site.locale].pagination_next | default: "Next" }}</a>
+    {% if next_item %}
+      <a href="{{ base_path }}{{ next_item.url }}" class="pagination--pager" title="{{ next_item.title | markdownify | strip_html }}">{{ site.data.ui-text[page.locale].pagination_next | default: "Next" }}</a>
     {% else %}
-      <a href="#" class="pagination--pager disabled">{{ site.data.ui-text[site.locale].pagination_next | default: "Next" }}</a>
+      <a href="#" class="pagination--pager disabled">{{ site.data.ui-text[page.locale].pagination_next | default: "Next" }}</a>
     {% endif %}
   </nav>
 {% endif %}

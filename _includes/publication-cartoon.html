@@ -4,11 +4,12 @@
   <picture>
     <source srcset="{{ base_path }}/images/{{ include.cartoon_webp }}" type="image/webp">
     <img src="{{ base_path }}/images/{{ include.cartoon_fallback | default: include.cartoon_webp }}"
-         alt="{{ include.alt | default: '' }}"
+         alt="{{ include.alt | default: '' | escape }}"
          {% if include.width %}width="{{ include.width }}"{% endif %}
          {% if include.height %}height="{{ include.height }}"{% endif %}
          loading="lazy"
          decoding="async">
   </picture>
+  {% if include.caption %}<figcaption class="publication-figure__caption">{{ include.caption }}</figcaption>{% endif %}
 </figure>
 {% endif %}

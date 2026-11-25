@@ -3,3 +3,9 @@
 {% else %}
   {% assign base_path = site.github.url %}
 {% endif %}
+{% assign locale_path = base_path %}
+{% assign content_data = site.data.localized.en %}
+{% if page.lang == 'zh-CN' %}
+  {% assign locale_path = base_path | append: '/zh' %}
+  {% assign content_data = site.data.localized.zh %}
+{% endif %}

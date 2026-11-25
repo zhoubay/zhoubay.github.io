@@ -1,4 +1,6 @@
 ---
+lang: en
+translation_key: page.tag-archive
 layout: archive
 title: "Posts by Tag"
 description: "Browse blog posts by tag."
@@ -15,15 +17,15 @@ classes:
   {% for group in group_names %}
     {% assign posts = group_items[forloop.index0] %}
     <section class="directory-section" aria-labelledby="{{ group | slugify }}">
-      <h2 id="{{ group | slugify }}" class="directory-section__title">{{ group }}</h2>
+      <h2 id="{{ group | slugify }}" class="directory-section__title">{{ group | t: page.lang }}</h2>
       {% for post in posts %}
         {% include archive-entry.html %}
       {% endfor %}
     </section>
   {% else %}
     <div class="directory-empty">
-      <p>No tags are listed yet.</p>
-      <a class="pub-link" href="{{ base_path }}/blog/">Browse the blog</a>
+      <p>{{ 'No tags are listed yet.' | t: page.lang }}</p>
+      <a class="pub-link" href="{{ locale_path }}/blog/">{{ 'Browse the blog' | t: page.lang }}</a>
     </div>
   {% endfor %}
 </div>

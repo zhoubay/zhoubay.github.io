@@ -1,51 +1,84 @@
 - title: "Contributor to Hugging Face Transformers"
+  i18n:
+    zh:
+      title: Hugging Face Transformers 贡献者
+      description: Evolla 已正式集成至 Transformers 库（EvollaProcessor、EvollaForProteinText2Text）。
+      badge: 开源贡献
   description: "Evolla officially integrated into the Transformers library (EvollaProcessor, EvollaForProteinText2Text)."
   badge: "Open Source"
   links:
-    - { label: "Commit", url: "https://github.com/huggingface/transformers/commit/45c7bfb1571160d2c06b880073a5c73e6bfa3677", icon: "code" }
+    - {label: Commit, url: 'https://github.com/huggingface/transformers/commit/45c7bfb1571160d2c06b880073a5c73e6bfa3677', icon: code, i18n: {zh: {label: 代码提交}}}
 
 - title: "Evolla reached 130K+ views on X"
+  i18n:
+    zh:
+      title: Evolla 在 X 上获得超过 13 万次浏览
+      description: Evolla 在 X（Twitter）上的宣传帖。
   description: "Promotional post for Evolla on X (Twitter)."
   badge: "Evolla"
   links:
-    - { label: "Post", url: "https://x.com/duguyuan/status/1876446845951492221", icon: "link" }
+    - {label: Post, url: 'https://x.com/duguyuan/status/1876446845951492221', icon: link, i18n: {zh: {label: 查看帖子}}}
 
 - title: "Evolla — over 1M total Hugging Face downloads"
+  i18n:
+    zh:
+      title: Evolla 在 Hugging Face 上的累计下载量超过 100 万次
   huggingface_repo: "westlake-repl/Evolla-10B-hf"
   badge: "Evolla"
   links:
-    - { label: "Model", url: "https://huggingface.co/westlake-repl/Evolla-10B-hf", icon: "link" }
-    - { label: "Verify (API)", url: "https://huggingface.co/api/models/westlake-repl/Evolla-10B-hf?expand%5B%5D=downloadsAllTime", icon: "code" }
+    - {label: Model, url: 'https://huggingface.co/westlake-repl/Evolla-10B-hf', icon: link, i18n: {zh: {label: 模型}}}
+    - {label: Verify (API), url: 'https://huggingface.co/api/models/westlake-repl/Evolla-10B-hf?expand%5B%5D=downloadsAllTime', icon: code, i18n: {zh: {label: 核验数据（API）}}}
 
 - title: "SaProt — over 1.4M total Hugging Face downloads"
+  i18n:
+    zh:
+      title: SaProt 在 Hugging Face 上的累计下载量超过 140 万次
   huggingface_repo: "westlake-repl/SaProt_650M_AF2"
   badge: "SaProt"
   links:
-    - { label: "Model", url: "https://huggingface.co/westlake-repl/SaProt_650M_AF2", icon: "link" }
-    - { label: "Verify (API)", url: "https://huggingface.co/api/models/westlake-repl/SaProt_650M_AF2?expand%5B%5D=downloadsAllTime", icon: "code" }
+    - {label: Model, url: 'https://huggingface.co/westlake-repl/SaProt_650M_AF2', icon: link, i18n: {zh: {label: 模型}}}
+    - {label: Verify (API), url: 'https://huggingface.co/api/models/westlake-repl/SaProt_650M_AF2?expand%5B%5D=downloadsAllTime', icon: code, i18n: {zh: {label: 核验数据（API）}}}
 
 - title: "Pinal featured in Nature News"
+  i18n:
+    zh:
+      title: Pinal 获 Nature News 报道
+      description: Nature News 在关于 AI 蛋白质设计的报道中介绍了 Pinal（2025年5月）。
   description: "Nature News article on AI protein design, citing Pinal (May 2025)."
   badge: "Pinal"
   links:
-    - { label: "Nature News", url: "https://www.nature.com/articles/d41586-025-01586-y", icon: "link" }
+    - {label: Nature News, url: 'https://www.nature.com/articles/d41586-025-01586-y', icon: link, i18n: {zh: {label: Nature 新闻}}}
 
 - title: "SaProt ranked #1 on ProteinGym"
+  i18n:
+    zh:
+      title: SaProt 在 ProteinGym 榜单中排名第一
+      description: SaProt 发布后，在 ProteinGym 2024年10月榜单快照中，DMS 零样本氨基酸替换预测基准的总体表现（Spearman 相关系数）排名第一。
   description: "Top overall on the ProteinGym DMS zero-shot substitution benchmark (Spearman) in the Oct 2024 leaderboard snapshot after SaProt's release."
   badge: "SaProt"
   links:
-    - { label: "Leaderboard (Oct 2024)", url: "https://github.com/OATML-Markslab/ProteinGym/blob/de1676481fdc6d4c3c8b23a880e44eeca71fb78e/benchmarks/DMS_zero_shot/substitutions/Spearman/Summary_performance_DMS_substitutions_Spearman.csv", icon: "link" }
+    - {label: Leaderboard (Oct 2024), url: 'https://github.com/OATML-Markslab/ProteinGym/blob/de1676481fdc6d4c3c8b23a880e44eeca71fb78e/benchmarks/DMS_zero_shot/substitutions/Spearman/Summary_performance_DMS_substitutions_Spearman.csv', icon: link, i18n: {zh: {label: 排行榜（2024年10月）}}}
 
 - title: "Pinal featured in Westlake University news"
+  i18n:
+    zh:
+      title: Pinal 获西湖大学新闻报道
+      description: 西湖大学报道 Pinal 通过自然语言设计功能蛋白质的研究（2026年10月）。
+      badge: 媒体报道
   description: "Westlake University highlights Pinal's design of functional proteins from natural language (Oct 2026)."
   badge: "Press"
   links:
-    - { label: "News article", url: "https://www.westlake.edu.cn/news_events/westlakenews/Research/202610/t20261022_70597.html", icon: "link" }
-    - { label: "Photo", url: "/files/evidence/westlake-press-pinal.png", icon: "image" }
+    - {label: News article, url: 'https://www.westlake.edu.cn/news_events/westlakenews/Research/202610/t20261022_70597.html', icon: link, i18n: {zh: {label: 新闻报道}}}
+    - {label: Photo, url: /files/evidence/westlake-press-pinal.png, icon: image, i18n: {zh: {label: 报道截图}}}
 
 - title: "Featured in Westlake University press"
+  i18n:
+    zh:
+      title: 研究获西湖大学新闻报道
+      description: 西湖大学校园新闻报道蛋白质检索研究（ProTrek／三模态蛋白质语言模型）。
+      badge: 媒体报道
   description: "Campus news coverage of protein search research (ProTrek / trimodal PLM)."
   badge: "Press"
   links:
-    - { label: "News article", url: "https://www.westlake.edu.cn/news_events/westlakenews/Research/202510/t20251030_60873.html", icon: "link" }
-    - { label: "Photo", url: "/files/evidence/westlake-press.jpg", icon: "image" }
+    - {label: News article, url: 'https://www.westlake.edu.cn/news_events/westlakenews/Research/202510/t20251030_60873.html', icon: link, i18n: {zh: {label: 新闻报道}}}
+    - {label: Photo, url: /files/evidence/westlake-press.jpg, icon: image, i18n: {zh: {label: 报道截图}}}

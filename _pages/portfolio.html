@@ -1,4 +1,6 @@
 ---
+lang: en
+translation_key: page.portfolio
 layout: archive
 title: "Portfolio"
 description: "Project portfolio."
@@ -15,8 +17,8 @@ classes:
     {% include archive-entry.html %}
   {% else %}
     <div class="directory-empty">
-      <p>Explore current projects and research directions.</p>
-      <a class="pub-link" href="{{ base_path }}/research/">Explore research</a>
+      <p>{{ 'Explore current projects and research directions.' | t: page.lang }}</p>
+      <a class="pub-link" href="{{ locale_path }}/research/">{{ 'Explore research' | t: page.lang }}</a>
     </div>
   {% endfor %}
 </div>

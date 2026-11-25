@@ -3,19 +3,19 @@
 <div class="page-shell">
   <section id="about" class="home-section fade-in">
     {% include section-header.html title="About" %}
-    <div class="about-profile{% if site.data.about.photo %} about-profile--with-photo{% endif %}">
-      {% if site.data.about.photo %}
+    <div class="about-profile{% if content_data.about.photo %} about-profile--with-photo{% endif %}">
+      {% if content_data.about.photo %}
       <img class="about-profile__photo"
-           src="{{ site.data.about.photo | relative_url | escape }}"
-           alt="{{ site.data.about.photo_alt | escape }}"
+           src="{{ content_data.about.photo | locale_url: page.lang | relative_url | escape }}"
+           alt="{{ content_data.about.photo_alt | escape }}"
            width="1122" height="1402" loading="lazy" decoding="async">
       {% endif %}
       <div class="about-block">
         {% if site.author.googlescholar %}
           {% capture scholar_link %}<a href="{{ site.author.googlescholar }}" target="_blank" rel="noopener noreferrer">Google Scholar</a>{% endcapture %}
-          {% assign about_text = site.data.about.text | replace: '%%GOOGLE_SCHOLAR%%', scholar_link | replace: '%%GOOGLE_SCHOLAR_ZH%%', scholar_link %}
+          {% assign about_text = content_data.about.text | replace: '%%GOOGLE_SCHOLAR%%', scholar_link | replace: '%%GOOGLE_SCHOLAR_ZH%%', scholar_link %}
         {% else %}
-          {% assign about_text = site.data.about.text | replace: '%%GOOGLE_SCHOLAR%%', 'Google Scholar' | replace: '%%GOOGLE_SCHOLAR_ZH%%', 'Google Scholar' %}
+          {% assign about_text = content_data.about.text | replace: '%%GOOGLE_SCHOLAR%%', 'Google Scholar' | replace: '%%GOOGLE_SCHOLAR_ZH%%', 'Google Scholar' %}
         {% endif %}
         {{ about_text | markdownify }}
       </div>
@@ -30,7 +30,7 @@
   <section id="interests" class="home-section fade-in">
     {% include section-header.html title="Research Interests" %}
     <ul class="interests-list">
-      {% for item in site.data.interests %}
+      {% for item in content_data.interests %}
       <li class="interests-list__item">
         <strong>{{ item.title }}</strong>
         <span>{{ item.description }}</span>
@@ -42,7 +42,7 @@
   <section id="honors" class="home-section fade-in">
     {% include section-header.html title="Honors & Awards" %}
     <ul class="honors-list">
-      {% for item in site.data.honors %}
+      {% for item in content_data.honors %}
       <li>{{ item.text | markdownify | remove: "<p>" | remove: "</p>" }}</li>
       {% endfor %}
     </ul>
@@ -50,13 +50,13 @@
 
   <section id="publications" class="home-section fade-in">
     {% include section-header.html title="Selected Publications" %}
-    <p class="about-block" style="margin-top: -1rem; margin-bottom: 1.5rem;"><em>* equal contribution</em></p>
+    <p class="about-block" style="margin-top: -1rem; margin-bottom: 1.5rem;"><em>{{ '* equal contribution' | t: page.lang }}</em></p>
     <div class="pub-grid">
       {% for slug in site.data.selected_publications.slugs %}
       {% include render-pub-card-by-slug.html slug=slug %}
       {% endfor %}
     </div>
-    <p class="about-block"><a href="{{ base_path }}/publications/">Full publication list &rarr;</a></p>
+    <p class="about-block"><a href="{{ locale_path }}/publications/">{{ 'Full publication list &rarr;' | t: page.lang }}</a></p>
   </section>
 
   {% include community-impact-section.html id="impact" class="home-section fade-in" %}
@@ -64,7 +64,7 @@
   <section id="languages" class="home-section fade-in">
     {% include section-header.html title="Languages" %}
     <ul class="interests-list">
-      {% for item in site.data.languages %}
+      {% for item in content_data.languages %}
       <li class="interests-list__item">
         <strong>{{ item.title }}</strong>
         <span>{{ item.description }}</span>

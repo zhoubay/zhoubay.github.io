@@ -1,0 +1,27 @@
+/* Preserve the original bilingual lake on the default page. Only the Chinese
+   interface hides English copy, including dynamically added toys. */
+html:lang(zh) .after-hours [lang="en"] {
+  display: none !important;
+}
+
+/* Chinese becomes the primary copy instead of the former small translation. */
+html:lang(zh) .after-hours {
+  span[lang="zh-CN"] {
+    margin-top: 0;
+    color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
+  }
+
+  .after-hours__toy-label > [lang="zh-CN"] { font-weight: 600; }
+
+  .after-hours__boss-translation {
+    margin-top: 13px;
+    color: #61483d;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.35;
+  }
+}

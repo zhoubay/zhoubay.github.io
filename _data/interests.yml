@@ -1,8 +1,24 @@
 - title: "Structure-aware protein language modeling"
+  i18n:
+    zh:
+      title: 结构感知蛋白质语言建模
+      description: 融合三维结构标记与氨基酸序列，构建通用蛋白质语言模型
   description: "Integrating 3D structural tokens with sequence for general-purpose PLMs"
 - title: "Multimodal protein understanding"
+  i18n:
+    zh:
+      title: 多模态蛋白质理解
+      description: 对齐序列、结构与自然语言功能描述，支持蛋白质检索与注释
   description: "Aligning sequence, structure, and natural-language function for search and annotation"
 - title: "AI-driven protein engineering"
+  i18n:
+    zh:
+      title: AI 驱动的蛋白质工程
+      description: 酶优化、碱基编辑、从头设计与自主计算工作流
   description: "Enzyme optimization, base editing, de novo design, and autonomous computational workflows"
 - title: "Democratizing PLM research"
+  i18n:
+    zh:
+      title: 让蛋白质语言模型研究更易参与
+      description: 面向生物学研究者的无代码训练平台与开放协作
   description: "No-code training platforms and open collaboration for biologists"

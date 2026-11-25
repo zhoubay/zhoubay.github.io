@@ -1,0 +1,264 @@
+# Simplified Chinese page content, keyed by each source document's translation_key.
+# Shared dates, authors, resource URLs, citations, and identifiers remain on the source documents.
+page.404:
+  title: 页面未找到
+  description: 请求的页面可能已移动，您可以返回首页或浏览研究内容。
+page.blog:
+  title: 博客
+  description: 记录蛋白质功能假设、科学命题，以及从计算预测走向实验验证的思考。
+page.category-archive:
+  title: 按分类浏览文章
+  description: 按分类浏览博客文章。
+page.collection-archive:
+  title: 内容合集
+  description: 浏览论文、报告及其他内容合集。
+page.cv:
+  title: 简历
+  description: 周禧彬简历：西湖大学与同济大学教育背景、蛋白质语言模型研究、荣誉与社会影响。
+page.main:
+  title: 周禧彬
+  description: 周禧彬，西湖大学计算机科学博士生，研究方向为蛋白质语言模型、多模态蛋白质智能与人工智能驱动的科学研究（AI for Science）。代表工作包括 SaProt（ICLR 2024）、ProTrek（Nature Biotechnology 2025）和 Evolla。
+page.page-archive:
+  title: 页面目录
+  description: 浏览本站所有页面。
+page.portfolio:
+  title: 项目
+  description: 研究项目与成果展示。
+page.publications:
+  title: 论文
+  description: 周禧彬完整论文列表：蛋白质语言模型、人工智能驱动的科学研究（AI for Science）与计算生物学相关期刊论文、会议论文和预印本。
+page.research:
+  title: 研究
+  description: 研究概览：结构感知蛋白质语言模型（SaProt）、三模态蛋白质检索（ProTrek）、普惠蛋白质语言模型平台（SaprotHub）、自然语言驱动的蛋白质设计（Pinal，Nature 2026），以及前沿生成式模型（Evolla、PRIME）。
+page.sitemap:
+  title: 站点地图
+  description: 浏览本站的页面、博客文章与研究成果合集。
+page.tag-archive:
+  title: 按标签浏览文章
+  description: 按标签浏览博客文章。
+page.talkmap:
+  title: 报告地点
+  description: 周禧彬学术报告与线上研讨会的主办机构和举办地点。
+page.talks:
+  title: 报告与演讲
+  description: 周禧彬在高校和线上研讨会的学术报告与邀请演讲，主题涵盖蛋白质语言模型、Evolla 与人工智能驱动的科学研究（AI for Science）。
+page.teaching:
+  title: 教学
+  description: 教学活动。
+page.terms:
+  title: 隐私政策
+  description: zhoubay.github.io 的隐私政策：网站统计、Cookie 与第三方服务。
+  content: |
+    {% include base_path %}
+
+    <div class="page-shell fade-in" markdown="1">
+
+    本隐私政策说明 [zhoubay.github.io]({{ '/' | locale_url: page.lang | absolute_url }})（周禧彬的个人学术主页）在您访问网站时如何处理相关信息。
+
+    ## 简介 {#introduction}
+
+    这是一个静态学术网站，不提供用户账户、评论表单或邮件订阅服务。如果您对本政策有疑问，请通过 [{{ site.author.email }}](mailto:{{ site.author.email }}) 联系我。
+
+    ## 收集的信息 {#what-we-collect}
+
+    您浏览本站时，下述网站统计服务可能收集以下使用信息：
+
+    - 浏览的页面及大致停留时间
+    - 大致地理区域（根据 IP 地址推算）
+    - 浏览器、设备类型与操作系统
+    - 来源网站或搜索来源
+
+    我不会通过本网站主动收集姓名、电子邮箱地址或其他可直接识别个人身份的信息。GitHub Pages 在正常运行过程中维护的服务器及托管日志，也可能记录 IP 地址与请求元数据。
+
+    ## Google Analytics 4 {#google-analytics-4}
+
+    本站使用 [Google Analytics 4](https://support.google.com/analytics/)（衡量 ID：**G-HQ0RZENN0C**）了解访客如何使用网站，并据此改进内容。Google 可能使用 Cookie 或类似技术，并按照其自身政策处理数据。
+
+    - [Google 隐私政策](https://policies.google.com/privacy)
+    - [Google Analytics 数据隐私说明](https://support.google.com/analytics/answer/6004245)
+    - [用于停用 Google Analytics 的浏览器插件](https://tools.google.com/dlpage/gaoptout)
+
+    您加载本站页面时，网站统计功能默认运行。我不会出售访客数据。
+
+    {% assign baidu_tracking_id = site.analytics.baidu.tracking_id | default: "" | strip %}
+    {% if site.analytics.provider and baidu_tracking_id != "" %}
+    ## 百度统计 {#baidu-tongji}
+
+    本站也使用[百度统计](https://tongji.baidu.com/)统计访问情况、来源网站与大致地理区域。百度可能处理您的 IP 地址、浏览器与设备信息、访问页面和来源信息，并可能使用 Cookie 或类似技术。其数据处理方式详见[百度统计隐私政策](https://tongji.baidu.com/web/help/article?id=330&type=0)。
+
+    {% endif %}
+    ## 其他第三方服务 {#other-third-party-services}
+
+    **Google Fonts**：本站从 Google（`fonts.googleapis.com` / `fonts.gstatic.com`）加载字体。请求字体时，Google 可能会收到您的 IP 地址。详见 [Google 隐私政策](https://policies.google.com/privacy)。
+
+    **GitHub Pages**：本站托管于 [GitHub Pages](https://pages.github.com/)。GitHub 可能按照 [GitHub 隐私声明](https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement)处理技术日志数据。
+
+    本站未嵌入 Disqus、广告网络或社交账号登录组件。
+
+    ## Cookie {#cookies}
+
+    Cookie 和类似存储技术主要用于上述网站统计服务。您可以在浏览器设置中阻止或删除 Cookie。阻止 Cookie 可能影响统计功能，但通常不会妨碍您阅读公开页面。
+
+    ## 您可以作出的选择 {#your-choices}
+
+    您可以：
+
+    - 在浏览器设置中阻止或清除 Cookie
+    - 安装[用于停用 Google Analytics 的浏览器插件](https://tools.google.com/dlpage/gaoptout)
+    - 如果不希望被收集网站统计数据，停止访问本站
+
+    ## 政策变更 {#changes-to-this-policy}
+
+    最后更新：**{{ page.last_updated | default: "now" | date: "%Y-%m-%d" }}**。我可能会不定期修订此页面，更新后的政策将在此网址发布。
+
+    ## 联系方式 {#contact}
+
+    周禧彬 — [{{ site.author.email }}](mailto:{{ site.author.email }})
+
+    </div>
+publication.saprot:
+  title: SaProt：基于结构感知词表的蛋白质语言建模
+  excerpt: ESM 系列等大规模蛋白质语言模型（protein language models，PLMs）通过对氨基酸残基序列进行无监督训练，在与蛋白质结构和功能相关的多种下游任务中取得了出色表现，已成为生物学研究人员与从业者的重要工具。然而，传统蛋白质语言模型并未显式考虑蛋白质结构信息，这也意味着模型仍有提升空间。为此，我们提出“结构感知词表”，将残基标记与结构标记相结合，其中结构标记由
+    Foldseek 对蛋白质三维结构编码得到。在此基础上，我们提出大规模通用蛋白质语言模型 SaProt，并在约 4,000 万组蛋白质序列与结构构成的数据集上进行训练。广泛的评估表明，SaProt 在 10 项重要下游任务中超越了成熟且广泛使用的基线模型，展现出出色的能力与广泛的适用性。
+  summary: 采用结构感知词表的通用蛋白质语言模型，在约 4,000 万组序列—结构配对数据上训练。
+  content: |
+    ESM 系列等大规模蛋白质语言模型（protein language models，PLMs）通过对氨基酸残基序列进行无监督训练，在与蛋白质结构和功能相关的多种下游任务中取得了出色表现，已成为生物学研究人员与从业者的重要工具。然而，传统蛋白质语言模型并未显式考虑蛋白质结构信息，这也意味着模型仍有提升空间。为此，我们提出“结构感知词表”，将残基标记与结构标记相结合，其中结构标记由 Foldseek 对蛋白质三维结构编码得到。在此基础上，我们提出大规模通用蛋白质语言模型 SaProt，并在约 4,000 万组蛋白质序列与结构构成的数据集上进行训练。广泛的评估表明，SaProt 在 10 项重要下游任务中超越了成熟且广泛使用的基线模型，展现出出色的能力与广泛的适用性。
+
+    代码、预训练模型及相关材料已公开：[SaProt 项目仓库](https://github.com/westlake-repl/SaProt)。
+publication.plm-guided-etdg:
+  title: 蛋白质语言模型辅助优化尿嘧啶-N-糖基化酶变体，实现可编程的 T→G 与 T→C 碱基编辑
+  excerpt: 现有碱基编辑器（base editors，BEs）使用 DNA 脱氨酶实现碱基转换，例如胞嘧啶碱基编辑器（CBE）中的胞嘧啶脱氨酶，以及腺嘌呤碱基编辑器（ABE）中的腺嘌呤脱氨酶。将 CBE 或 ABE 与糖基化酶结合，可以诱导有限类型的颠换突变。然而，能够产生其他类型突变（如 T→G 校正）的碱基编辑器仍十分紧缺。本研究使用预训练蛋白质语言模型，优化了一种底物特异性转向胸腺嘧啶的尿嘧啶-N-糖基化酶（UNG）变体
+    eTDG。值得注意的是，经过两轮测试、累计筛选不到 50 个排名靠前的变体，超过一半变体的酶活性达到原来的 1.5 倍以上。将 eTDG 与 nCas9 融合后，能够实现可编程的 T→S（G/C）碱基替换，并校正小鼠的 db/db 糖尿病相关突变，校正率最高可达 55%。这些结果不仅为开发新型碱基编辑器提供了正交策略，也展示了蛋白质语言模型在缺乏大量任务特定训练数据时优化酶的能力。
+  summary: 蛋白质语言模型指导的优化，以少量实验验证实现可编程的 T→G/C 碱基编辑。
+  content: |
+    现有碱基编辑器（base editors，BEs）使用 DNA 脱氨酶实现碱基转换，例如胞嘧啶碱基编辑器（CBE）中的胞嘧啶脱氨酶，以及腺嘌呤碱基编辑器（ABE）中的腺嘌呤脱氨酶。将 CBE 或 ABE 与糖基化酶结合，可以诱导有限类型的颠换突变。然而，能够产生其他类型突变（如 T→G 校正）的碱基编辑器仍十分紧缺。本研究使用预训练蛋白质语言模型，优化了一种底物特异性转向胸腺嘧啶的尿嘧啶-N-糖基化酶（UNG）变体 eTDG。值得注意的是，经过两轮测试、累计筛选不到 50 个排名靠前的变体，超过一半变体的酶活性达到原来的 1.5 倍以上。将 eTDG 与 nCas9 融合后，能够实现可编程的 T→S（G/C）碱基替换，并校正小鼠的 db/db 糖尿病相关突变，校正率最高可达 55%。这些结果不仅为开发新型碱基编辑器提供了正交策略，也展示了蛋白质语言模型在缺乏大量任务特定训练数据时优化酶的能力。
+publication.saprothub:
+  title: 推动蛋白质语言模型训练、共享与协作的普惠化
+  excerpt: SaprotHub 提供易于使用的平台，支持蛋白质语言模型的训练、预测、存储与共享。基于 Google Colab 构建的 ColabSaprot 框架可支持数百种蛋白质应用，让缺乏深厚机器学习背景的研究人员也能协作构建和共享定制模型。
+  summary: 基于 Colab 的无代码平台，支持蛋白质机器学习模型的训练、共享与协作。
+  content: |
+    训练和部署大规模蛋白质语言模型通常需要深厚的机器学习专业知识，这对该领域之外的研究人员构成了一道门槛。SaprotHub 提供易于使用的平台，支持模型训练、预测、存储与共享，从而降低这一门槛。基于 Google Colab 构建的 ColabSaprot 框架有望支持数百种蛋白质训练与预测应用，使研究人员能够协作构建和共享定制模型。
+publication.protrek:
+  title: 三模态蛋白质语言模型实现先进的蛋白质检索
+  excerpt: ProTrek 通过对比学习，将蛋白质序列、结构与描述功能的自然语言统一到三模态语言模型中，支持任意两种模态之间的全面检索。在识别功能相关蛋白质时，ProTrek 的速度和准确性均优于 Foldseek、MMseqs2 等比对工具。ProTrek 服务器（search-protrek.com）提供超过
+    50 亿个蛋白质的预计算嵌入表示。
+  summary: 通过三模态对比学习统一序列、结构与功能文本，支持十亿级蛋白质检索。
+  content: |
+    ProTrek 通过对比学习，将蛋白质序列、结构与描述功能的自然语言统一到三模态语言模型中，支持任意两种模态之间以及同一模态内部的全面检索。在识别功能相关蛋白质时，ProTrek 的速度和准确性均优于现有比对工具，如 Foldseek 和 MMseqs2。计算与湿实验验证表明，[ProTrek 服务器](https://www.search-protrek.com)依托超过 50 亿个蛋白质的预计算嵌入表示，能够高效处理大规模蛋白质数据库。
+  cartoon_alt: ProTrek 示意图：连接蛋白质序列与功能文本的桥梁，帮助研究者检索所需功能的蛋白质。
+  cartoon_caption: 图中文字：Sequence 为“序列”，Text 为“文本”；研究者提出“需要一种核酸酶！”，功能描述为“切割 RNA”。ProTrek 将序列与功能文本联系起来，支持按功能需求检索蛋白质。
+publication.star-protocol-tdg:
+  title: 利用蛋白质语言模型预测并实验验证胸腺嘧啶-N-糖基化酶功能增强变体的操作规程
+  excerpt: 使用蛋白质语言模型优化胸腺嘧啶-DNA-糖基化酶（TDG）的分步操作规程，涵盖零样本酶优化、质粒构建、转染与高通量测序，从而简化基因编辑工具的工程化流程。
+  summary: 蛋白质语言模型指导的 TDG 优化操作规程，涵盖零样本预测与实验验证。
+  content: |
+    本操作规程介绍如何使用蛋白质语言模型优化胸腺嘧啶-DNA-糖基化酶（TDG），具体包括零样本酶优化、质粒构建、双质粒转染，以及高通量测序和数据分析。该流程有望在减少实验工作量的同时，简化基因编辑工具的工程化过程。完整细节请参阅 He 等人于 2024 年发表在 *Molecular Cell* 的论文。
+publication.pinal:
+  title: 基于自然语言的功能蛋白质可编程设计
+  excerpt: Pinal 使用在 17 亿组人工合成注释的蛋白质—文本配对数据上训练的 160 亿参数模型，将目标功能描述转换为候选蛋白质。实验在四项功能任务中验证了设计结果。在多酶协同的二氧化碳固定通路中，一种设计的 H 蛋白无需迭代实验优化，即可使产物滴度达到天然大肠杆菌对应蛋白的 1.7 倍。
+  summary: 160 亿参数模型，通过自然语言设计功能蛋白质，并在四项蛋白质任务中获得实验验证。
+  content: |
+    于 2026 年 10 月 21 日发表于 [*Nature*](https://doi.org/10.1038/s41586-026-11205-z)。
+
+    Pinal 根据自然语言指令生成结构，再设计蛋白质序列。该模型拥有 160 亿参数，在 17 亿组人工合成注释的蛋白质—文本配对数据上进行训练。实验验证了所设计的荧光蛋白、PET 水解酶、醇脱氢酶和代谢相关 H 蛋白具备所要求的功能。
+
+    在一条多酶协同的二氧化碳固定通路中，一种设计的 H 蛋白无需迭代实验优化，即可使产物滴度达到对应的天然大肠杆菌（*E. coli*）H 蛋白的 1.7 倍。
+
+    \* Fengyuan Dai 和 Shiyang You 对本研究贡献相同。
+  cartoon_alt: Pinal 示意图：将自然语言描述的功能需求，经由文本、结构到序列的设计流程，转化为功能蛋白质候选。
+  cartoon_caption: 从语言到蛋白质设计：输入用自然语言描述的目标功能，例如荧光蛋白、降解塑料的酶、醇脱氢酶或代谢通路中的转运蛋白。Pinal 通过“文本→结构→序列”实现可编程设计，输出新颖、多样、可折叠、具有功能且可供实验验证的候选蛋白质。图中已验证示例为绿色荧光蛋白（GFP）、PET 水解酶（PETase）、醇脱氢酶（ADH）和
+    H 蛋白。
+publication.evolla:
+  title: Evolla：解读蛋白质的分子语言
+  excerpt: 蛋白质是自然界精密的分子机器，是数十亿年进化的产物，在维系生命过程中发挥着根本作用。然而，解读其分子语言——理解蛋白质序列和结构如何编码并决定生物学功能——仍然是现代生物学的核心挑战。为此，我们提出 Evolla，一个拥有 800 亿参数的前沿蛋白质语言生成模型，旨在解读蛋白质的分子语言。Evolla
+    整合蛋白质序列、结构及用户问题，生成准确且贴合语境的功能解读。其关键创新之一是在规模空前的 AI 生成数据集上进行训练：包含 5.46 亿组蛋白质问答对和 1,500 亿个词元，以反映蛋白质巨大的复杂性与功能多样性。预训练后，Evolla 结合直接偏好优化（DPO），依据偏好信号进一步优化模型，并通过检索增强生成（RAG）引入外部知识，提升回答质量和相关性。为评估模型表现，我们提出指令响应空间（Instructional
+    Response Space，IRS）这一新框架。评估表明，Evolla 能够提供专家水平的见解，推动蛋白质组学与功能基因组学研究，并帮助揭示蛋白质中编码的分子逻辑。
+  summary: 交互式蛋白质语言模型，结合序列与结构回答自然语言问题。
+  content: |
+    **状态：** 正在 *Nature* 审稿中。预印本发表于 [bioRxiv](https://doi.org/10.1101/2025.01.05.630192)。
+
+    2025 年 10 月获 [Nature 人工智能增强生物学会议](https://natureconferences.streamgo.live/ai-augmented-biology/register)最佳海报奖。
+
+    蛋白质是自然界精密的分子机器，是数十亿年进化的产物，在维系生命过程中发挥着根本作用。然而，解读其分子语言——理解序列和结构如何编码生物学功能——仍然是一项核心挑战。为此，我们提出交互式蛋白质语言模型 Evolla，通过自然语言提问来理解蛋白质功能，突破静态分类的局限。Evolla 在 5.46 亿组蛋白质—文本配对数据上训练，并通过直接偏好优化进一步改进，将高维分子表征与生成式语义解码相结合。
+
+    基准评估表明，Evolla 在功能推断方面优于通用大语言模型，其零样本表现可与当前最先进的监督模型相当，还能揭示传统比对方法难以发现的远缘功能关系。我们通过两类应用验证了 Evolla：一是在阿斯加德古菌（Asgard archaea）中识别候选真核特征蛋白，并通过酵母互补实验验证 Vps4 同源蛋白的功能；二是通过交互式探索发现一种新的深海聚对苯二甲酸乙二醇酯（PET）水解酶 PsPETase，并确认其能够降解塑料薄膜。
+
+    这些结果表明，Evolla 不仅能进行预测，还能作为生成式工具提出复杂的科学假设，推动研究从静态注释转向交互式、可付诸实验的发现。在线服务：[Evolla 蛋白质对话平台](http://www.chat-protein.com/)。
+  cartoon_alt: Evolla 示意图：研究者输入蛋白质序列与结构，通过对话获得用文本描述的功能解释。
+  cartoon_caption: 用 Evolla 与蛋白质对话，探索其功能。左侧输入蛋白质序列与结构，经过 Evolla 的解释，右侧返回文本形式的功能信息，例如真核特征蛋白、降解塑料的酶及其他功能注释。图中“让我们一探究竟！”表达了交互式功能探索的过程。
+  venue: bioRxiv（Nature 审稿中）
+  badge: bioRxiv · Nature 审稿中
+publication.esm-ezy:
+  title: ESM-Ezy：挖掘具有优异性能的新型多铜氧化酶的深度学习策略
+  excerpt: ESM-Ezy 将 ESM-1b 蛋白质语言模型与语义空间相似度相结合，从 UniProt 中挖掘新型多铜氧化酶。筛选得到的酶在催化性能上优于查询酶的成功率为 44%，并可用于环境修复。
+  summary: 利用 ESM-1b 进行语义挖掘，从 UniProt 中发现催化性能与环境修复性能更优的多铜氧化酶。
+  content: |
+    ESM-Ezy 是一种基于深度学习的酶挖掘策略，利用 ESM-1b 蛋白质语言模型与语义空间相似度计算，从 UniProt 数据库中发现催化性能更优的新型多铜氧化酶（multicopper oxidases，MCOs）。通过该策略筛选出的 MCOs 中，至少一项催化性能优于查询酶的成功率达到 44%。
+publication.prime:
+  title: PRIME：用于编排蛋白质工程动态计算工作流的多智能体环境
+  excerpt: PRIME 是一个自主多智能体系统，能够理解高层次的蛋白质工程目标，并从包含 65 种以上经过验证的蛋白质工具库中构建定制计算流程。通过让每一步都依托可验证的工具执行，PRIME 能够降低幻觉风险。
+  summary: 多智能体系统，调用 65 种以上蛋白质工程工具，编排动态计算工作流。
+  content: |
+    PRIME 旨在解决阻碍人工智能在蛋白质工程中实际应用的工具碎片化与技术复杂性问题。系统能够理解高层次的工程目标，通过对包含 65 种以上经过验证的蛋白质工具库进行推理，自主构建定制计算流程。通过让每一步都依托可验证的工具执行，PRIME 能够减轻通用人工智能代理带来的幻觉风险。
+publication.domino:
+  title: DOMINO：学习结构域共现规律以设计多结构域蛋白质
+  excerpt: DOMINO 学习结构域共现模式，指导多结构域蛋白质设计，从而生成具有期望结构域架构的蛋白质。
+  summary: 学习结构域共现模式，指导超越 PDB 数据覆盖范围的多结构域蛋白质设计。
+  content: |
+    DOMINO 学习结构域共现模式，用于多结构域蛋白质设计。
+talk.ncca:
+  title: 蛋白质语言模型导论
+  type: 学术报告
+  venue: 伯恩茅斯大学 NCCA 研究研讨会（线上）
+  location: 英国伯恩茅斯
+  excerpt: 伯恩茅斯大学研究研讨会：介绍大语言模型如何应用于蛋白质，以及它们在计算生物学中的作用。
+  content: |
+    摘要：大语言模型在自然语言处理中展现了出色的效果。对于与自然语言十分相似的氨基酸序列，蛋白质大语言模型也逐渐在多个生物学领域发挥重要作用。本次报告将比较自然语言与蛋白质之间的相似性，介绍大语言模型如何应用于蛋白质，并讨论其在生物学中的应用。
+
+    <figure>
+      <img src="{{ '/images/2024-10-23-NCCA-talk-poster.jpg' | relative_url }}" alt="伯恩茅斯大学 NCCA 研究研讨会《蛋白质语言模型导论》英文海报">
+      <figcaption>报告海报（英文原件）。主题：蛋白质语言模型导论；主办方：伯恩茅斯大学 NCCA 研究研讨会；日期：2024 年 10 月 23 日，14:00–15:00；海报标注的现场会场为 Fusion Building 的 CREATE 报告厅。讲者周禧彬（Xibin Bayes Zhou）当时为西湖大学三年级博士生，导师为 Fajie Yuan，研究方向是蛋白质语言模型及其应用。报告摘要的中文译文见上文。</figcaption>
+    </figure>
+talk.glm:
+  title: AI4Science：智谱 MaaS 平台 BigModel 赋能交叉学科研究
+  type: 学术报告
+  venue: 西湖大学 AI 交叉科学俱乐部（线上）
+  location: 中国杭州
+  excerpt: 西湖大学讲座：介绍智谱 GLM 大模型如何赋能交叉学科科学研究，并分享人工智能在生物学研究中的应用。
+  content: |
+    **智谱 MaaS 平台 BigModel 介绍：** LAI Yunjie 将介绍智谱 MaaS 平台 BigModel，并展示其在科学研究领域的巨大潜力。
+
+    **智谱科研应用场景探讨：** BigModel 解决方案架构师 MAO Xin 将分享智谱 GLM 在科研中的应用案例，帮助同学们更深入地理解人工智能如何促进科学发现。
+
+    **西湖大学 AI4Science 分享：** 周禧彬将介绍在生物科学领域的实践经验与探索成果，展示智谱 GLM 在生物学研究中的具体应用。
+
+    **问答环节：** 欢迎同学们围绕讲座内容提问，共同探讨人工智能在交叉学科研究中的未来发展方向。
+talk.evolla:
+  title: Evolla：解读蛋白质的分子语言
+  type: 邀请报告
+  venue: AI4Protein 社区研讨会（线上）
+  location: 线上
+  excerpt: 受 AI4Protein 社区邀请，介绍 Evolla：在 5.46 亿组蛋白质问答对上训练的蛋白质到文本多模态大语言模型。
+  content: |
+    受 [AI4Protein 社区](https://mp.weixin.qq.com/s/PgbhpmrcL3cwSElslDSymA)邀请作报告。
+
+    摘要：序列决定结构，结构决定功能。近年来，测序技术与结构预测方法（如 AlphaFold）的进步，使大规模获取蛋白质序列和结构成为可能。随之而来的自然问题是：如何直接根据蛋白质序列与结构，生成描述其功能的文本？Evolla 是一个蛋白质到文本的多模态大语言模型，在 5.46 亿组“蛋白质、问题、答案”三元组上进行训练，数据包含超过 1,500 亿个词元。预训练后，Evolla 进一步结合直接偏好优化（DPO）与检索增强生成（RAG）进行改进。我们还提出指令响应空间（Instructional Response Space，IRS）用于评估。在酶学委员会（EC）编号分类任务中，Evolla-10B 的表现与 CLEAN 相当，展现出较强的功能推断能力。
+
+    相关资源：[GitHub 代码仓库](https://github.com/westlake-repl/Evolla) · [在线演示](http://www.chat-protein.com/)
+
+    报告录像：[哔哩哔哩](https://www.bilibili.com/video/BV1NAPueqEJr)
+post.hypothesis-1:
+  title: 从假设到实验
+  subtitle_zh: 从计算假设到实验验证的分层框架
+  subtitle_en: 从计算假设到实验验证的分层框架
+  series: 从功能到实验流程的框架
+post.hypothesis-2:
+  title: 从假设到实验
+  subtitle_zh: 中间层：从科学命题到子命题与检测实验
+  subtitle_en: 中间层：从科学命题到子命题与检测实验
+  series: 从功能到实验流程的框架
+post.hypothesis-3:
+  title: 从假设到实验
+  subtitle_zh: 物理层：实验流程、流转与资源
+  subtitle_en: 物理层：实验流程、流转与资源
+  series: 从功能到实验流程的框架

@@ -1,4 +1,6 @@
 ---
+lang: en
+translation_key: page.blog
 layout: archive
 title: "Blog"
 description: "Notes on protein function hypotheses, claims, and bridging computational predictions to experimental validation."
@@ -11,7 +13,8 @@ classes:
 {% include base_path %}
 
 <div class="page-shell">
-  {% for post in site.posts %}
+  {% for source_post in site.posts %}
+  {% assign post = source_post | localize_doc: page.lang %}
   {% include blog-card.html
     title=post.title
     url=post.url
@@ -20,7 +23,7 @@ classes:
     series_part=post.series_part
     excerpt=post.excerpt
     content=post.content
-    locale=post.locale
+    locale=post.content_lang
   %}
   {% endfor %}
 </div>

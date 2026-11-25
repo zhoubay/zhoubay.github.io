@@ -2,17 +2,17 @@
 
 <article class="talk-card fade-in">
   <h3 class="talk-card__title">
-    <a href="{{ include.url | prepend: base_path }}">{{ include.title }}</a>
+    <a href="{{ include.url | locale_url: page.lang | prepend: base_path }}">{{ include.title | t: page.lang }}</a>
   </h3>
   {% if include.venue or include.date %}
   <p class="talk-card__meta">
-    {% if include.type %}{{ include.type }}{% endif %}
+    {% if include.type %}{{ include.type | t: page.lang }}{% endif %}
     {% if include.venue %}<em>{{ include.venue }}</em>{% endif %}
     {% if include.date %}, {{ include.date | date: "%Y" }}{% endif %}
     {% if include.language %}
-      {% assign lang_label = site.data.talk_languages[include.language] %}
+      {% assign lang_label = content_data.talk_languages[include.language] %}
       {% if lang_label %}
-        <span class="journal-tag tag-default talk-card__lang">{{ lang_label }}</span>
+        <span class="journal-tag tag-default talk-card__lang">{{ lang_label | t: page.lang }}</span>
       {% endif %}
     {% endif %}
   </p>

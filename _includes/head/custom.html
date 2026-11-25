@@ -2,7 +2,7 @@
 
 <!-- start custom head snippets -->
 
-<link rel="alternate" type="text/plain" href="{{ base_path }}/llms.txt" title="LLM site summary">
+<link rel="alternate" type="text/plain" href="{{ base_path }}/llms.txt" title="{{ 'LLM site summary' | t: page.lang }}">
 
 {% if page.layout == 'home' and site.hero.image_webp %}
 <link rel="preload" as="image" href="{{ base_path }}/images/{{ site.hero.image_webp }}" type="image/webp">

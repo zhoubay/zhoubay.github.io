@@ -1,4 +1,5 @@
 (function () {
+  var choose = window.SiteI18n.choose;
   var section = document.querySelector(".publication-citation");
   if (!section) return;
 
@@ -55,10 +56,10 @@
 
     copyText(source.value)
       .then(function () {
-        showFeedback(btn, "Copied!");
+        showFeedback(btn, choose("Copied!", "已复制！"));
       })
       .catch(function () {
-        showFeedback(btn, "Copy failed");
+        showFeedback(btn, choose("Copy failed", "复制失败"));
       });
   });
 })();

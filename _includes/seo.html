@@ -3,26 +3,31 @@
 <!-- begin SEO -->
 {% include site-url.html %}
 {% assign seo_url = site_url %}
+{% assign localized_site_title = site.title | t: page.lang %}
+{% assign canonical_path = page.canonical_path | default: page.url %}
 
 {% if page.title %}
-  {% assign seo_title = page.title | append: " " | append: site.title_separator | append: " " | append: site.title %}
+  {% assign seo_title = page.title | append: " " | append: site.title_separator | append: " " | append: localized_site_title %}
 {% endif %}
 
+{% if page.translation_key == 'page.main' %}{% assign seo_title = localized_site_title %}{% endif %}
 {% if seo_title %}
   {% assign seo_title = seo_title | markdownify | strip_html | strip_newlines | escape_once %}
 {% endif %}
 
 {% if site.url %}
-  {% assign canonical_url = page.url | replace: "index.html", "" | prepend: site.url %}
+  {% assign canonical_url = canonical_path | replace: "index.html", "" | prepend: seo_url %}
 {% endif %}
 
-<title>{{ seo_title | default: site.title }}{% if paginator %}{% unless paginator.page == 1 %} {{ site.title_separator }} {{ site.data.ui-text[site.locale].page | default: "Page" }} {{ paginator.page }}{% endunless %}{% endif %}</title>
+<title>{{ seo_title | default: localized_site_title }}{% if paginator %}{% unless paginator.page == 1 %} {{ site.title_separator }} {{ site.data.ui-text[page.locale].page | default: "Page" }} {{ paginator.page }}{% endunless %}{% endif %}</title>
 
 {% assign seo_description = page.description | default: page.excerpt | default: site.description %}
-{% if page.description and page.description_zh %}
-  {% assign seo_description = page.description | append: " / " | append: page.description_zh %}
-{% elsif page.description_zh and seo_description == site.description %}
-  {% assign seo_description = page.description_zh | append: " / " | append: site.description %}
+{% if page.lang != 'zh-CN' %}
+  {% if page.description and page.description_zh %}
+    {% assign seo_description = page.description | append: " / " | append: page.description_zh %}
+  {% elsif page.description_zh and seo_description == site.description %}
+    {% assign seo_description = page.description_zh | append: " / " | append: site.description %}
+  {% endif %}
 {% endif %}
 {% if seo_description %}
   {% assign seo_description = seo_description | markdownify | strip_html | strip_newlines | escape_once %}
@@ -33,8 +38,8 @@
   {% if seo_author.twitter %}
     {% assign seo_author_twitter = seo_author.twitter %}
   {% else %}
-    {% if site.data.authors and site.data.authors[seo_author] %}
-      {% assign seo_author_twitter = site.data.authors[seo_author].twitter  %}
+    {% if content_data.authors and content_data.authors[seo_author] %}
+      {% assign seo_author_twitter = content_data.authors[seo_author].twitter  %}
     {% else %}
       {% assign seo_author_twitter = seo_author  %}
     {% endif %}
@@ -47,33 +52,33 @@
   {% if page.header.image contains "://" %}
     {% assign seo_og_image = page.header.image %}
   {% else %}
-    {% assign seo_og_image = page.header.image | prepend: "/images/" | prepend: base_path %}
+    {% assign seo_og_image = page.header.image | prepend: "/images/" | locale_url: page.lang | prepend: base_path %}
   {% endif %}
 {% elsif page.header.overlay_image %}
   {% if page.header.overlay_image contains "://" %}
     {% assign seo_og_image = page.header.overlay_image %}
   {% else %}
-    {% assign seo_og_image = page.header.overlay_image | prepend: "/images/" | prepend: base_path %}
+    {% assign seo_og_image = page.header.overlay_image | prepend: "/images/" | locale_url: page.lang | prepend: base_path %}
   {% endif %}
 {% elsif page.cartoon_fallback %}
-  {% assign seo_og_image = page.cartoon_fallback | prepend: "/images/" | prepend: base_path %}
+  {% assign seo_og_image = page.cartoon_fallback | prepend: "/images/" | locale_url: page.lang | prepend: base_path %}
 {% elsif page.cartoon_webp %}
-  {% assign seo_og_image = page.cartoon_webp | prepend: "/images/" | prepend: base_path %}
+  {% assign seo_og_image = page.cartoon_webp | prepend: "/images/" | locale_url: page.lang | prepend: base_path %}
 {% elsif site.og_image %}
   {% if site.og_image contains "://" %}
     {% assign seo_og_image = site.og_image %}
   {% else %}
-    {% assign seo_og_image = site.og_image | prepend: "/images/" | prepend: base_path %}
+    {% assign seo_og_image = site.og_image | prepend: "/images/" | locale_url: page.lang | prepend: base_path %}
   {% endif %}
 {% endif %}
 
-<meta property="og:locale" content="{{ site.locale | default: "en" }}">
-<meta property="og:site_name" content="{{ site.title }}">
-<meta property="og:title" content="{{ page.title | default: site.title | markdownify | strip_html | strip_newlines | escape_once }}">
+<meta property="og:locale" content="{% if page.lang == 'zh-CN' %}zh_CN{% else %}en_US{% endif %}">
+<meta property="og:site_name" content="{{ localized_site_title }}">
+<meta property="og:title" content="{{ page.title | default: localized_site_title | markdownify | strip_html | strip_newlines | escape_once }}">
 
 {% if seo_url %}
-  <link rel="canonical" href="{{ page.url | prepend: seo_url | replace: "/index.html", "/" }}">
-  <meta property="og:url" content="{{ page.url | prepend: seo_url | replace: "/index.html", "/" }}">
+  <link rel="canonical" href="{{ canonical_path | prepend: seo_url | replace: "/index.html", "/" }}">
+  <meta property="og:url" content="{{ canonical_path | prepend: seo_url | replace: "/index.html", "/" }}">
 {% endif %}
 
 {% if seo_description %}
@@ -94,7 +99,7 @@
 
 {% if site.twitter.username %}
   <meta name="twitter:site" content="@{{ site.twitter.username | replace: "@", "" }}">
-  <meta name="twitter:title" content="{{ page.title | default: site.title | markdownify | strip_html | strip_newlines | escape_once }}">
+  <meta name="twitter:title" content="{{ page.title | default: localized_site_title | markdownify | strip_html | strip_newlines | escape_once }}">
   {% if seo_description %}
   <meta name="twitter:description" content="{{ seo_description }}">
   {% endif %}
@@ -141,4 +146,10 @@
 {% if site.yandex_site_verification %}
   <meta name="yandex-verification" content="{{ site.yandex_site_verification }}">
 {% endif %}
+{% if page.alternate_urls and page.untranslated_body != true %}
+<link rel="alternate" hreflang="en" href="{{ page.alternate_urls.en | absolute_url }}">
+<link rel="alternate" hreflang="zh-CN" href="{{ page.alternate_urls['zh-CN'] | absolute_url }}">
+<link rel="alternate" hreflang="x-default" href="{{ page.alternate_urls.en | absolute_url }}">
+{% endif %}
+{% if page.translation_key == 'page.404' %}<meta name="robots" content="noindex">{% endif %}
 <!-- end SEO -->

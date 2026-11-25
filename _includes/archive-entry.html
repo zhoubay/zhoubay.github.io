@@ -1,18 +1,19 @@
 {% include base_path %}
+{% assign entry = post | localize_doc: page.lang %}
 
-{% if post.collection == "posts" %}
-  {% include blog-card.html title=post.title url=post.url date=post.date series=post.series series_part=post.series_part excerpt=post.excerpt content=post.content locale=post.locale %}
-{% elsif post.collection == "publications" %}
-  {% include render-pub-card.html doc=post %}
-{% elsif post.collection == "talks" %}
-  {% include talk-card.html title=post.title url=post.url venue=post.venue type=post.type date=post.date language=post.language excerpt=post.excerpt %}
+{% if entry.source_collection == "posts" %}
+  {% include blog-card.html title=entry.title url=entry.url date=entry.date series=entry.series series_part=entry.series_part excerpt=entry.excerpt content=entry.content locale=entry.content_lang %}
+{% elsif entry.source_collection == "publications" %}
+  {% include render-pub-card.html doc=entry %}
+{% elsif entry.source_collection == "talks" %}
+  {% include talk-card.html title=entry.title url=entry.url venue=entry.venue type=entry.type date=entry.date language=entry.language excerpt=entry.excerpt %}
 {% else %}
   <article class="directory-card">
-    <h3 class="directory-card__title"><a href="{{ post.url | prepend: base_path }}">{{ post.title }}</a></h3>
-    {% if post.venue %}
-    <p class="directory-card__meta">{% if post.type %}{{ post.type }} · {% endif %}{{ post.venue }}{% if post.date %} · {{ post.date | date: "%Y" }}{% endif %}</p>
+    <h3 class="directory-card__title"><a href="{{ entry.url | locale_url: page.lang | prepend: base_path }}">{{ entry.title }}</a></h3>
+    {% if entry.venue %}
+    <p class="directory-card__meta">{% if entry.type %}{{ entry.type }} · {% endif %}{{ entry.venue }}{% if entry.date %} · {{ entry.date | date: "%Y" }}{% endif %}</p>
     {% endif %}
-    {% assign entry_description = post.description | default: post.excerpt %}
+    {% assign entry_description = entry.description | default: entry.excerpt %}
     {% if entry_description %}
     <p class="directory-card__description">{{ entry_description | strip_html | truncate: 200 }}</p>
     {% endif %}

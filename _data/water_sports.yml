@@ -1,14 +1,37 @@
 intro: "Previous president of Water Sports Club in Westlake University"
+i18n:
+  zh:
+    intro: 曾任西湖大学水上运动俱乐部社长
 items:
   - title: "Rowing"
+    i18n:
+      zh:
+        title: 赛艇
+        description: 四年赛艇经验，担任西湖大学赛艇队队长。获得 2026 长三角高校赛艇邀请赛混合双人双桨第四名。
+        url: /zh/#rowing-songjiang-2026-title
+        link_label: 奖项与照片
     description: "Four years of experience; captain of the Westlake University rowing team. Fourth place in mixed double sculls at the 2026 Yangtze River Delta Intercollegiate Rowing Invitational."
     url: "/#rowing-songjiang-2026-title"
     link_label: "Award & photos"
   - title: "Stand up paddle"
+    i18n:
+      zh:
+        title: 桨板
+        description: 三年桨板运动经验
     description: "3 years experience"
   - title: "SUP Polo"
+    i18n:
+      zh:
+        title: 桨板球
+        description: 担任首发队员，获得 2026 年中国桨板球公开赛上海站全国高校组季军。
+        url: /zh/#sports-awards
+        link_label: 奖项与照片
     description: "Starting player; national third place in the collegiate division at the 2026 Shanghai tournament."
     url: "/#sports-awards"
     link_label: "Award & photos"
   - title: "Other"
+    i18n:
+      zh:
+        title: 其他水上运动
+        description: 帆船、龙舟等
     description: "Sailing, dragon boat, etc."

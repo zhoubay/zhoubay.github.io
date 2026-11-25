@@ -89,16 +89,16 @@ $(document).ready(function(){
   $("a[href$='.jpg'],a[href$='.jpeg'],a[href$='.JPG'],a[href$='.png'],a[href$='.gif'],a[href$='.webp'],a[href$='.WEBP']").addClass("image-popup");
 
   // Magnific-Popup options
-  var imagePopupOptions = {
+  var imagePopupOptions = $.extend(true, {}, window.SiteI18n.popup, {
     type: 'image',
-    tLoading: 'Loading image #%curr%...',
+    tLoading: window.SiteI18n.choose('Loading image #%curr%...', '正在加载第 %curr% 张图片…'),
     gallery: {
       enabled: true,
       navigateByImgClick: true,
       preload: [0,1] // Will preload 0 - before current, and 1 after the current image
     },
     image: {
-      tError: '<a href="%url%">Image #%curr%</a> could not be loaded.',
+      tError: window.SiteI18n.choose('<a href="%url%">Image #%curr%</a> could not be loaded.', '无法加载<a href="%url%">第 %curr% 张图片</a>。'),
     },
     removalDelay: 500, // Delay in milliseconds before popup is removed
     // Class that is added to body when popup is open.
@@ -112,7 +112,7 @@ $(document).ready(function(){
     },
     closeOnContentClick: true,
     midClick: true // allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source.
-  };
+  });
 
   $(".image-popup").not(".sports-award .image-popup").magnificPopup(imagePopupOptions);
 

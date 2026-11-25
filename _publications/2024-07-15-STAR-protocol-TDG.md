@@ -1,4 +1,6 @@
 ---
+lang: en
+translation_key: publication.star-protocol-tdg
 title: "Protocol to use protein language models predicting and following experimental validation of function-enhancing variants of thymine-N-glycosylase"
 collection: publications
 category: journals

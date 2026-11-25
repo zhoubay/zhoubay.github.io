@@ -9,7 +9,7 @@ $(".header").click(function () {
         //change text of header based on visibility of content div
         $header.text(function () {
             //change text based on condition
-            return $content.is(":visible") ? "Collapse" : "Expand";
+            return $content.is(":visible") ? window.SiteI18n.choose("Collapse", "收起") : window.SiteI18n.choose("Expand", "展开");
         });
     });
 

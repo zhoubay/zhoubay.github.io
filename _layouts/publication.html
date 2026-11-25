@@ -2,6 +2,8 @@
 layout: default
 ---
 
+{% assign previous_item = page.previous_item | localize_doc: page.lang %}
+{% assign next_item = page.next_item | localize_doc: page.lang %}
 {% include schema-publication.html %}
 {% include base_path %}
 
@@ -11,7 +13,7 @@ layout: default
     {% if page.date %}<meta itemprop="datePublished" content="{{ page.date | date: '%Y-%m-%d' }}">{% endif %}
 
     <p class="publication-back">
-      <a href="{{ base_path }}/publications/">&larr; All publications</a>
+      <a href="{{ locale_path }}/publications/">{{ '&larr; All publications' | t: page.lang }}</a>
     </p>
 
     {% include publication-detail.html %}
@@ -24,18 +26,18 @@ layout: default
 
     {% include publication-citation-block.html %}
 
-    {% if page.previous or page.next %}
-    <nav class="publication-nav" aria-label="Publication navigation">
-      {% if page.previous %}
-      <a href="{{ base_path }}{{ page.previous.url }}" class="publication-nav__item publication-nav__item--prev">
-        <span class="publication-nav__label">&larr; Previous</span>
-        <span class="publication-nav__title">{{ page.previous.title | markdownify | strip_html }}</span>
+    {% if previous_item or next_item %}
+    <nav class="publication-nav" aria-label="{{ 'Publication navigation' | t: page.lang }}">
+      {% if previous_item %}
+      <a href="{{ base_path }}{{ previous_item.url }}" class="publication-nav__item publication-nav__item--prev">
+        <span class="publication-nav__label">{{ '&larr; Previous' | t: page.lang }}</span>
+        <span class="publication-nav__title">{{ previous_item.title | markdownify | strip_html }}</span>
       </a>
       {% endif %}
-      {% if page.next %}
-      <a href="{{ base_path }}{{ page.next.url }}" class="publication-nav__item publication-nav__item--next">
-        <span class="publication-nav__label">Next &rarr;</span>
-        <span class="publication-nav__title">{{ page.next.title | markdownify | strip_html }}</span>
+      {% if next_item %}
+      <a href="{{ base_path }}{{ next_item.url }}" class="publication-nav__item publication-nav__item--next">
+        <span class="publication-nav__label">{{ 'Next &rarr;' | t: page.lang }}</span>
+        <span class="publication-nav__title">{{ next_item.title | markdownify | strip_html }}</span>
       </a>
       {% endif %}
     </nav>

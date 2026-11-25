@@ -1,4 +1,6 @@
 ---
+lang: en
+translation_key: page.research
 permalink: /research/
 title: "Research"
 description: "Research overview: structure-aware protein language models (SaProt), trimodal protein search (ProTrek), democratized PLM platforms (SaprotHub), natural-language protein design (Pinal, Nature 2026), and frontier generative models (Evolla, PRIME)."

@@ -6,7 +6,7 @@
   {% if link.url contains 'http' %}
     {% assign link_url = link.url %}
   {% else %}
-    {% assign link_url = link.url | prepend: base_path %}
+    {% assign link_url = link.url | locale_url: page.lang | prepend: base_path %}
   {% endif %}
   <a href="{{ link_url }}" class="pub-link"{% if link.url contains 'http' %} target="_blank" rel="noopener noreferrer"{% endif %}>
     {% case link.icon %}
@@ -15,12 +15,12 @@
     {% when 'image' %}<i class="fas fa-image" aria-hidden="true"></i>
     {% else %}<i class="fas fa-file-alt" aria-hidden="true"></i>
     {% endcase %}
-    {{ link.label }}
+    {{ link.label | t: page.lang }}
   </a>
   {% endfor %}
 </div>
 {% elsif include.paperurl %}
 <div class="{{ wrapper_class }}">
-  <a href="{{ include.paperurl }}" class="pub-link" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-alt" aria-hidden="true"></i> Paper</a>
+  <a href="{{ include.paperurl }}" class="pub-link" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-alt" aria-hidden="true"></i> {{ 'Paper' | t: page.lang }}</a>
 </div>
 {% endif %}

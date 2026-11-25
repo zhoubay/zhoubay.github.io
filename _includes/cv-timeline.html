@@ -1,8 +1,8 @@
-{% if site.data.cv.education %}
+{% if content_data.cv.education %}
 <section class="cv-section fade-in">
   {% include section-header.html title="Education" %}
   <ul class="cv-timeline">
-    {% for item in site.data.cv.education %}
+    {% for item in content_data.cv.education %}
     <li class="cv-timeline__item">
       <p class="cv-timeline__period">{{ item.period }}</p>
       <h3 class="cv-timeline__title">{{ item.title }}</h3>
@@ -13,11 +13,11 @@
 </section>
 {% endif %}
 
-{% if site.data.cv.experience %}
+{% if content_data.cv.experience %}
 <section class="cv-section fade-in">
   {% include section-header.html title="Experience" %}
   <ul class="cv-timeline">
-    {% for item in site.data.cv.experience %}
+    {% for item in content_data.cv.experience %}
     <li class="cv-timeline__item">
       <p class="cv-timeline__period">{{ item.period }}</p>
       <h3 class="cv-timeline__title">{{ item.title }}</h3>
@@ -28,11 +28,11 @@
 </section>
 {% endif %}
 
-{% if site.data.cv.skills %}
+{% if content_data.cv.skills %}
 <section class="cv-section fade-in">
   {% include section-header.html title="Skills" %}
   <ul class="interests-list">
-    {% for item in site.data.cv.skills %}
+    {% for item in content_data.cv.skills %}
     <li class="interests-list__item">
       <strong>{{ item.title }}</strong>
       <span>{{ item.detail }}</span>
@@ -42,22 +42,22 @@
 </section>
 {% endif %}
 
-{% if site.data.honors.size > 0 %}
+{% if content_data.honors.size > 0 %}
 <section class="cv-section fade-in">
   {% include section-header.html title="Honors & Awards" %}
   <ul class="honors-list">
-    {% for item in site.data.honors %}
+    {% for item in content_data.honors %}
     <li>{{ item.text | markdownify | remove: "<p>" | remove: "</p>" }}</li>
     {% endfor %}
   </ul>
 </section>
 {% endif %}
 
-{% if site.data.sports_awards.size > 0 %}
+{% if content_data.sports_awards.size > 0 %}
 <section id="sports-awards" class="cv-section fade-in">
   {% include section-header.html title="Sports Awards" %}
   <ul class="cv-timeline">
-    {% assign sports_awards = site.data.sports_awards | sort: 'date' | reverse %}
+    {% assign sports_awards = content_data.sports_awards | sort: 'date' | reverse %}
     {% for item in sports_awards %}
     <li class="cv-timeline__item">
       <p class="cv-timeline__period"><time datetime="{{ item.date }}">{{ item.date_label }}</time> · {{ item.location }}</p>
@@ -72,11 +72,11 @@
 
 {% include community-impact-section.html class="cv-section fade-in" %}
 
-{% if site.data.languages %}
+{% if content_data.languages %}
 <section class="cv-section fade-in">
   {% include section-header.html title="Languages" %}
   <ul class="interests-list">
-    {% for item in site.data.languages %}
+    {% for item in content_data.languages %}
     <li class="interests-list__item">
       <strong>{{ item.title }}</strong>
       <span>{{ item.description }}</span>

@@ -21,7 +21,7 @@ layout: default
     {% if page.title %}<meta itemprop="headline" content="{{ page.title | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
     {% if page.excerpt %}<meta itemprop="description" content="{{ page.excerpt | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
     {% if page.date %}<meta itemprop="datePublished" content="{{ page.date | date: "%B %d, %Y" }}">{% endif %}
-    {% if page.modified %}<meta itemprop="dateModified" content="{{ page.modified | date: "%B %d, %Y" }}">{% endif %}
+    {% if page.modified %}<meta itemprop="dateModified" content="{{ page.modified | localized_date: page.lang }}">{% endif %}
 
     <div class="page__inner-wrap">
       {% unless page.header.overlay_color or page.header.overlay_image %}
@@ -29,22 +29,26 @@ layout: default
           {% if page.title %}<h1 class="page__title" itemprop="headline">{{ page.title | markdownify | remove: "<p>" | remove: "</p>" }}</h1>{% endif %}
           {% if page.subtitle_zh or page.subtitle_en %}
           <p class="page__subtitle">
-            {% if page.subtitle_zh %}<span lang="zh">{{ page.subtitle_zh }}</span>{% endif %}
-            {% if page.subtitle_zh and page.subtitle_en %}<span class="page__subtitle-sep" aria-hidden="true"> · </span>{% endif %}
-            {% if page.subtitle_en %}<span lang="en">{{ page.subtitle_en }}</span>{% endif %}
+            {% if page.lang == 'zh-CN' %}
+              <span lang="zh-CN">{{ page.subtitle_zh }}</span>
+            {% else %}
+              {% if page.subtitle_zh %}<span lang="zh">{{ page.subtitle_zh }}</span>{% endif %}
+              {% if page.subtitle_zh and page.subtitle_en %}<span class="page__subtitle-sep" aria-hidden="true"> · </span>{% endif %}
+              {% if page.subtitle_en %}<span lang="en">{{ page.subtitle_en }}</span>{% endif %}
+            {% endif %}
           </p>
           {% endif %}
           {% if page.series %}
-          <p class="page__series">{{ page.series }}{% if page.series_part %} · Part {{ page.series_part }}{% endif %}</p>
+          <p class="page__series">{{ page.series }}{% if page.series_part %} · {{ 'Part' | t: page.lang }} {{ page.series_part }}{% endif %}</p>
           {% endif %}
         {% if page.modified %}
-          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "Published:" }}</strong> <time datetime="{{ page.modified | date: "%Y-%m-%d" }}">{{ page.modified | date: "%B %d, %Y" }}</time></p>
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[page.locale].date_label | default: "Published:" }}</strong> <time datetime="{{ page.modified | date: "%Y-%m-%d" }}">{{ page.modified | localized_date: page.lang }}</time></p>
         {% endif %}
 
         {% if page.collection == 'teaching' %}
           <p> {{ page.type }}, <i>{{ page.venue }}</i>, {{ page.date | default: "1900-01-01" | date: "%Y" }} </p>
         {% elsif page.venue and page.date %}
-          <p>Published in <i>{{ page.venue }}</i>, {{ page.date | default: "1900-01-01" | date: "%Y" }} </p>
+          <p>{{ 'Published in' | t: page.lang }} <i>{{ page.venue }}</i>, {{ page.date | default: "1900-01-01" | date: "%Y" }} </p>
         {% elsif page.date or page.read_time %}
           <p class="page__byline">
             {% if page.date %}
@@ -52,7 +56,7 @@ layout: default
             {% endif %}
             {% if page.date and page.read_time %}<span class="page__byline-sep" aria-hidden="true"> · </span>{% endif %}
             {% if page.read_time %}
-              <span class="page__read-time"><i class="fa fa-clock-o" aria-hidden="true"></i> {% include read-time.html locale=page.locale %}</span>
+              <span class="page__read-time"><i class="fa fa-clock-o" aria-hidden="true"></i> {% include read-time.html locale=page.content_lang %}</span>
             {% endif %}
           </p>
         {% endif %}
@@ -63,28 +67,32 @@ layout: default
         {% if page.toc %}
           {% include blog-toc.html %}
         {% endif %}
-        <div class="page__content-body">
+        {% if page.untranslated_body and page.lang != 'zh-CN' %}
+        <p class="article-language-notice">This article is currently available in Chinese only.</p>
+        {% endif %}
+        <div class="page__content-body" lang="{{ page.content_lang | default: page.lang }}">
         {{ content }}
+        {% if page.illustration_notes and page.lang == 'zh-CN' %}<aside class="illustration-notes">{{ page.illustration_notes | markdownify }}</aside>{% endif %}
         </div>
 
         {% if page.citation and page.paperurl and page.slidesurl %}
-          <p style="font-size: smaller">Recommended citation: {{ page.citation }}<br /><a href="{{ page.paperurl }}">Download Paper</a> | <a href="{{ page.slidesurl }}">Download Slides</a></p>
+          <p style="font-size: smaller">{{ 'Recommended citation:' | t: page.lang }} {{ page.citation }}<br /><a href="{{ page.paperurl }}">{{ 'Download Paper' | t: page.lang }}</a> | <a href="{{ page.slidesurl }}">{{ 'Download Slides' | t: page.lang }}</a></p>
         {% elsif page.citation and page.paperurl %}
-          <p style="font-size: smaller">Recommended citation: {{ page.citation }}<br /><a href="{{ page.paperurl }}">Download Paper</a></p>
+          <p style="font-size: smaller">{{ 'Recommended citation:' | t: page.lang }} {{ page.citation }}<br /><a href="{{ page.paperurl }}">{{ 'Download Paper' | t: page.lang }}</a></p>
         {% elsif page.citation and page.slidesurl %}
-          <p style="font-size: smaller">Recommended citation: {{ page.citation }}<br /><a href="{{ page.slidesurl }}">Download Slides</a></p>
+          <p style="font-size: smaller">{{ 'Recommended citation:' | t: page.lang }} {{ page.citation }}<br /><a href="{{ page.slidesurl }}">{{ 'Download Slides' | t: page.lang }}</a></p>
         {% elsif page.citation %}
-          <p style="font-size: smaller">Recommended citation: {{ page.citation }}</p>
+          <p style="font-size: smaller">{{ 'Recommended citation:' | t: page.lang }} {{ page.citation }}</p>
         {% elsif page.slidesurl %}
-          <p style="font-size: smaller"><a href="{{ page.slidesurl }}">Download Slides</a></p>
+          <p style="font-size: smaller"><a href="{{ page.slidesurl }}">{{ 'Download Slides' | t: page.lang }}</a></p>
         {% endif %}
 
-        {% if page.link %}<div><a href="{{ page.link }}" class="btn">{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a></div>{% endif %}
+        {% if page.link %}<div><a href="{{ page.link }}" class="btn">{{ site.data.ui-text[page.locale].ext_link_label | default: "Direct Link" }}</a></div>{% endif %}
       </section>
 
       <footer class="page__meta">
-        {% if site.data.ui-text[site.locale].meta_label %}
-          <h4 class="page__meta-title">{{ site.data.ui-text[site.locale].meta_label }}</h4>
+        {% if site.data.ui-text[page.locale].meta_label %}
+          <h4 class="page__meta-title">{{ site.data.ui-text[page.locale].meta_label }}</h4>
         {% endif %}
         {% include page__taxonomy.html %}
       </footer>
@@ -102,8 +110,8 @@ layout: default
   {% comment %}<!-- only show related on a post page when not disabled -->{% endcomment %}
   {% if page.id and page.related and site.related_posts.size > 0 %}
     <div class="page__related">
-      {% if site.data.ui-text[site.locale].related_label %}
-        <h4 class="page__related-title">{{ site.data.ui-text[site.locale].related_label | default: "You May Also Enjoy" }}</h4>
+      {% if site.data.ui-text[page.locale].related_label %}
+        <h4 class="page__related-title">{{ site.data.ui-text[page.locale].related_label | default: "You May Also Enjoy" }}</h4>
       {% endif %}
       <div class="grid__wrapper">
         {% for post in site.related_posts limit:4 %}

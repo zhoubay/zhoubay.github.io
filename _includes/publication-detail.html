@@ -6,7 +6,7 @@
 <header class="publication-hero fade-in">
   <div class="publication-hero__header">
     {% if card_badge %}
-    <span class="journal-tag tag-{{ jtag }}">{{ card_badge }}</span>
+    <span class="journal-tag tag-{{ jtag }}">{{ card_badge | t: page.lang }}</span>
     {% endif %}
     {% if page.date %}
     <span class="pub-year-badge">{{ page.date | date: "%Y-%m" }}</span>
@@ -17,12 +17,16 @@
   <h1 class="publication-hero__title" itemprop="name">{{ page.title | markdownify | remove: "<p>" | remove: "</p>" }}</h1>
   {% endif %}
 
+  {% if page.lang == 'zh-CN' and page.original_title %}
+  <p class="publication-original-title" lang="en">{{ page.original_title }}</p>
+  {% endif %}
+
   {% if page.authors %}
   <p class="publication-hero__authors" itemprop="author">{% include format-authors.html authors=page.authors %}</p>
   {% endif %}
 
   {% if page.venue and page.date %}
-  <p class="publication-hero__venue">Published in <em>{{ page.venue }}</em>, {{ page.date | date: "%Y" }}</p>
+  <p class="publication-hero__venue">{{ 'Published in' | t: page.lang }} <em>{{ page.venue | t: page.lang }}</em>, {{ page.date | date: "%Y" }}</p>
   {% endif %}
 
   {% include link-buttons.html links=page.links paperurl=page.paperurl wrapper_class="pub-links publication-hero__links" %}
@@ -37,6 +41,7 @@
   cartoon_webp=page.cartoon_webp
   cartoon_fallback=page.cartoon_fallback
   alt=page.cartoon_alt
+  caption=page.cartoon_caption
   class="publication-figure"
 %}
 {% endif %}

@@ -1,4 +1,11 @@
 photo: /images/周禧彬-银框眼镜男士肖像-小.jpg
+i18n:
+  zh:
+    photo_alt: 周禧彬（Xibin Zhou）的肖像
+    text: |
+      我是**周禧彬**，[西湖大学](https://www.westlake.edu.cn/)计算机科学**博士生**（与浙江大学联合培养），现居杭州。我的研究方向是 **AI for Science（科学智能）**，重点关注**蛋白质语言模型（PLM）**及其在蛋白质工程、检索与设计中的应用。
+
+      我致力于构建连接蛋白质**序列**、**结构**与**功能**的大规模模型与开放平台。研究概览见[研究](/zh/research/)；完整成果见[论文列表](/zh/publications/)或 %%GOOGLE_SCHOLAR_ZH%%。
 photo_alt: "周禧彬（Xibin Zhou）的肖像"
 
 text: |

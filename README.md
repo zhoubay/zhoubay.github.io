@@ -52,6 +52,27 @@ The CV page offers English and Chinese PDF downloads, configured by `pdf` and `p
 
 Compile with `bash latex_files/compile.sh cv` and `bash latex_files/compile.sh cv-zh` (XeLaTeX with Noto Serif CJK SC required). Check the compile logs for errors and use `pdfinfo` to confirm each generated `main.pdf` is exactly one A4 page before publishing. Commit both the source and rebuilt PDF for each changed version.
 
+### Website analytics
+
+The site keeps its existing Google Analytics 4 data stream (`G-HQ0RZENN0C`) and supports optional Baidu Tongji alongside it. Analytics scripts load only when `JEKYLL_ENV=production`; normal local previews do not report visits. The existing `analytics.provider` switch controls both services, and `analytics: false` in a page's front matter disables both on that page.
+
+To enable Baidu:
+
+1. Sign in to [Baidu Tongji](https://tongji.baidu.com/), add `https://zhoubay.github.io`, and obtain the site's official asynchronous tracking code. Confirm that Baidu accepts the domain before proceeding.
+2. Copy only the public site ID after `https://hm.baidu.com/hm.js?` into `analytics.baidu.tracking_id` in the configuration below. Keep it quoted. This ID is intended to be public; do not put account passwords, API tokens, or OAuth credentials in the repository. An empty ID leaves Baidu disabled.
+3. Build and publish through the existing Pages workflow, which already sets `JEKYLL_ENV=production`. The privacy page includes the Baidu disclosure automatically when Baidu is configured and analytics is enabled.
+4. Open the published homepage and a content page. Confirm that both services load once and that each dashboard actually receives visits. Successful script downloads alone do not prove data collection.
+
+Configuration:
+
+```text
+/zhouxibin/workspaces/zhoubay.github.io/_config.yml
+```
+
+Use a tagged link such as `https://zhoubay.github.io/?utm_source=analytics_trial&utm_medium=referral&utm_campaign=dual_analytics` for a controlled source check, and verify attribution in both dashboards after processing. For other channels, use distinct links for newsletter articles, shared messages, and conference QR codes; retained tags identify the original labeled link, not its complete forwarding history. Baidu also provides a [tracking URL builder](https://tongji.baidu.com/web/help/article?id=224&type=0).
+
+Compare the first seven days using matching date ranges and time zones. Do not add the two services' counts together: visits overlap, definitions differ, and blockers or network failures can affect collection. Ordinary reports may lag behind real-time reports. Clearing `analytics.baidu.tracking_id` and republishing disables Baidu while retaining GA4. A separate dashboard page is deferred until collection is verified.
+
 ### Google Scholar metrics
 
 The homepage renders `Total citations` and `h-index` from `_data/scholar.json` at build time. The initial snapshot (909 citations, h-index 7, checked 2026-10-29) was supplied by the site owner. The source link uses `author.googlescholar` in `_config.yml`. Visitors make no requests to Scholar, and the metrics remain visible without JavaScript.
@@ -140,3 +161,39 @@ After enabling Actions publishing, first verify a normal push deployment, then m
 ## Acknowledgement
 
 Built with [Academic Pages](https://github.com/academicpages/academicpages.github.io) (Jekyll).
+
+## English and Simplified Chinese
+
+The existing URLs remain the original mixed English/Chinese interface: Chinese hero text, bilingual blog subtitles, and paired lake dialogue remain visible alongside English. Chinese pages use the same URLs prefixed with `/zh`, for example `https://zhoubay.github.io/zh/research/`. The **English | 中文** links remain visible in the header on desktop and mobile and open the corresponding page. URLs determine the language; there is no browser-language detection or stored preference. JavaScript preserves the query string and section fragment when switching; the ordinary links also work without JavaScript.
+
+Both languages are generated in one normal Jekyll build by the local localization plugin. Keep the existing GitHub Actions build: the GitHub Pages built-in safe build does not load this local plugin. Authors, dates, DOI identifiers, citations, BibTeX, asset paths, metrics, and resource URLs stay on the original source record. Translated detail pages are ordinary generated pages, so publication and talk collections never contain duplicate records.
+
+Content translations use per-record `i18n.zh` overlays. Page metadata and translated Markdown are keyed by the source document's unique `translation_key` (`page.*`, `publication.*`, `talk.*`, or `post.*`). Shared templates read `content_data`; `t`, `localize_doc`, `locale_url`, and `localized_date` provide UI labels, translated record views, internal links, and displayed dates. For a new page, add its translation and explicit permalink together. Translations must not copy shared factual fields. Do not add generated Chinese pages to the source tree.
+
+The three existing Chinese blog posts keep one source body. Their English interface explicitly identifies the Chinese-only article, and both interface URLs canonicalize to the Chinese version. The sitemap includes the Chinese article once; the Atom feed keeps its existing entries and URLs with the actual body language. A future English article translation will need a separate translated body and a corresponding update to this explicit exception.
+
+Original images, certificates, posters, and PDFs are retained. Chinese image captions explain embedded English text; the existing English and Chinese CV downloads remain available.
+
+Primary implementation and content locations:
+
+```text
+/zhouxibin/workspaces/zhoubay.github.io/_plugins/localization.rb
+/zhouxibin/workspaces/zhoubay.github.io/_data/page_translations.yml
+/zhouxibin/workspaces/zhoubay.github.io/_data/translations.yml
+/zhouxibin/workspaces/zhoubay.github.io/_data/page_ui.yml
+/zhouxibin/workspaces/zhoubay.github.io/_data
+/zhouxibin/workspaces/zhoubay.github.io/assets/js/i18n.js
+/zhouxibin/workspaces/zhoubay.github.io/scripts/check_localization.py
+```
+
+Validate before publishing (run the build from the repository root):
+
+```bash
+cd /zhouxibin/workspaces/zhoubay.github.io
+python3 /zhouxibin/workspaces/zhoubay.github.io/scripts/check_localization.py
+python3 -m unittest discover -s /zhouxibin/workspaces/zhoubay.github.io/tests -p 'test_*.py'
+bundle exec jekyll build --destination /tmp/zhoubay-bilingual-preview
+python3 /zhouxibin/workspaces/zhoubay.github.io/scripts/check_localization.py --site /tmp/zhoubay-bilingual-preview
+```
+
+The Pages workflow runs these translation checks before publishing, including missing translations, page pairing, same-language internal links, canonical/hreflang metadata, unchanged citations, and duplicate lists. When changing interactive scripts, also rebuild the existing JavaScript bundle and test keyboard navigation, reduced motion, and both language choices.

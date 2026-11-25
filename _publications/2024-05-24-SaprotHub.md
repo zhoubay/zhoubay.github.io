@@ -1,4 +1,6 @@
 ---
+lang: en
+translation_key: publication.saprothub
 title: "Democratizing protein language model training, sharing and collaboration"
 collection: publications
 category: journals

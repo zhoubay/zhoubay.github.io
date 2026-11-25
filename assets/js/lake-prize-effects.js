@@ -2,6 +2,8 @@
 (function () {
   'use strict';
 
+  var choose = window.SiteI18n.choose;
+
   window.LakePrizeEffects = function (host) {
     var root = host.root;
     var layer = document.createElement('div');
@@ -20,7 +22,7 @@
     scene.className = 'after-hours__prize-scene';
     scene.setAttribute('aria-labelledby', 'lake-prize-title');
     scene.hidden = true;
-    scene.innerHTML = '<button class="after-hours__scene-close" type="button" aria-label="Put away / 收起来">×</button>' +
+    scene.innerHTML = '<button class="after-hours__scene-close" type="button" aria-label="' + choose('Put away / 收起来', '收起来') + '">×</button>' +
       '<div class="after-hours__scene-art" aria-hidden="true"></div>' +
       '<p class="after-hours__scene-title" id="lake-prize-title"><span lang="en"></span><span lang="zh-CN"></span></p>' +
       '<div role="status" aria-live="polite" aria-atomic="true"><p class="after-hours__scene-copy"><span lang="en"></span><span lang="zh-CN"></span></p></div>' +
@@ -116,7 +118,7 @@
       element.className = 'after-hours__effect-object after-hours__effect-object--' + id;
       if (id === 'duck') {
         element.type = 'button';
-        element.setAttribute('aria-label', 'Ask the debugging duck / 问问橡皮鸭');
+        element.setAttribute('aria-label', choose('Ask the debugging duck / 问问橡皮鸭', '问问橡皮鸭'));
         element.setAttribute('aria-controls', duckBubble.id);
         element.setAttribute('aria-expanded', 'false');
       } else {

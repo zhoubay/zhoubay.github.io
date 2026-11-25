@@ -1,4 +1,8 @@
 pdf: /latex_files/cv/main.pdf
+i18n:
+  zh:
+    summary: |
+      西湖大学计算机科学博士生，致力于开发用于计算生物学的**蛋白质语言模型**与 AI 系统。研究涵盖结构感知预训练（SaProt，ICLR 2024）、三模态蛋白质检索（ProTrek，*Nature Biotechnology* 2025）、降低使用门槛的蛋白质语言模型平台（SaprotHub，*Nature Biotechnology* 2025）、蛋白质语言模型辅助碱基编辑（*Molecular Cell* 2024），以及前沿生成模型（Pinal，*Nature* 2026；Evolla，正在 *Nature* 审稿中）。
 pdf_zh: /latex_files/cv-zh/main.pdf
 
 summary: |
@@ -6,24 +10,55 @@ summary: |
 
 education:
   - period: "2022 – 2027 (expected)"
+    i18n:
+      zh:
+        period: 2022 – 2027（预计）
+        title: 西湖大学，计算机科学博士
+        detail: 与浙江大学联合培养 · 杭州
     title: "Ph.D. in Computer Science, Westlake University"
     detail: "Joint program with Zhejiang University · Hangzhou"
   - period: "2018 – 2022"
+    i18n:
+      zh:
+        title: 同济大学，数据科学与大数据技术工学学士
     title: "B.Eng. in Data Science and Big Data Technology, Tongji University"
   - period: "2015 – 2018"
+    i18n:
+      zh:
+        title: 天津市南开中学，高中
     title: "High School, Tianjin Nankai School"
 
 experience:
   - period: "Present"
+    i18n:
+      zh:
+        period: 目前
+        title: 西湖大学博士生
+        detail: 蛋白质语言模型、多模态蛋白质 AI 与科学智能
     title: "Ph.D. Candidate, Westlake University"
     detail: "Protein language models, multimodal protein AI, and AI for Science"
   - period: "2022 – present"
+    i18n:
+      zh:
+        period: 2022 – 至今
+        title: 西湖大学赛艇队队长
     title: "Captain, Westlake Rowing Team"
   - period: "2023"
+    i18n:
+      zh:
+        title: 真格基金，投资实习生
     title: "Investment Intern, ZhenFund (真格基金)"
 
 skills:
   - title: "Research"
+    i18n:
+      zh:
+        title: 研究方向
+        detail: 蛋白质语言模型、多模态学习、蛋白质工程、从头设计
     detail: "Protein language models, multimodal learning, protein engineering, de novo design"
   - title: "Tools"
+    i18n:
+      zh:
+        title: 工具与技术
+        detail: PyTorch、Python、大规模模型训练、Colab 平台
     detail: "PyTorch, Python, large-scale model training, Colab platforms"

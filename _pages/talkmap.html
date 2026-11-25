@@ -1,4 +1,6 @@
 ---
+lang: en
+translation_key: page.talkmap
 layout: archive
 title: "Talk locations"
 description: "Venues and locations of academic talks and online seminars by Xibin Zhou."
@@ -11,22 +13,23 @@ classes:
 {% include base_path %}
 
 <div class="page-shell directory-page">
-  <p class="directory-intro">Talks hosted by universities and research communities, including online seminars. <a href="{{ base_path }}/talks/">All talks</a></p>
+  <p class="directory-intro">{{ 'Talks hosted by universities and research communities, including online seminars.' | t: page.lang }} <a href="{{ locale_path }}/talks/">{{ 'All talks' | t: page.lang }}</a></p>
 
   {% assign location_talks = site.talks | sort: "date" | reverse %}
-  {% for talk in location_talks %}
+  {% for source_talk in location_talks %}
+  {% assign talk = source_talk | localize_doc: page.lang %}
   <article class="directory-card">
     <div class="directory-card__facts">
       {% if talk.location %}<span class="journal-tag tag-default">{{ talk.location }}</span>{% endif %}
-      {% if talk.date %}<time datetime="{{ talk.date | date_to_xmlschema }}">{{ talk.date | date: "%b %-d, %Y" }}</time>{% endif %}
+      {% if talk.date %}<time datetime="{{ talk.date | date_to_xmlschema }}">{{ talk.date | localized_date: page.lang, "%b %-d, %Y" }}</time>{% endif %}
     </div>
     <h2 class="directory-card__title"><a href="{{ talk.url | prepend: base_path }}">{{ talk.title }}</a></h2>
     {% if talk.venue %}<p class="directory-card__description">{{ talk.venue }}</p>{% endif %}
   </article>
   {% else %}
   <div class="directory-empty">
-    <p>No talks are listed yet.</p>
-    <a class="pub-link" href="{{ base_path }}/research/">Explore research</a>
+    <p>{{ 'No talks are listed yet.' | t: page.lang }}</p>
+    <a class="pub-link" href="{{ locale_path }}/research/">{{ 'Explore research' | t: page.lang }}</a>
   </div>
   {% endfor %}
 </div>

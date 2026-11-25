@@ -1,4 +1,8 @@
 ---
+lang: en
+locale: en-US
+content_lang: zh-CN
+translation_key: post.hypothesis-3
 title: "From hypothesis to experiment"
 subtitle_zh: "物理层：Procedure、Transport 与 Resources"
 subtitle_en: "The physical layer: procedures, transport, and resources"
@@ -16,8 +20,6 @@ tags:
   - resources
   - protein-function
   - ai4science
-locale: zh
-lang: zh-CN
 excerpt: "概念层与中间层之后，物理层负责把已确定的 assay 转换成可执行的 procedure、transport 与 resources。本文系统梳理 Procedure、Transport、Transferable Resource、按 I/O 签名分类的 Device 及 Operator 等 Resource 的定义、关系与输出结构。"
 author_profile: false
 classes:

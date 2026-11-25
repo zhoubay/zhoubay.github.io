@@ -2,7 +2,7 @@
 
 {% if site.author.googlescholar %}
 <p class="about-block fade-in" style="margin-bottom: 2rem;">
-  You can also find my articles on <a href="{{ site.author.googlescholar }}" target="_blank" rel="noopener noreferrer">Google Scholar</a>.
+  {{ 'You can also find my articles on' | t: page.lang }} <a href="{{ site.author.googlescholar }}" target="_blank" rel="noopener noreferrer">Google Scholar</a>.
 </p>
 {% endif %}
 

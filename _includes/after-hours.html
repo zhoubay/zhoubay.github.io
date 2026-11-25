@@ -1,8 +1,8 @@
-<div class="after-hours" data-after-hours lang="en" hidden>
+<div class="after-hours" data-after-hours lang="{{ page.lang | default: 'en' }}" hidden>
   <div class="after-hours__stage" id="after-hours-stage" hidden>
     <canvas class="after-hours__water" aria-hidden="true"></canvas>
     <div class="after-hours__message">
-      <span class="after-hours__eyebrow">OFF THE CLOCK</span>
+      <span class="after-hours__eyebrow">{% if page.lang == 'zh-CN' %}下班时间{% else %}OFF THE CLOCK{% endif %}</span>
       <h2 id="after-hours-title">
         <span lang="en">Let the papers drift.</span>
         <span lang="zh-CN">论文先漂一会儿。</span>
@@ -21,14 +21,14 @@
         </svg>
         <span lang="en">The boss</span>
         <span lang="zh-CN">老板</span>
-        <span class="after-hours__boss-number" lang="en">PI</span>
+        <span class="after-hours__boss-number">PI</span>
       </div>
       <p class="after-hours__boss-quote" lang="en">One more experiment before you go?</p>
       <p class="after-hours__boss-translation" lang="zh-CN">下班前，再跑一组实验？</p>
-      <span class="after-hours__boss-stamp" lang="en">QUICK REQUEST</span>
+      <span class="after-hours__boss-stamp">{% if page.lang == 'zh-CN' %}就一点小事{% else %}QUICK REQUEST{% endif %}</span>
     </aside>
     {% include after-hours-rowing-crew.html %}
-    <div class="after-hours__fleet" role="group" aria-label="Paper boats / 论文纸船"></div>
+    <div class="after-hours__fleet" role="group" aria-label="{% if page.lang == 'zh-CN' %}论文纸船{% else %}Paper boats / 论文纸船{% endif %}"></div>
     <div class="after-hours__caption">
       <p class="after-hours__hint">
         <span lang="en">Make a ripple. Send a paper sailing.</span>

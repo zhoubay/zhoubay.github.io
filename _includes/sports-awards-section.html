@@ -1,16 +1,16 @@
-{% if site.data.sports_awards.size > 0 %}
+{% if content_data.sports_awards.size > 0 %}
 <section id="sports-awards" class="home-section fade-in" aria-labelledby="sports-awards-heading">
   <div class="section-header">
-    <h2 id="sports-awards-heading" class="section-header__title">Sports Awards</h2>
+    <h2 id="sports-awards-heading" class="section-header__title">{{ 'Sports Awards' | t: page.lang }}</h2>
     <span class="section-header__line" aria-hidden="true"></span>
   </div>
   <div class="sports-awards">
-    {% for item in site.data.sports_awards %}
+    {% for item in content_data.sports_awards %}
     <article class="sports-award" aria-labelledby="{{ item.id }}-title">
       <div class="sports-award__overview">
-        <a class="sports-award__cover image-popup" href="{{ item.cover.image | relative_url }}" title="{{ item.cover.caption | escape }}" aria-label="View cover photo full size: {{ item.event | escape }}">
-          <img src="{{ item.cover.preview | relative_url }}"
-               srcset="{{ item.cover.preview | relative_url }} 960w, {{ item.cover.large | relative_url }} 1600w"
+        <a class="sports-award__cover image-popup" href="{{ item.cover.image | locale_url: page.lang | relative_url }}" title="{{ item.cover.caption | escape }}" aria-label="{{ 'View cover photo full size:' | t: page.lang }} {{ item.event | escape }}">
+          <img src="{{ item.cover.preview | locale_url: page.lang | relative_url }}"
+               srcset="{{ item.cover.preview | locale_url: page.lang | relative_url }} 960w, {{ item.cover.large | locale_url: page.lang | relative_url }} 1600w"
                sizes="(min-width: 1008px) 490px, (min-width: 768px) 48vw, 100vw"
                width="{{ item.cover.width }}" height="{{ item.cover.height }}"
                alt="{{ item.cover.alt | escape }}" loading="lazy" decoding="async">
@@ -25,24 +25,24 @@
         </div>
       </div>
       {% if item.photos.size > 0 %}
-      <div class="sports-award__carousel" data-award-carousel role="region" aria-roledescription="carousel" aria-label="Photos from {{ item.event | escape }}">
+      <div class="sports-award__carousel" data-award-carousel role="region" aria-roledescription="{{ 'carousel' | t: page.lang }}" aria-label="{{ 'Photos from' | t: page.lang }} {{ item.event | escape }}">
         <div class="sports-award__gallery-header">
-          <p class="sports-award__gallery-label">Photos</p>
+          <p class="sports-award__gallery-label">{{ 'Photos' | t: page.lang }}</p>
           <div class="sports-award__gallery-controls" data-gallery-controls hidden>
             <span class="sports-award__gallery-status" data-gallery-status aria-live="polite" aria-atomic="true"></span>
-            <button class="sports-award__gallery-button" type="button" data-gallery-prev aria-label="Previous photos" aria-controls="{{ item.id }}-gallery">
+            <button class="sports-award__gallery-button" type="button" data-gallery-prev aria-label="{{ 'Previous photos' | t: page.lang }}" aria-controls="{{ item.id }}-gallery">
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
             </button>
-            <button class="sports-award__gallery-button" type="button" data-gallery-next aria-label="Next photos" aria-controls="{{ item.id }}-gallery">
+            <button class="sports-award__gallery-button" type="button" data-gallery-next aria-label="{{ 'Next photos' | t: page.lang }}" aria-controls="{{ item.id }}-gallery">
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
             </button>
           </div>
         </div>
-        <div id="{{ item.id }}-gallery" class="sports-award__gallery" data-gallery-track tabindex="0" role="group" aria-label="Scrollable photo gallery">
+        <div id="{{ item.id }}-gallery" class="sports-award__gallery" data-gallery-track tabindex="0" role="group" aria-label="{{ 'Scrollable photo gallery' | t: page.lang }}">
           {% for photo in item.photos %}
           <figure class="sports-award__photo">
-            <a class="sports-award__thumbnail image-popup" href="{{ photo.image | relative_url }}" title="{{ photo.caption | escape }}" aria-label="View {{ photo.caption | downcase | escape }} full size">
-              <img src="{{ photo.preview | relative_url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt | escape }}" loading="lazy" decoding="async">
+            <a class="sports-award__thumbnail image-popup" href="{{ photo.image | locale_url: page.lang | relative_url }}" title="{{ photo.caption | escape }}" aria-label="{{ 'View' | t: page.lang }} {{ photo.caption | escape }} {{ 'full size' | t: page.lang }}">
+              <img src="{{ photo.preview | locale_url: page.lang | relative_url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt | escape }}" loading="lazy" decoding="async">
             </a>
             <figcaption>{{ photo.caption }}</figcaption>
           </figure>

@@ -5,7 +5,7 @@ layout: compress
 {% include base_path %}
 
 <!doctype html>
-<html lang="{{ site.locale | slice: 0,2 }}" class="no-js">
+<html lang="{{ page.lang | default: "en" }}" class="no-js">
   <head>
     {% include head.html %}
     {% include head/custom.html %}
@@ -14,7 +14,7 @@ layout: compress
     {% endif %}
   </head>
 
-  <body class="{% if page.layout %}layout--{{ page.layout }}{% endif %}{% if page.classes %}{% for c in page.classes %} layout--{{ c }}{% endfor %}{% endif %}">
+  <body data-page-key="{{ page.translation_key }}" class="{% if page.layout %}layout--{{ page.layout }}{% endif %}{% if page.classes %}{% for c in page.classes %} layout--{{ c }}{% endfor %}{% endif %}">
 
     {% include browser-upgrade.html %}
     {% include masthead.html %}

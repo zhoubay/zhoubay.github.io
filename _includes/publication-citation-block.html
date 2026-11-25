@@ -5,13 +5,13 @@
   | replace: '&amp;', '&'
   | strip_html
   | strip %}
-<section class="publication-citation" aria-label="Recommended citation">
+<section class="publication-citation" aria-label="{{ 'Recommended citation' | t: page.lang }}">
   <div class="publication-citation__header">
-    <h2 class="publication-citation__title">Citation</h2>
+    <h2 class="publication-citation__title">{{ 'Citation' | t: page.lang }}</h2>
     <div class="publication-citation__actions">
-      <button type="button" class="publication-citation__btn" data-copy="citation">Copy citation</button>
+      <button type="button" class="publication-citation__btn" data-copy="citation">{{ 'Copy citation' | t: page.lang }}</button>
       {% if page.bibtex %}
-      <button type="button" class="publication-citation__btn" data-copy="bibtex">Copy BibTeX</button>
+      <button type="button" class="publication-citation__btn" data-copy="bibtex">{{ 'Copy BibTeX' | t: page.lang }}</button>
       {% endif %}
     </div>
   </div>

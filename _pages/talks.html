@@ -1,4 +1,6 @@
 ---
+lang: en
+translation_key: page.talks
 layout: archive
 title: "Talks and presentations"
 description: "Academic talks and invited presentations by Xibin Zhou on protein language models, Evolla, and AI for Science at universities and online seminars."
@@ -13,12 +15,13 @@ classes:
 
 {% if site.talkmap_link == true %}
 <p class="about-block fade-in" style="margin-bottom: 1.5rem;">
-  <a href="{{ base_path }}/talkmap.html">See a map of all the places I've given a talk!</a>
+  <a href="{{ locale_path }}/talkmap.html">{{ "See a map of all the places I've given a talk!" | t: page.lang }}</a>
 </p>
 {% endif %}
 
 <div class="page-shell">
-  {% for post in site.talks reversed %}
+  {% for source_post in site.talks reversed %}
+  {% assign post = source_post | localize_doc: page.lang %}
   {% include talk-card.html
     title=post.title
     url=post.url

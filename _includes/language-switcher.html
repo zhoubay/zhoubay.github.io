@@ -1,0 +1,7 @@
+{% if page.alternate_urls %}
+<nav class="language-switcher" aria-label="{{ 'Language' | t: page.lang }}">
+  <a href="{{ page.alternate_urls.en | relative_url }}" lang="en" data-lang="en"{% if page.lang == 'en' %} aria-current="true"{% endif %}>English</a>
+  <span aria-hidden="true">|</span>
+  <a href="{{ page.alternate_urls['zh-CN'] | relative_url }}" lang="zh-CN" data-lang="zh-CN"{% if page.lang == 'zh-CN' %} aria-current="true"{% endif %}>中文</a>
+</nav>
+{% endif %}

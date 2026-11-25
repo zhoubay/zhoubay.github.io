@@ -8,12 +8,13 @@
     cartoon_webp=include.cartoon_webp
     cartoon_fallback=include.cartoon_fallback
     alt=include.cartoon_alt
+    caption=include.cartoon_caption
     class="pub-card__figure"
   %}
   {% endif %}
   <div class="pub-card__header">
     {% if include.badge or include.venue %}
-    <span class="journal-tag tag-{{ tag_class }}">{{ include.badge | default: include.venue }}</span>
+    <span class="journal-tag tag-{{ tag_class }}">{{ include.badge | default: include.venue | t: page.lang }}</span>
     {% endif %}
     {% if include.year %}
     <span class="pub-year-badge">{{ include.year | date: "%Y-%m" }}</span>
@@ -22,13 +23,17 @@
 
   <h3 class="pub-card__title">
     {% if include.url %}
-    <a href="{% if include.url contains 'http' %}{{ include.url }}{% else %}{{ include.url | prepend: base_path }}{% endif %}"{% if include.url contains 'http' %} target="_blank" rel="noopener noreferrer"{% endif %}>{{ include.title }}</a>
+    <a href="{% if include.url contains 'http' %}{{ include.url }}{% else %}{{ include.url | locale_url: page.lang | prepend: base_path }}{% endif %}"{% if include.url contains 'http' %} target="_blank" rel="noopener noreferrer"{% endif %}>{{ include.title | t: page.lang }}</a>
     {% elsif include.publication %}
-    <a href="{{ include.publication | prepend: base_path }}">{{ include.title | default: include.name }}</a>
+    <a href="{{ include.publication | locale_url: page.lang | prepend: base_path }}">{{ include.title | default: include.name }}</a>
     {% else %}
     {{ include.title | default: include.name }}
     {% endif %}
   </h3>
+
+  {% if page.lang == 'zh-CN' and include.original_title %}
+  <p class="publication-original-title" lang="en">{{ include.original_title }}</p>
+  {% endif %}
 
   {% if include.authors %}
   <p class="pub-card__authors">{% include format-authors.html authors=include.authors %}</p>

@@ -3,7 +3,7 @@
     <button type="button" data-lake-boss>
       <span class="after-hours__toy-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2 12h3m14 0h3M10 12h4M4 11l1-5m15 5-1-5"/><circle cx="7" cy="13" r="4"/><circle cx="17" cy="13" r="4"/></svg></span>
       <span class="after-hours__toy-label"><span lang="en">Boss nearby</span><span lang="zh-CN">老板来了</span></span>
-      <kbd lang="en">B</kbd>
+      <kbd>B</kbd>
     </button>
     <button type="button" data-lake-vending>
       <span class="after-hours__toy-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 8h11v8a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5V8Zm11 1h2a3 3 0 0 1 0 6h-2M8 3v2m5-2v2M3 22h16"/></svg></span>
@@ -22,7 +22,7 @@
 
 <section class="after-hours__vending" aria-labelledby="lake-vending-title" hidden>
   <div class="after-hours__vending-card">
-    <button class="after-hours__panel-close" type="button" data-vending-close aria-label="Close vending machine / 关闭售货机"><span aria-hidden="true">×</span></button>
+    <button class="after-hours__panel-close" type="button" data-vending-close aria-label="{% if page.lang == 'zh-CN' %}关闭售货机{% else %}Close vending machine / 关闭售货机{% endif %}"><span aria-hidden="true">×</span></button>
     <div class="after-hours__vending-heading">
       <span class="after-hours__toy-eyebrow"><span lang="en">A LITTLE PICK-ME-UP</span><span lang="zh-CN">给今天加一点甜</span></span>
       <h2 id="lake-vending-title"><span lang="en">Lab vending</span><span lang="zh-CN">实验室售货机</span></h2>

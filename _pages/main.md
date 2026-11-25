@@ -1,4 +1,6 @@
 ---
+lang: en
+translation_key: page.main
 permalink: /
 layout: home
 title: "Xibin Zhou"

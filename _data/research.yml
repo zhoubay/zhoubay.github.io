@@ -2,43 +2,74 @@
 
 sections:
   - id: plm
+    i18n:
+      zh:
+        title: 蛋白质语言模型
+        subtitle: 结构感知预训练、开放平台与蛋白质语言模型驱动的蛋白质工程
     title: "Protein Language Models"
     subtitle: "Structure-aware pretraining, open platforms, and PLM-driven protein engineering"
     accent: "#0d6e8f"
     accent_light: "#e8f4f8"
     projects:
       - slug: SaProt
+        i18n:
+          zh:
+            summary: 采用结构感知词表的通用蛋白质语言模型，将氨基酸残基标记与 Foldseek 结构标记融合，在约 4000 万组序列–结构配对数据上训练。
         name: SaProt
         summary: "General-purpose PLM with a structure-aware vocabulary—residue tokens fused with Foldseek structure tokens—trained on ~40M sequence–structure pairs."
 
       - slug: SaprotHub
+        i18n:
+          zh:
+            summary: 基于 Google Colab 的无代码平台，支持蛋白质机器学习模型的训练、分享与协作，让生物学研究者更容易使用蛋白质语言模型。
         name: SaprotHub
         summary: "No-code platform on Google Colab for training, sharing, and collaborating on protein ML models—democratizing PLM access for biologists."
 
       - slug: PLM-guided-eTDG
+        i18n:
+          zh:
+            name: PLM 引导的 eTDG
+            summary: 利用蛋白质语言模型引导尿嘧啶-N-糖基化酶优化，实现可编程的 T→G/C 碱基编辑，并通过少样本实验进行验证。
         name: "PLM-guided eTDG"
         summary: "PLM-guided optimization of uracil-N-glycosylase enables programmable T→G/C base editing with few-shot experimental validation."
 
       - slug: ESM-Ezy
+        i18n:
+          zh:
+            summary: 利用 ESM-1b 进行语义挖掘，从 UniProt 中发现具有出色催化性能与环境修复能力的多铜氧化酶。
         name: ESM-Ezy
         summary: "ESM-1b semantic mining discovers multicopper oxidases with superior catalytic and environmental-remediation properties from UniProt."
 
   - id: multimodal
+    i18n:
+      zh:
+        title: 蛋白质–文本多模态智能
+        subtitle: 对齐序列、结构与自然语言，支持检索、对话与从头设计
     title: "Protein–Text Multimodal Intelligence"
     subtitle: "Aligning sequence, structure, and natural language for search, dialogue, and de novo design"
     accent: "#5b4b9a"
     accent_light: "#f0edf8"
     projects:
       - slug: ProTrek
+        i18n:
+          zh:
+            summary: 统一序列、结构与功能文本的三模态对比学习模型，在十亿级蛋白质规模上支持先进的跨模态蛋白质检索。
         name: ProTrek
         summary: "Trimodal contrastive model unifying sequence, structure, and function text—advanced cross-modal protein search at billion-protein scale."
 
       - slug: Evolla
+        i18n:
+          zh:
+            badge: bioRxiv · Nature 审稿中
+            summary: 交互式蛋白质语言模型，可根据序列与结构回答自然语言问题，以生成式功能发现拓展静态注释的能力。
         name: Evolla
         badge: "bioRxiv · under review at Nature"
         summary: "Interactive protein-language model that answers natural-language queries over sequence and structure—generative functional discovery beyond static annotation."
 
       - slug: Pinal
+        i18n:
+          zh:
+            summary: 拥有 160 亿参数的模型，将功能描述转化为蛋白质设计，并在荧光、酶催化、代谢 H 蛋白等四类任务中获得实验验证。
         name: Pinal
         badge: "Nature 2026"
         summary: "16B-parameter model that translates functional descriptions into protein designs, with experimental validation across four tasks including fluorescence, enzyme catalysis, and a metabolic H-protein."

@@ -1,4 +1,4 @@
-{% assign doc = include.doc %}
+{% assign doc = include.doc | localize_doc: page.lang %}
 {% assign card_title = include.title | default: include.name | default: doc.title %}
 {% assign card_badge = include.badge | default: doc.badge | default: doc.venue %}
 {% assign card_summary = include.summary | default: doc.summary | default: doc.excerpt %}
@@ -16,6 +16,7 @@
 {% endif %}
 {% include pub-card.html
   title=card_title
+  original_title=doc.original_title
   boat_name=doc.slug
   name=card_title
   authors=card_authors
@@ -31,4 +32,5 @@
   cartoon_webp=doc.cartoon_webp
   cartoon_fallback=doc.cartoon_fallback
   cartoon_alt=doc.cartoon_alt
+  cartoon_caption=doc.cartoon_caption
 %}

@@ -2,6 +2,7 @@
 (function () {
   'use strict';
 
+  var choose = window.SiteI18n.choose;
   var root = document.querySelector('[data-after-hours]');
   if (!root) return;
   var stage = root.querySelector('.after-hours__stage');
@@ -113,12 +114,12 @@
 
   cards.forEach(function (card, index) {
     var title = card.querySelector('.pub-card__title');
-    var name = card.dataset.paperBoatName || (title ? title.textContent.trim().split(':')[0] : 'Paper');
+    var name = card.dataset.paperBoatName || (title ? title.textContent.trim().split(':')[0] : choose('Paper', '论文'));
     var palette = colors[index % colors.length];
     var button = document.createElement('button');
     button.type = 'button';
     button.className = 'after-hours__boat';
-    button.setAttribute('aria-label', 'Nudge the ' + name + ' paper boat / 推一推 ' + name + ' 纸船');
+    button.setAttribute('aria-label', choose('Nudge the ' + name + ' paper boat / 推一推 ' + name + ' 纸船', '推一推 ' + name + ' 纸船'));
     // Only fixed SVG geometry and this local color palette enter markup.
     button.innerHTML = '<svg viewBox="0 0 160 110" fill="none" aria-hidden="true">' +
       '<ellipse cx="80" cy="99" rx="57" ry="5" fill="#163d49" opacity=".12"/>' +
@@ -823,7 +824,7 @@
     toggle.setAttribute('aria-expanded', 'true');
     toggleEnglish.textContent = 'Back to shore';
     toggleChinese.textContent = '回岸上';
-    toggle.setAttribute('aria-label', 'Back to shore / 回岸上 — Exit after-hours mode (Esc)');
+    toggle.setAttribute('aria-label', choose('Back to shore / 回岸上 — Exit after-hours mode (Esc)', '回岸上——退出下班模式（Esc）'));
     toggle.setAttribute('aria-keyshortcuts', 'Escape');
     resetToys();
     resetBoss();
